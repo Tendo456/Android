@@ -2,12 +2,15 @@ package com.example.poke;
 
 import com.google.gson.annotations.SerializedName;
 
-public class PokemonByIdResponse {
+import java.io.Serializable;
+
+public class PokemonByIdResponse implements Serializable {
 
     @SerializedName("base_experience")
     private int baseExperience;
     private String name;
     private int id;
+
 
     public int getBaseExperience() {
         return baseExperience;
@@ -31,5 +34,14 @@ public class PokemonByIdResponse {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    @Override
+    public String toString() {
+        return "PokemonByIdResponse{" +
+                "baseExperience=" + baseExperience +
+                ", name='" + name + '\'' +
+                ", id=" + id +
+                '}';
     }
 }
