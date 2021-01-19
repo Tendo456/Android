@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Temp</string>
+
+    <string-array name="rutas">
+        <item>Ruta 1</item>
+        <item>Ruta 2</item>
+        <item>Ruta 3</item>
+        <item>Ruta 4</item>
+        <item>Ruta 5</item>
+
+    </string-array>
+</resources>

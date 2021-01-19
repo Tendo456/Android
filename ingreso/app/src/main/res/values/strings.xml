@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Ingreso</string>
+    <string-array name="sexo">
+        <item>Masculino</item>
+        <item>Femenino</item>
+    </string-array>
+
+    <string-array name="usuario">
+        <item>ruta</item>
+        <item>clinica</item>
+        <item>administrador</item>
+    </string-array>
+</resources>

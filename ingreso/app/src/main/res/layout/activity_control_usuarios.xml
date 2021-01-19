@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    tools:context=".control_usuarios">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/refrescar"
+            android:layout_width="match_parent"
+            android:layout_height="225dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="Control de Usuarios"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/usuarioId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Id Usuario"
+                    android:visibility="invisible" />
+
+                <EditText
+                    android:id="@+id/txtDni"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/azul"
+                    android:hint="DNI"
+                    android:inputType="number"
+                    android:maxLength="8"
+                    android:paddingLeft="15dp" />
+
+                <EditText
+                    android:id="@+id/txtUsuario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/azul"
+                    android:hint="Email"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="15dp" />
+
+                <EditText
+                    android:id="@+id/txtContraseña"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/azul"
+                    android:hint="Contraseña"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="15dp" />
+            </LinearLayout>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|center_horizontal"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/spTipoUser"
+                android:layout_width="180dp"
+                android:layout_height="40dp"
+                android:layout_margin="5dp" />
+
+            <EditText
+                android:id="@+id/txtTipoUser"
+                android:layout_width="160dp"
+                android:layout_height="40dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/azul"
+                android:enabled="false"
+                android:gravity="center"
+                android:hint="Tipo"
+                android:inputType="textPersonName" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/UInsertar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorPrimary"
+                android:text="Ingresar"
+                android:textColor="@color/design_default_color_background" />
+
+            <Button
+                android:id="@+id/UBuscar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorPrimary"
+                android:text="Buscar"
+                android:textColor="@color/design_default_color_background" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/UEditar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorPrimary"
+                android:text="Editar"
+                android:textColor="@color/design_default_color_background" />
+
+            <Button
+                android:id="@+id/UEliminar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/colorPrimary"
+                android:text="Eliminar"
+                android:textColor="@color/design_default_color_background" />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/listaUser"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+</RelativeLayout>

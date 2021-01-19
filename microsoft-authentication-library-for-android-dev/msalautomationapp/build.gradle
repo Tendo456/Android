@@ -1,0 +1,226 @@
+apply plugin: 'com.android.application'
+apply plugin: 'jacoco'
+
+//Constant:- used to generate Coverage report task
+def androidTestType = "AndroidTest"
+
+def msalVersion = "2.+"
+
+if (project.hasProperty("distMsalVersion")) {
+    msalVersion = distMsalVersion
+}
+
+android {
+
+    final String BROKER_HOST = "BrokerHost"
+    final String BROKER_MICROSOFT_AUTHENTICATOR = "BrokerMicrosoftAuthenticator"
+    final String BROKER_COMPANY_PORTAL = "BrokerCompanyPortal"
+    final String SELECTED_BROKER = "SELECTED_BROKER"
+
+    signingConfigs {
+        debug {
+            storeFile file("./debug.keystore")
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
+        release {
+            storeFile file("./debug.keystore")
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
+    }
+
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        applicationId "com.msft.identity.client.sample"
+        minSdkVersion rootProject.ext.automationAppMinSDKVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // The following argument makes the Android Test Orchestrator run its
+        // "pm clear" command after each test invocation. This command ensures
+        // that the app's state is completely cleared between tests.
+        testInstrumentationRunnerArguments clearPackageData: 'true'
+
+        // constants
+        buildConfigField("String", BROKER_MICROSOFT_AUTHENTICATOR, "\"$BROKER_MICROSOFT_AUTHENTICATOR\"")
+        buildConfigField("String", BROKER_COMPANY_PORTAL, "\"$BROKER_COMPANY_PORTAL\"")
+        buildConfigField("String", BROKER_HOST, "\"$BROKER_HOST\"")
+    }
+
+    testOptions {
+        execution 'ANDROIDX_TEST_ORCHESTRATOR'
+    }
+
+    buildTypes {
+        // testCoverageEnabled flag is set to true to get coverage reports for Android Tests
+        release {
+            testCoverageEnabled true
+            debuggable true
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+
+        debug {
+            testCoverageEnabled true
+            multiDexKeepProguard file('proguard-multidex-rules.pro')
+        }
+    }
+
+    testBuildType = "debug"
+
+    lintOptions {
+        abortOnError false
+    }
+
+    flavorDimensions "main", "broker"
+
+    productFlavors {
+        local {
+            dimension "main"
+            applicationIdSuffix ".local"
+            versionNameSuffix "-local"
+            resValue("string", "application_name", "msal-local")
+        }
+        dist {
+            dimension "main"
+            // Keep .local because the redirect url we registered on the portal contains .local, not .dist
+            applicationIdSuffix ".local"
+            versionNameSuffix "-dist"
+            resValue("string", "application_name", "msal-dist")
+        }
+
+        BrokerMicrosoftAuthenticator {
+            dimension "broker"
+            buildConfigField("String", SELECTED_BROKER, "\"$BROKER_MICROSOFT_AUTHENTICATOR\"")
+        }
+
+        BrokerCompanyPortal {
+            dimension "broker"
+            buildConfigField("String", SELECTED_BROKER, "\"$BROKER_COMPANY_PORTAL\"")
+        }
+
+        BrokerHost {
+            dimension "broker"
+            buildConfigField("String", SELECTED_BROKER, "\"$BROKER_HOST\"")
+        }
+    }
+
+    variantFilter { variant ->
+        def flavorName = variant.flavors*.name
+        def buildType = variant.buildType.name
+        // To check for a certain build type, use variant.buildType.name == "<buildType>"
+        if (buildType.contains("release")) {
+            // Gradle ignores any variants that satisfy the conditions above.
+            setIgnore(true)
+        }
+
+        if (flavorName.contains("dist") && flavorName.contains("BrokerHost")) {
+            // Gradle ignores any variants that satisfy the conditions above.
+            setIgnore(true)
+        }
+
+        if (flavorName.contains("local") && flavorName.contains("BrokerCompanyPortal") && buildType.contains("debug")) {
+            // Gradle ignores any variants that satisfy the conditions above.
+            setIgnore(true)
+        }
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+            java.srcDirs = ['src/main/java']
+        }
+
+        androidTest {
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+            res.srcDirs = ['src/main/res']
+        }
+    }
+
+    applicationVariants.all { variant ->
+        // create separate code coverage tasks(for androidTests) for every build variant
+        def buildVariant = variant.name
+        createCoverageTask(buildVariant, androidTestType)
+    }
+}
+
+ext.createCoverageTask = { buildVariant, testType ->
+    // Code coverage task depends on additional task to run all android tests and its output is stored in .ec file
+    def androidTestTask = "connected${buildVariant.capitalize()}AndroidTest"
+    def androidTestFile = "outputs/code_coverage/${buildVariant}AndroidTest/connected/*.ec"
+
+    // Task to generate coverage report for particular build variant, that depends on additional tasks(androidTestTask)
+    task "${buildVariant}Msal${testType}CoverageReport" (type:JacocoReport, dependsOn: [androidTestTask]) {
+        group = "Code Coverage MsalAutomation"
+        description = "Generate Msal Coverage Reports(${testType}) on the ${buildVariant.capitalize()}"
+
+        // Include source files(of msalautomation) in which code coverage needs to be found, after filtering out some set of files
+        def coverageSourceDirs = "${projectDir}/src/main/java"
+        def fileFilter = ['**/R.class', '**/R$*.class', '**/BuildConfig.*', '**/Manifest*.*', '**/*Test.*']
+        def javaClasses = fileTree(
+                dir: "${buildDir}/intermediates/javac/${buildVariant}/classes",
+                excludes: fileFilter
+        )
+
+        // Include additional source files(as msalautomation depends on common and msal) in code coverage report
+        def commonBuild = buildVariant.matches("(.*)Debug(.*)") ? "debug" : "release"
+        def commonFilePath = buildDir.absolutePath.matches("(.*)android_auth(.*)") ? "common" : "../common/common/build";
+        def msalBuild = buildVariant.matches("(.*)local(.*)") ? "localDebug" : "distDebug"
+        def msalFilePath = buildDir.absolutePath.matches("(.*)android_auth(.*)") ? "msal" : "../msal/build";
+        def additionalCoverageSourceDirs = [
+                "${projectDir}/../msal/src/main/java",
+                "${projectDir}/../common/common/src/main/java",
+        ]
+        def additionalJavaClasses = [
+                fileTree( dir: "${buildDir}/../${commonFilePath}/intermediates/javac/${commonBuild}/classes", excludes: fileFilter),
+                fileTree( dir: "${buildDir}/../${msalFilePath}/intermediates/javac/${msalBuild}/classes", excludes: fileFilter)
+        ]
+
+        //Include all those directories for source files and additional source files defined above
+        sourceDirectories.from = files([coverageSourceDirs])
+        additionalSourceDirs.from = files(additionalCoverageSourceDirs)
+        additionalClassDirs.from = files([additionalJavaClasses])
+        classDirectories.from = files([javaClasses])
+
+        //Code coverage report is generated based on the the output files of additional tasks(i.e, androidTestTask)
+        executionData.from = fileTree(dir: "$buildDir", includes: [androidTestFile])
+
+        // html reports are auto-generated without enabling flag, so enabling xml flag
+        reports {
+            xml.enabled = true
+        }
+    }
+}
+
+dependencies {
+    // Compile Dependency
+    localImplementation project(':msal')
+    distImplementation "com.microsoft.identity.client:msal:${msalVersion}"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.ext.constraintLayoutVersion"
+    implementation "com.google.code.gson:gson:$rootProject.ext.gsonVersion"
+    implementation "androidx.appcompat:appcompat:$rootProject.ext.appCompatVersion"
+    implementation "androidx.legacy:legacy-support-v4:$rootProject.ext.legacySupportV4Version"
+    implementation "com.google.android.material:material:$rootProject.ext.materialVersion"
+    androidTestImplementation "androidx.test:core:$rootProject.ext.androidxTestCoreVersion"
+    androidTestImplementation "androidx.test.ext:junit:$rootProject.ext.androidxJunitVersion"
+    // Set this dependency to use JUnit 4 rules
+    androidTestImplementation "androidx.test:rules:$rootProject.rulesVersion"
+    androidTestImplementation "androidx.test.uiautomator:uiautomator:$rootProject.ext.uiAutomatorVersion"
+    androidTestImplementation(project(":testutils")) {
+        exclude module: 'common'
+    }
+    androidTestImplementation(project(":uiautomationutilities")) {
+        exclude module: 'common'
+    }
+    androidTestImplementation "androidx.test:runner:$rootProject.ext.androidxTestRunnerVersion"
+    androidTestUtil "androidx.test:orchestrator:$rootProject.ext.androidxTestOrchestratorVersion"
+}
+
