@@ -1,0 +1,156 @@
+<resources>
+    <string name="app_name">Redemnorte</string>
+
+    <string name="save_action">Guardar</string>
+    <string name="action_search">Buscar</string>
+
+    <!-- Main activity -->
+    <string name="username">Usuario</string>
+    <string name="password">Contraseña</string>
+
+    <!-- Dialog new header hints -->
+    <string name="hint_hoja_id">NRO DE HOJA</string>
+    <string name="hint_local">LOCAL (Sapitos, El Porvenir, La Esperanza)</string>
+    <string name="hint_ubicacion">UBICACIÓN (Módulo A, Módulo B)</string>
+    <string name="hint_cargo">CARGO (Gerente, Asistente)</string>
+    <string name="hint_area">ÁREA (Logística, RRHH)</string>
+    <string name="hint_office">OFICINA (Compras, Patrimonio, Personal)</string>
+    <string name="hint_ambiente">AMBIENTE (Primer piso, Taller)</string>
+    <string name="hint_responsible">USUARIO RESPONSABLE</string>
+
+    <!-- Dialog new header errors -->
+    <string name="error_hoja_id">Es necesario ingresar el nro de hoja</string>
+    <string name="error_local">Es necesario ingresar un local</string>
+    <string name="error_ubicacion">Es necesario ingresar una ubicación</string>
+    <string name="error_cargo">Es necesario ingresar un cargo</string>
+    <string name="error_oficina">Es necesario ingresar una oficina</string>
+    <string name="error_ambiente">Es necesario ingresar un ambiente</string>
+    <string name="error_area">Es necesario ingresar un área</string>
+
+    <!-- Dialog new detail hints -->
+    <string name="hint_description">Denominación</string>
+    <string name="hint_color">Color</string>
+    <string name="hint_brand">Marca</string>
+    <string name="hint_model">Modelo</string>
+    <string name="hint_series">Serie</string>
+    <string name="hint_dim_long">Largo</string>
+    <string name="hint_dim_width">Ancho</string>
+    <string name="hint_dim_high">Alto</string>
+    <string name="hint_operative">Operativo?</string>
+    <string name="hint_observation">Observación</string>
+    <string name="hint_preservation">Estado de conservación</string>
+
+    <!-- Item status options -->
+    <string-array name="status_options">
+        <item>Nuevo</item>
+        <item>Bueno</item>
+        <item>Regular</item>
+        <item>Malo</item>
+    </string-array>
+    <string name="status_prompt">Seleccione condición</string>
+
+    <!-- Old year options -->
+    <string-array name="old_code_years">
+        <item>2018</item>
+        <item>2017</item>
+        <item>2016</item>
+        <item>2013</item>
+        <item>2012</item>
+        <item>2011</item>
+        <item>2010</item>
+        <item>2009</item>
+        <item>2008</item>
+    </string-array>
+
+    <!-- Dialog new detail errors -->
+    <string name="error_til_qr">Es obligatorio ingresar el cód QR</string>
+    <string name="error_til_description">Ingresa una descripción</string>
+
+    <string name="error_login">Los datos son incorrectos</string>
+    <string name="sheets_count_message">Hojas registradas: %d</string>
+
+    <string name="scanner_results">Resultados</string>
+    <string name="error_format_server_response">Error en el formato de respuesta</string>
+    <string name="success_sheet_updated_message">Se ha editado correctamente la hoja</string>
+    <string name="success_sheet_created_message">Se ha registrado una nueva hoja</string>
+    <string name="title_sheet_create">Registrar nueva hoja</string>
+    <string name="title_sheet_edit">Editar hoja</string>
+    <string name="btn_edit_sheet">Editar hoja</string>
+    <string name="btn_see_items">Ver bienes</string>
+    <string name="label_sheet_already_printed">ESTA HOJA YA SE HA IMPRESO</string>
+    <string name="label_sheet_already_signed">ESTA HOJA YA HA SIDO FIRMADA</string>
+    <string name="checkbox_mark_as_review_pending">Marcar como hoja pendiente de revisión</string>
+    <string name="btn_replace_item_photo">Reemplazar foto</string>
+    <string name="title_item_show">Datos del bien seleccionado</string>
+    <string name="dialog_title_observation">Observación</string>
+    <string name="dialog_message_observation">¿Por qué motivo la hoja se ha marcado como pendiente?</string>
+    <string name="support_contact_info">Antony Luis: 989 072 636</string>
+    <string name="label_review_pending">PENDIENTE DE REVISIÓN</string>
+    <string name="title_item_create">Registrar nuevo bien</string>
+    <string name="title_item_edit">Editar bien seleccionado</string>
+    <string name="title_activity_details">Hoja #</string>
+    <string name="label_patrimonial_code">Cód Patrimonial: %1$s </string>
+    <string name="label_qr_code">QR: %1$s</string>
+    <string name="items_count_message">Bienes registrados: %d</string>
+    <string name="title_activity_panel">Hojas de inventario</string>
+    <string name="hint_qr_code">QR 2019</string>
+    <string name="hint_patrimonial_code">Código patrimonial</string>
+    <string name="btn_positive_use_code">Usar código</string>
+    <string name="btn_neutral_take_again">Volver a tomar</string>
+    <string name="btn_negative_cancel">Cancelar</string>
+    <string name="btn_login">Iniciar sesión</string>
+    <string name="btn_show_contact_info">Número de soporte</string>
+
+    <string name="dialog_camera_title">Acceso a la cámara</string>
+    <string name="dialog_camera_explanation">A fin de escanear los códigos QR y de Barras, debes conceder a la aplicación el permiso de acceso a la cámara.</string>
+
+    <string name="dialog_storage_title">Permiso de almacenamiento</string>
+    <string name="dialog_storage_explanation">A fin de capturar fotos por cada bien, y subir éstas al servidor por favor conceder este permiso.</string>
+
+    <string name="dialog_location_title">Acceso al GPS</string>
+    <string name="dialog_location_explanation">A fin de brindar una mejor experiencia, por favor activar el GPS.</string>
+
+    <string name="error_login_invalid_credentials">Los datos ingresados no coinciden con ningún usuario</string>
+
+    <string name="item_photo_success">La foto se ha subido correctamente</string>
+    <string name="item_photo_error">Ocurrió un problema al enviar la imagen</string>
+
+    <string name="signature_upload_success">La firma se ha registrado correctamente</string>
+    <string name="signature_upload_error">Ocurrió un problema al registrar la firma</string>
+
+    <string name="permission_camera_denied">Permiso de cámara denegado</string>
+    <string name="permission_camera_granted">Permiso de cámara concedido</string>
+    <string name="permission_storage_denied">Permiso de almacenamiento denegado</string>
+    <string name="permission_storage_granted">Permiso de almacenamiento concedido</string>
+
+    <string name="instructions_use_button_to_check_qr_not_registered_yet">Usa el botón del ojito para verificar que no se repita el QR.</string>
+    <string name="instructions_use_button_to_get_data_by_patrimonial_code">Usa el botón de la diana para buscar y traer datos.</string>
+    <string name="instructions_use_button_to_get_data_by_old_code">Usa el botón de la diana para buscar y traer datos.</string>
+    <string name="empty_qr_code_check">Debes ingresar un QR para verificar si ya se ha registrado o no</string>
+    <string name="empty_patrimonial_code_search">Debes ingresar un cód patrimonial para realizar la búsqueda</string>
+    <string name="empty_old_code_search">Debes ingresar un cód antiguo para realizar la búsqueda</string>
+    <string name="data_found_and_loaded">Se encontraron y cargaron datos</string>
+    <string name="no_data_found">No se encontraron resultados</string>
+    <string name="label_checkbox_labeled_status">El item está etiquetado</string>
+    <string name="error_item_store_update">Ha ocurrido un problema con la operación</string>
+    <string name="success_item_store_update">Operación exitosa</string>
+    <string name="item_detail_btn_show">Ver datos</string>
+    <string name="item_detail_btn_edit">Editar item</string>
+    <string name="btn_take_item_photo">Capturar foto</string>
+    <string name="item_photo_description">Foto del bien consolidado</string>
+    <string name="title_item_data">Datos del item</string>
+    <string name="hint_old_code">Código antiguo</string>
+    <string name="action_signature_input">Ingresar firma</string>
+    <string name="signature_save">Guardar firma</string>
+    <string name="signature_clear">Limpiar</string>
+    <string name="missing_responsible_name">Olvidaste ingresar el nombre del responsable</string>
+    <string name="dialog_welcome_title">Sesión correcta</string>
+    <string name="dialog_welcome_message">Bienvenido %s!</string>
+    <string name="dialog_welcome_btn_positive">Continuar</string>
+    <string name="dialog_welcome_btn_negative">No soy yo</string>
+    <string name="item_photo_can_be_deleted_from_phone">Si deseas puedes borrar la foto del celular</string>
+    <string name="important">Importante</string>
+    <string name="item_patrimonial_code_already_registered">Se ha encontrado información del bien, pero no se ha cargado en el aplicativo, porque este código patrimonial ya se encuentra registrado.</string>
+    <string name="must_validate_unique_qr">Debes validar que no se repita</string>
+    <string name="already_registered_qr">Este QR ya ha sido registrado</string>
+</resources>

@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Encuesta</string>
+
+    <string-array name="numeros">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+
+    <string-array name="lugares">
+        <item>Expats</item>
+        <item>Clinica EMOS</item>
+        <item>Mina</item>
+    </string-array>
+</resources>
