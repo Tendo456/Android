@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity implements UsersAdapter.Clic
 
     Toolbar toolbar;
     RecyclerView recyclerView;
-    int n=774;
+    String n="774";
 
     UsersAdapter usersAdapter;
 
@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements UsersAdapter.Clic
 
     public void getAllUsers(){
 
-        Call<List<UserResponse>> userlist = ApiClient.getUserService().getAllUsers1("774");
+        Call<List<UserResponse>> userlist = ApiClient.getUserService().getAllUsers1(Integer.parseInt(n));
         userlist.enqueue(new Callback<List<UserResponse>>() {
             @Override
             public void onResponse(Call<List<UserResponse>> call, Response<List<UserResponse>> response) {

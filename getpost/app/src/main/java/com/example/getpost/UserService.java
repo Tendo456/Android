@@ -7,6 +7,7 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface UserService {
 
@@ -16,6 +17,9 @@ public interface UserService {
    @POST("users/")
    Call<UserResponse> saveUser(@Body UserRequest userRequest);
 
+    /*@GET("users/{id}/")
+    Call<List<UserResponse>> getAllUsers1(@Path("id") Integer id);*/
+
     @GET("users/{id}/")
-    Call<List<UserResponse>> getAllUsers1(@Path("id") String id);
+    Call<List<UserResponse>> getAllUsers1(@Query("id") Integer id);
 }
