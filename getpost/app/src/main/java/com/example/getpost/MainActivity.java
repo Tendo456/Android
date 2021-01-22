@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements UsersAdapter.Clic
         toolbar = findViewById(R.id.toolbar);
         recyclerView = findViewById(R.id.recyclerview);
 
+
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
 
@@ -53,6 +55,8 @@ public class MainActivity extends AppCompatActivity implements UsersAdapter.Clic
                     List<UserResponse> userResponses = response.body();
                     usersAdapter.setData(userResponses);
                     recyclerView.setAdapter(usersAdapter);
+
+
                 }
             }
 

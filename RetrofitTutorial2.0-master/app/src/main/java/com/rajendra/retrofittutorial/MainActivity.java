@@ -54,23 +54,16 @@ public class MainActivity extends AppCompatActivity {
         getButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Call<List<Post>> call = apiInterface.getPost();
-
-
                 call.enqueue(new Callback<List<Post>>() {
                     @Override
                     public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
-
                         if (!response.isSuccessful()) {
                             responseText.setText("Data is not getting from server." + response.code());
                             return;
                         }
-
                         List<Post> postList = response.body();
-
                         for (Post post : postList) {
-
                             String data = "";
                             data += "ID " + post.getId() + "\n";
                             data += "UserID " + post.getUserId() + "\n";
