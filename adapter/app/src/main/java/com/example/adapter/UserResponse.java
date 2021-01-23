@@ -6,7 +6,6 @@ public class UserResponse {
     private String userId;
     private String title;
     private String body;
-    private boolean is_active;
 
     public String getId() {
         return id;
@@ -40,14 +39,6 @@ public class UserResponse {
         this.body = body;
     }
 
-    public boolean isIs_active() {
-        return is_active;
-    }
-
-    public void setIs_active(boolean is_active) {
-        this.is_active = is_active;
-    }
-
     @Override
     public String toString() {
         return "UserResponse{" +
@@ -55,7 +46,6 @@ public class UserResponse {
                 ", userId='" + userId + '\'' +
                 ", title='" + title + '\'' +
                 ", body='" + body + '\'' +
-                ", is_active=" + is_active +
                 '}';
     }
 }

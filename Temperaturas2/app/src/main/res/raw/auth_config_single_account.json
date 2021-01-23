@@ -1,16 +1,16 @@
 {
-  "client_id" : "a67ce84a-746d-4b28-b947-f079c56c7d6a",
-  "authorization_user_agent" : "DEFAULT",
-  "redirect_uri" : "msauth://com.example.temperaturas/YghKRC%2FPc7kH0cWnsbEzGNdpiYY%3D",
-  "broker_redirect_uri_registered" : true,
+"client_id" : "f8c60896-907b-4d7a-bae8-383924cc901f",
+"authorization_user_agent" : "DEFAULT",
+"redirect_uri" : "msauth://com.example.temperaturas/pLhMJdQS8QpwpLVCqmO4FvP%2Batk%3D",
   "account_mode" : "SINGLE",
-  "authorities" : [
-    {
-      "type": "AAD",
-      "audience": {
-        "type": "AzureADMyOrg",
-        "tenant_id": "27dd8c19-004a-4a66-a2e7-12c6420ca639"
-      }
-    }
-  ]
+"authorities" : [
+{
+"type": "AAD",
+"audience": {
+"type": "AzureADMyOrg",
+"tenant_id": "27dd8c19-004a-4a66-a2e7-12c6420ca639"
 }
+}
+]
+}
+

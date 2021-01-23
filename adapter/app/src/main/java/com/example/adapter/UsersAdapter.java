@@ -41,12 +41,8 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserAdapterV
         UserResponse userResponse = userResponseList.get(position);
 
         String username = userResponse.getTitle();
-        String prefix;
-        if(userResponse.isIs_active()){
-            prefix = "A";
-        }else{
-            prefix = "D";
-        }
+        String prefix = userResponse.getId();
+
 
         holder.prefix.setText(prefix);
         holder.username.setText(username);

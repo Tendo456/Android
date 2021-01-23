@@ -13,7 +13,7 @@ import retrofit2.http.Query;
 
 public interface UserService {
 
-    @GET("posts")
+    @GET("albums")
     Call<List<UserResponse>> getPost();
 
     @POST("posts")

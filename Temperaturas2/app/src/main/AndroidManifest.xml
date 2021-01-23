@@ -34,7 +34,7 @@
 
                 <data
                     android:host="com.example.temperaturas"
-                    android:path="/YghKRC/Pc7kH0cWnsbEzGNdpiYY="
+                    android:path="/pLhMJdQS8QpwpLVCqmO4FvP+atk="
                     android:scheme="msauth"
                     tools:ignore="AppLinkUrlError" />
             </intent-filter>

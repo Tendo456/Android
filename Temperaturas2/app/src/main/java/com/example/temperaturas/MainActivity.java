@@ -235,6 +235,7 @@ public class MainActivity extends AppCompatActivity {
             currentUserTextView.setText(account.getUsername());
             Toast.makeText(getApplicationContext(),"Bienvenido ", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(MainActivity.this, listar.class);
+            intent.putExtra("username",currentUserTextView.getText().toString());
             startActivity(intent);
         } else {
             signInButton.setEnabled(true);
