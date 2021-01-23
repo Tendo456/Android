@@ -1,4 +1,4 @@
-package com.example.temperaturas;
+package com.example.temperaturas.Actividades;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.temperaturas.R;
 
 public class inicio extends AppCompatActivity {
 

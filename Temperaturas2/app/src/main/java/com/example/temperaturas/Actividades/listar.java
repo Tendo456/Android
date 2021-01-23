@@ -1,9 +1,11 @@
-package com.example.temperaturas;
+package com.example.temperaturas.Actividades;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.TextView;
+
+import com.example.temperaturas.R;
 
 public class listar extends AppCompatActivity {
 

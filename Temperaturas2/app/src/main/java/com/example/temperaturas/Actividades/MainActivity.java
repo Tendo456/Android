@@ -1,4 +1,4 @@
-package com.example.temperaturas;
+package com.example.temperaturas.Actividades;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.temperaturas.R;
 import com.google.gson.JsonObject;
 import com.microsoft.graph.concurrency.ICallback;
 import com.microsoft.graph.core.ClientException;

@@ -14,15 +14,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Temperaturas"
         android:usesCleartextTraffic="true">
-        <activity android:name=".inicio">
+        <activity android:name=".Actividades.inicio">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".listar" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Actividades.listar" />
+        <activity android:name=".Actividades.MainActivity">
         </activity>
         <!-- Intent filter to capture System Browser or Authenticator calling back to our app after sign-in -->
         <activity android:name="com.microsoft.identity.client.BrowserTabActivity">

@@ -9,7 +9,7 @@
     android:background="#FFFFFF"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".Actividades.MainActivity">
 
     <ImageView
         android:id="@+id/imageView2"
