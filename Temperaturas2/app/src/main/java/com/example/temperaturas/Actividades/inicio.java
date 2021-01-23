@@ -33,13 +33,10 @@ public class inicio extends AppCompatActivity {
         logo.setAnimation(animation1);
         tendo.setAnimation(animation2);
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(inicio.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        new Handler().postDelayed(() -> {
+            Intent intent = new Intent(inicio.this, MainActivity.class);
+            startActivity(intent);
+            finish();
         },3000);
     }
 }
