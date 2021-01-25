@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity implements  UsersAdapter.Cli
 
     Toolbar toolbar;
     RecyclerView recyclerView;
-    String n="1";
+    String n="2";
     UsersAdapter usersAdapter;
 
     @Override
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements  UsersAdapter.Cli
 
     public void getAllUsers(){
         //Integer.parseInt(n)
-        Call<List<UserResponse>> userlist = ApiClient.getUserService().getPost();
+        Call<List<UserResponse>> userlist = ApiClient.getUserService().getPostById(Integer.parseInt(n));
         userlist.enqueue(new Callback<List<UserResponse>>() {
             @Override
             public void onResponse(Call<List<UserResponse>> call, Response<List<UserResponse>> response) {
