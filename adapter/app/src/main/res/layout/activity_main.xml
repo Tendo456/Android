@@ -63,13 +63,16 @@
         android:layout_marginBottom="8dp"
         android:backgroundTint="@color/indigo_500"
         android:clickable="true"
+        android:rotationX="0"
+        android:src="@drawable/cruz"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.945"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.96"
-        android:src="@drawable/cruz"/>
+        app:tint="@color/white"
+        app:maxImageSize="40dp"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
