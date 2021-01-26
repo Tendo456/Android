@@ -86,7 +86,8 @@
         android:layout_toEndOf="@+id/linearLayout2"
         android:backgroundTint="@color/colorPrimary"
         android:onClick="btnAgg"
-        android:src="@drawable/cruz" />
+        android:src="@drawable/cruz"
+        app:maxImageSize="30dp"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/dia_reporte"
@@ -102,7 +103,8 @@
         android:layout_toEndOf="@+id/linearLayout2"
         android:backgroundTint="@color/colorPrimary"
         android:onClick="reporte_dia"
-        app:srcCompat="@android:drawable/ic_menu_my_calendar" />
+        app:srcCompat="@android:drawable/ic_menu_my_calendar"
+        app:maxImageSize="30dp"/>
 
 
 </RelativeLayout>
