@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     Button next;
     TextView logTextView;
     TextView currentUserTextView;
+    String saveuser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,6 +149,7 @@ public class MainActivity extends AppCompatActivity {
 
         next.setOnClickListener(v ->{
             Intent intent = new Intent(MainActivity.this, listar.class);
+            intent.putExtra("username",saveuser);
             startActivity(intent);
         });
     }
@@ -231,6 +233,7 @@ public class MainActivity extends AppCompatActivity {
             callGraphApiSilentButton.setEnabled(true);
             next.setEnabled(true);
             currentUserTextView.setText(account.getUsername());
+            saveuser = currentUserTextView.getText().toString();
             Toast.makeText(getApplicationContext(),"Bienvenido ", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(MainActivity.this, listar.class);
             intent.putExtra("username",currentUserTextView.getText().toString());

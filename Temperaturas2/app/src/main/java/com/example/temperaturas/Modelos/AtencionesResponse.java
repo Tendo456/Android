@@ -1,6 +1,6 @@
 package com.example.temperaturas.Modelos;
 
-public class AtencionesResponce {
+public class AtencionesResponse {
     private int idatention;
     private int idpatient;
     private double latitud;
