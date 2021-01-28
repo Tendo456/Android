@@ -69,6 +69,7 @@ public class ruta extends AppCompatActivity {
         refrescarR = findViewById(R.id.refrescarRuta);
 
         //url base http://190.119.144.250:83/
+        //https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/conductor/buscarConductor.php
 
         refrescarR.setOnRefreshListener(() -> {
 

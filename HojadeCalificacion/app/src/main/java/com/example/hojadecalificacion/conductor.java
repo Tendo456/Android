@@ -164,12 +164,7 @@ public class conductor extends AppCompatActivity {
             StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, response -> {
                 Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
                 limpiarConductor();
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
-                }
-            }) {
+            }, error -> Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show()) {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String, String> parametros = new HashMap<>();

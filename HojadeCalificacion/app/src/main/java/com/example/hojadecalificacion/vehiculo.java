@@ -133,7 +133,7 @@ public class vehiculo extends AppCompatActivity {
             }, error -> Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show()) {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
-                    Map<String, String> parametros = new HashMap<String, String>();
+                    Map<String, String> parametros = new HashMap<>();
                     parametros.put("placa", placaV.getText().toString());
                     parametros.put("marca", marcaV.getText().toString());
                     parametros.put("modelo", modeloV.getText().toString());
@@ -206,7 +206,7 @@ public class vehiculo extends AppCompatActivity {
         }, error -> Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show()){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String>parametros=new HashMap<String, String>();
+                Map<String,String>parametros= new HashMap<>();
                 parametros.put("placa", placaV.getText().toString());
                 return parametros;
             }
