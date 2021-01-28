@@ -46,8 +46,8 @@ public class ruta extends AppCompatActivity {
     private AsyncHttpClient RCond,RVehi;
     SwipeRefreshLayout refrescarR;
     RequestQueue requestQueue;
-    private boolean isFirstTime = true,isFirstTime1 = true;
-    private boolean isFirstTimes = true,isFirstTimes1 = true;
+    private boolean isFirstTime = true;
+    private boolean isFirstTimes = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
