@@ -54,42 +54,19 @@ public class vehiculo extends AppCompatActivity {
         listaV = findViewById(R.id.ListaVehiculo);
         refrescarV = findViewById(R.id.refrescarVehiculo);
 
-        refrescarV.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
+        refrescarV.setOnRefreshListener(() -> {
 
-                String consultaV = "https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/vehiculo/consultaVehiculo.php";
-                EnviarVehiculo(consultaV);
-                limpiarVehiculo();
+            String consultaV = "https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/vehiculo/consultaVehiculo.php";
+            EnviarVehiculo(consultaV);
+            limpiarVehiculo();
 
-                refrescarV.setRefreshing(false);
-            }
+            refrescarV.setRefreshing(false);
         });
 
-        ingresarV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ingresarVehiculo("https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/vehiculo/insertVehiculo.php");
-            }
-        });
-        editarV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                editarVehiculo("https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/vehiculo/editarVehiculo.php");
-            }
-        });
-        buscarV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                buscarVehiculo("https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/vehiculo/buscarVehiculo.php?placa="+placaV.getText());
-            }
-        });
-        eliminarV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                eliminarVehiculo("https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/vehiculo/eliminarVehiculo.php");
-            }
-        });
+        ingresarV.setOnClickListener(v -> ingresarVehiculo("https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/vehiculo/insertVehiculo.php"));
+        editarV.setOnClickListener(v -> editarVehiculo("https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/vehiculo/editarVehiculo.php"));
+        buscarV.setOnClickListener(v -> buscarVehiculo("https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/vehiculo/buscarVehiculo.php?placa="+placaV.getText()));
+        eliminarV.setOnClickListener(v -> eliminarVehiculo("https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/vehiculo/eliminarVehiculo.php"));
 
         String consultaV = "https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/vehiculo/consultaVehiculo.php";
         EnviarVehiculo(consultaV);
@@ -99,28 +76,20 @@ public class vehiculo extends AppCompatActivity {
         Toast.makeText(getApplicationContext(),"cargando", Toast.LENGTH_SHORT).show();
 
         RequestQueue queue = Volley.newRequestQueue(this);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                response = response.replace("][", ",");
-                if (response.length() > 0) {
-                    try {
-                        JSONArray ja = new JSONArray(response);
-                        Log.i("sizejson", "" + ja.length());
-                        CargarListaV(ja);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, response -> {
+            response = response.replace("][", ",");
+            if (response.length() > 0) {
+                try {
+                    JSONArray ja = new JSONArray(response);
+                    Log.i("sizejson", "" + ja.length());
+                    CargarListaV(ja);
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
 
             }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), "Error",Toast.LENGTH_SHORT).show();
-            }
-        });
+
+        }, error -> Toast.makeText(getApplicationContext(), "Error",Toast.LENGTH_SHORT).show());
 
         queue.add(stringRequest);
 
@@ -141,7 +110,7 @@ public class vehiculo extends AppCompatActivity {
 
         }
 
-        ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, lista);
+        ArrayAdapter<String> adaptador = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, lista);
         listaV.setAdapter(adaptador);
 
 
@@ -158,18 +127,10 @@ public class vehiculo extends AppCompatActivity {
             modeloV.setError("Complete los Campos");
         } else {
 
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
-                    limpiarVehiculo();
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
-                }
-            }) {
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, response -> {
+                Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
+                limpiarVehiculo();
+            }, error -> Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show()) {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String, String> parametros = new HashMap<String, String>();
@@ -196,21 +157,13 @@ public class vehiculo extends AppCompatActivity {
             modeloV.setError("Complete los Campos");
         } else {
 
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
-                    limpiarVehiculo();
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
-                }
-            }) {
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, response -> {
+                Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
+                limpiarVehiculo();
+            }, error -> Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show()) {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
-                    Map<String, String> parametros = new HashMap<String, String>();
+                    Map<String, String> parametros = new HashMap<>();
                     parametros.put("idvehiculo", vehiculoId.getText().toString());
                     parametros.put("placa", placaV.getText().toString());
                     parametros.put("marca", marcaV.getText().toString());
@@ -225,29 +178,21 @@ public class vehiculo extends AppCompatActivity {
     }
 
     private void buscarVehiculo (String URL){
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                JSONObject jsonObject = null;
-                for (int i = 0; i < response.length(); i++) {
-                    try {
-                        jsonObject = response.getJSONObject(i);
-                        marcaV.setText(jsonObject.getString("marca"));
-                        modeloV.setText(jsonObject.getString("modelo"));
-                        placaV.setText(jsonObject.getString("placa"));
-                        vehiculoId.setText(jsonObject.getString("idvehiculo"));
-                    } catch (JSONException e) {
-                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, response -> {
+            JSONObject jsonObject = null;
+            for (int i = 0; i < response.length(); i++) {
+                try {
+                    jsonObject = response.getJSONObject(i);
+                    marcaV.setText(jsonObject.getString("marca"));
+                    modeloV.setText(jsonObject.getString("modelo"));
+                    placaV.setText(jsonObject.getString("placa"));
+                    vehiculoId.setText(jsonObject.getString("idvehiculo"));
+                } catch (JSONException e) {
+                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
+
             }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), "Vehiculo no Encontrado",Toast.LENGTH_SHORT).show();
-            }
-        }
+        }, error -> Toast.makeText(getApplicationContext(), "Vehiculo no Encontrado",Toast.LENGTH_SHORT).show()
         );
 
         requestQueue= Volley.newRequestQueue(this);
@@ -255,18 +200,10 @@ public class vehiculo extends AppCompatActivity {
     }
 
     private void eliminarVehiculo (String URL){
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
-                limpiarVehiculo();
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
-            }
-        }){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, response -> {
+            Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
+            limpiarVehiculo();
+        }, error -> Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show()){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String>parametros=new HashMap<String, String>();
