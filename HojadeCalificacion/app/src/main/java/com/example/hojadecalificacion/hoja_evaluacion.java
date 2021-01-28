@@ -48,7 +48,6 @@ public class hoja_evaluacion extends AppCompatActivity {
     Animation transparencia;
     ImageView fondo;
     private AsyncHttpClient RHoja;
-    private int dia,mes,año,hora,min;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -130,7 +129,7 @@ public class hoja_evaluacion extends AppCompatActivity {
     }
 
     private void cargarspHoja (String respuestaE){
-        ArrayList<ruta_personal> listaEdR = new ArrayList<ruta_personal>();
+        ArrayList<ruta_personal> listaEdR = new ArrayList<>();
         try {
             JSONArray jsonArreglo= new JSONArray(respuestaE);
             for (int i=0; i<jsonArreglo.length(); i++)
@@ -140,7 +139,7 @@ public class hoja_evaluacion extends AppCompatActivity {
                 rpE.setRuta(jsonArreglo.getJSONObject(i).getString("ruta"));
                 listaEdR.add(rpE);
             }
-            ArrayAdapter<ruta_personal> ed = new ArrayAdapter<ruta_personal>(this, android.R.layout.simple_dropdown_item_1line,listaEdR);
+            ArrayAdapter<ruta_personal> ed = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, listaEdR);
             spHoja.setAdapter(ed);
             spHoja.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
@@ -220,7 +219,7 @@ public class hoja_evaluacion extends AppCompatActivity {
             }, error -> Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show()) {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
-                    Map<String, String> parametros = new HashMap<String, String>();
+                    Map<String, String> parametros = new HashMap<>();
                     parametros.put("persona", persona.getText().toString());
                     parametros.put("uso_epp", respEpp);
                     parametros.put("descripcion_epp", Coment1.getText().toString());
