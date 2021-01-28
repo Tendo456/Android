@@ -28,6 +28,6 @@ public class ruta_personal {
 
     @Override
     public String toString(){
-        return idruta+" / "+ruta;
+        return idruta+" - "+ruta;
     }
 }

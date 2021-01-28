@@ -40,8 +40,8 @@ import cz.msebera.android.httpclient.Header;
 public class hoja_evaluacion extends AppCompatActivity {
 
     RadioButton rbP1_1,rbP1_2,rbP1_3,rbP2_1,rbP2_2,rbP2_3,rbP3_1,rbP3_2,rbP3_3;
-    EditText Coment1,Coment2,Coment3,idRhoja,persona;
-    TextView tmpHoja,prueba,dateHoja,timeHoja;
+    EditText Coment1,Coment2,Coment3,persona;
+    TextView tmpHoja,prueba,dateHoja,timeHoja,idRhoja;
     String respEpp = "si", respLimp = "si", respCond = "si";
     Button btEnviar,btCancelar;
     Spinner spHoja;

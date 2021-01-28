@@ -80,33 +80,13 @@ public class ruta extends AppCompatActivity {
             }
         });
 
-        ingresarR.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ingresarRuta("https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/ruta/insertRuta.php");
-            }
-        });
+        ingresarR.setOnClickListener(v -> ingresarRuta("https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/ruta/insertRuta.php"));
 
-        buscarR.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                buscarRuta("https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/ruta/buscarRuta.php?ruta="+ruta.getText());
-            }
-        });
+        buscarR.setOnClickListener(v -> buscarRuta("https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/ruta/buscarRuta.php?ruta="+ruta.getText()));
 
-        editarR.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                editarRuta("https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/ruta/editarRuta.php");
-            }
-        });
+        editarR.setOnClickListener(v -> editarRuta("https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/ruta/editarRuta.php"));
 
-        eliminarR.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                eliminarRuta("https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/ruta/eliminarRuta.php");
-            }
-        });
+        eliminarR.setOnClickListener(v -> eliminarRuta("https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/ruta/eliminarRuta.php"));
 
         RCond = new AsyncHttpClient();
         llenarspinerC();
