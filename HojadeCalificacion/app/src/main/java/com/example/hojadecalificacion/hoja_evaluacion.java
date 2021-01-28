@@ -102,7 +102,7 @@ public class hoja_evaluacion extends AppCompatActivity {
     public void confirmar(){
         AlertDialog.Builder opcion = new AlertDialog.Builder(this);
         opcion.setMessage("Enviar los Datos?");
-        opcion.setPositiveButton("Enviar", (dialog, which) -> ingresarHoja("https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/hoja/insertHoja.php"));
+        opcion.setPositiveButton("Enviar", (dialog, which) -> ingresarHoja("http://190.119.144.250:83/hoja_evaluacion/hoja/insertHoja.php"));
         opcion.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
 
         AlertDialog dialog = opcion.create();
@@ -111,7 +111,7 @@ public class hoja_evaluacion extends AppCompatActivity {
 
     private void llenarspHoja (){
 
-        String url = "https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/hoja/listarRin.php";
+        String url = "http://190.119.144.250:83/hoja_evaluacion/hoja/listarRin.php";
         RHoja.post(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {

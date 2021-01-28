@@ -55,22 +55,22 @@ public class conductor extends AppCompatActivity {
 
         refrescarC.setOnRefreshListener(() -> {
 
-            String consulta = "https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/conductor/consultaConductor.php";
+            String consulta = "http://190.119.144.250:83/hoja_evaluacion/conductor/consultaConductor.php";
             EnviarConductor(consulta);
             limpiarConductor();
 
             refrescarC.setRefreshing(false);
         });
 
-        ingresarC.setOnClickListener(v -> ingresarConductor("https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/conductor/insertConductor.php"));
+        ingresarC.setOnClickListener(v -> ingresarConductor("http://190.119.144.250:83/hoja_evaluacion/conductor/insertConductor.php"));
 
-        editaC.setOnClickListener(v -> editarConductor("https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/conductor/editarConductor.php"));
+        editaC.setOnClickListener(v -> editarConductor("http://190.119.144.250:83/hoja_evaluacion/conductor/editarConductor.php"));
 
-        buscarC.setOnClickListener(v -> buscarConductor("https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/conductor/buscarConductor.php?dni="+dniC.getText()));
+        buscarC.setOnClickListener(v -> buscarConductor("http://190.119.144.250:83/hoja_evaluacion/conductor/buscarConductor.php?dni="+dniC.getText()));
 
-        eliminarC.setOnClickListener(v -> eliminarConductor("https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/conductor/eliminarConductor.php"));
+        eliminarC.setOnClickListener(v -> eliminarConductor("http://190.119.144.250:83/hoja_evaluacion/conductor/eliminarConductor.php"));
 
-        String Consult = "https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/conductor/consultaConductor.php";
+        String Consult = "http://190.119.144.250:83/hoja_evaluacion/conductor/consultaConductor.php";
         EnviarConductor(Consult);
 
 
@@ -114,7 +114,7 @@ public class conductor extends AppCompatActivity {
 
         }
 
-        ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, lista);
+        ArrayAdapter<String> adaptador = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, lista);
         listaC.setAdapter(adaptador);
 
 
@@ -134,15 +134,10 @@ public class conductor extends AppCompatActivity {
             StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, response -> {
                 Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
                 limpiarConductor();
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
-                }
-            }) {
+            }, error -> Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show()) {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
-                    Map<String, String> parametros = new HashMap<String, String>();
+                    Map<String, String> parametros = new HashMap<>();
                     parametros.put("dni", dniC.getText().toString());
                     parametros.put("nombre_conductor", nombreC.getText().toString());
                     parametros.put("brevete", breveteC.getText().toString());
@@ -177,7 +172,7 @@ public class conductor extends AppCompatActivity {
             }) {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
-                    Map<String, String> parametros = new HashMap<String, String>();
+                    Map<String, String> parametros = new HashMap<>();
                     parametros.put("idconductor", conductorId.getText().toString());
                     parametros.put("dni", dniC.getText().toString());
                     parametros.put("nombre_conductor", nombreC.getText().toString());
@@ -217,15 +212,10 @@ public class conductor extends AppCompatActivity {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, response -> {
             Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
             limpiarConductor();
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
-            }
-        }){
+        }, error -> Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show()){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String,String>parametros=new HashMap<String, String>();
+                Map<String,String>parametros= new HashMap<>();
                 parametros.put("dni", dniC.getText().toString());
                 return parametros;
             }

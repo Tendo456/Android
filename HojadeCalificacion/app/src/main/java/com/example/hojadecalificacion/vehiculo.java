@@ -56,19 +56,19 @@ public class vehiculo extends AppCompatActivity {
 
         refrescarV.setOnRefreshListener(() -> {
 
-            String consultaV = "https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/vehiculo/consultaVehiculo.php";
+            String consultaV = "http://190.119.144.250:83/hoja_evaluacion/vehiculo/consultaVehiculo.php";
             EnviarVehiculo(consultaV);
             limpiarVehiculo();
 
             refrescarV.setRefreshing(false);
         });
 
-        ingresarV.setOnClickListener(v -> ingresarVehiculo("https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/vehiculo/insertVehiculo.php"));
-        editarV.setOnClickListener(v -> editarVehiculo("https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/vehiculo/editarVehiculo.php"));
-        buscarV.setOnClickListener(v -> buscarVehiculo("https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/vehiculo/buscarVehiculo.php?placa="+placaV.getText()));
-        eliminarV.setOnClickListener(v -> eliminarVehiculo("https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/vehiculo/eliminarVehiculo.php"));
+        ingresarV.setOnClickListener(v -> ingresarVehiculo("http://190.119.144.250:83/hoja_evaluacion/vehiculo/insertVehiculo.php"));
+        editarV.setOnClickListener(v -> editarVehiculo("http://190.119.144.250:83/hoja_evaluacion/vehiculo/editarVehiculo.php"));
+        buscarV.setOnClickListener(v -> buscarVehiculo("http://190.119.144.250:83/hoja_evaluacion/vehiculo/buscarVehiculo.php?placa="+placaV.getText()));
+        eliminarV.setOnClickListener(v -> eliminarVehiculo("http://190.119.144.250:83/hoja_evaluacion/vehiculo/eliminarVehiculo.php"));
 
-        String consultaV = "https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/vehiculo/consultaVehiculo.php";
+        String consultaV = "http://190.119.144.250:83/hoja_evaluacion/vehiculo/consultaVehiculo.php";
         EnviarVehiculo(consultaV);
     }
 

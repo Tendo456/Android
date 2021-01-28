@@ -68,22 +68,24 @@ public class ruta extends AppCompatActivity {
         rutaId  =findViewById(R.id.rutaId);
         refrescarR = findViewById(R.id.refrescarRuta);
 
+        //url base http://190.119.144.250:83/
+
         refrescarR.setOnRefreshListener(() -> {
 
-            String consultaR = "https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/ruta/consultaRuta.php";
+            String consultaR = "http://190.119.144.250:83/hoja_evaluacion/ruta/consultaRuta.php";
             EnviarRuta(consultaR);
             limpiarRuta();
 
             refrescarR.setRefreshing(false);
         });
 
-        ingresarR.setOnClickListener(v -> ingresarRuta("https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/ruta/insertRuta.php"));
+        ingresarR.setOnClickListener(v -> ingresarRuta("http://190.119.144.250:83/hoja_evaluacion/ruta/insertRuta.php"));
 
-        buscarR.setOnClickListener(v -> buscarRuta("https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/ruta/buscarRuta.php?ruta="+ruta.getText()));
+        buscarR.setOnClickListener(v -> buscarRuta("http://190.119.144.250:83/hoja_evaluacion/ruta/buscarRuta.php?ruta="+ruta.getText()));
 
-        editarR.setOnClickListener(v -> editarRuta("https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/ruta/editarRuta.php"));
+        editarR.setOnClickListener(v -> editarRuta("http://190.119.144.250:83/hoja_evaluacion/ruta/editarRuta.php"));
 
-        eliminarR.setOnClickListener(v -> eliminarRuta("https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/ruta/eliminarRuta.php"));
+        eliminarR.setOnClickListener(v -> eliminarRuta("http://190.119.144.250:83/hoja_evaluacion/ruta/eliminarRuta.php"));
 
         RCond = new AsyncHttpClient();
         llenarspinerC();
@@ -91,14 +93,14 @@ public class ruta extends AppCompatActivity {
         RVehi = new AsyncHttpClient();
         llenarspinerV();
 
-        String ConsultaR = "https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/ruta/consultaRuta.php";
+        String ConsultaR = "http://190.119.144.250:83/hoja_evaluacion/ruta/consultaRuta.php";
         EnviarRuta(ConsultaR);
 
     }
 
     private void llenarspinerC (){
 
-        String url = "https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/ruta/listarC.php";
+        String url = "http://190.119.144.250:83/hoja_evaluacion/ruta/listarC.php";
         RCond.post(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -159,7 +161,7 @@ public class ruta extends AppCompatActivity {
 
     private void llenarspinerV(){
 
-        String url = "https://neolithic-specialis.000webhostapp.com/hoja_evaluacion/ruta/listarV.php";
+        String url = "http://190.119.144.250:83/hoja_evaluacion/ruta/listarV.php";
         RVehi.post(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
