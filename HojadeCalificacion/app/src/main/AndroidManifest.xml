@@ -13,20 +13,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HojaDeCalificación"
         android:usesCleartextTraffic="true">
-        <activity android:name="com.example.hojadecalificacion.inicio">
-
+        <activity android:name=".Login"></activity>
+        <activity android:name=".inicio">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-        <activity android:name="com.example.hojadecalificacion.conductor" />
-        <activity android:name="com.example.hojadecalificacion.vehiculo" />
-        <activity android:name="com.example.hojadecalificacion.ruta" />
-        <activity android:name="com.example.hojadecalificacion.hoja_evaluacion" />
-        <activity android:name="com.example.hojadecalificacion.MainActivity" />
+        <activity android:name=".conductor" />
+        <activity android:name=".vehiculo" />
+        <activity android:name=".ruta" />
+        <activity android:name=".hoja_evaluacion" />
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
