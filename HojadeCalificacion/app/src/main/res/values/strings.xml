@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Hoja de Calificación</string>
+
+    <string name="facebook_application_id" translatable="false">499742254750262</string>
+    <string name="facebook_login_protocol_scheme" translatable="false">fb499742254750262</string>
+
 </resources>

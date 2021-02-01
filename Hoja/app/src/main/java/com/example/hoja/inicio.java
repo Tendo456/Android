@@ -1,4 +1,4 @@
-package com.example.hojadecalificacion;
+package com.example.hoja;
 
 import androidx.appcompat.app.AppCompatActivity;
 

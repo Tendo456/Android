@@ -8,9 +8,38 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1000284241344:android:0ca4e13a01723a3c441c25",
+        "mobilesdk_app_id": "1:1000284241344:android:611806985d1d160e441c25",
         "android_client_info": {
           "package_name": "com.example.hoja"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1000284241344-qu4d94anrc8bhlrr5r462a7jq4dthmg1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFZ3NykELxNAy1LR4JysjOqVgLtPeyEAA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1000284241344-qu4d94anrc8bhlrr5r462a7jq4dthmg1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1000284241344:android:9ea3640efabd2d0b441c25",
+        "android_client_info": {
+          "package_name": "com.example.hojadecalificacion"
         }
       },
       "oauth_client": [
