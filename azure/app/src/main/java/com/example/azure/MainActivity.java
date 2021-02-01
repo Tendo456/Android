@@ -103,13 +103,11 @@ public class MainActivity extends AppCompatActivity {
         currentUserTextView = findViewById(R.id.current_user);
 
         //Sign in user
-        signInButton.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View v) {
-                if (mSingleAccountApp == null) {
-                    return;
-                }
-                mSingleAccountApp.signIn(MainActivity.this, null, SCOPES, getAuthInteractiveCallback());
+        signInButton.setOnClickListener(v -> {
+            if (mSingleAccountApp == null) {
+                return;
             }
+            mSingleAccountApp.signIn(MainActivity.this, null, SCOPES, getAuthInteractiveCallback());
         });
 
         //Sign out user
