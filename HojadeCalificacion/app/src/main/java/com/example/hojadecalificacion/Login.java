@@ -68,12 +68,7 @@ public class Login extends AppCompatActivity {
 
     public void cerrarsession (View view){
 
-        AuthUI.getInstance().signOut(this).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                Toast.makeText(Login.this,"Sesion Cerrada", Toast.LENGTH_SHORT).show();
-            }
-        });
+        AuthUI.getInstance().signOut(this).addOnCompleteListener(task -> Toast.makeText(Login.this,"Sesion Cerrada", Toast.LENGTH_SHORT).show());
 
     }
 }
