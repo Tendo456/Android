@@ -6,8 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -22,6 +26,9 @@ public class Login extends AppCompatActivity {
 
     FirebaseAuth mfirebaseAutH;
     FirebaseAuth.AuthStateListener mAuthListener;
+    Button cerrarSesion,continuar;
+    TextView email,nombre,codigo;
+    ImageView foto;
 
     public static final int REQUEST_CODE = 1234;
 
@@ -34,15 +41,23 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        foto = findViewById(R.id.foto);
+        email = findViewById(R.id.email);
+        nombre = findViewById(R.id.nombre);
+        codigo = findViewById(R.id.codigo);
+        cerrarSesion = findViewById(R.id.cerrarSesion);
+        continuar = findViewById(R.id.continuar);
         mfirebaseAutH  = FirebaseAuth.getInstance();
         mAuthListener = firebaseAuth -> {
             FirebaseUser user = firebaseAuth.getCurrentUser();
             if(user !=null){
                 Toast.makeText(Login.this,"Bienvenido",Toast.LENGTH_SHORT).show();
+                continuar.setEnabled(true);
+                email.setText(user.getEmail());
+                nombre.setText(user.getDisplayName());
+                codigo.setText(user.getProviderId());
+                Glide.with(this).load(user.getPhotoUrl()).into(foto);
 
-                Intent intent = new Intent(Login.this, MainActivity.class);
-                startActivity(intent);
-                finish();
             }
             else{
                 startActivityForResult(AuthUI.getInstance()
@@ -53,6 +68,9 @@ public class Login extends AppCompatActivity {
                 );
             }
         };
+
+        cerrarSesion.setOnClickListener(v -> cerrarsesion());
+        continuar.setOnClickListener(v -> continuar());
 
     }
 
@@ -68,10 +86,13 @@ public class Login extends AppCompatActivity {
         mfirebaseAutH.removeAuthStateListener(mAuthListener);
     }
 
-    public void cerrarsession (View view){
+    public void cerrarsesion (){
 
         AuthUI.getInstance().signOut(this).addOnCompleteListener(task -> Toast.makeText(Login.this,"Sesion Cerrada", Toast.LENGTH_SHORT).show());
-        finish();
+    }
+    public void continuar (){
+        Intent intent = new Intent(Login.this, MainActivity.class);
+        startActivity(intent);
     }
 
 }
