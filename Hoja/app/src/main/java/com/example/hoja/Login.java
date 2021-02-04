@@ -12,7 +12,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,16 +28,19 @@ import java.util.List;
 
 public class Login extends AppCompatActivity {
 
-    FirebaseAuth mfirebaseAutH;
-    FirebaseAuth.AuthStateListener mAuthListener;
-    Button cerrarSesion,continuar;
+    private GoogleApiClient googleApiClient;
+    private FirebaseAuth mfirebaseAutH;
+    private FirebaseAuth.AuthStateListener mAuthListener;
+    Button cerrarSesion,continuar,acceder;
     TextView email,nombre,codigo;
-    ImageView foto;
+    ImageView foto,imgUser;
+    private SignInButton google;
 
     public static final int REQUEST_CODE = 1234;
 
-    List<AuthUI.IdpConfig> provider = Collections.singletonList(
-            new AuthUI.IdpConfig.GoogleBuilder().build()
+    List<AuthUI.IdpConfig> provider = Arrays.asList(
+            new AuthUI.IdpConfig.GoogleBuilder().build(),
+            new AuthUI.IdpConfig.EmailBuilder().build()
     );
 
     @Override
@@ -42,30 +49,38 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         foto = findViewById(R.id.foto);
+        imgUser = findViewById(R.id.imgUser);
         email = findViewById(R.id.email);
         nombre = findViewById(R.id.nombre);
         codigo = findViewById(R.id.codigo);
         cerrarSesion = findViewById(R.id.cerrarSesion);
         continuar = findViewById(R.id.continuar);
-        mfirebaseAutH  = FirebaseAuth.getInstance();
+        google = findViewById(R.id.goolge);
+
+        String urlIMG = "http://190.119.144.250:83/hoja_evaluacion/img/user.png";
+
+        mfirebaseAutH = FirebaseAuth.getInstance();
+
+        //google.setOnClickListener(v -> {});
+
+
         mAuthListener = firebaseAuth -> {
             FirebaseUser user = firebaseAuth.getCurrentUser();
-            if(user !=null){
-                Toast.makeText(Login.this,"Bienvenido",Toast.LENGTH_SHORT).show();
+            if (user != null) {
+                Toast.makeText(Login.this, "Bienvenido", Toast.LENGTH_SHORT).show();
                 continuar.setEnabled(true);
                 email.setText(user.getEmail());
                 nombre.setText(user.getDisplayName());
                 codigo.setText(user.getProviderId());
-                Glide.with(this).load(user.getPhotoUrl()).into(foto);
+                Glide.with(this).load(user.getPhotoUrl()).apply(RequestOptions.circleCropTransform()).into(imgUser);
 
-            }
-            else{
+            } else {
                 startActivityForResult(AuthUI.getInstance()
                         .createSignInIntentBuilder()
                         .setAvailableProviders(provider)
                         .setIsSmartLockEnabled(false)
-                        .build(),REQUEST_CODE
-                );
+                        .build(), REQUEST_CODE);
+                Glide.with(this).load(urlIMG).apply(RequestOptions.circleCropTransform()).into(imgUser);
             }
         };
 
@@ -73,6 +88,7 @@ public class Login extends AppCompatActivity {
         continuar.setOnClickListener(v -> continuar());
 
     }
+
 
     @Override
     protected void onResume() {
