@@ -19,6 +19,7 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -31,10 +32,11 @@ public class Login extends AppCompatActivity {
     private GoogleApiClient googleApiClient;
     private FirebaseAuth mfirebaseAutH;
     private FirebaseAuth.AuthStateListener mAuthListener;
-    Button cerrarSesion,continuar,acceder;
+    Button cerrarSesion;
     TextView email,nombre,codigo;
     ImageView foto,imgUser;
-    private SignInButton google;
+    FloatingActionButton continuar;
+
 
     public static final int REQUEST_CODE = 1234;
 
@@ -55,7 +57,6 @@ public class Login extends AppCompatActivity {
         codigo = findViewById(R.id.codigo);
         cerrarSesion = findViewById(R.id.cerrarSesion);
         continuar = findViewById(R.id.continuar);
-        google = findViewById(R.id.goolge);
 
         String urlIMG = "http://190.119.144.250:83/hoja_evaluacion/img/user.png";
 
@@ -67,12 +68,13 @@ public class Login extends AppCompatActivity {
         mAuthListener = firebaseAuth -> {
             FirebaseUser user = firebaseAuth.getCurrentUser();
             if (user != null) {
-                Toast.makeText(Login.this, "Bienvenido", Toast.LENGTH_SHORT).show();
+
                 continuar.setEnabled(true);
                 email.setText(user.getEmail());
                 nombre.setText(user.getDisplayName());
                 codigo.setText(user.getProviderId());
                 Glide.with(this).load(user.getPhotoUrl()).apply(RequestOptions.circleCropTransform()).into(imgUser);
+                Toast.makeText(Login.this, "Bienvenido "+user.getDisplayName(), Toast.LENGTH_SHORT).show();
 
             } else {
                 startActivityForResult(AuthUI.getInstance()
