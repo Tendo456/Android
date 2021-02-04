@@ -41,7 +41,7 @@ dependencies {
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    implementation 'com.microsoft.identity.client:msal:2.0.4'
+    implementation 'com.microsoft.identity.client:msal:2.0.5'
     implementation 'com.microsoft.graph:microsoft-graph:2.5.0'
     implementation "com.microsoft.device.display:display-mask:0.3.0"
 
