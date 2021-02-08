@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,6 +17,7 @@ import com.microsoft.graph.concurrency.ICallback;
 import com.microsoft.graph.core.ClientException;
 import com.microsoft.graph.models.extensions.Drive;
 import com.microsoft.graph.models.extensions.IGraphServiceClient;
+import com.microsoft.graph.models.extensions.User;
 import com.microsoft.graph.requests.extensions.GraphServiceClient;
 import com.microsoft.identity.client.AuthenticationCallback;
 import com.microsoft.identity.client.IAccount;
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private ISingleAccountPublicClientApplication mSingleAccountApp;
 
     private static final String TAG = MainActivity.class.getSimpleName();
+    private IGraphServiceClient mClient = null;
 
     /* UI & Debugging Variables */
     Button signInButton;
@@ -50,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initializeUI();
+
 
         PublicClientApplication.createSingleAccountPublicClientApplication(getApplicationContext(),
                 R.raw.auth_config_single_account, new IPublicClientApplication.ISingleAccountApplicationCreatedListener() {
@@ -209,11 +213,13 @@ public class MainActivity extends AppCompatActivity {
                         displayGraphResult(drive.getRawObject());
                     }
 
+
                     @Override
                     public void failure(ClientException ex) {
                         displayError(ex);
                     }
                 });
+
     }
 
     private void updateUI(@Nullable final IAccount account) {
@@ -223,6 +229,7 @@ public class MainActivity extends AppCompatActivity {
             callGraphApiInteractiveButton.setEnabled(true);
             callGraphApiSilentButton.setEnabled(true);
             currentUserTextView.setText(account.getUsername());
+
         } else {
             signInButton.setEnabled(true);
             signOutButton.setEnabled(false);
@@ -247,4 +254,5 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), signOutText, Toast.LENGTH_SHORT)
                 .show();
     }
+
 }

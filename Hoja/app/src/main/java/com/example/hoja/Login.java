@@ -22,6 +22,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.OAuthProvider;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -36,7 +37,6 @@ public class Login extends AppCompatActivity {
     TextView email,nombre,codigo;
     ImageView foto,imgUser;
     FloatingActionButton continuar;
-
 
     public static final int REQUEST_CODE = 1234;
 
@@ -94,6 +94,11 @@ public class Login extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mfirebaseAutH.addAuthStateListener(mAuthListener);
+    }
 
     @Override
     protected void onResume() {

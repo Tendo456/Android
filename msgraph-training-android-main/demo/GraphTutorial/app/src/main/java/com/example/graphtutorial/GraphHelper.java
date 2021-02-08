@@ -21,6 +21,9 @@ import com.microsoft.graph.options.QueryOption;
 import com.microsoft.graph.requests.extensions.IEventCollectionPage;
 import com.microsoft.graph.requests.extensions.IEventCollectionRequestBuilder;
 import com.microsoft.graph.requests.extensions.GraphServiceClient;
+import com.microsoft.graph.concurrency.ICallback;
+import com.microsoft.graph.core.ClientException;
+import com.microsoft.graph.models.extensions.User;
 
 import java.util.LinkedList;
 import java.util.List;
