@@ -62,13 +62,13 @@ public class conductor extends AppCompatActivity {
             refrescarC.setRefreshing(false);
         });
 
-        ingresarC.setOnClickListener(v -> ingresarConductor("http://190.119.144.250:83/hoja_evaluacion/conductor/insertConductor.php"));
+        ingresarC.setOnClickListener(v -> ingresarConductor());
 
-        editaC.setOnClickListener(v -> editarConductor("http://190.119.144.250:83/hoja_evaluacion/conductor/editarConductor.php"));
+        editaC.setOnClickListener(v -> editarConductor());
 
         buscarC.setOnClickListener(v -> buscarConductor("http://190.119.144.250:83/hoja_evaluacion/conductor/buscarConductor.php?dni="+dniC.getText()));
 
-        eliminarC.setOnClickListener(v -> eliminarConductor("http://190.119.144.250:83/hoja_evaluacion/conductor/eliminarConductor.php"));
+        eliminarC.setOnClickListener(v -> eliminarConductor());
 
         String Consult = "http://190.119.144.250:83/hoja_evaluacion/conductor/consultaConductor.php";
         EnviarConductor(Consult);
@@ -118,7 +118,7 @@ public class conductor extends AppCompatActivity {
 
     }
 
-    private void ingresarConductor (String URL) {
+    private void ingresarConductor() {
 
         if (dniC.getText().toString().isEmpty()) {
             dniC.setError("Complete los campos");}
@@ -129,7 +129,7 @@ public class conductor extends AppCompatActivity {
             breveteC.setError("Complete los Campos");
         } else {
 
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, response -> {
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://190.119.144.250:83/hoja_evaluacion/conductor/insertConductor.php", response -> {
                 Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
                 limpiarConductor();
             }, error -> Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show()) {
@@ -148,7 +148,7 @@ public class conductor extends AppCompatActivity {
         }
     }
 
-    private void editarConductor (String URL) {
+    private void editarConductor() {
 
         if (dniC.getText().toString().isEmpty()) {
             dniC.setError("Complete los campos");}
@@ -159,7 +159,7 @@ public class conductor extends AppCompatActivity {
             breveteC.setError("Complete los Campos");
         } else {
 
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, response -> {
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://190.119.144.250:83/hoja_evaluacion/conductor/editarConductor.php", response -> {
                 Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
                 limpiarConductor();
             }, error -> Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show()) {
@@ -201,8 +201,8 @@ public class conductor extends AppCompatActivity {
         requestQueue.add(jsonArrayRequest);
     }
 
-    private void eliminarConductor (String URL){
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, response -> {
+    private void eliminarConductor(){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://190.119.144.250:83/hoja_evaluacion/conductor/eliminarConductor.php", response -> {
             Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
             limpiarConductor();
         }, error -> Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show()){
