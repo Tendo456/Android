@@ -95,12 +95,6 @@ public class Login extends AppCompatActivity {
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        mfirebaseAutH.addAuthStateListener(mAuthListener);
-    }
-
-    @Override
     protected void onResume() {
         super.onResume();
         mfirebaseAutH.addAuthStateListener(mAuthListener);
