@@ -29,8 +29,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Login extends AppCompatActivity {
-
-    private GoogleApiClient googleApiClient;
+    
     private FirebaseAuth mfirebaseAutH;
     private FirebaseAuth.AuthStateListener mAuthListener;
     Button cerrarSesion;
