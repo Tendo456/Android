@@ -41,6 +41,9 @@ public class conductor extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conductor);
 
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.mipmap.conductor);
+
         dniC=findViewById(R.id.conductorDNI);
         nombreC=findViewById(R.id.conductorNombre);
         breveteC = findViewById(R.id.conductorLicencia);

@@ -52,6 +52,9 @@ public class ruta extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ruta);
 
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.mipmap.ruta);
+
         ruta=findViewById(R.id.Ruta);
         idConductor=findViewById(R.id.idConductor);
         idVehiculo=findViewById(R.id.idVehiculo);

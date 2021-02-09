@@ -12,19 +12,26 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.Hoja">
-        <activity android:name=".vehiculo" />
-        <activity android:name=".ruta" />
-        <activity android:name=".Login" />
-        <activity android:name=".inicio" >
+        <activity android:name=".vehiculo"
+            android:label="@string/Vehiculo_title"/>
+        <activity android:name=".ruta"
+            android:label="@string/Ruta_title"/>
+        <activity android:name=".Login"
+            android:label="@string/Login_title"/>
+        <activity android:name=".inicio"
+            android:label="@string/Inicio_title">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".hoja_evaluacion" />
-        <activity android:name=".conductor" />
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".hoja_evaluacion"
+            android:label="@string/app_name"/>
+        <activity android:name=".conductor"
+            android:label="@string/Conductor_title"/>
+        <activity android:name=".MainActivity"
+            android:label="@string/Main_Activity_title"/>
 
     </application>
 

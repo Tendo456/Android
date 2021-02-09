@@ -15,6 +15,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.mipmap.logo);
+
         String NameUser = getIntent().getStringExtra("DisplayUser");
         dato1 = NameUser;
         String EmailU = getIntent().getStringExtra("EmailUser");

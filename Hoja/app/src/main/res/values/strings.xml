@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">Hoja</string>
+    <string name="app_name">Hoja de Evalucación</string>
+    <string name="Main_Activity_title">Menú de Selección</string>
+    <string name="Login_title">Inicio de Sesión</string>
+    <string name="Inicio_title">Bienvenido</string>
+    <string name="Conductor_title">Conductor</string>
+    <string name="Ruta_title">Rutas</string>
+    <string name="Vehiculo_title">Vehiculo</string>
 </resources>

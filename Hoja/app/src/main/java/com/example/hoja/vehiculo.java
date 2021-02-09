@@ -41,6 +41,9 @@ public class vehiculo extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vehiculo);
 
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.mipmap.autobus);
+
         placaV = findViewById(R.id.vehiculoPlaca);
         marcaV = findViewById(R.id.vehiculoMarca);
         modeloV = findViewById(R.id.vehiculoModelo);

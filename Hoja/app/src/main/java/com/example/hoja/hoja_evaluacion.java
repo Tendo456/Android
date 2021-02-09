@@ -55,6 +55,9 @@ public class hoja_evaluacion extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_hoja_evaluacion);
 
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.mipmap.calificacion);
+
         transparencia = AnimationUtils.loadAnimation(this, R.anim.transparencia);
         rbP1_1 = findViewById(R.id.rbP1_1);
         rbP1_2 = findViewById(R.id.rbP1_2);

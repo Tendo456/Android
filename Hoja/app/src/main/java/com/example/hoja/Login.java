@@ -43,6 +43,9 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.mipmap.logo);
+
         foto = findViewById(R.id.foto);
         imgUser = findViewById(R.id.imgUser);
         email = findViewById(R.id.email);
