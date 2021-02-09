@@ -112,22 +112,21 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/NombreUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:gravity="center"
-                android:text="Ingrese su Nombre y Apellido"
+                android:text="Nombres y Apellidos"
                 android:textSize="20sp" />
 
-            <EditText
-                android:id="@+id/persona"
+            <TextView
+                android:id="@+id/EmailUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:ems="10"
-                android:hint="Nombre y Apellido"
-                android:inputType="textPersonName" />
+                android:gravity="center"
+                android:text="Correo"/>
 
             <TextView
                 android:id="@+id/textView10"

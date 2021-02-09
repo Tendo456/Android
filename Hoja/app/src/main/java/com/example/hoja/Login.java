@@ -32,8 +32,8 @@ public class Login extends AppCompatActivity {
 
     List<AuthUI.IdpConfig> provider = Arrays.asList(
             new AuthUI.IdpConfig.GoogleBuilder().build(),
-            new AuthUI.IdpConfig.EmailBuilder().build(),
-            new AuthUI.IdpConfig.MicrosoftBuilder().build()
+            new AuthUI.IdpConfig.EmailBuilder().build()
+            //new AuthUI.IdpConfig.MicrosoftBuilder().build()
 
             //https://origen-isos1.firebaseapp.com/__/auth/handler
     );
@@ -102,7 +102,10 @@ public class Login extends AppCompatActivity {
     }
     public void continuar (){
         Intent intent = new Intent(Login.this, MainActivity.class);
+        intent.putExtra("DisplayUser",nombre.getText().toString());
+        intent.putExtra("EmailUser",email.getText().toString());
         startActivity(intent);
+
     }
 
 }

@@ -40,8 +40,8 @@ import cz.msebera.android.httpclient.Header;
 public class hoja_evaluacion extends AppCompatActivity {
 
     RadioButton rbP1_1,rbP1_2,rbP1_3,rbP2_1,rbP2_2,rbP2_3,rbP3_1,rbP3_2,rbP3_3;
-    EditText Coment1,Coment2,Coment3,persona;
-    TextView tmpHoja,prueba,dateHoja,timeHoja,idRhoja;
+    EditText Coment1,Coment2,Coment3;
+    TextView tmpHoja,prueba,dateHoja,timeHoja,idRhoja,NombreUser,EmailUser;
     String respEpp = "si", respLimp = "si", respCond = "si";
     Button btEnviar,btCancelar;
     Spinner spHoja;
@@ -76,7 +76,8 @@ public class hoja_evaluacion extends AppCompatActivity {
         prueba = findViewById(R.id.probar);
         dateHoja = findViewById(R.id.dateHoja);
         timeHoja = findViewById(R.id.timeHoja);
-        persona = findViewById(R.id.persona);
+        EmailUser = findViewById(R.id.EmailUser);
+        NombreUser = findViewById(R.id.NombreUser);
         fondo = findViewById(R.id.fondo);
 
         fondo.setAnimation(transparencia);
@@ -89,6 +90,12 @@ public class hoja_evaluacion extends AppCompatActivity {
         Format h = new SimpleDateFormat("hh:mm a");
         String ho = h.format(date);
         timeHoja.setText(ho);
+
+        String NameUser = getIntent().getStringExtra("DisplayUser1");
+        NombreUser.setText(NameUser);
+
+        String EmailU = getIntent().getStringExtra("EmailUser1");
+        EmailUser.setText(EmailU);
 
 
         btEnviar.setOnClickListener(v -> confirmar());
@@ -204,9 +211,9 @@ public class hoja_evaluacion extends AppCompatActivity {
     }
 
     private void ingresarHoja(String URL){
-        if (persona.getText().toString().isEmpty()){
-            persona.setError("Complete los campos");
-            Toast.makeText(this,"Ingrese un Nombre", Toast.LENGTH_SHORT).show();
+        if (NombreUser.equals("Nombres y Apellidos")){
+            NombreUser.setError("Error Sin Nombre de Usuario");
+            Toast.makeText(this,"Error Reintente", Toast.LENGTH_SHORT).show();
         }
 
         else {
@@ -220,7 +227,8 @@ public class hoja_evaluacion extends AppCompatActivity {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String, String> parametros = new HashMap<>();
-                    parametros.put("persona", persona.getText().toString());
+                    parametros.put("persona", NombreUser.getText().toString());
+                    parametros.put("email",EmailUser.getText().toString());
                     parametros.put("uso_epp", respEpp);
                     parametros.put("descripcion_epp", Coment1.getText().toString());
                     parametros.put("limpieza", respLimp);
