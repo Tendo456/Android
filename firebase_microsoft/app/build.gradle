@@ -41,4 +41,7 @@ dependencies {
 
     implementation platform('com.google.firebase:firebase-bom:26.4.0')
     implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.microsoft.identity.client:msal:2.0.6'
+    implementation 'com.microsoft.graph:microsoft-graph:2.5.0'
+    implementation "com.microsoft.device.display:display-mask:0.3.0"
 }

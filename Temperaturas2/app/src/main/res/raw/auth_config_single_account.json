@@ -4,13 +4,12 @@
 "redirect_uri" : "msauth://com.example.temperaturas/pLhMJdQS8QpwpLVCqmO4FvP%2Batk%3D",
   "broker_redirect_uri_registered" : true,
   "account_mode" : "SINGLE",
-
-  "authorities" : [
+"authorities" : [
 {
 "type": "AAD",
 "audience": {
-"type": "AzureADMyOrg",
-"tenant_id": "27dd8c19-004a-4a66-a2e7-12c6420ca639"
+"type": "AzureADMultipleOrgs",
+"tenant_id": "organizations"
 }
 }
 ]
