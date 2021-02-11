@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1000284241344-ejg8qa6a63fmk0nvvosh3csk4851os6t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hoja",
+            "certificate_hash": "a4b84c25d412f10a70a4b542aa63b816f3fe6ad9"
+          }
+        },
+        {
           "client_id": "1000284241344-qu4d94anrc8bhlrr5r462a7jq4dthmg1.apps.googleusercontent.com",
           "client_type": 3
         }
