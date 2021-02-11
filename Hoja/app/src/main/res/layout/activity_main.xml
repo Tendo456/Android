@@ -30,7 +30,6 @@
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/azul"
-                android:onClick="ruta"
                 app:srcCompat="@drawable/ruta" />
 
             <ImageView
@@ -40,7 +39,6 @@
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/azul"
-                android:onClick="vehiculo"
                 app:srcCompat="@drawable/autobus" />
 
         </LinearLayout>
@@ -86,7 +84,6 @@
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/azul"
-                android:onClick="conductor"
                 app:srcCompat="@drawable/conductor" />
 
             <ImageView
