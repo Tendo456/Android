@@ -1,8 +1,0 @@
-<resources>
-    <string name="app_name">almacen</string>
-    <string name="et_des">Descripción</string>
-    <string name="et_produc">Producto</string>
-    <string name="et_pre">Precio</string>
-    <string name="et_cod">Codigo</string>
-    <string name="et_busc">Buscar</string>
-</resources>
