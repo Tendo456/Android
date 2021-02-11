@@ -29,7 +29,7 @@
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data android:scheme="msauth"
                     android:host="com.example.azure"
-                    android:path="/pLhMJdQS8QpwpLVCqmO4FvP+atk="
+                    android:path="/c3cZAKQlqMeay2+yxh5GxNDMBKM="
                     tools:ignore="AppLinkUrlError" />
             </intent-filter>
         </activity>
