@@ -59,8 +59,6 @@ public class Login extends AppCompatActivity {
 
         mfirebaseAutH = FirebaseAuth.getInstance();
 
-        //google.setOnClickListener(v -> {});
-
 
         mAuthListener = firebaseAuth -> {
             FirebaseUser user = firebaseAuth.getCurrentUser();
