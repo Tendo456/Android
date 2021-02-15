@@ -25,6 +25,7 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:background="@drawable/azul"
+            android:onClick="isos"
             app:srcCompat="@drawable/hombre" />
 
         <TextView
@@ -44,6 +45,7 @@
             android:layout_margin="10dp"
             android:layout_weight="1"
             android:background="@drawable/azul"
+            android:onClick="terceros"
             app:srcCompat="@drawable/equipo2" />
 
         <TextView

@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
 
     String dato1,dato2;
@@ -15,13 +17,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.mipmap.logo);
 
-        String NameUser = getIntent().getStringExtra("DisplayUser");
-        dato1 = NameUser;
-        String EmailU = getIntent().getStringExtra("EmailUser");
-        dato2 = EmailU;
+        dato1 = getIntent().getStringExtra("DisplayUser");
+        dato2 = getIntent().getStringExtra("EmailUser");
 
     }
 

@@ -44,7 +44,7 @@ public class listar extends AppCompatActivity implements AtencionesAdapter.Click
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
 
-        atencionesAdapter = new AtencionesAdapter(this::ClickedAtencion);
+        atencionesAdapter = new AtencionesAdapter(this);
 
         getDatos();
     }
