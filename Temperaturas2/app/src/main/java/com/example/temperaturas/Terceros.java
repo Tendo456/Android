@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.temperaturas.Actividades.MainActivity;
+import com.example.temperaturas.Actividades.Seleccion;
 import com.example.temperaturas.Actividades.listar;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -59,6 +61,17 @@ public class Terceros extends AppCompatActivity {
 
         String urlIMG = "http://190.119.144.250:83/hoja_evaluacion/img/user.png";
 
+
+
+        cerrarSesion.setOnClickListener(v -> cerrarsesion());
+        continuar.setOnClickListener(v -> continuar());
+
+        sesion();
+
+
+    }
+
+    private void  sesion(){
         mfirebaseAutH = FirebaseAuth.getInstance();
 
 
@@ -79,12 +92,9 @@ public class Terceros extends AppCompatActivity {
                         .setAvailableProviders(provider)
                         .setIsSmartLockEnabled(false)
                         .build(), REQUEST_CODE);
-                Glide.with(this).load(urlIMG).apply(RequestOptions.circleCropTransform()).into(imgUser);
+                //Glide.with(this).load(urlIMG).apply(RequestOptions.circleCropTransform()).into(imgUser);
             }
         };
-
-        cerrarSesion.setOnClickListener(v -> cerrarsesion());
-        continuar.setOnClickListener(v -> continuar());
     }
 
     @Override
@@ -102,6 +112,7 @@ public class Terceros extends AppCompatActivity {
     public void cerrarsesion (){
 
         AuthUI.getInstance().signOut(this).addOnCompleteListener(task -> Toast.makeText(Terceros.this,"Sesion Cerrada", Toast.LENGTH_SHORT).show());
+        finish();
     }
     public void continuar (){
         Intent intent = new Intent(Terceros.this, listar.class);
@@ -111,11 +122,6 @@ public class Terceros extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if(keyCode==event.KEYCODE_BACK){
-            finish();
-        }
-        return super.onKeyDown(keyCode, event);
-    }
+
+
 }
