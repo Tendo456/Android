@@ -34,7 +34,7 @@ public class inicio extends AppCompatActivity {
         tendo.setAnimation(animation2);
 
         new Handler().postDelayed(() -> {
-            Intent intent = new Intent(inicio.this, MainActivity.class);
+            Intent intent = new Intent(inicio.this, Seleccion.class);
             startActivity(intent);
             finish();
         },3000);
