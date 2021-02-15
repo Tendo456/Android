@@ -32,6 +32,7 @@ public class Terceros extends AppCompatActivity {
     TextView email,nombre,codigo;
     ImageView foto,imgUser;
     FloatingActionButton continuar;
+    String urlIMG = "http://190.119.144.250:83/hoja_evaluacion/img/user.png";
 
     public static final int REQUEST_CODE = 1234;
 
@@ -59,7 +60,7 @@ public class Terceros extends AppCompatActivity {
         cerrarSesion = findViewById(R.id.cerrarSesion);
         continuar = findViewById(R.id.continuar);
 
-        String urlIMG = "http://190.119.144.250:83/hoja_evaluacion/img/user.png";
+
 
 
 
@@ -92,7 +93,7 @@ public class Terceros extends AppCompatActivity {
                         .setAvailableProviders(provider)
                         .setIsSmartLockEnabled(false)
                         .build(), REQUEST_CODE);
-                //Glide.with(this).load(urlIMG).apply(RequestOptions.circleCropTransform()).into(imgUser);
+                Glide.with(this).load(urlIMG).apply(RequestOptions.circleCropTransform()).into(imgUser);
             }
         };
     }
