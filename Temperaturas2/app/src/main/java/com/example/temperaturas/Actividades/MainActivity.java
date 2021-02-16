@@ -263,4 +263,22 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(getApplicationContext(), signOutText, Toast.LENGTH_SHORT).show();
     }
 
+    @Override
+    public void onBackPressed() {
+        if (mSingleAccountApp == null){
+            return;
+        }
+        mSingleAccountApp.signOut(new ISingleAccountPublicClientApplication.SignOutCallback() {
+            @Override
+            public void onSignOut() {
+                updateUI(null);
+                performOperationOnSignOut();
+            }
+            @Override
+            public void onError(@NonNull MsalException exception){
+                displayError(exception);
+            }
+        });
+        super.onBackPressed();
+    }
 }

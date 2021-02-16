@@ -123,6 +123,9 @@ public class Terceros extends AppCompatActivity {
 
     }
 
-
-
+    @Override
+    public void onBackPressed() {
+        cerrarsesion();
+        super.onBackPressed();
+    }
 }
