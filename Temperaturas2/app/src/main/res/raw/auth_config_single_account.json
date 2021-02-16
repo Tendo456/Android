@@ -2,7 +2,7 @@
 "client_id" : "acff69a8-10ac-4438-b84d-8f5366f1f1ff",
 "authorization_user_agent" : "DEFAULT",
 "redirect_uri" : "msauth://com.example.temperaturas/pLhMJdQS8QpwpLVCqmO4FvP%2Batk%3D",
-  "broker_redirect_uri_registered" : true,
+  "broker_redirect_uri_registered" : false,
   "account_mode" : "SINGLE",
 "authorities" : [
 {
