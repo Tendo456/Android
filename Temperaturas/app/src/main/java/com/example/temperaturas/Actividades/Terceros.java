@@ -1,10 +1,9 @@
-package com.example.temperaturas;
+package com.example.temperaturas.Actividades;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,9 +11,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
-import com.example.temperaturas.Actividades.MainActivity;
-import com.example.temperaturas.Actividades.Seleccion;
-import com.example.temperaturas.Actividades.listar;
+import com.example.temperaturas.R;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;

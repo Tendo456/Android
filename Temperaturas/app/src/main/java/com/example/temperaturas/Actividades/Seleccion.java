@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.temperaturas.R;
-import com.example.temperaturas.Terceros;
 
 public class Seleccion extends AppCompatActivity {
 

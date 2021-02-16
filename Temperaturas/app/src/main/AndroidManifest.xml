@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Temperaturas"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Terceros"></activity>
+        <activity android:name=".Actividades.Terceros"></activity>
         <activity android:name=".Actividades.Seleccion" />
         <activity android:name=".Actividades.inicio">
             <intent-filter>
