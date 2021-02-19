@@ -30,6 +30,7 @@ public class Terceros extends AppCompatActivity {
     FloatingActionButton continuar,cerrar;
     String urlIMG = "http://190.119.144.250:83/hoja_evaluacion/img/user.png";
 
+
     public static final int REQUEST_CODE = 1234;
 
     List<AuthUI.IdpConfig> provider = Arrays.asList(
@@ -67,6 +68,7 @@ public class Terceros extends AppCompatActivity {
 
     }
 
+
     private void  sesion(){
         mfirebaseAutH = FirebaseAuth.getInstance();
 
@@ -94,9 +96,9 @@ public class Terceros extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
+    protected void onStart() {
         mfirebaseAutH.addAuthStateListener(mAuthListener);
+        super.onStart();
     }
 
     @Override

@@ -12,11 +12,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.temperaturas.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.JsonObject;
 import com.microsoft.graph.concurrency.ICallback;
 import com.microsoft.graph.core.ClientException;
 import com.microsoft.graph.models.extensions.Drive;
 import com.microsoft.graph.models.extensions.IGraphServiceClient;
+import com.microsoft.graph.models.extensions.User;
 import com.microsoft.graph.requests.extensions.GraphServiceClient;
 import com.microsoft.identity.client.AuthenticationCallback;
 import com.microsoft.identity.client.IAccount;
@@ -40,13 +42,12 @@ public class MainActivity extends AppCompatActivity {
 
     /* UI & Debugging Variables */
     Button signInButton;
-    Button signOutButton;
-    Button callGraphApiInteractiveButton;
-    Button callGraphApiSilentButton;
-    Button next;
+    //Button callGraphApiInteractiveButton;
+    //Button callGraphApiSilentButton;
     TextView logTextView;
     TextView currentUserTextView;
     String saveuser;
+    FloatingActionButton signOutButton,next;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -132,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
             });
         });
 
-        //Interactive
+        /*Interactive
         callGraphApiInteractiveButton.setOnClickListener(v -> {
             if (mSingleAccountApp == null) {
                 return;
@@ -146,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
             mSingleAccountApp.acquireTokenSilentAsync(SCOPES, AUTHORITY, getAuthSilentCallback());
-        });
+        });*/
 
         next.setOnClickListener(v ->{
             Intent intent = new Intent(MainActivity.this, listar.class);
@@ -208,6 +209,7 @@ public class MainActivity extends AppCompatActivity {
                             request.addHeader("Authorization", "Bearer " + accessToken);
                         })
                         .buildClient();
+
         graphClient
                 .me()
                 .drive()
@@ -230,8 +232,8 @@ public class MainActivity extends AppCompatActivity {
         if (account != null) {
             signInButton.setEnabled(false);
             signOutButton.setEnabled(true);
-            callGraphApiInteractiveButton.setEnabled(true);
-            callGraphApiSilentButton.setEnabled(true);
+            //callGraphApiInteractiveButton.setEnabled(true);
+            //callGraphApiSilentButton.setEnabled(true);
             next.setEnabled(true);
             currentUserTextView.setText(account.getUsername());
             saveuser = currentUserTextView.getText().toString();
@@ -242,8 +244,8 @@ public class MainActivity extends AppCompatActivity {
         } else {
             signInButton.setEnabled(true);
             signOutButton.setEnabled(false);
-            callGraphApiInteractiveButton.setEnabled(false);
-            callGraphApiSilentButton.setEnabled(false);
+            //callGraphApiInteractiveButton.setEnabled(false);
+            //callGraphApiSilentButton.setEnabled(false);
             next.setEnabled(false);
             currentUserTextView.setText("");
             logTextView.setText("");
