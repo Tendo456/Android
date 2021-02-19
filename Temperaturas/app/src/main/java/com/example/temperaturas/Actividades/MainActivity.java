@@ -259,7 +259,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void performOperationOnSignOut() {
-        final String signOutText = "Signed Out.";
+        final String signOutText = "Sesion Cerrada";
         currentUserTextView.setText("");
         Toast.makeText(getApplicationContext(), signOutText, Toast.LENGTH_SHORT).show();
     }
