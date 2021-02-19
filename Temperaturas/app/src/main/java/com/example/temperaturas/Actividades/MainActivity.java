@@ -30,6 +30,7 @@ import com.microsoft.identity.client.exception.MsalException;
 
 public class MainActivity extends AppCompatActivity {
 
+    String valor="1";
     private final static String[] SCOPES = {"Files.Read"};
     /* Azure AD v2 Configs */
     final static String AUTHORITY = "https://login.microsoftonline.com/common";

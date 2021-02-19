@@ -38,8 +38,16 @@ public class listar extends AppCompatActivity implements AtencionesAdapter.Click
         toolbar = findViewById(R.id.toolbar);
         recyclerView = findViewById(R.id.recyclerview);
 
-        String RUN = getIntent().getStringExtra("username");
-        RUserName.setText(RUN);
+        String ISOS = getIntent().getStringExtra("username");
+
+        String THIRD = getIntent().getStringExtra("EmailUser");
+
+        if(ISOS == null){
+            RUserName.setText(THIRD);
+        }else
+        {
+            RUserName.setText(ISOS);
+        }
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));

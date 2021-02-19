@@ -29,7 +29,7 @@
             app:srcCompat="@drawable/hombre" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/ISOS"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
@@ -49,7 +49,7 @@
             app:srcCompat="@drawable/equipo2" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/Terceros"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
