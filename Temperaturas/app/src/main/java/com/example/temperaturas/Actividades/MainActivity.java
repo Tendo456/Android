@@ -99,8 +99,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void initializeUI(){
         signInButton = findViewById(R.id.signIn);
-        callGraphApiSilentButton = findViewById(R.id.callGraphSilent);
-        callGraphApiInteractiveButton = findViewById(R.id.callGraphInteractive);
+        //callGraphApiSilentButton = findViewById(R.id.callGraphSilent);
+        //callGraphApiInteractiveButton = findViewById(R.id.callGraphInteractive);
         signOutButton = findViewById(R.id.clearCache);
         next = findViewById(R.id.next);
         logTextView = findViewById(R.id.txt_log);

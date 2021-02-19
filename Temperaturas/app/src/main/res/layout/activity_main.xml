@@ -55,36 +55,12 @@
         android:enabled="false"
         android:text="Continuar" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:visibility="invisible">
-
-        <Button
-            android:id="@+id/callGraphInteractive"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="5"
-            android:enabled="false"
-            android:text="Get Graph Data Interactively" />
-
-        <Button
-            android:id="@+id/callGraphSilent"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="5"
-            android:enabled="false"
-            android:text="Get Graph Data Silently" />
-    </LinearLayout>
-
     <TextView
         android:id="@+id/current_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Account info goes here..." />
+        android:text="Información de Cuenta" />
 
     <TextView
         android:id="@+id/txt_log"

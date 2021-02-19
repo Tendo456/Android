@@ -25,10 +25,9 @@ public class Terceros extends AppCompatActivity {
 
     private FirebaseAuth mfirebaseAutH;
     private FirebaseAuth.AuthStateListener mAuthListener;
-    Button cerrarSesion;
     TextView email,nombre,codigo;
     ImageView foto,imgUser;
-    FloatingActionButton continuar;
+    FloatingActionButton continuar,cerrar;
     String urlIMG = "http://190.119.144.250:83/hoja_evaluacion/img/user.png";
 
     public static final int REQUEST_CODE = 1234;
@@ -54,15 +53,14 @@ public class Terceros extends AppCompatActivity {
         email = findViewById(R.id.email);
         nombre = findViewById(R.id.nombre);
         codigo = findViewById(R.id.codigo);
-        cerrarSesion = findViewById(R.id.cerrarSesion);
         continuar = findViewById(R.id.continuar);
+        cerrar = findViewById(R.id.cerrar);
 
 
 
 
-
-        cerrarSesion.setOnClickListener(v -> cerrarsesion());
         continuar.setOnClickListener(v -> continuar());
+        cerrar.setOnClickListener(v -> cerrarsesion());
 
         sesion();
 
