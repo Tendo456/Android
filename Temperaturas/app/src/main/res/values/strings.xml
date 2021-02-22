@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Temperaturas</string>
+    <string name="seleccion">Tipo de Usuario</string>
+    <string name="Terceros">Terceros</string>
+    <string name="MaibActivity">Internacional SOS</string>
+    <string name="listar">Registros</string>
 </resources>

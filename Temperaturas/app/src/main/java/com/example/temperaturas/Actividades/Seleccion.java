@@ -10,14 +10,18 @@ import android.widget.TextView;
 
 import com.example.temperaturas.R;
 
+import java.util.Objects;
+
 public class Seleccion extends AppCompatActivity {
 
-    TextView isos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seleccion);
+
+        Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.mipmap.logo);
 
     }
 

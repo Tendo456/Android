@@ -29,6 +29,8 @@ import com.microsoft.identity.client.PublicClientApplication;
 import com.microsoft.identity.client.SilentAuthenticationCallback;
 import com.microsoft.identity.client.exception.MsalException;
 
+import java.util.Objects;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -53,6 +55,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.mipmap.logo);
+
         initializeUI();
 
         PublicClientApplication.createSingleAccountPublicClientApplication(getApplicationContext(),
@@ -238,9 +244,6 @@ public class MainActivity extends AppCompatActivity {
             currentUserTextView.setText(account.getUsername());
             saveuser = currentUserTextView.getText().toString();
             Toast.makeText(getApplicationContext(),"Bienvenido ", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(MainActivity.this, listar.class);
-            intent.putExtra("username",currentUserTextView.getText().toString());
-            startActivity(intent);
         } else {
             signInButton.setEnabled(true);
             signOutButton.setEnabled(false);

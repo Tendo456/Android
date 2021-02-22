@@ -16,6 +16,8 @@ import android.widget.TextView;
 
 import com.example.temperaturas.R;
 
+import java.util.Objects;
+
 public class inicio extends AppCompatActivity {
 
     TextView tendo;
@@ -26,6 +28,9 @@ public class inicio extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_inicio);
+
+        Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.mipmap.logo);
 
         repro();
 

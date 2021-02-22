@@ -14,17 +14,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Temperaturas"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Actividades.Terceros"></activity>
-        <activity android:name=".Actividades.Seleccion" />
+        <activity android:name=".Actividades.Terceros"
+            android:label="@string/Terceros"/>
+        <activity android:name=".Actividades.Seleccion"
+            android:label="@string/seleccion"/>
         <activity android:name=".Actividades.inicio">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Actividades.listar" />
-        <activity android:name=".Actividades.MainActivity" /> <!-- Intent filter to capture System Browser or Authenticator calling back to our app after sign-in -->
+        <activity android:name=".Actividades.listar"
+            android:label="@string/listar"/>
+        <activity android:name=".Actividades.MainActivity"
+            android:label="@string/MaibActivity"/>
+        <!-- Intent filter to capture System Browser or Authenticator calling back to our app after sign-in -->
         <activity android:name="com.microsoft.identity.client.BrowserTabActivity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />

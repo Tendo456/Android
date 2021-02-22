@@ -16,6 +16,7 @@ import com.example.temperaturas.Modelos.AtencionesResponse;
 import com.example.temperaturas.R;
 
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,6 +34,9 @@ public class listar extends AppCompatActivity implements AtencionesAdapter.Click
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listar);
+
+        Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setIcon(R.mipmap.logo);
 
         RUserName = findViewById(R.id.title);
         toolbar = findViewById(R.id.toolbar);
