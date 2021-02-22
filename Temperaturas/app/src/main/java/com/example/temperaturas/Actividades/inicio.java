@@ -20,8 +20,6 @@ public class inicio extends AppCompatActivity {
 
     TextView tendo;
     ImageView logo;
-    SoundPool sp;
-    int sonido;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
