@@ -21,7 +21,6 @@ import com.microsoft.graph.concurrency.ICallback;
 import com.microsoft.graph.core.ClientException;
 import com.microsoft.graph.models.extensions.Drive;
 import com.microsoft.graph.models.extensions.IGraphServiceClient;
-import com.microsoft.graph.models.extensions.User;
 import com.microsoft.graph.requests.extensions.GraphServiceClient;
 import com.microsoft.identity.client.AuthenticationCallback;
 import com.microsoft.identity.client.IAccount;
@@ -37,7 +36,6 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
-    String valor="1";
     private final static String[] SCOPES = {"Files.Read"};
     /* Azure AD v2 Configs */
     final static String AUTHORITY = "https://login.microsoftonline.com/common";
@@ -142,6 +140,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onSignOut() {
                     updateUI(null);
                     performOperationOnSignOut();
+                    finish();
                 }
                 @Override
                 public void onError(@NonNull MsalException exception){
