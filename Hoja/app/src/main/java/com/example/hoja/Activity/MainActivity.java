@@ -3,8 +3,11 @@ package com.example.hoja.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 
 import com.example.hoja.R;
 
@@ -13,6 +16,10 @@ import java.util.Objects;
 public class MainActivity extends AppCompatActivity {
 
     String dato1,dato2;
+    private Window window;
+    String primaryDark = "#3F51B5";
+    String primary = "#3F51B5";
+    String background = "#303F9F";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.mipmap.logo);
+
+        this.window = getWindow();
+        color(primaryDark,primary,background);
 
         dato1 = getIntent().getStringExtra("DisplayUser");
         dato2 = getIntent().getStringExtra("EmailUser");
@@ -51,6 +61,18 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra("DisplayUser1",dato1);
         intent.putExtra("EmailUser1",dato2);
         startActivity(intent);
+
+    }
+
+    public void color (String primaryDark, String primary, String background){
+
+        window.setStatusBarColor(Color.parseColor(primaryDark));
+
+        Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(Color.parseColor(primary)));
+
+        //window.setBackgroundDrawable(new ColorDrawable(Color.parseColor(background)));
+
+        window.setNavigationBarColor(Color.parseColor(primary));
 
     }
 }

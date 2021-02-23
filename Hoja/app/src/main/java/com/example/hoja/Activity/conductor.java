@@ -3,8 +3,11 @@ package com.example.hoja.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,6 +30,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class conductor extends AppCompatActivity {
 
@@ -36,6 +40,10 @@ public class conductor extends AppCompatActivity {
     ListView listaC;
     RequestQueue requestQueue;
     SwipeRefreshLayout refrescarC;
+    private Window window;
+    String primaryDark = "#3F51B5";
+    String primary = "#3F51B5";
+    String background = "#303F9F";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +52,9 @@ public class conductor extends AppCompatActivity {
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.mipmap.conductor);
+
+        this.window = getWindow();
+        color(primaryDark,primary,background);
 
         dniC=findViewById(R.id.conductorDNI);
         nombreC=findViewById(R.id.conductorNombre);
@@ -225,5 +236,17 @@ public class conductor extends AppCompatActivity {
         dniC.setText("");
         nombreC.setText("");
         breveteC.setText("");
+    }
+
+    public void color (String primaryDark, String primary, String background){
+
+        window.setStatusBarColor(Color.parseColor(primaryDark));
+
+        Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(Color.parseColor(primary)));
+
+        //window.setBackgroundDrawable(new ColorDrawable(Color.parseColor(background)));
+
+        window.setNavigationBarColor(Color.parseColor(primary));
+
     }
 }

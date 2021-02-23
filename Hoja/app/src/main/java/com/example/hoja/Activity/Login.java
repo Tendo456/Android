@@ -36,6 +36,7 @@ public class Login extends AppCompatActivity {
     String primaryDark = "#3F51B5";
     String primary = "#3F51B5";
     String background = "#303F9F";
+
     public static final int REQUEST_CODE = 1234;
 
     List<AuthUI.IdpConfig> provider = Arrays.asList(
@@ -53,6 +54,9 @@ public class Login extends AppCompatActivity {
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.mipmap.logo);
+
+        this.window = getWindow();
+        color(primaryDark,primary,background);
 
         foto = findViewById(R.id.foto);
         imgUser = findViewById(R.id.imgUser);

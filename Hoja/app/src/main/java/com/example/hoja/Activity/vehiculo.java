@@ -3,8 +3,11 @@ package com.example.hoja.Activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,6 +30,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class vehiculo extends AppCompatActivity {
 
@@ -37,10 +41,18 @@ public class vehiculo extends AppCompatActivity {
     SwipeRefreshLayout refrescarV;
     TextView vehiculoId;
 
+    private Window window;
+    String primaryDark = "#3F51B5";
+    String primary = "#3F51B5";
+    String background = "#303F9F";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vehiculo);
+
+        this.window = getWindow();
+        color(primaryDark,primary,background);
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.mipmap.autobus);
@@ -221,6 +233,18 @@ public class vehiculo extends AppCompatActivity {
         placaV.setText("");
         modeloV.setText("");
         marcaV.setText("");
+    }
+
+    public void color (String primaryDark, String primary, String background){
+
+        window.setStatusBarColor(Color.parseColor(primaryDark));
+
+        Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(Color.parseColor(primary)));
+
+        //window.setBackgroundDrawable(new ColorDrawable(Color.parseColor(background)));
+
+        window.setNavigationBarColor(Color.parseColor(primary));
+
     }
 
 }

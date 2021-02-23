@@ -3,8 +3,11 @@ package com.example.hoja.Activity;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -36,6 +39,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import cz.msebera.android.httpclient.Header;
 
@@ -51,11 +55,19 @@ public class hoja_evaluacion extends AppCompatActivity {
     ImageView fondo;
     private AsyncHttpClient RHoja;
 
+    private Window window;
+    String primaryDark = "#3F51B5";
+    String primary = "#3F51B5";
+    String background = "#303F9F";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_hoja_evaluacion);
+
+        this.window = getWindow();
+        color(primaryDark,primary,background);
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.mipmap.calificacion);
@@ -258,6 +270,18 @@ public class hoja_evaluacion extends AppCompatActivity {
         Coment1.setText("");
         Coment2.setText("");
         Coment3.setText("");
+
+    }
+
+    public void color (String primaryDark, String primary, String background){
+
+        window.setStatusBarColor(Color.parseColor(primaryDark));
+
+        Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(Color.parseColor(primary)));
+
+        //window.setBackgroundDrawable(new ColorDrawable(Color.parseColor(background)));
+
+        window.setNavigationBarColor(Color.parseColor(primary));
 
     }
 }

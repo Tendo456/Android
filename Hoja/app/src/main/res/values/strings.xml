@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Hoja de Evaluación</string>
     <string name="Main_Activity_title">Menú de Selección</string>
-    <string name="Login_title">Inicio de Sesión</string>
+    <string name="Login_title">Terceros</string>
     <string name="Inicio_title">Hoja de Evaluación</string>
     <string name="Conductor_title">Conductor</string>
     <string name="Ruta_title">Rutas</string>
