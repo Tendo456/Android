@@ -1,4 +1,4 @@
-package com.example.hoja;
+package com.example.hoja.Modelos;
 
 public class ruta_personal {
     private String idruta,ruta;

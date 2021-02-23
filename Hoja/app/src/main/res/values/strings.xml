@@ -6,4 +6,6 @@
     <string name="Conductor_title">Conductor</string>
     <string name="Ruta_title">Rutas</string>
     <string name="Vehiculo_title">Vehiculo</string>
+    <string name="Selleccion">Tipo de Usuario</string>
+    <string name="ISOS">Interacional SOS</string>
 </resources>

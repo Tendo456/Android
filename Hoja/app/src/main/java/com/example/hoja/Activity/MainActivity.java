@@ -1,10 +1,12 @@
-package com.example.hoja;
+package com.example.hoja.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.example.hoja.R;
 
 import java.util.Objects;
 

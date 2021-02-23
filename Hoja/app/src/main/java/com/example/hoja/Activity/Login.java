@@ -1,7 +1,10 @@
-package com.example.hoja;
+package com.example.hoja.Activity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -11,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.hoja.R;
 import com.firebase.ui.auth.AuthUI;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,11 +28,14 @@ public class Login extends AppCompatActivity {
 
     private FirebaseAuth mfirebaseAutH;
     private FirebaseAuth.AuthStateListener mAuthListener;
-    Button cerrarSesion;
     TextView email,nombre,codigo;
     ImageView foto,imgUser;
-    FloatingActionButton continuar;
-
+    FloatingActionButton continuar,cerrar;
+    String urlIMG = "http://190.119.144.250:83/hoja_evaluacion/img/user.png";
+    private Window window;
+    String primaryDark = "#3F51B5";
+    String primary = "#3F51B5";
+    String background = "#303F9F";
     public static final int REQUEST_CODE = 1234;
 
     List<AuthUI.IdpConfig> provider = Arrays.asList(
@@ -52,11 +59,17 @@ public class Login extends AppCompatActivity {
         email = findViewById(R.id.email);
         nombre = findViewById(R.id.nombre);
         codigo = findViewById(R.id.codigo);
-        cerrarSesion = findViewById(R.id.cerrarSesion);
         continuar = findViewById(R.id.continuar);
+        cerrar = findViewById(R.id.cerrar);
 
-        String urlIMG = "http://190.119.144.250:83/hoja_evaluacion/img/user.png";
+        continuar.setOnClickListener(v -> continuar());
+        cerrar.setOnClickListener(v -> cerrarsesion());
 
+        sesion();
+
+    }
+
+    private void  sesion(){
         mfirebaseAutH = FirebaseAuth.getInstance();
 
 
@@ -80,16 +93,12 @@ public class Login extends AppCompatActivity {
                 Glide.with(this).load(urlIMG).apply(RequestOptions.circleCropTransform()).into(imgUser);
             }
         };
-
-        cerrarSesion.setOnClickListener(v -> cerrarsesion());
-        continuar.setOnClickListener(v -> continuar());
-
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
+    protected void onStart() {
         mfirebaseAutH.addAuthStateListener(mAuthListener);
+        super.onStart();
     }
 
     @Override
@@ -101,6 +110,7 @@ public class Login extends AppCompatActivity {
     public void cerrarsesion (){
 
         AuthUI.getInstance().signOut(this).addOnCompleteListener(task -> Toast.makeText(Login.this,"Sesion Cerrada", Toast.LENGTH_SHORT).show());
+        finish();
     }
     public void continuar (){
         Intent intent = new Intent(Login.this, MainActivity.class);
@@ -110,4 +120,22 @@ public class Login extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        cerrarsesion();
+        super.onBackPressed();
+    }
+
+    public void color (String primaryDark, String primary, String background){
+
+        window.setStatusBarColor(Color.parseColor(primaryDark));
+
+        Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(Color.parseColor(primary)));
+
+        //window.setBackgroundDrawable(new ColorDrawable(Color.parseColor(background)));
+
+        window.setNavigationBarColor(Color.parseColor(primary));
+
+    }
 }
+

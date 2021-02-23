@@ -1,4 +1,4 @@
-package com.example.hoja;
+package com.example.hoja.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -21,6 +21,9 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.hoja.R;
+import com.example.hoja.Modelos.ruta_conductor;
+import com.example.hoja.Modelos.ruta_vehiculo;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 

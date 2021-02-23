@@ -1,4 +1,4 @@
-package com.example.hoja;
+package com.example.hoja.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.hoja.R;
 
 public class inicio extends AppCompatActivity {
 
@@ -31,13 +33,10 @@ public class inicio extends AppCompatActivity {
         tendo.setAnimation(animation2);
         logo.setAnimation(animation1);
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(inicio.this, Login.class);
-                startActivity(intent);
-                finish();
-            }
+        new Handler().postDelayed(() -> {
+            Intent intent = new Intent(inicio.this, seleccion.class);
+            startActivity(intent);
+            finish();
         }, 4000);
     }
 }

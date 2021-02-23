@@ -1,4 +1,4 @@
-package com.example.hoja;
+package com.example.hoja.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -18,6 +18,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.hoja.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
