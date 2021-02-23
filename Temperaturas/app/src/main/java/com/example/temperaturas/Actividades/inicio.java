@@ -3,11 +3,14 @@ package com.example.temperaturas.Actividades;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -22,6 +25,11 @@ public class inicio extends AppCompatActivity {
 
     TextView tendo;
     ImageView logo;
+    private Window window;
+    String primaryDark = "#3F51B5";
+    String primary = "#3F51B5";
+    String background = "#303F9F";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,9 +37,12 @@ public class inicio extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_inicio);
 
+        this.window = getWindow();
+
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.mipmap.logo);
 
+        color(primaryDark,primary,background);
         repro();
 
         Animation animation1 = AnimationUtils.loadAnimation(this, R.anim.desplazamiento_arriba);
@@ -54,5 +65,17 @@ public class inicio extends AppCompatActivity {
     public void repro(){
         MediaPlayer mp = MediaPlayer.create(this, R.raw.windows_xp);
         mp.start();
+    }
+
+    public void color (String primaryDark, String primary, String background){
+
+        window.setStatusBarColor(Color.parseColor(primaryDark));
+
+        Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(Color.parseColor(primary)));
+
+        //window.setBackgroundDrawable(new ColorDrawable(Color.parseColor(background)));
+
+        window.setNavigationBarColor(Color.parseColor(primary));
+
     }
 }

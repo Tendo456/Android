@@ -1,7 +1,10 @@
 package com.example.temperaturas.Actividades;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +31,11 @@ public class Terceros extends AppCompatActivity {
     ImageView foto,imgUser;
     FloatingActionButton continuar,cerrar;
     String urlIMG = "http://190.119.144.250:83/hoja_evaluacion/img/user.png";
+    private Window window;
+    String primaryDark = "#3F51B5";
+    String primary = "#3F51B5";
+    String background = "#303F9F";
+
 
 
     public static final int REQUEST_CODE = 1234;
@@ -47,6 +55,9 @@ public class Terceros extends AppCompatActivity {
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.mipmap.logo);
+
+        this.window = getWindow();
+        color(primaryDark,primary,background);
 
         foto = findViewById(R.id.foto);
         imgUser = findViewById(R.id.imgUser);
@@ -121,5 +132,17 @@ public class Terceros extends AppCompatActivity {
     public void onBackPressed() {
         cerrarsesion();
         super.onBackPressed();
+    }
+
+    public void color (String primaryDark, String primary, String background){
+
+        window.setStatusBarColor(Color.parseColor(primaryDark));
+
+        Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(Color.parseColor(primary)));
+
+        //window.setBackgroundDrawable(new ColorDrawable(Color.parseColor(background)));
+
+        window.setNavigationBarColor(Color.parseColor(primary));
+
     }
 }
