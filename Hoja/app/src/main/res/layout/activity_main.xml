@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:onClick="conductor"
     tools:context=".Activity.MainActivity">
 
     <LinearLayout
@@ -30,6 +31,7 @@
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/azul"
+                android:onClick="ruta"
                 app:srcCompat="@drawable/ruta" />
 
             <ImageView
@@ -39,6 +41,7 @@
                 android:layout_margin="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/azul"
+                android:onClick="vehiculo"
                 app:srcCompat="@drawable/autobus" />
 
         </LinearLayout>
