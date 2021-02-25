@@ -12,16 +12,17 @@
 
             <item android:id="@+id/title_ruta"
                 android:icon="@drawable/ic_location"
-                android:title="Rutas"
+                android:title="@string/rutas"
+                app:itemBackground="@color/indigo_700"
                 />
 
             <item android:id="@+id/title_Conductor"
                 android:icon="@drawable/ic_driver"
-                android:title="Conductor" />
+                android:title="@string/conductor" />
 
             <item android:id="@+id/title_Vehiculo"
                 android:icon="@drawable/ic_driver"
-                android:title="Vehiculo"
+                android:title="@string/vehiculo"
                 app:tint="#3F51B5"/>
             
         </menu>

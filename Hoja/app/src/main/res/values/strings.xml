@@ -8,4 +8,9 @@
     <string name="Vehiculo_title">Vehiculo</string>
     <string name="Selleccion">Tipo de Usuario</string>
     <string name="ISOS">Interacional SOS</string>
+
+
+    <string name="conductor">Conductor</string>
+    <string name="rutas">Rutas</string>
+    <string name="vehiculo">Vehiculo</string>
 </resources>
