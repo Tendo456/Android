@@ -22,6 +22,14 @@
           }
         },
         {
+          "client_id": "1041570443219-n8o2vu0i3urpk08vuo6gk5ingsnme27r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hoja",
+            "certificate_hash": "c00f8f8acb8e98614c3ac8dbc8a807b3d4ed254d"
+          }
+        },
+        {
           "client_id": "1041570443219-l0b7vt7d74uvvc3nrgmn5j88sg205gj3.apps.googleusercontent.com",
           "client_type": 3
         }
