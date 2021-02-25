@@ -1,42 +1,33 @@
 {
   "project_info": {
-    "project_number": "1000284241344",
-    "firebase_url": "https://origen-isos1.firebaseio.com",
-    "project_id": "origen-isos1",
-    "storage_bucket": "origen-isos1.appspot.com"
+    "project_number": "1041570443219",
+    "project_id": "origen-97d90",
+    "storage_bucket": "origen-97d90.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1000284241344:android:611806985d1d160e441c25",
+        "mobilesdk_app_id": "1:1041570443219:android:fefca000b3030a7bf18926",
         "android_client_info": {
           "package_name": "com.example.hoja"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1000284241344-ejg8qa6a63fmk0nvvosh3csk4851os6t.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.hoja",
-            "certificate_hash": "a4b84c25d412f10a70a4b542aa63b816f3fe6ad9"
-          }
-        },
-        {
-          "client_id": "1000284241344-qu4d94anrc8bhlrr5r462a7jq4dthmg1.apps.googleusercontent.com",
+          "client_id": "1041570443219-l0b7vt7d74uvvc3nrgmn5j88sg205gj3.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDFZ3NykELxNAy1LR4JysjOqVgLtPeyEAA"
+          "current_key": "AIzaSyAILn4ItTK1LlxNQwSJqUhNKRMzsnfldUg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1000284241344-qu4d94anrc8bhlrr5r462a7jq4dthmg1.apps.googleusercontent.com",
+              "client_id": "1041570443219-l0b7vt7d74uvvc3nrgmn5j88sg205gj3.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
@@ -45,27 +36,43 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1000284241344:android:9ea3640efabd2d0b441c25",
+        "mobilesdk_app_id": "1:1041570443219:android:24e76f239a84de00f18926",
         "android_client_info": {
-          "package_name": "com.example.hojadecalificacion"
+          "package_name": "com.example.temperaturas"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1000284241344-qu4d94anrc8bhlrr5r462a7jq4dthmg1.apps.googleusercontent.com",
+          "client_id": "1041570443219-eincdiph2ckihul6qtht47922it8oldj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.temperaturas",
+            "certificate_hash": "13e117fa74752ad7e58bad6bab75705bbb55ff80"
+          }
+        },
+        {
+          "client_id": "1041570443219-tc8p2e16m8d4ocf0jlhd2ninru0kpqb4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.temperaturas",
+            "certificate_hash": "a4b84c25d412f10a70a4b542aa63b816f3fe6ad9"
+          }
+        },
+        {
+          "client_id": "1041570443219-l0b7vt7d74uvvc3nrgmn5j88sg205gj3.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDFZ3NykELxNAy1LR4JysjOqVgLtPeyEAA"
+          "current_key": "AIzaSyAILn4ItTK1LlxNQwSJqUhNKRMzsnfldUg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1000284241344-qu4d94anrc8bhlrr5r462a7jq4dthmg1.apps.googleusercontent.com",
+              "client_id": "1041570443219-l0b7vt7d74uvvc3nrgmn5j88sg205gj3.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
