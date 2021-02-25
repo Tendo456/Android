@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.hoja_calificacin">
 
     <application
@@ -9,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Hoja_Calificación">
-        <activity android:name=".Actividades.Usuario"></activity>
+        <activity android:name=".Actividades.Menu"></activity>
         <activity android:name=".Actividades.vehiculo" />
         <activity android:name=".Actividades.ruta" />
         <activity android:name=".Actividades.seleccion" />
@@ -22,6 +23,21 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- Intent filter to capture System Browser or Authenticator calling back to our app after sign-in -->
+        <activity android:name="com.microsoft.identity.client.BrowserTabActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="com.example.hoja"
+                    android:path="/c3cZAKQlqMeay2+yxh5GxNDMBKM="
+                    android:scheme="msauth"
+                    tools:ignore="AppLinkUrlError" />
             </intent-filter>
         </activity>
     </application>

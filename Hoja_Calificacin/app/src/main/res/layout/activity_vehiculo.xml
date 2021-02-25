@@ -6,4 +6,143 @@
     android:layout_height="match_parent"
     tools:context=".Actividades.vehiculo">
 
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/refrescarVehiculo"
+            android:layout_width="match_parent"
+            android:layout_height="225dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView22"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="center_horizontal"
+                    android:text="Control Vehiculo"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:id="@+id/vehiculoId"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Id Vehiculo"
+                    android:visibility="invisible" />
+
+                <EditText
+                    android:id="@+id/vehiculoPlaca"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/azul"
+                    android:ems="10"
+                    android:hint="Placa"
+                    android:inputType="textPersonName"
+                    android:maxLength="8"
+                    android:paddingLeft="15dp" />
+
+                <EditText
+                    android:id="@+id/vehiculoMarca"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/azul"
+                    android:ems="10"
+                    android:hint="Marca"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="15dp" />
+
+                <EditText
+                    android:id="@+id/vehiculoModelo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/azul"
+                    android:ems="10"
+                    android:hint="Modelo"
+                    android:inputType="textPersonName"
+                    android:paddingLeft="15dp" />
+            </LinearLayout>
+
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/VehiculoIngresar"
+                android:layout_width="90dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/indigo_700"
+                android:text="Ingresar"
+                android:textColor="@color/design_default_color_background" />
+
+            <Button
+                android:id="@+id/VehiculoEditar"
+                android:layout_width="90dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/indigo_700"
+                android:text="Editar"
+                android:textColor="@color/design_default_color_background"
+                tools:text="Editar" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/VehiculoBuscar"
+                android:layout_width="90dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/indigo_700"
+                android:text="Buscar"
+                android:textColor="@color/design_default_color_background" />
+
+            <Button
+                android:id="@+id/VehiculoEliminar"
+                android:layout_width="90dp"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/indigo_700"
+                android:text="Eliminar"
+                android:textColor="@color/design_default_color_background" />
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/ListaVehiculo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

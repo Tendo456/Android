@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">Hoja_Calificación</string>
+    <string name="app_name">Hoja de Calificación</string>
+    <string name="Main_Activity_title">Menú de Selección</string>
+    <string name="Terceros_title">Terceros</string>
+    <string name="Inicio_title">Hoja de Evaluación</string>
+    <string name="Conductor_title">Conductor</string>
+    <string name="Ruta_title">Rutas</string>
+    <string name="Vehiculo_title">Vehiculo</string>
+    <string name="Seleccion">Tipo de Usuario</string>
+    <string name="ISOS">Interacional SOS</string>
 </resources>
