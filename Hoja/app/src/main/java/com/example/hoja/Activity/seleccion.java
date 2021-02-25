@@ -38,7 +38,7 @@ public class seleccion extends AppCompatActivity {
     }
 
     public void terceros(View view){
-        startActivity(new Intent(getApplicationContext(),Login.class));
+        startActivity(new Intent(getApplicationContext(), Terceros.class));
     }
 
     public void color (String primaryDark, String primary, String background){

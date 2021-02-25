@@ -24,7 +24,7 @@
             android:name=".Activity.ruta"
             android:label="@string/Ruta_title" />
         <activity
-            android:name=".Activity.Login"
+            android:name=".Activity.Terceros"
             android:label="@string/Login_title" />
         <activity
             android:name=".Activity.inicio"
