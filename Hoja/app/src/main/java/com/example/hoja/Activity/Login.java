@@ -37,7 +37,7 @@ public class Login extends AppCompatActivity {
     String primary = "#3F51B5";
     String background = "#303F9F";
 
-    public static final int REQUEST_CODE = 1234;
+    public static final int REQUEST_CODE = 5678;
 
     List<AuthUI.IdpConfig> provider = Arrays.asList(
             new AuthUI.IdpConfig.GoogleBuilder().build(),

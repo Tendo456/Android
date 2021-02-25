@@ -7,12 +7,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1041570443219:android:fefca000b3030a7bf18926",
+        "mobilesdk_app_id": "1:1041570443219:android:13909f812b896b95f18926",
         "android_client_info": {
           "package_name": "com.example.hoja"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "1041570443219-b4hpoe7cck4h42lat1k8t68eanr8vok0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hoja",
+            "certificate_hash": "a4b84c25d412f10a70a4b542aa63b816f3fe6ad9"
+          }
+        },
         {
           "client_id": "1041570443219-l0b7vt7d74uvvc3nrgmn5j88sg205gj3.apps.googleusercontent.com",
           "client_type": 3
