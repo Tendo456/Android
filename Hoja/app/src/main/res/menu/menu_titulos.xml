@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/btnMore"
+        android:icon="@drawable/ic_more"
+        android:title="Más"
+        app:showAsAction="always">
+
+        <menu >
+
+            <item android:id="@+id/title_ruta"
+                android:icon="@drawable/ic_location"
+                android:title="Rutas"
+                />
+
+            <item android:id="@+id/title_Conductor"
+                android:icon="@drawable/ic_driver"
+                android:title="Conductor" />
+
+            <item android:id="@+id/title_Vehiculo"
+                android:icon="@drawable/ic_driver"
+                android:title="Vehiculo"
+                app:tint="#3F51B5"/>
+            
+        </menu>
+
+
+    </item>
+
+
+
+</menu>

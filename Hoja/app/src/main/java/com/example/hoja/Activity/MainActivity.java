@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.Window;
 
@@ -35,6 +37,15 @@ public class MainActivity extends AppCompatActivity {
         dato1 = getIntent().getStringExtra("DisplayUser");
         dato2 = getIntent().getStringExtra("EmailUser");
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_titulos, menu);
+
+
+        return true;
     }
 
     public void conductor(View view){
