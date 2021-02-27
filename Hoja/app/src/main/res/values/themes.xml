@@ -12,6 +12,6 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
-        <item name="android:actionMenuTextColor">@color/black</item>
+        <item name="android:actionMenuTextColor">#3F51B5</item>
     </style>
 </resources>

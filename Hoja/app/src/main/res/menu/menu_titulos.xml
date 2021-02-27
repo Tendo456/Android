@@ -5,7 +5,7 @@
     <item
         android:id="@+id/btnMore"
         android:icon="@drawable/ic_more"
-        android:title="Más"
+        android:title="@string/m_s"
         app:showAsAction="always">
 
         <menu >
@@ -13,17 +13,19 @@
             <item android:id="@+id/title_ruta"
                 android:icon="@drawable/ic_location"
                 android:title="@string/rutas"
-                app:itemBackground="@color/indigo_700"
+                app:iconTint="#303F9F"
                 />
 
             <item android:id="@+id/title_Conductor"
                 android:icon="@drawable/ic_driver"
-                android:title="@string/conductor" />
+                android:title="@string/conductor"
+                app:iconTint="#303F9F"/>
 
             <item android:id="@+id/title_Vehiculo"
                 android:icon="@drawable/ic_driver"
                 android:title="@string/vehiculo"
-                app:tint="#3F51B5"/>
+                app:iconTint="#303F9F"
+                />
             
         </menu>
 
