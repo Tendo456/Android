@@ -1,5 +1,6 @@
 package com.example.hoja.Activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,9 +9,12 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
+import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.hoja.R;
 
 import java.util.Objects;
@@ -44,26 +48,29 @@ public class MainActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_titulos, menu);
 
-
         return true;
     }
 
-    public void conductor(View view){
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-        startActivity(new Intent(getApplicationContext(),conductor.class));
+        switch (item.getItemId()){
+            case R.id.title_ruta:
+                startActivity(new Intent(getApplicationContext(),ruta.class));
+                //Toast.makeText(MainActivity.this,"No Tiene Permisos de Administrador",Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.title_Conductor:
+                startActivity(new Intent(getApplicationContext(),conductor.class));
+                //Toast.makeText(MainActivity.this,"No Tiene Permisos de Administrador",Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.title_Vehiculo:
+                startActivity(new Intent(getApplicationContext(),vehiculo.class));
+                //Toast.makeText(MainActivity.this,"No Tiene Permisos de Administrador",Toast.LENGTH_SHORT).show();
 
-    }
+                return true;
+        }
 
-    public void vehiculo(View view){
-
-        startActivity(new Intent(getApplicationContext(),vehiculo.class));
-
-    }
-
-    public void ruta(View view){
-
-        startActivity(new Intent(getApplicationContext(),ruta.class));
-
+        return super.onOptionsItemSelected(item);
     }
 
     public void hoja(View view){
@@ -86,4 +93,5 @@ public class MainActivity extends AppCompatActivity {
         window.setNavigationBarColor(Color.parseColor(primary));
 
     }
+
 }

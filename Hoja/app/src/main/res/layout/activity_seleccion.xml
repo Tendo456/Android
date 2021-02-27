@@ -35,7 +35,7 @@
             android:layout_margin="10dp"
             android:background="@drawable/azul"
             android:gravity="center"
-            android:text="Internacional SOS"
+            android:text="International SOS"
             android:textSize="24sp" />
 
         <ImageView

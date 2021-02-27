@@ -11,20 +11,20 @@
         <menu >
 
             <item android:id="@+id/title_ruta"
-                android:icon="@drawable/ic_location"
+                android:icon="@drawable/ic_place"
                 android:title="@string/rutas"
-                app:iconTint="#303F9F"
+                app:iconTint="@color/indigo_400"
                 />
 
             <item android:id="@+id/title_Conductor"
                 android:icon="@drawable/ic_driver"
                 android:title="@string/conductor"
-                app:iconTint="#303F9F"/>
+                app:iconTint="@color/indigo_400"/>
 
             <item android:id="@+id/title_Vehiculo"
-                android:icon="@drawable/ic_driver"
+                android:icon="@drawable/ic_car"
                 android:title="@string/vehiculo"
-                app:iconTint="#303F9F"
+                app:iconTint="@color/indigo_400"
                 />
             
         </menu>

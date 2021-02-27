@@ -59,6 +59,8 @@ dependencies {
     implementation 'com.microsoft.graph:microsoft-graph:2.5.0'
     implementation "com.microsoft.device.display:display-mask:0.3.0"
 
+    implementation 'com.airbnb.android:lottie:3.6.1'
+
 
 
 
