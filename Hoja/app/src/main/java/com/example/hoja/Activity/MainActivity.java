@@ -56,16 +56,16 @@ public class MainActivity extends AppCompatActivity {
 
         switch (item.getItemId()){
             case R.id.title_ruta:
-                startActivity(new Intent(getApplicationContext(),ruta.class));
-                //Toast.makeText(MainActivity.this,"No Tiene Permisos de Administrador",Toast.LENGTH_SHORT).show();
+                //startActivity(new Intent(getApplicationContext(),ruta.class));
+                Toast.makeText(MainActivity.this,"No Tiene Permisos de Administrador",Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.title_Conductor:
-                startActivity(new Intent(getApplicationContext(),conductor.class));
-                //Toast.makeText(MainActivity.this,"No Tiene Permisos de Administrador",Toast.LENGTH_SHORT).show();
+                //startActivity(new Intent(getApplicationContext(),conductor.class));
+                Toast.makeText(MainActivity.this,"No Tiene Permisos de Administrador",Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.title_Vehiculo:
-                startActivity(new Intent(getApplicationContext(),vehiculo.class));
-                //Toast.makeText(MainActivity.this,"No Tiene Permisos de Administrador",Toast.LENGTH_SHORT).show();
+                //startActivity(new Intent(getApplicationContext(),vehiculo.class));
+                Toast.makeText(MainActivity.this,"No Tiene Permisos de Administrador",Toast.LENGTH_SHORT).show();
 
                 return true;
         }
