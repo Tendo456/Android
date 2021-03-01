@@ -331,9 +331,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:background="@color/indigo_700"
                     android:text="Enviar"
-                    android:textColor="@color/design_default_color_background"
+                    android:textColor="@color/white"
                     android:textSize="18sp" />
 
                 <Button
@@ -342,9 +341,8 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:background="@color/indigo_700"
                     android:text="Cancelar"
-                    android:textColor="@color/design_default_color_background"
+                    android:textColor="@color/white"
                     android:textSize="18sp" />
 
             </LinearLayout>
