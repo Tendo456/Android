@@ -3,8 +3,10 @@ package com.example.hoja.Activity;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -247,18 +249,22 @@ public class ISOS extends AppCompatActivity {
         if (account != null) {
             signInButton.setEnabled(false);
             signOutButton.setEnabled(true);
+            signOutButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.indigo_500)));
+            next.setEnabled(true);
+            next.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.indigo_500)));
             //callGraphApiInteractiveButton.setEnabled(true);
             //callGraphApiSilentButton.setEnabled(true);
-            next.setEnabled(true);
             currentUserTextView.setText(account.getUsername());
             saveuser = currentUserTextView.getText().toString();
             Toast.makeText(getApplicationContext(),"Bienvenido ", Toast.LENGTH_SHORT).show();
         } else {
             signInButton.setEnabled(true);
             signOutButton.setEnabled(false);
+            signOutButton.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.gray)));
+            next.setEnabled(false);
+            next.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.gray)));
             //callGraphApiInteractiveButton.setEnabled(false);
             //callGraphApiSilentButton.setEnabled(false);
-            next.setEnabled(false);
             currentUserTextView.setText("");
             logTextView.setText("");
         }
