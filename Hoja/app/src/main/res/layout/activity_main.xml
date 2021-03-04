@@ -21,6 +21,7 @@
         app:lottie_rawRes="@raw/background_bubble" />
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="15dp"
@@ -31,11 +32,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <com.denzcoskun.imageslider.ImageSlider
+            android:id="@+id/banner"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:placeholder="@drawable/logo_color"
+            app:error_image="@drawable/logo_color"
+            app:auto_cycle="true"
+            app:corner_radius="5"
+            app:delay="0"
+            app:period="3000">
+
+        </com.denzcoskun.imageslider.ImageSlider>
+
         <ImageView
             android:id="@+id/imageView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_margin="10dp"
+            android:layout_weight="1"
             android:background="@drawable/azul"
             android:onClick="hoja"
             app:srcCompat="@drawable/puntuacion" />

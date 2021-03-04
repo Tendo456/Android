@@ -15,8 +15,12 @@ import android.view.Window;
 import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.hoja.R;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
@@ -40,6 +44,16 @@ public class MainActivity extends AppCompatActivity {
 
         dato1 = getIntent().getStringExtra("DisplayUser");
         dato2 = getIntent().getStringExtra("EmailUser");
+
+        ImageSlider imageSlider = findViewById(R.id.banner);
+
+        List<SlideModel> slideModels = new ArrayList<>();
+        slideModels.add(new SlideModel("http://190.119.144.250:83/hoja_evaluacion/img/admision.jpg","Imagen 1"));
+        slideModels.add(new SlideModel("http://190.119.144.250:83/hoja_evaluacion/img/audiometria.jpg","Imagen 2"));
+        slideModels.add(new SlideModel("http://190.119.144.250:83/hoja_evaluacion/img/pasillo.jpg","Imagen 3"));
+        slideModels.add(new SlideModel("http://190.119.144.250:83/hoja_evaluacion/img/psicologia.jpg","Imagen 4"));
+        slideModels.add(new SlideModel("http://190.119.144.250:83/hoja_evaluacion/img/radiologia.jpg","Imagen 5"));
+        imageSlider.setImageList(slideModels,true);
 
     }
 
