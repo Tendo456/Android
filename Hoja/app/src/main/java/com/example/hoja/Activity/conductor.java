@@ -8,9 +8,13 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
+import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,10 +48,13 @@ public class conductor extends AppCompatActivity {
     String primaryDark = "#3F51B5";
     String primary = "#3F51B5";
     String background = "#303F9F";
+    Animation transparenciaC;
+    ImageView fondoC;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_conductor);
 
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -55,6 +62,8 @@ public class conductor extends AppCompatActivity {
 
         this.window = getWindow();
         color(primaryDark,primary,background);
+
+        transparenciaC = AnimationUtils.loadAnimation(this, R.anim.transparencia);
 
         dniC=findViewById(R.id.conductorDNI);
         nombreC=findViewById(R.id.conductorNombre);
@@ -66,6 +75,9 @@ public class conductor extends AppCompatActivity {
         listaC = findViewById(R.id.ListaConductor);
         refrescarC = findViewById(R.id.refrescarConductor);
         conductorId = findViewById(R.id.conductorId);
+        fondoC = findViewById(R.id.fondoC);
+
+        fondoC.setAnimation(transparenciaC);
 
 
         refrescarC.setOnRefreshListener(() -> {
