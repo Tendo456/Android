@@ -186,7 +186,7 @@ public class hoja_evaluacion extends AppCompatActivity {
     }
 
     public void opcionesradio(View view){
-        //pregubta 1
+        //pregunta 1
 
         if(rbP1_1.isChecked()){
             respEpp = "si";
