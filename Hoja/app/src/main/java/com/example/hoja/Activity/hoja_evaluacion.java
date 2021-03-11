@@ -69,7 +69,7 @@ public class hoja_evaluacion extends AppCompatActivity {
         this.window = getWindow();
         color(primaryDark,primary,background);
 
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.mipmap.calificacion);
 
         transparencia = AnimationUtils.loadAnimation(this, R.anim.transparencia);

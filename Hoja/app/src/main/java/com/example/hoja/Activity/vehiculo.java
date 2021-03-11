@@ -54,7 +54,7 @@ public class vehiculo extends AppCompatActivity {
         this.window = getWindow();
         color(primaryDark,primary,background);
 
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.mipmap.autobus);
 
         placaV = findViewById(R.id.vehiculoPlaca);

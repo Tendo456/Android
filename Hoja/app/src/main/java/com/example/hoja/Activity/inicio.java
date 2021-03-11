@@ -38,7 +38,7 @@ public class inicio extends AppCompatActivity {
         this.window = getWindow();
         color(primaryDark,primary,background);
 
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.mipmap.logo);
 
         Animation animation1 = AnimationUtils.loadAnimation(this, R.anim.desplazamiento_arriba);
