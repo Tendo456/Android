@@ -41,9 +41,7 @@
             app:auto_cycle="true"
             app:corner_radius="5"
             app:delay="0"
-            app:period="3000">
-
-        </com.denzcoskun.imageslider.ImageSlider>
+            app:period="3000"/>
 
         <ImageView
             android:id="@+id/imageView5"
