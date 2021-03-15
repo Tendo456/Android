@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
             integrador.setBeepEnabled(true);
             integrador.setBarcodeImageEnabled(true);
             integrador.initiateScan();
+            integrador.setOrientationLocked(false);
 
 
         });
