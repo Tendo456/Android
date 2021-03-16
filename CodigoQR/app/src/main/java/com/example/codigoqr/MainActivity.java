@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
             super.onActivityResult(requestCode, resultCode, data);
         }
 
+        assert result != null;
         String datos = result.getContents();
 
         txtLink.setText(datos);
