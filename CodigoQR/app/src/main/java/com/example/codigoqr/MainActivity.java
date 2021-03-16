@@ -3,7 +3,9 @@ package com.example.codigoqr;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,10 +15,12 @@ import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
+
 public class MainActivity extends AppCompatActivity {
 
     TextView txtLink;
     Button btnScan;
+    String url;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +42,6 @@ public class MainActivity extends AppCompatActivity {
         integrador.setCameraId(0);
         integrador.setOrientationLocked(false);
         integrador.setBeepEnabled(true);
-        //integrador.setCaptureActivity(Capture.class);
         integrador.setBarcodeImageEnabled(false);
         integrador.initiateScan();
     }
@@ -64,5 +67,22 @@ public class MainActivity extends AppCompatActivity {
         String datos = result.getContents();
 
         txtLink.setText(datos);
+    }
+
+    public void urls (View view){
+
+        url=txtLink.getText().toString();
+
+        try{
+        if (url == null){
+            Toast.makeText(this,"texto vacio",Toast.LENGTH_SHORT).show();
+        }else{
+        Uri link = Uri.parse(url);
+        Intent i = new Intent(Intent.ACTION_VIEW,link);
+        startActivity(i);
+        }}
+        catch (ActivityNotFoundException e){
+            Toast.makeText(this, "No Formato URL", Toast.LENGTH_LONG).show();
+        }
     }
 }
