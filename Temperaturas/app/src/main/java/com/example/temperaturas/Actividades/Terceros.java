@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
@@ -49,6 +50,11 @@ public class Terceros extends AppCompatActivity {
     );
 
     @Override
+    public void startActivityForResult(Intent intent, int requestCode, @Nullable Bundle options) {
+        super.startActivityForResult(intent, requestCode, options);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_terceros);
@@ -83,6 +89,7 @@ public class Terceros extends AppCompatActivity {
 
         mAuthListener = firebaseAuth -> {
             FirebaseUser user = firebaseAuth.getCurrentUser();
+            user.sendEmailVerification();
             if (user != null) {
 
                 continuar.setEnabled(true);
