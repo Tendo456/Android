@@ -26,21 +26,21 @@ public class MainActivity extends AppCompatActivity {
         btnScan = findViewById(R.id.btnScan);
         txtLink = findViewById(R.id.txtLink);
 
-        btnScan.setOnClickListener(v -> {
-
-            IntentIntegrator integrador = new IntentIntegrator(MainActivity.this);
-            integrador.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
-            integrador.setPrompt("Lector - CDP");
-            integrador.setCameraId(0);
-            integrador.setBeepEnabled(true);
-            integrador.setBarcodeImageEnabled(true);
-            integrador.initiateScan();
-            integrador.setOrientationLocked(false);
+        btnScan.setOnClickListener(v -> { Scan(); });
 
 
-        });
+    }
 
-
+    public void Scan (){
+        IntentIntegrator integrador = new IntentIntegrator(MainActivity.this);
+        integrador.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
+        integrador.setPrompt("Lector - CDP");
+        integrador.setCameraId(0);
+        integrador.setOrientationLocked(false);
+        integrador.setBeepEnabled(true);
+        //integrador.setCaptureActivity(Capture.class);
+        integrador.setBarcodeImageEnabled(false);
+        integrador.initiateScan();
     }
 
     @Override
