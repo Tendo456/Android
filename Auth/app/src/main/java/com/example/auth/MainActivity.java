@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
@@ -22,6 +23,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     Button ingresar;
+    TextView Nombre, Email;
 
     private static final int RC_SIGN_IN = 123;
 
@@ -31,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ingresar = findViewById(R.id.ingresar);
+        Nombre = findViewById(R.id.Nombre);
+        Email = findViewById(R.id.Email);
 
         ingresar.setOnClickListener(v -> {createSingInIntent();});
 
@@ -61,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 // Successfully signed in
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                Nombre.setText(user.getDisplayName());
+                Email.setText(user.getEmail());
                 // ...
             } else {
                 // Sign in failed. If response is null the user canceled the
@@ -94,6 +100,11 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
         // [END auth_fui_delete]
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
     }
 
     public void themeAndLogo() {
