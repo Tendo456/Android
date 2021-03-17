@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,6 +36,7 @@ public class Terceros extends AppCompatActivity {
     String primaryDark = "#3F51B5";
     String primary = "#3F51B5";
     String background = "#303F9F";
+    Button ingresar;
 
     public static final int REQUEST_CODE = 5678;
 
@@ -64,6 +66,7 @@ public class Terceros extends AppCompatActivity {
         codigo = findViewById(R.id.codigo);
         continuar = findViewById(R.id.continuar);
         cerrar = findViewById(R.id.cerrar);
+        ingresar = findViewById(R.id.ingresar);
 
         continuar.setOnClickListener(v -> continuar());
         cerrar.setOnClickListener(v -> cerrarsesion());
@@ -100,7 +103,10 @@ public class Terceros extends AppCompatActivity {
 
     @Override
     protected void onStart() {
-        mfirebaseAutH.addAuthStateListener(mAuthListener);
+        ingresar.setOnClickListener(v -> {
+            mfirebaseAutH.addAuthStateListener(mAuthListener);
+        });
+
         super.onStart();
     }
 

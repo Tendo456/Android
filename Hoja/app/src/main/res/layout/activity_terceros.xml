@@ -125,6 +125,12 @@
                 android:gravity="center"
                 android:text="Servicio" />
 
+            <Button
+                android:id="@+id/ingresar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Button" />
+
         </LinearLayout>
     </ScrollView>
 
