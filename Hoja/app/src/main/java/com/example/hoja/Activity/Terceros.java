@@ -102,6 +102,7 @@ public class Terceros extends AppCompatActivity {
 
     @Override
     protected void onStart() {
+
             mfirebaseAutH.addAuthStateListener(mAuthListener);
 
         super.onStart();
