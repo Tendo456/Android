@@ -1,4 +1,4 @@
-ñpackage com.example.auth;
+package com.example.auth;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,7 +22,8 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button ingresar;
+    private FirebaseAuth mfirebaseAutH;
+    Button ingresar,Salir;
     TextView Nombre, Email;
 
     private static final int RC_SIGN_IN = 123;
@@ -33,15 +34,18 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         ingresar = findViewById(R.id.ingresar);
+        Salir = findViewById(R.id.Salir);
         Nombre = findViewById(R.id.Nombre);
         Email = findViewById(R.id.Email);
 
         ingresar.setOnClickListener(v -> {createSingInIntent();});
+        Salir.setOnClickListener(v -> {signOut();});
 
 
     }
 
     public void createSingInIntent(){
+
         List<AuthUI.IdpConfig> providers = Arrays.asList(
                 new AuthUI.IdpConfig.EmailBuilder().build(),
                 new AuthUI.IdpConfig.GoogleBuilder().build());
