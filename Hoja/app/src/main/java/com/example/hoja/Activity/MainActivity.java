@@ -1,8 +1,5 @@
 package com.example.hoja.Activity;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -12,9 +9,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
-import android.widget.Toast;
 
-import com.airbnb.lottie.LottieAnimationView;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.hoja.R;
@@ -48,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         ImageSlider imageSlider = findViewById(R.id.banner);
 
         List<SlideModel> slideModels = new ArrayList<>();
-        slideModels.add(new SlideModel("http://190.119.144.250:83/hoja_evaluacion/img/admision.jpg","Imagen 1"));
+        slideModels.add(new SlideModel(R.drawable.admision,"Imagen 1"));
         slideModels.add(new SlideModel("http://190.119.144.250:83/hoja_evaluacion/img/audiometria.jpg","Imagen 2"));
         slideModels.add(new SlideModel("http://190.119.144.250:83/hoja_evaluacion/img/pasillo.jpg","Imagen 3"));
         slideModels.add(new SlideModel("http://190.119.144.250:83/hoja_evaluacion/img/psicologia.jpg","Imagen 4"));
