@@ -1,20 +1,22 @@
 package com.example.codigoqr;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.VibrationEffect;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.os.Vibrator;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.denzcoskun.imageslider.ImageSlider;
-import com.denzcoskun.imageslider.interfaces.ItemClickListener;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -63,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         integrador.setBeepEnabled(true);
         integrador.setBarcodeImageEnabled(false);
         integrador.initiateScan();
+
     }
 
     @Override
@@ -75,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
             if(result.getContents() == null){
                 Toast.makeText(this,"Lectura Cancelada", Toast.LENGTH_SHORT).show();
             }else {
+                Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){v.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));}
                 Toast.makeText(this,result.getContents(), Toast.LENGTH_SHORT).show();
                 txtLink.setText(result.getContents());
             }
