@@ -1,6 +1,7 @@
 package com.example.hoja.Activity;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -85,6 +86,9 @@ public class Terceros extends AppCompatActivity {
             if (user != null) {
 
                 continuar.setEnabled(true);
+                continuar.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.indigo_500)));
+                cerrar.setEnabled(true);
+                cerrar.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.indigo_500)));
                 email.setText(user.getEmail());
                 nombre.setText(user.getDisplayName());
                 codigo.setText(user.getProviderId());
@@ -93,6 +97,9 @@ public class Terceros extends AppCompatActivity {
 
             } else {
                 continuar.setEnabled(false);
+                continuar.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.gray)));
+                cerrar.setEnabled(false);
+                cerrar.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.gray)));
                 startActivityForResult(AuthUI.getInstance()
                         .createSignInIntentBuilder()
                         .setAvailableProviders(provider)
