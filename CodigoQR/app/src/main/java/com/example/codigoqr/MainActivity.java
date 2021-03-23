@@ -49,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
         slideModels.add(new SlideModel("http://190.119.144.250:83/hoja_evaluacion/img/radiologia.jpg","Imagen 5"));
         imageSlider.setImageList(slideModels,true);
 
+        imageSlider.setItemClickListener(i -> Toast.makeText(getApplicationContext(), slideModels.get(i).getTitle(),Toast.LENGTH_SHORT).show());
+
 
     }
 
