@@ -113,15 +113,17 @@ public class Terceros extends AppCompatActivity {
     @Override
     protected void onStart() {
 
-            mfirebaseAutH.addAuthStateListener(mAuthListener);
-
         super.onStart();
+        mfirebaseAutH.addAuthStateListener(mAuthListener);
+
     }
 
     @Override
     protected void onPause() {
+
         super.onPause();
         mfirebaseAutH.removeAuthStateListener(mAuthListener);
+
     }
 
     public void cerrarsesion (){
@@ -129,6 +131,7 @@ public class Terceros extends AppCompatActivity {
         AuthUI.getInstance().signOut(this).addOnCompleteListener(task -> Toast.makeText(Terceros.this,"Sesion Cerrada", Toast.LENGTH_SHORT).show());
         finish();
     }
+
     public void continuar (){
         Intent intent = new Intent(Terceros.this, MainActivity.class);
         intent.putExtra("DisplayUser",nombre.getText().toString());
@@ -146,11 +149,8 @@ public class Terceros extends AppCompatActivity {
     public void color (String primaryDark, String primary, String background){
 
         window.setStatusBarColor(Color.parseColor(primaryDark));
-
         Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(Color.parseColor(primary)));
-
         //window.setBackgroundDrawable(new ColorDrawable(Color.parseColor(background)));
-
         window.setNavigationBarColor(Color.parseColor(primary));
 
     }
