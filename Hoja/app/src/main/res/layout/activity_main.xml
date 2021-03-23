@@ -31,18 +31,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <com.denzcoskun.imageslider.ImageSlider
-            android:id="@+id/banner"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            app:placeholder="@drawable/logo_color"
-            app:error_image="@drawable/logo_color"
-            app:auto_cycle="true"
-            app:corner_radius="5"
-            app:delay="0"
-            app:period="3000"/>
-
+        
         <ImageView
             android:id="@+id/imageView5"
             android:layout_width="match_parent"
