@@ -13,12 +13,8 @@ import android.view.Window;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.denzcoskun.imageslider.ImageSlider;
-import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.hoja.R;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
