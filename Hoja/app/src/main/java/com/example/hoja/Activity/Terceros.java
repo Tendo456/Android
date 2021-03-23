@@ -6,7 +6,6 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,10 +37,7 @@ public class Terceros extends AppCompatActivity {
     String primary = "#3F51B5";
     String background = "#303F9F";
 
-
     public static final int REQUEST_CODE = 5678;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
