@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         slideModels.add(new SlideModel("http://190.119.144.250:83/hoja_evaluacion/img/psicologia.jpg","Imagen 4"));
         slideModels.add(new SlideModel("http://190.119.144.250:83/hoja_evaluacion/img/radiologia.jpg","Imagen 5"));
         imageSlider.setImageList(slideModels,true);
-        
+
 
     }
 
