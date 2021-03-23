@@ -40,13 +40,7 @@ public class Terceros extends AppCompatActivity {
 
     public static final int REQUEST_CODE = 5678;
 
-    List<AuthUI.IdpConfig> provider = Arrays.asList(
-            new AuthUI.IdpConfig.GoogleBuilder().build(),
-            new AuthUI.IdpConfig.EmailBuilder().build()
-            //new AuthUI.IdpConfig.MicrosoftBuilder().build()
 
-            //https://origen-isos1.firebaseapp.com/__/auth/handler
-    );
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +69,14 @@ public class Terceros extends AppCompatActivity {
     }
 
     private void  sesion(){
+
+        List<AuthUI.IdpConfig> provider = Arrays.asList(
+                new AuthUI.IdpConfig.GoogleBuilder().build(),
+                new AuthUI.IdpConfig.EmailBuilder().build()
+                //new AuthUI.IdpConfig.MicrosoftBuilder().build()
+
+                //https://origen-isos1.firebaseapp.com/__/auth/handler
+        );
         mfirebaseAutH = FirebaseAuth.getInstance();
 
 
@@ -90,6 +92,7 @@ public class Terceros extends AppCompatActivity {
                 Toast.makeText(Terceros.this, "Bienvenido "+user.getDisplayName(), Toast.LENGTH_SHORT).show();
 
             } else {
+                continuar.setEnabled(false);
                 startActivityForResult(AuthUI.getInstance()
                         .createSignInIntentBuilder()
                         .setAvailableProviders(provider)
