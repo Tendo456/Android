@@ -8,11 +8,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.interfaces.ItemClickListener;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
@@ -46,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         slideModels.add(new SlideModel("http://190.119.144.250:83/hoja_evaluacion/img/psicologia.jpg","Imagen 4"));
         slideModels.add(new SlideModel("http://190.119.144.250:83/hoja_evaluacion/img/radiologia.jpg","Imagen 5"));
         imageSlider.setImageList(slideModels,true);
+        
 
     }
 
