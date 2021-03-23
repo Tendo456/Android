@@ -43,15 +43,6 @@ public class MainActivity extends AppCompatActivity {
         dato1 = getIntent().getStringExtra("DisplayUser");
         dato2 = getIntent().getStringExtra("EmailUser");
 
-        ImageSlider imageSlider = findViewById(R.id.banner);
-
-        List<SlideModel> slideModels = new ArrayList<>();
-        slideModels.add(new SlideModel(R.drawable.admision,"Imagen 1"));
-        slideModels.add(new SlideModel("http://190.119.144.250:83/hoja_evaluacion/img/audiometria.jpg","Imagen 2"));
-        slideModels.add(new SlideModel("http://190.119.144.250:83/hoja_evaluacion/img/pasillo.jpg","Imagen 3"));
-        slideModels.add(new SlideModel("http://190.119.144.250:83/hoja_evaluacion/img/psicologia.jpg","Imagen 4"));
-        slideModels.add(new SlideModel("http://190.119.144.250:83/hoja_evaluacion/img/radiologia.jpg","Imagen 5"));
-        imageSlider.setImageList(slideModels,true);
 
     }
 
