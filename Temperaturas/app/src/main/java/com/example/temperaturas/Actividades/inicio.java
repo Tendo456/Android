@@ -37,13 +37,14 @@ public class inicio extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_inicio);
 
+        repro();
+
         this.window = getWindow();
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayShowHomeEnabled(true);
         getSupportActionBar().setIcon(R.mipmap.logo);
 
         color(primaryDark,primary,background);
-        repro();
 
         Animation animation1 = AnimationUtils.loadAnimation(this, R.anim.desplazamiento_arriba);
         Animation animation2 = AnimationUtils.loadAnimation(this, R.anim.desplazamiento_abajo);
@@ -58,7 +59,7 @@ public class inicio extends AppCompatActivity {
             Intent intent = new Intent(inicio.this, Seleccion.class);
             startActivity(intent);
             finish();
-        },4000);
+        },5000);
 
     }
 

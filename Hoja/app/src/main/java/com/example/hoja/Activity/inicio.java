@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Window;
@@ -54,7 +56,7 @@ public class inicio extends AppCompatActivity {
             Intent intent = new Intent(inicio.this, seleccion.class);
             startActivity(intent);
             finish();
-        }, 4000);
+        }, 5000);
     }
 
     public void color (String primaryDark, String primary, String background){
