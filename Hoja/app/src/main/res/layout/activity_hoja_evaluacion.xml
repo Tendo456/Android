@@ -150,7 +150,8 @@
                     android:layout_margin="10dp"
                     android:checked="true"
                     android:onClick="opcionesradio"
-                    android:text="Si" />
+                    android:text="Si"
+                    android:buttonTint="@color/indigo_500"/>
 
                 <RadioButton
                     android:id="@+id/rbP1_2"
@@ -181,7 +182,7 @@
                 <EditText
                     android:id="@+id/Coment1"
                     android:layout_width="match_parent"
-                    android:layout_height="130dp"
+                    android:layout_height="150dp"
                     android:background="@drawable/drawable_background"
                     android:ems="10"
                     android:gravity="start|top"
@@ -244,7 +245,7 @@
                 <EditText
                     android:id="@+id/Coment2"
                     android:layout_width="match_parent"
-                    android:layout_height="130dp"
+                    android:layout_height="150dp"
                     android:layout_margin="5dp"
                     android:background="@drawable/drawable_background"
                     android:ems="10"
@@ -307,7 +308,7 @@
                 <EditText
                     android:id="@+id/Coment3"
                     android:layout_width="match_parent"
-                    android:layout_height="130dp"
+                    android:layout_height="150dp"
                     android:layout_margin="5dp"
                     android:background="@drawable/drawable_background"
                     android:ems="10"
