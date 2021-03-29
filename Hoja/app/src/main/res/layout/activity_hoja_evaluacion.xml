@@ -149,15 +149,17 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:checked="true"
+                    android:buttonTint="@color/indigo_500"
                     android:onClick="opcionesradio"
                     android:text="Si"
-                    android:buttonTint="@color/indigo_500"/>
+                    />
 
                 <RadioButton
                     android:id="@+id/rbP1_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
+                    android:buttonTint="@color/indigo_500"
                     android:onClick="opcionesradio"
                     android:text="Parcialmente" />
 
@@ -166,6 +168,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
+                    android:buttonTint="@color/indigo_500"
                     android:onClick="opcionesradio"
                     android:text="No" />
 
@@ -214,6 +217,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
+                    android:buttonTint="@color/indigo_500"
                     android:checked="true"
                     android:onClick="opcionesradio"
                     android:text="Si" />
@@ -223,6 +227,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
+                    android:buttonTint="@color/indigo_500"
                     android:onClick="opcionesradio"
                     android:text="Parcialmente" />
 
@@ -231,6 +236,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
+                    android:buttonTint="@color/indigo_500"
                     android:onClick="opcionesradio"
                     android:text="No" />
 
@@ -278,6 +284,7 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:checked="true"
+                    android:buttonTint="@color/indigo_500"
                     android:onClick="opcionesradio"
                     android:text="Si" />
 
@@ -286,6 +293,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
+                    android:buttonTint="@color/indigo_500"
                     android:onClick="opcionesradio"
                     android:text="Parcialmente" />
 
@@ -294,6 +302,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
+                    android:buttonTint="@color/indigo_500"
                     android:onClick="opcionesradio"
                     android:text="No" />
 
