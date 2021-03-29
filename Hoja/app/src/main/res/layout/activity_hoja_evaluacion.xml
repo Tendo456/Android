@@ -182,12 +182,11 @@
                 app:counterMaxLength="200">
 
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/Coment1"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:background="@drawable/drawable_background"
-                    android:ems="10"
                     android:gravity="start|top"
                     android:hint="Descripción (Opcional)"
                     android:inputType="textMultiLine"
