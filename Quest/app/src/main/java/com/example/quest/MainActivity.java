@@ -33,10 +33,10 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    Spinner puntaje_1,puntaje_2,puntaje_3,puntaje_4,spLugar;
-    TextView resp5,resp6,fecha,hora;
+    Spinner puntaje_1,puntaje_2,puntaje_3,puntaje_4,puntaje_5,puntaje_6,spLugar;
+    TextView resp7,resp8,fecha,hora;
     Button Enviar;
-    String p1,p2,p3,p4,lugares;
+    String p1,p2,p3,p4,p5,p6,lugares;
     ImageView fondo;
     Animation transparencia;
     int dia,mes,año;
@@ -52,10 +52,13 @@ public class MainActivity extends AppCompatActivity {
         puntaje_2 = findViewById(R.id.puntaje_2);
         puntaje_3 = findViewById(R.id.puntaje_3);
         puntaje_4 = findViewById(R.id.puntaje_4);
+        puntaje_5 = findViewById(R.id.puntaje_5);
+        puntaje_6 = findViewById(R.id.puntaje_6);
+
         fecha = findViewById(R.id.fecha);
         spLugar = findViewById(R.id.spLugar);
-        resp5 = findViewById(R.id.respuesta5);
-        resp6 = findViewById(R.id.respuesta6);
+        resp7 = findViewById(R.id.respuesta7);
+        resp8 = findViewById(R.id.respuesta8);
         Enviar = findViewById(R.id.Enviar);
         fondo = findViewById(R.id.fondo);
         hora = findViewById(R.id.hora);
@@ -118,6 +121,32 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        puntaje_5.setAdapter(adapter);
+        puntaje_5.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                p5  =parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        puntaje_6.setAdapter(adapter);
+        puntaje_6.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                p6  =parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
 
         ArrayAdapter<CharSequence> lugar = ArrayAdapter.createFromResource(this, R.array.lugares, R.layout.spinner_text);
         lugar.setDropDownViewResource(R.layout.spinner_dropdown_text);
@@ -161,19 +190,27 @@ public class MainActivity extends AppCompatActivity {
         hora();
 
         if (p1.equals("0")) {
-            Toast.makeText(getApplicationContext(), "Preguntas del 1 al 4 obligatorias", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Preguntas del 1 al 6 obligatorias", Toast.LENGTH_SHORT).show();
         }
 
         else if (p2.equals("0")) {
-            Toast.makeText(getApplicationContext(), "Preguntas del 1 al 4 obligatorias", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Preguntas del 1 al 6 obligatorias", Toast.LENGTH_SHORT).show();
         }
 
         else if (p3.equals("0")) {
-            Toast.makeText(getApplicationContext(), "Preguntas del 1 al 4 obligatorias", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Preguntas del 1 al 6 obligatorias", Toast.LENGTH_SHORT).show();
         }
 
         else if (p4.equals("0")) {
-            Toast.makeText(getApplicationContext(), "Preguntas del 1 al 4 obligatorias", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Preguntas del 1 al 6 obligatorias", Toast.LENGTH_SHORT).show();
+        }
+
+        else if (p5.equals("0")) {
+            Toast.makeText(getApplicationContext(), "Preguntas del 1 al 6 obligatorias", Toast.LENGTH_SHORT).show();
+        }
+
+        else if (p6.equals("0")) {
+            Toast.makeText(getApplicationContext(), "Preguntas del 1 al 6 obligatorias", Toast.LENGTH_SHORT).show();
         }
 
 
@@ -196,8 +233,10 @@ public class MainActivity extends AppCompatActivity {
                     parametros.put("pregunta2", p2);
                     parametros.put("pregunta3", p3);
                     parametros.put("pregunta4", p4);
-                    parametros.put("pregunta5", resp5.getText().toString());
-                    parametros.put("pregunta6", resp6.getText().toString());
+                    parametros.put("pregunta5", p5);
+                    parametros.put("pregunta6", p6);
+                    parametros.put("pregunta7", resp7.getText().toString());
+                    parametros.put("pregunta8", resp8.getText().toString());
                     return parametros;
                 }
             };
