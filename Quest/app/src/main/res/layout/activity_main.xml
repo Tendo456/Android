@@ -221,7 +221,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/drawable_cell_shape"
                         android:padding="5dp"
-                        android:text="Bioseguridad de las instalaciones (uso de mascarillas, desinfección o lavado de manos, etc)"
+                        android:text="Existen medidas de protección suficientes para la protección de la salud: el personal utiliza equipo de protección como mascarilla y/o guantes, se dispone de alcohol-gel en todas las áreas, se realizan controles de temperatura a la entrada de las instalaciones, se respeta la distancia apropiada entre pacientes, el personal exhibe una adecuada y constante higiene de manos."
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -257,7 +257,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/drawable_cell_shape"
                         android:padding="5dp"
-                        android:text="Profesionalismo y cordialidad del personal de salud durante la atención"
+                        android:text="El personal responsable de atenderlo(a) cumplió con sus expectativas, demostró dominio del tema consultado y lo(a) trató con respeto y amabilidad. En caso no haya sido así, indicarlo en la pregunta N° 8."
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -293,12 +293,84 @@
                         android:layout_weight="1"
                         android:background="@drawable/drawable_cell_shape"
                         android:padding="5dp"
-                        android:text="Grado de satisfacción del servicio en general"
+                        android:text="La experiencia durante su visita resultó satisfactoria."
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
                     <Spinner
                         android:id="@+id/puntaje_4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="2dp"
+                        android:background="@drawable/drawable_spinner"
+                        android:padding="5dp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/drawable_cell_shape"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/textView20"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:padding="5dp"
+                        android:text="5."
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/textView21"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/drawable_cell_shape"
+                        android:padding="5dp"
+                        android:text="El tiempo de duración del Examen Médico Ocupacional fue el correcto."
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <Spinner
+                        android:id="@+id/puntaje_5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="2dp"
+                        android:background="@drawable/drawable_spinner"
+                        android:padding="5dp" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/drawable_cell_shape"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/textView22"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:padding="5dp"
+                        android:text="6."
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/textView23"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/drawable_cell_shape"
+                        android:padding="5dp"
+                        android:text="El personal fue abierto a responder sus preguntas y preocupaciones."
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <Spinner
+                        android:id="@+id/puntaje_6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="2dp"
@@ -338,7 +410,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:padding="5dp"
-                        android:text="5."
+                        android:text="7."
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -392,7 +464,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:padding="5dp"
-                        android:text="6."
+                        android:text="7."
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
