@@ -73,15 +73,19 @@
                     android:background="@drawable/bordes"
                     android:gravity="center"
                     android:text="Fecha"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
                     android:textSize="22sp" />
 
-                <Spinner
-                    android:id="@+id/spLugar"
+                <TextView
+                    android:id="@+id/Lugar"
                     android:layout_width="190dp"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
-                    android:background="@drawable/drawable_spinner" />
+                    android:background="@drawable/bordes"
+                    android:gravity="center"
+                    android:text="Clinica EMOS"
+                    android:textColor="@color/white"
+                    android:textSize="22sp"/>
 
             </LinearLayout>
 

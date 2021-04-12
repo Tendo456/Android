@@ -33,8 +33,8 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    Spinner puntaje_1,puntaje_2,puntaje_3,puntaje_4,puntaje_5,puntaje_6,spLugar;
-    TextView resp7,resp8,fecha,hora;
+    Spinner puntaje_1,puntaje_2,puntaje_3,puntaje_4,puntaje_5,puntaje_6;
+    TextView resp7,resp8,fecha,hora,Lugar;
     Button Enviar;
     String p1,p2,p3,p4,p5,p6,lugares;
     ImageView fondo;
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         puntaje_6 = findViewById(R.id.puntaje_6);
 
         fecha = findViewById(R.id.fecha);
-        spLugar = findViewById(R.id.spLugar);
+        Lugar = findViewById(R.id.Lugar);
         resp7 = findViewById(R.id.respuesta7);
         resp8 = findViewById(R.id.respuesta8);
         Enviar = findViewById(R.id.Enviar);
@@ -147,21 +147,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-        ArrayAdapter<CharSequence> lugar = ArrayAdapter.createFromResource(this, R.array.lugares, R.layout.spinner_text);
-        lugar.setDropDownViewResource(R.layout.spinner_dropdown_text);
-        spLugar.setAdapter(lugar);
-        spLugar.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                lugares = parent.getItemAtPosition(position).toString();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
+        lugares=Lugar.getText().toString();
 
         fecha();
 
