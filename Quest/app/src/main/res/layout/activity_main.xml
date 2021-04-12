@@ -232,7 +232,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/drawable_cell_shape"
                         android:padding="5dp"
-                        android:text="Existen medidas de protección suficientes para la protección de la salud: el personal utiliza equipo de protección como mascarilla y/o guantes, se dispone de alcohol-gel en todas las áreas, se realizan controles de temperatura a la entrada de las instalaciones, se respeta la distancia apropiada entre pacientes, el personal exhibe una adecuada y constante higiene de manos."
+                        android:text="Existen medidas para la protección de la salud: el personal utiliza mascarilla y/o guantes así como adecuada y constante higiene de manos, alcohol-gel en todas las áreas, se toma la temperatura a la entrada de las instalaciones, se respeta la distancia social entre pacientes"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 

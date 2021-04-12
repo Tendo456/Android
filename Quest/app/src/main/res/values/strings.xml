@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Encuesta</string>
+    <string name="app_name">Encuesta Ocupacional</string>
 
     <string-array name="numeros">
         <item>0</item>
