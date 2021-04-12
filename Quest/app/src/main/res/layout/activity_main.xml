@@ -264,7 +264,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/drawable_cell_shape"
                         android:padding="5dp"
-                        android:text="El personal responsable de atenderlo(a) cumplió con sus expectativas, demostró dominio del tema consultado y lo(a) trató con respeto y amabilidad. En caso no haya sido así, indicarlo en la pregunta N° 8."
+                        android:text="@string/hello"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
