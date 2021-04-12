@@ -86,11 +86,6 @@ public class MainActivity extends AppCompatActivity {
         }else{
             super.onActivityResult(requestCode, resultCode, data);
         }
-
-        assert result != null;
-        String datos = result.getContents();
-
-        txtLink.setText(datos);
     }
 
     public void urls (View view){
