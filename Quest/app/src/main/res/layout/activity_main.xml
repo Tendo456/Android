@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="2dp"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
     <ImageView
@@ -49,6 +49,7 @@
                 android:layout_margin="10dp"
                 android:gravity="center_horizontal"
                 android:text="Encuesta de Satisfacción"
+                android:textColor="@color/black"
                 android:textSize="30sp" />
 
             <TextView
@@ -72,6 +73,7 @@
                     android:background="@drawable/bordes"
                     android:gravity="center"
                     android:text="Fecha"
+                    android:textColor="@color/black"
                     android:textSize="22sp" />
 
                 <Spinner
