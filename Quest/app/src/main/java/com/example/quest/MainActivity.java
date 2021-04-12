@@ -176,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog.Builder opcion = new AlertDialog.Builder(this);
         opcion.setMessage("Enviar los Datos?");
         opcion.setPositiveButton("Enviar", (dialog, which) ->
-                enviar("http://190.119.144.250:83/encuesta/insertarEncuesta.php"));
+                enviar("http://190.119.144.250:83/encuesta/ocupacional/insertarEncuesta.php"));
         //http://190.119.144.250:83/encuesta/insertarEncuesta.php
         opcion.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
 
