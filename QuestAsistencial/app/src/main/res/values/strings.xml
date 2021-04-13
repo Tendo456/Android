@@ -15,6 +15,6 @@
         <item>Mina</item>
     </string-array>
 
-    <string name="hello">El personal responsable de atenderlo(a) cumplió con sus expectativas, demostró dominio del tema consultado y lo(a) trató con respeto y amabilidad. <br/> <small>En caso no haya sido así, indicarlo en la pregunta N° 8.</small></string>
+    <string name="numero3">El personal responsable de atenderlo(a) cumplió con sus expectativas, demostró dominio del tema consultado y lo(a) trató con respeto y amabilidad. <br/> <small>En caso no haya sido así, indicarlo en la pregunta N° 8.</small></string>
 
 </resources>
