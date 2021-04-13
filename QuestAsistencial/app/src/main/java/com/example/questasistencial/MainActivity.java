@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,7 +34,8 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    Spinner puntaje_1,puntaje_2,puntaje_3,puntaje_4,puntaje_5,puntaje_6,spLugar;
+    Spinner puntaje_1,puntaje_2,puntaje_3,puntaje_4,puntaje_5,spLugar;
+    RadioButton rbSi,rbNo;
     TextView resp7,resp8,fecha,hora;
     Button Enviar;
     String p1,p2,p3,p4,p5,p6,lugares;
@@ -53,7 +55,8 @@ public class MainActivity extends AppCompatActivity {
         puntaje_3 = findViewById(R.id.puntaje_3);
         puntaje_4 = findViewById(R.id.puntaje_4);
         puntaje_5 = findViewById(R.id.puntaje_5);
-        puntaje_6 = findViewById(R.id.puntaje_6);
+        rbSi = findViewById(R.id.rbSi);
+        rbNo = findViewById(R.id.rbNo);
 
         fecha = findViewById(R.id.fecha);
         spLugar = findViewById(R.id.spLugar);
@@ -134,19 +137,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        puntaje_6.setAdapter(adapter);
-        puntaje_6.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                p6  =parent.getItemAtPosition(position).toString();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
         ArrayAdapter<CharSequence> loc = ArrayAdapter.createFromResource(this, R.array.lugares, R.layout.spinner_text);
         loc.setDropDownViewResource(R.layout.spinner_dropdown_text);
         spLugar.setAdapter(loc);
@@ -165,16 +155,28 @@ public class MainActivity extends AppCompatActivity {
 
         fecha();
 
-
         Enviar.setOnClickListener(v -> confirmar());
 
+        pre6();
+        rbSi.setOnClickListener(v -> pre6());
+        rbNo.setOnClickListener(v -> pre6());
+
+    }
+
+    public void pre6(){
+        if(rbSi.isChecked()){
+            p6="Si";
+        }
+        else if(rbNo.isChecked()){
+            p6="No";
+        }
     }
 
     public void confirmar(){
         AlertDialog.Builder opcion = new AlertDialog.Builder(this);
         opcion.setMessage("Enviar los Datos?");
         opcion.setPositiveButton("Enviar", (dialog, which) ->
-                enviar("http://190.119.144.250:83/encuesta/ocupacional/insertarEncuesta.php"));
+                enviar("http://190.119.144.250:83/encuesta/asistencial/insertarAsistencial.php"));
         //http://190.119.144.250:83/encuesta/insertarEncuesta.php
         opcion.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
 
@@ -204,10 +206,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         else if (p5.equals("0")) {
-            Toast.makeText(getApplicationContext(), "Preguntas del 1 al 6 obligatorias", Toast.LENGTH_SHORT).show();
-        }
-
-        else if (p6.equals("0")) {
             Toast.makeText(getApplicationContext(), "Preguntas del 1 al 6 obligatorias", Toast.LENGTH_SHORT).show();
         }
 
