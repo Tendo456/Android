@@ -455,6 +455,7 @@
                             android:background="@drawable/drawable_cell_shape"
                             android:gravity="start|top"
                             android:hint="Respuesta"
+                            android:textColorHint="#BDBDBD"
                             android:inputType="textMultiLine|textPersonName"
                             android:textColor="@color/black"
                             android:maxLength="100" />
@@ -511,6 +512,7 @@
                             android:background="@drawable/drawable_cell_shape"
                             android:gravity="start|top"
                             android:hint="Respuesta"
+                            android:textColorHint="@color/grey_400"
                             android:inputType="textMultiLine|textPersonName"
                             android:textColor="@color/black"
                             android:maxLength="100" />

@@ -12,15 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuestAsistencial"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Mensaje"></activity>
-        <activity android:name=".inicio" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Mensaje" />
+        <activity android:name=".inicio">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>
