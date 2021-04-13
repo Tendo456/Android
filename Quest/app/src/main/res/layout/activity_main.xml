@@ -206,7 +206,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="2dp"
                         android:background="@drawable/drawable_spinner"
-                        android:padding="5dp" />
+                        android:padding="2dp" />
 
                 </TableRow>
 
@@ -242,7 +242,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="2dp"
                         android:background="@drawable/drawable_spinner"
-                        android:padding="5dp" />
+                        android:padding="2dp" />
 
                 </TableRow>
 
@@ -278,7 +278,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="2dp"
                         android:background="@drawable/drawable_spinner"
-                        android:padding="5dp" />
+                        android:padding="2dp" />
 
                 </TableRow>
 
@@ -314,7 +314,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="2dp"
                         android:background="@drawable/drawable_spinner"
-                        android:padding="5dp" />
+                        android:padding="2dp" />
 
                 </TableRow>
 
@@ -350,7 +350,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="2dp"
                         android:background="@drawable/drawable_spinner"
-                        android:padding="5dp" />
+                        android:padding="2dp" />
 
                 </TableRow>
 
@@ -386,7 +386,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="2dp"
                         android:background="@drawable/drawable_spinner"
-                        android:padding="5dp" />
+                        android:padding="2dp" />
 
                 </TableRow>
 
@@ -446,7 +446,7 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="128dp"
+                        android:layout_height="132dp"
                         app:counterTextColor="@color/black"
                         app:counterEnabled="true"
                         app:counterMaxLength="100">
@@ -501,7 +501,7 @@
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="128dp"
+                        android:layout_height="132dp"
                         android:layout_span="2"
                         android:layout_weight="1"
                         app:counterEnabled="true"
