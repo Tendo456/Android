@@ -76,16 +76,13 @@
                     android:textColor="@color/white"
                     android:textSize="22sp" />
 
-                <TextView
-                    android:id="@+id/Lugar"
+                <Spinner
+                    android:id="@+id/spLugar"
                     android:layout_width="190dp"
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
-                    android:background="@drawable/bordes"
-                    android:gravity="center"
-                    android:text="Clinica EMOS"
-                    android:textColor="@color/white"
-                    android:textSize="22sp" />
+                    android:background="@drawable/drawable_spinner"
+                    android:gravity="center" />
 
             </LinearLayout>
 
@@ -448,7 +445,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="128dp"
                         app:counterEnabled="true"
-                        app:counterMaxLength="100">
+                        app:counterMaxLength="100"
+                        app:counterTextColor="@color/black">
 
                         <EditText
                             android:id="@+id/respuesta7"
@@ -458,6 +456,7 @@
                             android:gravity="start|top"
                             android:hint="Respuesta"
                             android:inputType="textMultiLine|textPersonName"
+                            android:textColor="@color/black"
                             android:maxLength="100" />
 
                     </com.google.android.material.textfield.TextInputLayout>
@@ -500,8 +499,8 @@
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="128dp"
-                        android:layout_span="2"
                         android:layout_weight="1"
+                        app:counterTextColor="@color/black"
                         app:counterEnabled="true"
                         app:counterMaxLength="100">
 
@@ -513,6 +512,7 @@
                             android:gravity="start|top"
                             android:hint="Respuesta"
                             android:inputType="textMultiLine|textPersonName"
+                            android:textColor="@color/black"
                             android:maxLength="100" />
 
                     </com.google.android.material.textfield.TextInputLayout>
