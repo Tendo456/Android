@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements UsersAdapter.Clic
 
     public void getAllUsers(){
 
-        Call<List<UserResponse>> userlist = ApiClient.getUserService().getAllUsers1(Integer.parseInt(n));
+        Call<List<UserResponse>> userlist = ApiClient.getUserService().getAllUsers();
         userlist.enqueue(new Callback<List<UserResponse>>() {
             @Override
             public void onResponse(Call<List<UserResponse>> call, Response<List<UserResponse>> response) {

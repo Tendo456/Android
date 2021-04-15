@@ -42,7 +42,7 @@ public class AtencionesAdapter extends RecyclerView.Adapter<AtencionesAdapter.At
         int username = atencionesResponse.getIdpatient();
         int prefix = atencionesResponse.getIdatention();
 
-        holder.username.setText(String.valueOf(username));
+        holder.username.setText(String.valueOf(prefix));
         holder.prefix.setText(String.valueOf(username));
         holder.imageMore.setOnClickListener(v -> clickedItem.ClickedAtencion(atencionesResponse));
 

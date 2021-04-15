@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity implements  UsersAdapter.Cli
 
     Toolbar toolbar;
     RecyclerView recyclerView;
-    String n="2";
+    String n="1";
     UsersAdapter usersAdapter;
 
     @Override

@@ -30,7 +30,7 @@ public class listar extends AppCompatActivity implements AtencionesAdapter.Click
     private TextView RUserName;
     Toolbar toolbar;
     RecyclerView recyclerView;
-    String n="2";
+    String n="1";
     AtencionesAdapter atencionesAdapter;
 
     private Window window;
