@@ -89,7 +89,6 @@ public class Terceros extends AppCompatActivity {
 
         mAuthListener = firebaseAuth -> {
             FirebaseUser user = firebaseAuth.getCurrentUser();
-            user.sendEmailVerification();
             if (user != null) {
 
                 continuar.setEnabled(true);
