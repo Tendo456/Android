@@ -23,7 +23,7 @@ public interface UserService {
     Call<AtencionesRequest> postDataToServer(@Body AtencionesRequest userRequest);
 
 
-    @GET("app#")
+    @GET("app")
     Call<List<AtencionesResponse>> getPostById(@Query("iduser") Integer iduser);
 
     @PATCH("posts/{id}")

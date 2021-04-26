@@ -52,7 +52,6 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserAdapterV
         holder.prefix.setText(prefix);
         holder.username.setText(username);
         holder.imageMore.setOnClickListener(v -> clickedItem.ClickedUser(userResponse));
-
     }
 
     public interface ClickedItem{
