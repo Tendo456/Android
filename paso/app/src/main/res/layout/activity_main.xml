@@ -4,15 +4,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="#263238"
+    tools:context=".MainActivity" >
 
-    <TextView
+    <com.baoyachi.stepview.HorizontalStepView
+        android:id="@+id/horizontalStepView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="600dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalStepView">
+
+        <RadioButton
+            android:id="@+id/pr1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="radio"
+            android:text="RadioButton" />
+
+        <RadioButton
+            android:id="@+id/pr2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="radio"
+            android:text="RadioButton" />
+
+        <RadioButton
+            android:id="@+id/pr3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="radio"
+            android:text="RadioButton" />
+
+        <RadioButton
+            android:id="@+id/pr4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="radio"
+            android:text="RadioButton" />
+
+        <RadioButton
+            android:id="@+id/pr5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="radio"
+            android:text="RadioButton" />
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
