@@ -34,11 +34,8 @@ public class MainActivity extends AppCompatActivity {
         pr4 = findViewById(R.id.pr4);
         pr5 = findViewById(R.id.pr5);
 
-
-
         estado();
-
-
+        
     }
 
     public void radio (View view){
