@@ -9,11 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LaboratorioMolecular">
-        <activity android:name=".extraccion"></activity>
-        <activity android:name=".alicuotado" />
-        <activity android:name=".recepcion" />
-        <activity android:name=".Formularios" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Actividades.extraccion"></activity>
+        <activity android:name=".Actividades.alicuotado" />
+        <activity android:name=".Actividades.recepcion" />
+        <activity android:name=".Actividades.Formularios" />
+        <activity android:name=".Actividades.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

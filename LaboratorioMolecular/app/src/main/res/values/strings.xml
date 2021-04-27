@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Laboratorio Molecular</string>
+
+    <string name="mas">Más</string>
+    <string name="recepcion">Recepción</string>
+    <string name="alicuotado">Alicuotado</string>
+    <string name="extraccion">Extracción</string>
+    <string name="area">Area Limpia</string>
+    <string name="amplificacion">Amplificación</string>
+    <string name="resultados">Resultados</string>
+
 </resources>

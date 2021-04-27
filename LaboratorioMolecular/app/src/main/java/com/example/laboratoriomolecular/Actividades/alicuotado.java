@@ -1,8 +1,10 @@
-package com.example.laboratoriomolecular;
+package com.example.laboratoriomolecular.Actividades;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.laboratoriomolecular.R;
 
 public class alicuotado extends AppCompatActivity {
 
