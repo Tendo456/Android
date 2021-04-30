@@ -17,10 +17,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="70dp"
+            android:gravity="center"
+            android:text="Seleccion de Formulario"
+            android:textSize="24sp" />
+
         <Button
             android:id="@+id/FRecepcion"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:drawableLeft="@drawable/ic_gotero"
             android:drawableRight="@drawable/ic_recepcion"
             android:text="RECEPCION" />
@@ -29,6 +40,7 @@
             android:id="@+id/FAlicuotado"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:drawableLeft="@drawable/ic_gotero"
             android:drawableRight="@drawable/ic_recepcion"
             android:text="ALICUOTADO" />
@@ -37,6 +49,7 @@
             android:id="@+id/FExtraccion"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:drawableLeft="@drawable/ic_gotero"
             android:drawableRight="@drawable/ic_recepcion"
             android:text="EXTRACCION" />
@@ -45,6 +58,7 @@
             android:id="@+id/FArea"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:drawableLeft="@drawable/ic_gotero"
             android:drawableRight="@drawable/ic_recepcion"
             android:text="AREA LIMPIA" />
@@ -53,6 +67,7 @@
             android:id="@+id/FAmplificacion"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:drawableLeft="@drawable/ic_gotero"
             android:drawableRight="@drawable/ic_recepcion"
             android:text="AMPLIFICACION" />
@@ -61,6 +76,7 @@
             android:id="@+id/FResultados"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
+            android:layout_margin="10dp"
             android:drawableLeft="@drawable/ic_gotero"
             android:drawableRight="@drawable/ic_recepcion"
             android:text="RESULTADOS" />

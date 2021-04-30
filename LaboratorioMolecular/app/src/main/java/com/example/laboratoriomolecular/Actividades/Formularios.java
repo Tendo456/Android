@@ -8,43 +8,34 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Button;
 
+import com.example.laboratoriomolecular.Add_recepcion;
 import com.example.laboratoriomolecular.R;
 
 public class Formularios extends AppCompatActivity {
+
+    Button FRecepcion,FAlicuotado,FExtraccion,FArea,FAmplificacion,FResultados;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formularios);
+
+        FRecepcion = findViewById(R.id.FRecepcion);
+        FAlicuotado = findViewById(R.id.FAlicuotado);
+        FExtraccion = findViewById(R.id.FExtraccion);
+        FArea = findViewById(R.id.FArea);
+        FAmplificacion = findViewById(R.id.FAmplificacion);
+        FResultados = findViewById(R.id.FResultados);
+
+        FRecepcion.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), recepcion.class)));
+        FAlicuotado.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), alicuotado.class)));
+        FExtraccion.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), extraccion.class)));
+        FArea.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), area_limpia.class)));
+        FAmplificacion.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), amplificacion.class)));
+        FResultados.setOnClickListener(v -> startActivity(new Intent(getApplicationContext(), resultados.class)));
+
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_titulos, menu);
-
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item){
-        switch (item.getItemId()){
-            case R.id.title_recepcion:
-                startActivity(new Intent(getApplicationContext(),recepcion.class));
-
-                return true;
-            case R.id.title_alicuotado:
-                startActivity(new Intent(getApplicationContext(),alicuotado.class));
-
-                return true;
-            case R.id.title_extraccion:
-                startActivity(new Intent(getApplicationContext(),extraccion.class));
-
-                return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }
