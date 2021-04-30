@@ -9,9 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LaboratorioMolecular">
-        <activity android:name=".resultados"></activity>
-        <activity android:name=".amplificacion" />
-        <activity android:name=".area_limpia" />
+        <activity android:name=".Actividades.resultados"></activity>
+        <activity android:name=".Actividades.amplificacion" />
+        <activity android:name=".Actividades.area_limpia" />
         <activity android:name=".Actividades.extraccion" />
         <activity android:name=".Actividades.alicuotado" />
         <activity android:name=".Actividades.recepcion" />
