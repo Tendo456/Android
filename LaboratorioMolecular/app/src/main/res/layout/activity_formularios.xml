@@ -6,4 +6,63 @@
     android:layout_height="match_parent"
     tools:context=".Actividades.Formularios">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/FRecepcion"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_gotero"
+            android:drawableRight="@drawable/ic_recepcion"
+            android:text="RECEPCION" />
+
+        <Button
+            android:id="@+id/FAlicuotado"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_gotero"
+            android:drawableRight="@drawable/ic_recepcion"
+            android:text="ALICUOTADO" />
+
+        <Button
+            android:id="@+id/FExtraccion"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_gotero"
+            android:drawableRight="@drawable/ic_recepcion"
+            android:text="EXTRACCION" />
+
+        <Button
+            android:id="@+id/FArea"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_gotero"
+            android:drawableRight="@drawable/ic_recepcion"
+            android:text="AREA LIMPIA" />
+
+        <Button
+            android:id="@+id/FAmplificacion"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_gotero"
+            android:drawableRight="@drawable/ic_recepcion"
+            android:text="AMPLIFICACION" />
+
+        <Button
+            android:id="@+id/FResultados"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_gotero"
+            android:drawableRight="@drawable/ic_recepcion"
+            android:text="RESULTADOS" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
