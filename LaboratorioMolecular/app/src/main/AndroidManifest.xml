@@ -9,7 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LaboratorioMolecular">
-        <activity android:name=".Add_recepcion"></activity>
         <activity android:name=".Actividades.resultados" />
         <activity android:name=".Actividades.amplificacion" />
         <activity android:name=".Actividades.area_limpia" />
