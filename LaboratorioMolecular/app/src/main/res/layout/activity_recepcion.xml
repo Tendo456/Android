@@ -39,7 +39,7 @@
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName5"
+                    android:id="@+id/Rhora"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
@@ -69,7 +69,7 @@
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName"
+                    android:id="@+id/Rnenvio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
@@ -77,7 +77,7 @@
                     android:backgroundTint="@color/indigo_400"
                     android:ems="10"
                     android:gravity="center"
-                    android:inputType="number|textPersonName"
+                    android:inputType="date"
                     android:textCursorDrawable="@null" />
             </TableRow>
 
@@ -98,7 +98,7 @@
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName2"
+                    android:id="@+id/Rqmuestras"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
@@ -106,7 +106,7 @@
                     android:backgroundTint="@color/indigo_400"
                     android:ems="10"
                     android:gravity="center"
-                    android:inputType="textPersonName"
+                    android:inputType="number"
                     android:textCursorDrawable="@null" />
             </TableRow>
 
@@ -127,7 +127,7 @@
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName3"
+                    android:id="@+id/Roperador"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
@@ -156,7 +156,7 @@
                     android:textSize="18sp" />
 
                 <EditText
-                    android:id="@+id/editTextTextPersonName4"
+                    android:id="@+id/Rfirma"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
