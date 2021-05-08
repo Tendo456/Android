@@ -337,7 +337,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/drawable_cell_shape"
                         android:padding="5dp"
-                        android:text="El tiempo de duración del Examen Médico Ocupacional fue el correcto."
+                        android:text="El personal fue abierto a responder sus preguntas y preocupaciones."
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -395,7 +395,7 @@
                         android:background="@drawable/drawable_cell_shape"
                         android:gravity="center_vertical"
                         android:padding="5dp"
-                        android:text="El personal fue abierto a responder sus preguntas y preocupaciones. \n \n"
+                        android:text="¿Resolvimos su problema o motivo de consulta? \n \n"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 

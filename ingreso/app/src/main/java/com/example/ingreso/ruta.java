@@ -141,7 +141,7 @@ public class ruta extends AppCompatActivity {
     }
 
     private void cargarspinerC (String respuestaC){
-        ArrayList<ruta_conductor> listaC = new ArrayList<ruta_conductor>();
+        ArrayList<ruta_conductor> listaC = new ArrayList<>();
         try {
             JSONArray jsonArreglo= new JSONArray(respuestaC);
             for (int i=0; i<jsonArreglo.length(); i++)

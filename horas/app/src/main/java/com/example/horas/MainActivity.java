@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void hora() {
-        long total = new Date("2018/09/14 01:10:20").getTime() - new Date("2018/09/13 10:14:00").getTime();
+        long total = new Date("2018/09/14 11:10:20").getTime() - new Date("2018/09/14 10:14:00").getTime();
         long horas = TimeUnit.MINUTES.convert(total, TimeUnit.MILLISECONDS);
         //System.out.println("Diferencia en horas: " + horas);
         time = String.valueOf(horas);
