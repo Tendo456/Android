@@ -1,4 +1,4 @@
-package com.example.laboratoriomolecular.Modelos;
+package com.example.laboratoriomolecular.Retrofit_Data;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
