@@ -1,6 +1,8 @@
 package com.example.laboratoriomolecular.Modelos;
 
-public class RecepcionResponse {
+import java.io.Serializable;
+
+public class RecepcionResponse implements Serializable {
 
     private String Hora;
     private String n_envio;
@@ -55,5 +57,17 @@ public class RecepcionResponse {
 
     public void setEstado(String estado) {
         this.estado = estado;
+    }
+
+    @Override
+    public String toString() {
+        return "RecepcionResponse{" +
+                "Hora='" + Hora + '\'' +
+                ", n_envio='" + n_envio + '\'' +
+                ", q_muestras='" + q_muestras + '\'' +
+                ", operador='" + operador + '\'' +
+                ", dni='" + dni + '\'' +
+                ", estado='" + estado + '\'' +
+                '}';
     }
 }
