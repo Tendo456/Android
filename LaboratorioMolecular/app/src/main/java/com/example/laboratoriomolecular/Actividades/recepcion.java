@@ -82,13 +82,13 @@ public class recepcion extends AppCompatActivity {
                 if(response.isSuccessful()){
                     Toast.makeText(recepcion.this, "Datos Guardados",Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(recepcion.this, "Error al Guardar 1",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(recepcion.this, "Error al Guardar",Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<RecepcionResponse> call, Throwable t) {
-                Toast.makeText(recepcion.this, "Error al Guardar",Toast.LENGTH_SHORT).show();
+                Toast.makeText(recepcion.this, "Error al Guardar 1",Toast.LENGTH_SHORT).show();
             }
         });
     }

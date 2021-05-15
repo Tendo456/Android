@@ -11,7 +11,7 @@ public class AdaptadorRetrofit {
 
     public Retrofit getAdapter(){
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.0.11/PruebasCanal/")
+                .baseUrl("https://tendoprueba.000webhostapp.com/crud/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         return retrofit;

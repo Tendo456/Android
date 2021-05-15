@@ -16,25 +16,25 @@ import retrofit2.http.Query;
 
 public interface APIRest {
 
-    @GET("API_REST.php")
+    @GET("insertarUser.php")
     Call<List<Usuario>> obtenerUsuarios();
 
-    @GET("API_REST.php")
+    @GET("insertarUser.php")
     Call<Usuario> obtenerUsuario(
             @Query("idUsuario") String idUsuario
     );
 
-    @POST("API_REST.php")
+    @POST("insertarUser.php")
     Call<Void> agregarUsuario(
             @Body Usuario usuario
     );
 
-    @PUT("API_REST.php")
+    @PUT("insertarUser.php")
     Call<Void> editarUsuario(
       @Body Usuario usuario
     );
 
-    @DELETE("API_REST.php")
+    @DELETE("insertarUser.php")
     Call<Void> eliminarUsuario(
             @Query("idUsuario") String idUsuario
     );
