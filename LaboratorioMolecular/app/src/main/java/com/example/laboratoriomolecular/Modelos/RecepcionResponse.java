@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class RecepcionResponse implements Serializable {
 
-    private String Hora;
+    private String hora;
     private String n_envio;
     private String q_muestras;
     private String operador;
@@ -12,11 +12,11 @@ public class RecepcionResponse implements Serializable {
     private String estado;
 
     public String getHora() {
-        return Hora;
+        return hora;
     }
 
     public void setHora(String hora) {
-        Hora = hora;
+        this.hora = hora;
     }
 
     public String getN_envio() {
@@ -62,7 +62,7 @@ public class RecepcionResponse implements Serializable {
     @Override
     public String toString() {
         return "RecepcionResponse{" +
-                "Hora='" + Hora + '\'' +
+                "hora='" + hora + '\'' +
                 ", n_envio='" + n_envio + '\'' +
                 ", q_muestras='" + q_muestras + '\'' +
                 ", operador='" + operador + '\'' +

@@ -1,8 +1,6 @@
-package com.example.laboratoriomolecular.Modelos;
+package com.example.labprueba;
 
-import java.util.Date;
-
-public class RecepcionRequest {
+public class UserResponce {
 
     private String hora;
     private String n_envio;
