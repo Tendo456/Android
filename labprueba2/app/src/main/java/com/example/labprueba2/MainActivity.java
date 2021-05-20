@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     EditText Rhora,Rnenvio,Rqmuestras,Roperador,Rdni,Restado;
     Button RGuardar;
-    String hora,n_envio,q_muestras,operador,dni,estado;
+    String estado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void saveuser(){
 
-        Call<RespPost> call = ApiClient.getUserService().insert(Rhora.getText().toString(),Rnenvio.getText().toString(),Rqmuestras.getText().toString(),Roperador.getText().toString(),Rdni.getText().toString(),estado);
+        Call<RespPost> call = ApiClient.getUserService().insert(Rhora.getText().toString(),Rnenvio.getText().toString(),Rqmuestras.getText().toString(),Roperador.getText().toString(),Rdni.getText().toString(),"1");
         call.enqueue(new Callback<RespPost>() {
             @Override
             public void onResponse(Call<RespPost> call, Response<RespPost> response) {
