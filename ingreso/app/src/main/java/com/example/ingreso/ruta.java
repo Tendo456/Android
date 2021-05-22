@@ -151,7 +151,7 @@ public class ruta extends AppCompatActivity {
                 rc.setNombre_conductor(jsonArreglo.getJSONObject(i).getString("nombre_conductor"));
                 listaC.add(rc);
             }
-            ArrayAdapter<ruta_conductor> a = new ArrayAdapter<ruta_conductor>(this, android.R.layout.simple_dropdown_item_1line,listaC);
+            ArrayAdapter<ruta_conductor> a = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, listaC);
             spConductor.setAdapter(a);
             spConductor.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override

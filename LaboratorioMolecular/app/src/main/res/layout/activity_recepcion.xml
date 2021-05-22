@@ -45,6 +45,7 @@
                     android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:backgroundTint="@color/indigo_400"
+                    android:editable="false"
                     android:ems="10"
                     android:gravity="center"
                     android:inputType="textPersonName"
@@ -77,7 +78,7 @@
                     android:backgroundTint="@color/indigo_400"
                     android:ems="10"
                     android:gravity="center"
-                    android:inputType="date"
+                    android:inputType="number"
                     android:textCursorDrawable="@null" />
             </TableRow>
 
@@ -164,7 +165,7 @@
                     android:backgroundTint="@color/indigo_400"
                     android:ems="10"
                     android:gravity="center"
-                    android:inputType="textPersonName"
+                    android:inputType="number"
                     android:textCursorDrawable="@null" />
             </TableRow>
         </TableLayout>
@@ -174,6 +175,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Guardar" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/ListRecepcion"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </LinearLayout>
 
 
