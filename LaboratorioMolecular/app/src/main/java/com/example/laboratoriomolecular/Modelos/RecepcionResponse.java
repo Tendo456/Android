@@ -1,6 +1,8 @@
 package com.example.laboratoriomolecular.Modelos;
 
-public class RecepcionResponse {
+import java.io.Serializable;
+
+public class RecepcionResponse implements Serializable {
 
     private String idrecepcion;
     private String fecha;

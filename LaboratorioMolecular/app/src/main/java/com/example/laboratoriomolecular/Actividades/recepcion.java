@@ -1,6 +1,7 @@
 package com.example.laboratoriomolecular.Actividades;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -194,7 +195,7 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
 
     @Override
     public void ClickedRecepcion(RecepcionResponse recepcionResponse) {
-
+        startActivity(new Intent(this,RecepcionDetails.class).putExtra("data",recepcionResponse));
     }
 
     public void hilo(){

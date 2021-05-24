@@ -3,6 +3,7 @@ package com.example.laboratoriomolecular.Modelos;
 public class RecepcionRequest {
 
     private String hora;
+    private String fecha;
     private String n_envio;
     private String q_muestras;
     private String operador;
@@ -16,6 +17,10 @@ public class RecepcionRequest {
     public void setHora(String hora) {
         this.hora = hora;
     }
+
+    public String getFecha() { return fecha; }
+
+    public void setFecha(String fecha) { this.fecha = fecha; }
 
     public String getN_envio() {
         return n_envio;
