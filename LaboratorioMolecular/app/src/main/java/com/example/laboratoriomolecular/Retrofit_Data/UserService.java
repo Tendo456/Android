@@ -1,5 +1,6 @@
 package com.example.laboratoriomolecular.Retrofit_Data;
 
+import com.example.laboratoriomolecular.Modelos.OperadorResponse;
 import com.example.laboratoriomolecular.Modelos.RecepcionRequest;
 import com.example.laboratoriomolecular.Modelos.RecepcionResponse;
 
@@ -28,4 +29,7 @@ public interface UserService {
 
     @GET("Recepcion/ListarRecepcion.php")
     Call<List<RecepcionResponse>> getRecepcion();
+
+    @GET("Recepcion/ListarRecepcion.php")
+    Call<List<OperadorResponse>> getOperador();
 }
