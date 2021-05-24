@@ -4,16 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Actividades.recepcion">
+    tools:context=".MainActivity">
 
     <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:background="@drawable/drawable_blue"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:gravity="center_horizontal"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -35,45 +30,31 @@
                 <TextView
                     android:id="@+id/textView5"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:layout_weight="1"
                     android:background="@drawable/blue_white"
                     android:gravity="center"
                     android:text="Fecha / Hora"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/Rfecha"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
 
-                    <TextView
-                        android:id="@+id/Rfecha"
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:layout_margin="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/drawable_blue"
-                        android:gravity="center"
-                        android:text="Fecha/Hora"
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:id="@+id/Rhora"
-                        android:layout_width="match_parent"
-                        android:layout_height="45dp"
-                        android:layout_margin="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/drawable_blue"
-                        android:gravity="center"
-                        android:text="Fecha/Hora"
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
-                </LinearLayout>
+                <TextView
+                    android:id="@+id/Rhora"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
 
             </TableRow>
 
@@ -87,10 +68,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
-                    android:layout_weight="1"
                     android:background="@drawable/blue_white"
                     android:gravity="center"
-                    android:text="N° Envío"
+                    android:text="N° Envio"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 
@@ -100,13 +80,10 @@
                     android:layout_height="45dp"
                     android:layout_margin="5dp"
                     android:layout_span="2"
-                    android:layout_weight="1"
                     android:background="@drawable/drawable_blue"
                     android:ems="10"
                     android:gravity="center"
-                    android:hint="Numero de Envío"
                     android:inputType="number"
-                    android:maxLength="3"
                     android:textCursorDrawable="@null" />
             </TableRow>
 
@@ -120,7 +97,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
-                    android:layout_weight="1"
                     android:background="@drawable/blue_white"
                     android:gravity="center"
                     android:text="Q Muestras"
@@ -133,18 +109,15 @@
                     android:layout_height="45dp"
                     android:layout_margin="5dp"
                     android:layout_span="2"
-                    android:layout_weight="1"
                     android:background="@drawable/drawable_blue"
                     android:ems="10"
                     android:gravity="center"
-                    android:hint="Cantidad de Muestras"
                     android:inputType="number"
-                    android:maxLength="5"
                     android:textCursorDrawable="@null" />
             </TableRow>
 
             <TableRow
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/drawable_blue">
 
@@ -153,7 +126,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
-                    android:layout_weight="1"
                     android:background="@drawable/blue_white"
                     android:gravity="center"
                     android:text="Operador"
@@ -162,11 +134,10 @@
 
                 <Spinner
                     android:id="@+id/spOperador"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_margin="5dp"
                     android:layout_span="2"
-                    android:layout_weight="1"
                     android:background="@drawable/spinner"
                     android:gravity="center" />
 
@@ -182,7 +153,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_margin="5dp"
-                    android:layout_weight="1"
                     android:background="@drawable/blue_white"
                     android:gravity="center"
                     android:text="DNI"
@@ -195,7 +165,6 @@
                     android:layout_height="45dp"
                     android:layout_margin="5dp"
                     android:layout_span="2"
-                    android:layout_weight="1"
                     android:background="@drawable/drawable_blue"
                     android:gravity="center"
                     android:textColor="@color/black"
@@ -213,16 +182,12 @@
             android:id="@+id/Roperador"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TextView"
-            android:visibility="invisible" />
+            android:text="TextView" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/ListRecepcion"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:background="@drawable/drawable_blue" />
+            android:layout_height="match_parent" />
     </LinearLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

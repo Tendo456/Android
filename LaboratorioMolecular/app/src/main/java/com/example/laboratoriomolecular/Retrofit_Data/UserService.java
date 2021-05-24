@@ -20,12 +20,13 @@ public interface UserService {
 
     @FormUrlEncoded
     @POST("Recepcion/insertarRecepcion.php")
-    Call<RecepcionResponse> InsertarRecepcion (@Field("hora") String hora,
-                                             @Field("n_envio") String n_envio,
-                                             @Field("q_muestras") String q_muestras,
-                                             @Field("operador") String operador,
-                                             @Field("dni") String dni,
-                                             @Field("estado") String estado);
+    Call<RecepcionResponse> InsertarRecepcion (@Field("fecha") String fecha,
+                                               @Field("hora") String hora,
+                                               @Field("n_envio") String n_envio,
+                                               @Field("q_muestras") String q_muestras,
+                                               @Field("operador") String operador,
+                                               @Field("dni") String dni,
+                                               @Field("estado") String estado);
 
     @GET("Recepcion/ListarRecepcion.php")
     Call<List<RecepcionResponse>> getRecepcion();

@@ -3,6 +3,7 @@ package com.example.laboratoriomolecular.Modelos;
 public class RecepcionResponse {
 
     private String idrecepcion;
+    private String fecha;
     private String hora;
     private String n_envio;
     private String q_muestras;
@@ -17,6 +18,10 @@ public class RecepcionResponse {
     public void setIdrecepcion(String idrecepcion) {
         this.idrecepcion = idrecepcion;
     }
+
+    public String getFecha() { return fecha; }
+
+    public void setFecha(String fecha) { this.fecha = fecha; }
 
     public String getHora() {
         return hora;
@@ -70,6 +75,7 @@ public class RecepcionResponse {
     public String toString() {
         return "RecepcionResponse{" +
                 "idrecepcion='" + idrecepcion + '\'' +
+                ", fecha='" + fecha + '\'' +
                 ", hora='" + hora + '\'' +
                 ", n_envio='" + n_envio + '\'' +
                 ", q_muestras='" + q_muestras + '\'' +

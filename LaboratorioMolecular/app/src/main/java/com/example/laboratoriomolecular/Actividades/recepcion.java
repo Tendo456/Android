@@ -1,7 +1,10 @@
 package com.example.laboratoriomolecular.Actividades;
 
 import android.annotation.SuppressLint;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -9,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,7 +44,8 @@ import retrofit2.Response;
 
 public class recepcion extends AppCompatActivity implements RecepcionAdapter.ClickedItem{
 
-    EditText Rhora,Rnenvio,Rqmuestras,Roperador,Rdni,Restado;
+    EditText Rnenvio,Rqmuestras,Restado;
+    TextView Roperador,Rhora,Rdni,Rfecha;
     Button RGuardar;
     String estado;
     RecepcionAdapter recepcionAdapter;
@@ -54,6 +59,7 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recepcion);
 
+        Rfecha = findViewById(R.id.Rfecha);
         Rhora = findViewById(R.id.Rhora);
         Rnenvio = findViewById(R.id.Rnenvio);
         Rqmuestras = findViewById(R.id.Rqmuestras);
@@ -132,8 +138,6 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
 
     }
 
-
-
     public void fecha (){
         final Calendar calendar = Calendar.getInstance();
         @SuppressLint("SimpleDateFormat") Format formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -144,11 +148,13 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
         @SuppressLint("SimpleDateFormat") Format h = new SimpleDateFormat("HH:mm:ss");
         String ho = h.format(date);
 
-        Rhora.setText(s+" "+ho);
+        Rfecha.setText(s);
+        Rhora.setText(ho);
+        hilo();
     }
 
     private void saveRecepcion (){
-        Call<RecepcionResponse> call = ApiClient.getUserService().InsertarRecepcion(Rhora.getText().toString(),Rnenvio.getText().toString(),Rqmuestras.getText().toString(),Roperador.getText().toString(),Rdni.getText().toString(),"1");
+        Call<RecepcionResponse> call = ApiClient.getUserService().InsertarRecepcion(Rfecha.getText().toString(),Rhora.getText().toString(),Rnenvio.getText().toString(),Rqmuestras.getText().toString(),Roperador.getText().toString(),Rdni.getText().toString(),"1");
         call.enqueue(new Callback<RecepcionResponse>() {
             @Override
             public void onResponse(Call<RecepcionResponse> call, Response<RecepcionResponse> response) {
@@ -186,9 +192,18 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
 
     }
 
-
     @Override
     public void ClickedRecepcion(RecepcionResponse recepcionResponse) {
 
     }
+
+    public void hilo(){
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                fecha();
+            }
+        },60000);
+    }
+
 }
