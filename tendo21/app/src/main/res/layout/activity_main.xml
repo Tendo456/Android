@@ -20,25 +20,37 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
-            app:sv_selectedCircleColor="@color/green_700"
-            app:sv_selectedTextColor="@color/indigo_500"
-            app:sv_stepLineWidth="1dp"
-            app:sv_stepPadding="4dp"
-            app:sv_nextTextColor="@color/green_700"
-            app:sv_nextStepLineColor="@color/green_700"
+            app:sv_animationType="All"
             app:sv_doneCircleColor="@color/green_700"
-            app:sv_doneStepLineColor="@color/green_700"
             app:sv_doneCircleRadius="12dp"
+            app:sv_doneStepLineColor="@color/green_700"
+            app:sv_doneStepMarkColor="@color/white"
+            app:sv_doneTextColor="@color/gray"
+            app:sv_nextStepLineColor="@color/indigo_400"
+            app:sv_nextTextColor="@color/green_700"
+            app:sv_selectedCircleColor="@color/green_700"
             app:sv_selectedCircleRadius="12dp"
             app:sv_selectedStepNumberColor="@color/white"
-            app:sv_stepViewStyle="@style/StepView"
-            app:sv_doneStepMarkColor="@color/white"
+            app:sv_selectedTextColor="@color/indigo_500"
+            app:sv_stepLineWidth="1dp"
             app:sv_stepNumberTextSize="12sp"
-            app:sv_animationType="Line"
-            app:sv_stepsNumber="5"
-            app:steps="@array/steps"
+            app:sv_stepPadding="4dp"
+            app:sv_stepViewStyle="@style/StepView"
+            app:sv_steps="@array/numeros"
 
             />
+
+        <Button
+            android:id="@+id/next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Next" />
+
+        <Button
+            android:id="@+id/back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Back" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
