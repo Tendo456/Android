@@ -3,14 +3,12 @@ package com.example.paso;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
-import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RadioButton;
 
 import com.baoyachi.stepview.HorizontalStepView;
-import com.baoyachi.stepview.VerticalStepView;
 import com.baoyachi.stepview.bean.StepBean;
 
 import java.util.ArrayList;
@@ -74,10 +72,10 @@ public class MainActivity extends AppCompatActivity {
 
         horizontalStepView.setStepViewTexts(sources)
                 .setTextSize(12)
-                .setStepsViewIndicatorCompletedLineColor(Color.parseColor("#FFFF00"))
-                .setStepViewComplectedTextColor(Color.parseColor("#FFFF00"))
-                .setStepViewUnComplectedTextColor(ContextCompat.getColor(this,R.color.uncompleted_text_color))
-                .setStepsViewIndicatorCompletedLineColor(Color.parseColor("#FFFF00"))
+                .setStepsViewIndicatorCompletedLineColor(Color.parseColor("#388E3C"))
+                .setStepViewComplectedTextColor(Color.parseColor("#388E3C"))
+                .setStepViewUnComplectedTextColor(ContextCompat.getColor(this,R.color.green_200))
+                .setStepsViewIndicatorCompletedLineColor(Color.parseColor("#5c6bc0"))
                 .setStepsViewIndicatorCompleteIcon(ContextCompat.getDrawable(this,R.drawable.complted))
                 .setStepsViewIndicatorAttentionIcon(ContextCompat.getDrawable(this,R.drawable.attention))
                 .setStepsViewIndicatorDefaultIcon(ContextCompat.getDrawable(this,R.drawable.default_icon));
