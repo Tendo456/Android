@@ -1,0 +1,2 @@
+rootProject.name = "alfa21"
+include ':app'
