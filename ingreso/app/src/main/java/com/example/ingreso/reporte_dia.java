@@ -146,11 +146,6 @@ public class reporte_dia extends AppCompatActivity {
 
             }} ,año,mes,dia);
         dateDlg.show();
-
-
-
-
-
     }
 
 }

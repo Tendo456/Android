@@ -53,11 +53,6 @@ public class MainActivity extends AppCompatActivity {
             step_view.go(count,true);
         });
 
-        List<String> numeros = new ArrayList<>();
-        for (int i = 0; i < 5; i++){
-            numeros.add("Numeros " + (i+1));
-        }
-        numeros.set(numeros.size()-1, numeros.get(numeros.size()-1));
-        step_view.setSteps(numeros);
+
     }
 }

@@ -6,12 +6,15 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.SearchView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,10 +46,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class recepcion extends AppCompatActivity implements RecepcionAdapter.ClickedItem{
+public class recepcion extends AppCompatActivity implements RecepcionAdapter.ClickedItem, SearchView.OnQueryTextListener {
 
     EditText Rnenvio,Rqmuestras,Restado;
     TextView Roperador,Rhora,Rdni,Rfecha;
+    SearchView buscador;
     Button RGuardar;
     String estado;
     RecepcionAdapter recepcionAdapter;
@@ -69,6 +73,7 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
         RGuardar = findViewById(R.id.RGuardar);
         ListRecepcion = findViewById(R.id.ListRecepcion);
         spOperador = findViewById(R.id.spOperador);
+        buscador = findViewById(R.id.buscador);
         estado = "0";
 
         ListRecepcion.setLayoutManager(new LinearLayoutManager(this));
@@ -82,6 +87,9 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
 
         operador = new AsyncHttpClient();
         llenarspinerO();
+
+        listener();
+
 
     }
 
@@ -162,13 +170,13 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
                 if(response.isSuccessful()){
                     Toast.makeText(recepcion.this, "Datos Guardados",Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(recepcion.this, "Error 1",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(recepcion.this, "Error al Guardar los Datos",Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<RecepcionResponse> call, Throwable t) {
-                Toast.makeText(recepcion.this, "Error 2 "+t.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(recepcion.this, "Error "+t.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -193,6 +201,10 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
 
     }
 
+    public void listener(){
+        buscador.setOnQueryTextListener(this);
+    }
+
     @Override
     public void ClickedRecepcion(RecepcionResponse recepcionResponse) {
         startActivity(new Intent(this,RecepcionDetails.class).putExtra("data",recepcionResponse));
@@ -207,4 +219,16 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
         },60000);
     }
 
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+
+        recepcionAdapter.filter(newText);
+
+        return false;
+    }
 }
