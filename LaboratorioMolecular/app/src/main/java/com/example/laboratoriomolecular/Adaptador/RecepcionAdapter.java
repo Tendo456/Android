@@ -22,14 +22,12 @@ public class RecepcionAdapter extends RecyclerView.Adapter<RecepcionAdapter.Rece
     private List<RecepcionResponse> recepcionResponseList;
     private Context context;
     private ClickedItem clickedItem;
-    private List<RecepcionResponse> original;
 
     public RecepcionAdapter(ClickedItem clickedItem){this.clickedItem = clickedItem;}
 
     public void setData(List<RecepcionResponse> recepcionResponseList){
         this.recepcionResponseList = recepcionResponseList;
         notifyDataSetChanged();
-        original.addAll(recepcionResponseList);
     }
 
     @NonNull
@@ -60,31 +58,6 @@ public class RecepcionAdapter extends RecyclerView.Adapter<RecepcionAdapter.Rece
     @Override
     public int getItemCount() { return recepcionResponseList.size(); }
 
-    public void filter(String stbuscador){
-        if(stbuscador.length() == 0){
-            recepcionResponseList.clear();
-            recepcionResponseList.addAll(original);
-        }else{
-            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
-                List<RecepcionResponse>collect = recepcionResponseList.stream()
-                        .filter(i -> i.getFecha().toLowerCase().contains(stbuscador))
-                        .collect(Collectors.toList());
-
-                recepcionResponseList.clear();
-                recepcionResponseList.addAll(collect);
-            }
-            else{
-                for(RecepcionResponse i : original){
-                    if (i.getFecha().toLowerCase().contains(stbuscador)){
-                        recepcionResponseList.add(i);
-                    }
-                }
-            }
-        }
-
-        notifyDataSetChanged();
-
-    }
 
     public class RecepcionAdapterVH extends RecyclerView.ViewHolder {
 

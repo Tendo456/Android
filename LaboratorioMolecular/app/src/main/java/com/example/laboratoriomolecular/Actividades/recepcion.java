@@ -46,11 +46,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class recepcion extends AppCompatActivity implements RecepcionAdapter.ClickedItem, SearchView.OnQueryTextListener {
+public class recepcion extends AppCompatActivity implements RecepcionAdapter.ClickedItem {
 
     EditText Rnenvio,Rqmuestras,Restado;
     TextView Roperador,Rhora,Rdni,Rfecha;
-    SearchView buscador;
     Button RGuardar;
     String estado;
     RecepcionAdapter recepcionAdapter;
@@ -73,7 +72,6 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
         RGuardar = findViewById(R.id.RGuardar);
         ListRecepcion = findViewById(R.id.ListRecepcion);
         spOperador = findViewById(R.id.spOperador);
-        buscador = findViewById(R.id.buscador);
         estado = "0";
 
         ListRecepcion.setLayoutManager(new LinearLayoutManager(this));
@@ -87,8 +85,6 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
 
         operador = new AsyncHttpClient();
         llenarspinerO();
-
-        listener();
 
 
     }
@@ -201,10 +197,6 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
 
     }
 
-    public void listener(){
-        buscador.setOnQueryTextListener(this);
-    }
-
     @Override
     public void ClickedRecepcion(RecepcionResponse recepcionResponse) {
         startActivity(new Intent(this,RecepcionDetails.class).putExtra("data",recepcionResponse));
@@ -217,18 +209,5 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
                 fecha();
             }
         },60000);
-    }
-
-    @Override
-    public boolean onQueryTextSubmit(String query) {
-        return false;
-    }
-
-    @Override
-    public boolean onQueryTextChange(String newText) {
-
-        recepcionAdapter.filter(newText);
-
-        return false;
     }
 }
