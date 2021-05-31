@@ -118,8 +118,7 @@ public class reporte_dia extends AppCompatActivity {
 
     public void fechaR (View view) {
 
-        SimpleDateFormat dateParser = new SimpleDateFormat("MM-dd-yyyy",
-                Locale.ENGLISH);
+
 
         final Calendar calendar = Calendar.getInstance();
 

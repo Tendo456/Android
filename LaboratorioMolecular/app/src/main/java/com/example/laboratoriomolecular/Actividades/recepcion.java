@@ -1,6 +1,7 @@
 package com.example.laboratoriomolecular.Actividades;
 
 import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -13,12 +14,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.SearchView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -34,6 +37,7 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 
 import org.json.JSONArray;
 
+import java.text.DateFormat;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -49,14 +53,15 @@ import retrofit2.Response;
 public class recepcion extends AppCompatActivity implements RecepcionAdapter.ClickedItem {
 
     EditText Rnenvio,Rqmuestras,Restado;
-    TextView Roperador,Rhora,Rdni,Rfecha;
-    Button RGuardar;
+    TextView Roperador,Rhora,Rdni,Rfecha,Fechapiker;
+    Button RGuardar,BuscarF;
     String estado;
     RecepcionAdapter recepcionAdapter;
     RecyclerView ListRecepcion;
     Spinner spOperador;
     private AsyncHttpClient operador;
     private boolean isFirstTime = true,isFirstTime1 = true;
+    String date="2021-05-27";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +77,8 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
         RGuardar = findViewById(R.id.RGuardar);
         ListRecepcion = findViewById(R.id.ListRecepcion);
         spOperador = findViewById(R.id.spOperador);
+        Fechapiker = findViewById(R.id.Fechapiker);
+        BuscarF = findViewById(R.id.BuscarF);
         estado = "0";
 
         ListRecepcion.setLayoutManager(new LinearLayoutManager(this));
@@ -80,8 +87,9 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
         recepcionAdapter = new RecepcionAdapter(this::ClickedRecepcion);
 
         fecha();
-        getAllRecepcion();
-        RGuardar.setOnClickListener(v -> saveRecepcion());
+        BuscarF.setOnClickListener(v -> getAllRecepcion());
+
+        RGuardar.setOnClickListener(v -> ConfirmarRecepcion());
 
         operador = new AsyncHttpClient();
         llenarspinerO();
@@ -158,43 +166,46 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
         hilo();
     }
 
-    private void saveRecepcion (){
-        Call<RecepcionResponse> call = ApiClient.getUserService().InsertarRecepcion(Rfecha.getText().toString(),Rhora.getText().toString(),Rnenvio.getText().toString(),Rqmuestras.getText().toString(),Roperador.getText().toString(),Rdni.getText().toString(),"1");
-        call.enqueue(new Callback<RecepcionResponse>() {
-            @Override
-            public void onResponse(Call<RecepcionResponse> call, Response<RecepcionResponse> response) {
-                if(response.isSuccessful()){
-                    Toast.makeText(recepcion.this, "Datos Guardados",Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(recepcion.this, "Error al Guardar los Datos",Toast.LENGTH_SHORT).show();
-                }
-            }
+    public void ConfirmarRecepcion (){
+        AlertDialog.Builder opcion = new AlertDialog.Builder(this);
+        opcion.setMessage("Enviar los Datos?");
+        opcion.setPositiveButton("Enviar", (dialog, which) ->
+                saveRecepcion());
+        opcion.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
 
-            @Override
-            public void onFailure(Call<RecepcionResponse> call, Throwable t) {
-                Toast.makeText(recepcion.this, "Error "+t.getMessage(),Toast.LENGTH_SHORT).show();
-            }
-        });
+        AlertDialog dialog = opcion.create();
+        dialog.show();
     }
 
-    public void getAllRecepcion(){
-        Call<List<RecepcionResponse>> recepcionList = ApiClient.getUserService().getRecepcion();
-        recepcionList.enqueue(new Callback<List<RecepcionResponse>>() {
-            @Override
-            public void onResponse(Call<List<RecepcionResponse>> call, Response<List<RecepcionResponse>> response) {
-                if(response.isSuccessful()){
-                    List<RecepcionResponse> recepcionResponses = response.body();
-                    recepcionAdapter.setData(recepcionResponses);
-                    ListRecepcion.setAdapter(recepcionAdapter);
+    private void saveRecepcion (){
+
+        if (Rnenvio.getText().toString().isEmpty()){
+            Rnenvio.setError("Complete los campos");
+        }else if (Rqmuestras.getText().toString().isEmpty()){
+            Rqmuestras.setError("Complete los campos");
+        }else if (Rdni.getText().toString().isEmpty()){
+            Rdni.setError("Seleccione un Operador");
+        } else {
+
+
+            Call<RecepcionResponse> call = ApiClient.getUserService().InsertarRecepcion(Rfecha.getText().toString(), Rhora.getText().toString(), Rnenvio.getText().toString(), Rqmuestras.getText().toString(), Roperador.getText().toString(), Rdni.getText().toString(), "1");
+            call.enqueue(new Callback<RecepcionResponse>() {
+                @Override
+                public void onResponse(Call<RecepcionResponse> call, Response<RecepcionResponse> response) {
+                    if (response.isSuccessful()) {
+                        Toast.makeText(recepcion.this, "Datos Guardados", Toast.LENGTH_SHORT).show();
+                        limpiar();
+                    } else {
+                        Toast.makeText(recepcion.this, "Error al Guardar los Datos", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<List<RecepcionResponse>> call, Throwable t) {
-                Log.e("Fallo ",t.getLocalizedMessage());
-            }
-        });
-
+                @Override
+                public void onFailure(Call<RecepcionResponse> call, Throwable t) {
+                    Toast.makeText(recepcion.this, "Error " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 
     @Override
@@ -210,4 +221,54 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
             }
         },60000);
     }
+
+    public void getAllRecepcion(){
+        Call<List<RecepcionResponse>> recepcionList = ApiClient.getUserService().getRecepcionF(Fechapiker.getText().toString());
+        recepcionList.enqueue(new Callback<List<RecepcionResponse>>() {
+            @Override
+            public void onResponse(Call<List<RecepcionResponse>> call, Response<List<RecepcionResponse>> response) {
+                if(response.isSuccessful()){
+                    List<RecepcionResponse> recepcionResponses = response.body();
+                    recepcionAdapter.setData(recepcionResponses);
+                    ListRecepcion.setAdapter(recepcionAdapter);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<RecepcionResponse>> call, Throwable t) {
+                Log.e("Falló ",t.getLocalizedMessage());
+            }
+        });
+    }
+
+    public void SelectFecha (View view){
+        final Calendar c = Calendar.getInstance();
+
+        int dia = c.get(Calendar.DAY_OF_MONTH);
+        int mes = c.get(Calendar.MONTH);
+        int año = c.get(Calendar.YEAR);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, (view1, year, month, dayOfMonth) -> {
+
+            Calendar cal = Calendar.getInstance();
+            cal.setTimeInMillis(0);
+            cal.set(year, month, dayOfMonth, 0, 0, 0);
+            Date chosenDate = cal.getTime();
+
+            DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            String s = formatter.format(chosenDate);
+            Fechapiker.setText(s);
+
+        },año,mes,dia);
+        datePickerDialog.show();
+    }
+
+    public void limpiar (){
+        Rnenvio.getText().clear();
+        Rqmuestras.getText().clear();
+        Rdni.setText("");
+
+    }
+
+
 }

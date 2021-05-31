@@ -12,6 +12,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface UserService {
 
@@ -33,4 +34,7 @@ public interface UserService {
 
     @GET("Recepcion/ListarRecepcion.php")
     Call<List<OperadorResponse>> getOperador();
+
+    @GET("Recepcion/ListarRecepcionFecha.php")
+    Call<List<RecepcionResponse>> getRecepcionF(@Query("fecha") String fecha);
 }
