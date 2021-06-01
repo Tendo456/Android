@@ -52,16 +52,14 @@ import retrofit2.Response;
 
 public class recepcion extends AppCompatActivity implements RecepcionAdapter.ClickedItem {
 
-    EditText Rnenvio,Rqmuestras,Restado;
+    EditText Rnenvio,Rqmuestras;
     TextView Roperador,Rhora,Rdni,Rfecha,Fechapiker;
     Button RGuardar,BuscarF;
-    String estado;
     RecepcionAdapter recepcionAdapter;
     RecyclerView ListRecepcion;
     Spinner spOperador;
     private AsyncHttpClient operador;
     private boolean isFirstTime = true,isFirstTime1 = true;
-    String date="2021-05-27";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +77,6 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
         spOperador = findViewById(R.id.spOperador);
         Fechapiker = findViewById(R.id.Fechapiker);
         BuscarF = findViewById(R.id.BuscarF);
-        estado = "0";
 
         ListRecepcion.setLayoutManager(new LinearLayoutManager(this));
         ListRecepcion.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
