@@ -38,5 +38,9 @@ public interface UserService {
 
     @FormUrlEncoded
     @POST("Placas/InsertarPlaca.php")
-    Call<PlacaResponse> savePlaca (@Field("N_placa") String N_placa);
+    Call<PlacaResponse> savePlaca (@Field("N_placa") String N_placa,
+                                   @Field("fecha") String fecha);
+
+    @GET("Placas/ListarPlacaF.php")
+    Call<List<PlacaResponse>> getPlacaF(@Query("fecha") String fecha);
 }

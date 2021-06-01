@@ -4,12 +4,21 @@ import java.io.Serializable;
 
 public class PlacaResponse implements Serializable {
 
+    private String id_placa;
     private String N_placa;
     private String id_alicuotado;
     private String id_extraccion;
     private String id_area_limpia;
     private String id_amplificacion;
     private String id_resultados;
+
+    public String getId_placa() {
+        return id_placa;
+    }
+
+    public void setId_placa(String id_placa) {
+        this.id_placa = id_placa;
+    }
 
     public String getN_placa() {
         return N_placa;
@@ -62,7 +71,8 @@ public class PlacaResponse implements Serializable {
     @Override
     public String toString() {
         return "PlacaResponse{" +
-                "N_placa='" + N_placa + '\'' +
+                "id_placa='" + id_placa + '\'' +
+                ", N_placa='" + N_placa + '\'' +
                 ", id_alicuotado='" + id_alicuotado + '\'' +
                 ", id_extraccion='" + id_extraccion + '\'' +
                 ", id_area_limpia='" + id_area_limpia + '\'' +
