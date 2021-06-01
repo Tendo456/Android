@@ -1,6 +1,7 @@
 package com.example.laboratoriomolecular.Retrofit_Data;
 
 import com.example.laboratoriomolecular.Modelos.OperadorResponse;
+import com.example.laboratoriomolecular.Modelos.PlacaResponse;
 import com.example.laboratoriomolecular.Modelos.RecepcionRequest;
 import com.example.laboratoriomolecular.Modelos.RecepcionResponse;
 
@@ -15,9 +16,6 @@ import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface UserService {
-
-    @POST("insertarRecepcion.php")
-    Call<RecepcionResponse> saveRecepcion(@Body RecepcionRequest recepcionRequest);
 
     @FormUrlEncoded
     @POST("Recepcion/insertarRecepcion.php")
@@ -37,4 +35,8 @@ public interface UserService {
 
     @GET("Recepcion/ListarRecepcionFecha.php")
     Call<List<RecepcionResponse>> getRecepcionF(@Query("fecha") String fecha);
+
+    @FormUrlEncoded
+    @POST("Placas/InsertarPlaca.php")
+    Call<PlacaResponse> savePlaca (@Field("N_placa") String N_placa);
 }

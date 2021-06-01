@@ -245,7 +245,7 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
         int mes = c.get(Calendar.MONTH);
         int año = c.get(Calendar.YEAR);
 
-        DatePickerDialog datePickerDialog = new DatePickerDialog(this, (view1, year, month, dayOfMonth) -> {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this,R.style.DialogTheme, (view1, year, month, dayOfMonth) -> {
 
             Calendar cal = Calendar.getInstance();
             cal.setTimeInMillis(0);
