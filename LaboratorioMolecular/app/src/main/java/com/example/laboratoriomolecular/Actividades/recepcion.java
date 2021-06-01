@@ -3,20 +3,15 @@ package com.example.laboratoriomolecular.Actividades;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.SearchView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -59,7 +54,7 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
     RecyclerView ListRecepcion;
     Spinner spOperador;
     private AsyncHttpClient operador;
-    private boolean isFirstTime = true,isFirstTime1 = true;
+    private boolean isFirstTime = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -243,7 +238,7 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
 
         int dia = c.get(Calendar.DAY_OF_MONTH);
         int mes = c.get(Calendar.MONTH);
-        int año = c.get(Calendar.YEAR);
+        int an = c.get(Calendar.YEAR);
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(this,R.style.DialogTheme, (view1, year, month, dayOfMonth) -> {
 
@@ -256,7 +251,7 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
             String s = formatter.format(chosenDate);
             Fechapiker.setText(s);
 
-        },año,mes,dia);
+        },an,mes,dia);
         datePickerDialog.show();
     }
 

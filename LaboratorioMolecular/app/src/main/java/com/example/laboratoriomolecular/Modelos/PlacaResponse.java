@@ -6,19 +6,16 @@ public class PlacaResponse implements Serializable {
 
     private String id_placa;
     private String N_placa;
+    private String fecha;
     private String id_alicuotado;
     private String id_extraccion;
     private String id_area_limpia;
     private String id_amplificacion;
     private String id_resultados;
 
-    public String getId_placa() {
-        return id_placa;
-    }
+    public String getId_placa() { return id_placa; }
 
-    public void setId_placa(String id_placa) {
-        this.id_placa = id_placa;
-    }
+    public void setId_placa(String id_placa) { this.id_placa = id_placa; }
 
     public String getN_placa() {
         return N_placa;
@@ -27,6 +24,10 @@ public class PlacaResponse implements Serializable {
     public void setN_placa(String n_placa) {
         N_placa = n_placa;
     }
+
+    public String getFecha() { return fecha; }
+
+    public void setFecha(String fecha) { this.fecha = fecha; }
 
     public String getId_alicuotado() {
         return id_alicuotado;
@@ -56,9 +57,7 @@ public class PlacaResponse implements Serializable {
         return id_amplificacion;
     }
 
-    public void setId_amplificacion(String id_amplificacion) {
-        this.id_amplificacion = id_amplificacion;
-    }
+    public void setId_amplificacion(String id_amplificacion) { this.id_amplificacion = id_amplificacion; }
 
     public String getId_resultados() {
         return id_resultados;
@@ -73,6 +72,7 @@ public class PlacaResponse implements Serializable {
         return "PlacaResponse{" +
                 "id_placa='" + id_placa + '\'' +
                 ", N_placa='" + N_placa + '\'' +
+                ", fecha='" + fecha + '\'' +
                 ", id_alicuotado='" + id_alicuotado + '\'' +
                 ", id_extraccion='" + id_extraccion + '\'' +
                 ", id_area_limpia='" + id_area_limpia + '\'' +
