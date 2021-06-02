@@ -1,5 +1,6 @@
 package com.example.laboratoriomolecular.Retrofit_Data;
 
+import com.example.laboratoriomolecular.Modelos.AlicuotadoResponse;
 import com.example.laboratoriomolecular.Modelos.OperadorResponse;
 import com.example.laboratoriomolecular.Modelos.PlacaResponse;
 import com.example.laboratoriomolecular.Modelos.RecepcionResponse;
@@ -41,4 +42,7 @@ public interface UserService {
 
     @GET("Placas/ListarPlacaF.php")
     Call<List<PlacaResponse>> getPlacaF(@Query("fecha") String fecha);
+
+    @GET("Alicuotado/ConseguirAlicuotado.php")
+    Call<List<AlicuotadoResponse>> conseguirAl(@Query("N_placa") String N_placa);
 }

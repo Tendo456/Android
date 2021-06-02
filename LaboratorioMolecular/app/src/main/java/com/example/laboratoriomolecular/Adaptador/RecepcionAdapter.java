@@ -32,6 +32,7 @@ public class RecepcionAdapter extends RecyclerView.Adapter<RecepcionAdapter.Rece
 
     @NonNull
     @Override
+
     public RecepcionAdapterVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
         return new RecepcionAdapter.RecepcionAdapterVH(LayoutInflater.from(context).inflate(R.layout.row_users,parent,false));
@@ -46,7 +47,7 @@ public class RecepcionAdapter extends RecyclerView.Adapter<RecepcionAdapter.Rece
         String prefix = recepcionResponse.getIdrecepcion();
 
         holder.prefix.setText(prefix);
-        holder.date.setText(date);
+        holder.dateR.setText(date);
         holder.imagemore.setOnClickListener(v -> clickedItem.ClickedRecepcion(recepcionResponse));
 
     }
@@ -61,14 +62,14 @@ public class RecepcionAdapter extends RecyclerView.Adapter<RecepcionAdapter.Rece
 
     public class RecepcionAdapterVH extends RecyclerView.ViewHolder {
 
-        TextView date;
+        TextView dateR;
         TextView prefix;
         ImageView imagemore;
 
         public RecepcionAdapterVH(@NonNull View itemView) {
             super(itemView);
 
-            date = itemView.findViewById(R.id.date);
+            dateR = itemView.findViewById(R.id.date);
             prefix = itemView.findViewById(R.id.prefix);
             imagemore = itemView.findViewById(R.id.imageMore);
         }

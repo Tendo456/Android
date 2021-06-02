@@ -228,7 +228,7 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
 
             @Override
             public void onFailure(Call<List<RecepcionResponse>> call, Throwable t) {
-                Log.e("Falló ",t.getLocalizedMessage());
+                Log.e("Fallo ",t.getLocalizedMessage());
             }
         });
     }
