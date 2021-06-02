@@ -2,13 +2,11 @@ package com.example.laboratoriomolecular.Retrofit_Data;
 
 import com.example.laboratoriomolecular.Modelos.OperadorResponse;
 import com.example.laboratoriomolecular.Modelos.PlacaResponse;
-import com.example.laboratoriomolecular.Modelos.RecepcionRequest;
 import com.example.laboratoriomolecular.Modelos.RecepcionResponse;
 
 import java.util.List;
 
 import retrofit2.Call;
-import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;

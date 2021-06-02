@@ -128,7 +128,7 @@ public class alicuotado extends AppCompatActivity {
 
     }
 
-    private void csOpeA(String respuestaO){
+    private void csOpeA (String respuestaO){
         ArrayList<OperadorResponse> spOpeA = new ArrayList<>();
         try {
             JSONArray jsonArreglo= new JSONArray(respuestaO);
