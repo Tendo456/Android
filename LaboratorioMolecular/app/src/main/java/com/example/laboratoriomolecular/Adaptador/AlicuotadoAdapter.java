@@ -1,5 +1,6 @@
 package com.example.laboratoriomolecular.Adaptador;
 
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.laboratoriomolecular.Modelos.AlicuotadoResponse;
-import com.example.laboratoriomolecular.Modelos.RecepcionResponse;
 import com.example.laboratoriomolecular.R;
 
 import org.jetbrains.annotations.NotNull;
@@ -33,7 +33,7 @@ public class AlicuotadoAdapter extends RecyclerView.Adapter<AlicuotadoAdapter.Al
 
     @NotNull
     @Override
-    public AlicuotadoAdapterVH onCreateViewHolder( @NotNull ViewGroup parent, int viewType) {
+    public AlicuotadoAdapterVH onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
         contextA = parent.getContext();
         return new AlicuotadoAdapter.AlicuotadoAdapterVH(LayoutInflater.from(contextA).inflate(R.layout.row_users,parent,false));
     }

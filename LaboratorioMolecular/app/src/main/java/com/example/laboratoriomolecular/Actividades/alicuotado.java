@@ -1,7 +1,6 @@
 package com.example.laboratoriomolecular.Actividades;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -13,13 +12,15 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.laboratoriomolecular.Adaptador.AlicuotadoAdapter;
+import com.example.laboratoriomolecular.Adaptador.RecepcionAdapter;
 import com.example.laboratoriomolecular.Modelos.AlicuotadoResponse;
 import com.example.laboratoriomolecular.Modelos.OperadorResponse;
 import com.example.laboratoriomolecular.Modelos.PlacaSpinner;
-import com.example.laboratoriomolecular.Modelos.RecepcionResponse;
 import com.example.laboratoriomolecular.R;
 import com.example.laboratoriomolecular.Retrofit_Data.ApiClient;
 import com.loopj.android.http.AsyncHttpClient;
@@ -61,6 +62,11 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
         Adni = findViewById(R.id.Adni);
         Aq_muestras = findViewById(R.id.Aq_muestras);
         ListAlicuotado = findViewById(R.id.ListAlicuotado);
+
+        ListAlicuotado.setLayoutManager(new LinearLayoutManager(this));
+        ListAlicuotado.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
+
+        alicuotadoAdapter = new AlicuotadoAdapter(this::ClickedAlicuotado);
 
         placasA = new AsyncHttpClient();
         Afecha();

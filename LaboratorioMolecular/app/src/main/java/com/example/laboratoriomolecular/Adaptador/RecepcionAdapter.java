@@ -1,7 +1,6 @@
 package com.example.laboratoriomolecular.Adaptador;
 
 import android.content.Context;
-import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,6 @@ import com.example.laboratoriomolecular.Modelos.RecepcionResponse;
 import com.example.laboratoriomolecular.R;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RecepcionAdapter extends RecyclerView.Adapter<RecepcionAdapter.RecepcionAdapterVH> {
 
