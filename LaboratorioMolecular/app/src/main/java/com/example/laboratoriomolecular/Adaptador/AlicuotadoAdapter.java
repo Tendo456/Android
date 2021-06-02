@@ -18,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class AlicuotadoAdapter extends RecyclerView.Adapter<AlicuotadoAdapter.AlicuotadorAdapterVH> {
+public class AlicuotadoAdapter extends RecyclerView.Adapter<AlicuotadoAdapter.AlicuotadoAdapterVH> {
 
     private List<AlicuotadoResponse> alicuotadoResponseList;
     private Context contextA;
@@ -31,16 +31,15 @@ public class AlicuotadoAdapter extends RecyclerView.Adapter<AlicuotadoAdapter.Al
         notifyDataSetChanged();
     }
 
-    @NonNull
     @NotNull
     @Override
-    public AlicuotadorAdapterVH onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
+    public AlicuotadoAdapterVH onCreateViewHolder( @NotNull ViewGroup parent, int viewType) {
         contextA = parent.getContext();
-        return new AlicuotadoAdapter.AlicuotadorAdapterVH(LayoutInflater.from(contextA).inflate(R.layout.row_users,parent,false));
+        return new AlicuotadoAdapter.AlicuotadoAdapterVH(LayoutInflater.from(contextA).inflate(R.layout.row_users,parent,false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull AlicuotadorAdapterVH holder, int position) {
+    public void onBindViewHolder(@NonNull AlicuotadoAdapterVH holder, int position) {
 
         AlicuotadoResponse alicuotadoResponse = alicuotadoResponseList.get(position);
 
@@ -60,13 +59,13 @@ public class AlicuotadoAdapter extends RecyclerView.Adapter<AlicuotadoAdapter.Al
     @Override
     public int getItemCount() { return alicuotadoResponseList.size(); }
 
-    public class AlicuotadorAdapterVH extends RecyclerView.ViewHolder {
+    public class AlicuotadoAdapterVH extends RecyclerView.ViewHolder {
 
         TextView dateA;
         TextView prefix;
         ImageView imagemore;
 
-        public AlicuotadorAdapterVH(@NonNull @NotNull View itemView) {
+        public AlicuotadoAdapterVH(@NotNull View itemView) {
             super(itemView);
 
             dateA = itemView.findViewById(R.id.date);

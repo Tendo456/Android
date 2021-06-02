@@ -3,6 +3,8 @@ package com.example.laboratoriomolecular.Actividades;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -39,10 +41,9 @@ import retrofit2.Response;
 public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.ClickedItemA{
 
     Spinner spPlacasA,spOperA;
-    TextView Af_inicio,Aoperador,Adni,Aq_muestras;
+    TextView Af_inicio,Aoperador,Adni,Aq_muestras,AN_placa;
     private AsyncHttpClient placasA;
     private AsyncHttpClient operadorA;
-    String all;
     AlicuotadoAdapter alicuotadoAdapter;
     RecyclerView ListAlicuotado;
 
@@ -56,6 +57,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
         spOperA = findViewById(R.id.spOperA);
         Af_inicio = findViewById(R.id.Af_inicio);
         Aoperador = findViewById(R.id.Aoperador);
+        AN_placa = findViewById(R.id.AN_placa);
         Adni = findViewById(R.id.Adni);
         Aq_muestras = findViewById(R.id.Aq_muestras);
         ListAlicuotado = findViewById(R.id.ListAlicuotado);
@@ -74,6 +76,13 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
         Af_inicio.setText(s);
 
         llenarspinerA();
+
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                conseguir();
+            }
+        },10000);
     }
 
     private void llenarspinerA (){
@@ -111,7 +120,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                        //Roperador.setText(parent.getItemAtPosition(position).toString());
+                        AN_placa.setText(parent.getItemAtPosition(position).toString());
 
                 }
 
@@ -177,11 +186,11 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
 
     @Override
     public void ClickedAlicuotado(AlicuotadoResponse alicuotadoResponse) {
-        Aq_muestras.setText(alicuotadoResponse.getQ_muestras());
+        //Aq_muestras.setText(alicuotadoResponse.getQ_muestras());
     }
 
     private void conseguir (){
-        Call<List<AlicuotadoResponse>> alicuotadoList = ApiClient.getUserService().conseguirAl(all);
+        Call<List<AlicuotadoResponse>> alicuotadoList = ApiClient.getUserService().conseguirAl(AN_placa.getText().toString());
         alicuotadoList.enqueue(new Callback<List<AlicuotadoResponse>>() {
             @Override
             public void onResponse(Call<List<AlicuotadoResponse>> call, Response<List<AlicuotadoResponse>> response) {

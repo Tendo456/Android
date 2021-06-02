@@ -32,8 +32,7 @@ public class RecepcionAdapter extends RecyclerView.Adapter<RecepcionAdapter.Rece
 
     @NonNull
     @Override
-
-    public RecepcionAdapterVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecepcionAdapterVH onCreateViewHolder( @NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
         return new RecepcionAdapter.RecepcionAdapterVH(LayoutInflater.from(context).inflate(R.layout.row_users,parent,false));
     }
@@ -58,7 +57,6 @@ public class RecepcionAdapter extends RecyclerView.Adapter<RecepcionAdapter.Rece
 
     @Override
     public int getItemCount() { return recepcionResponseList.size(); }
-
 
     public class RecepcionAdapterVH extends RecyclerView.ViewHolder {
 
