@@ -35,7 +35,7 @@ public class AlicuotadoAdapter extends RecyclerView.Adapter<AlicuotadoAdapter.Al
     @Override
     public AlicuotadoAdapterVH onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
         contextA = parent.getContext();
-        return new AlicuotadoAdapter.AlicuotadoAdapterVH(LayoutInflater.from(contextA).inflate(R.layout.row_users,parent,false));
+        return new AlicuotadoAdapterVH(LayoutInflater.from(contextA).inflate(R.layout.row_users, parent, false));
     }
 
     @Override
@@ -53,13 +53,13 @@ public class AlicuotadoAdapter extends RecyclerView.Adapter<AlicuotadoAdapter.Al
     }
 
     public interface ClickedItemA{
-        public void ClickedAlicuotado(AlicuotadoResponse alicuotadoResponse);
+        void ClickedAlicuotado(AlicuotadoResponse alicuotadoResponse);
     }
 
     @Override
     public int getItemCount() { return alicuotadoResponseList.size(); }
 
-    public class AlicuotadoAdapterVH extends RecyclerView.ViewHolder {
+    public static class AlicuotadoAdapterVH extends RecyclerView.ViewHolder {
 
         TextView dateA;
         TextView prefix;

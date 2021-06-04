@@ -17,7 +17,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.laboratoriomolecular.Adaptador.AlicuotadoAdapter;
-import com.example.laboratoriomolecular.Adaptador.RecepcionAdapter;
 import com.example.laboratoriomolecular.Modelos.AlicuotadoResponse;
 import com.example.laboratoriomolecular.Modelos.OperadorResponse;
 import com.example.laboratoriomolecular.Modelos.PlacaSpinner;
@@ -35,6 +34,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -47,6 +47,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
     private AsyncHttpClient operadorA;
     AlicuotadoAdapter alicuotadoAdapter;
     RecyclerView ListAlicuotado;
+    String idAl,placaAl,muestrasAl,FinicioAL,HinicioAL,FfinalAl,HfinalAl,s,AN_placa1;
 
 
     @Override
@@ -77,67 +78,55 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
     public void Afecha (){
         final Calendar calendar = Calendar.getInstance();
         @SuppressLint("SimpleDateFormat") Format formatter = new SimpleDateFormat("yyyy-MM-dd");
-        String s = formatter.format(calendar.getTime());
+         s = formatter.format(calendar.getTime());
 
         Af_inicio.setText(s);
 
-        llenarspinerA();
+        llenarspinnerA();
 
-        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                conseguir();
-            }
-        },10000);
+        new Handler(Looper.getMainLooper()).postDelayed(() -> conseguir(),5000);
     }
 
-    private void llenarspinerA (){
+    public void llenarspinnerA(){
 
-        String url = "http://10.50.1.202/laboratorio/Placas/spPlaca.php?fecha="+Af_inicio.getText().toString();
-        placasA.post(url, new AsyncHttpResponseHandler() {
+        List<PlacaSpinner> Aplaca = new ArrayList<>();
+        ArrayAdapter<PlacaSpinner> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,Aplaca);
+
+        Call<List<PlacaSpinner>> placaList = ApiClient.getUserService().getPlacaFe(s);
+        placaList.enqueue(new Callback<List<PlacaSpinner>>() {
             @Override
-            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-                if (statusCode == 200){
-                    cargarspinerA(new String(responseBody));
+            public void onResponse(Call<List<PlacaSpinner>> call, Response<List<PlacaSpinner>> response) {
+                if(response.isSuccessful()){
+                    for (PlacaSpinner post : response.body()){
+
+                        String plac = post.getN_placa();
+                        PlacaSpinner placaSpinner = new PlacaSpinner(plac);
+                        Aplaca.add(placaSpinner);
+
+                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                        spPlacasA.setAdapter(adapter);
+                    }
+
                 }
+                spPlacasA.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        AN_placa1 = parent.getItemAtPosition(position).toString();
+                        AN_placa.setText(AN_placa1);
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
             }
 
             @Override
-            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+            public void onFailure(Call<List<PlacaSpinner>> call, Throwable t) {
 
             }
         });
-
-    }
-
-    private void cargarspinerA (String respuestaA){
-        ArrayList<PlacaSpinner> SpiPlaca = new ArrayList<>();
-        try {
-            JSONArray jsonArreglo= new JSONArray(respuestaA);
-            for (int i=0; i<jsonArreglo.length(); i++)
-            {
-                PlacaSpinner spp = new PlacaSpinner();
-                spp.setN_placa(jsonArreglo.getJSONObject(i).getString("N_placa"));
-                SpiPlaca.add(spp);
-            }
-            ArrayAdapter<PlacaSpinner> p = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, SpiPlaca);
-            spPlacasA.setAdapter(p);
-            spPlacasA.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
-                        AN_placa.setText(parent.getItemAtPosition(position).toString());
-
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-                }
-            });
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
     }
 
     private void llsOpeA (){
@@ -193,10 +182,24 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
     @Override
     public void ClickedAlicuotado(AlicuotadoResponse alicuotadoResponse) {
         //Aq_muestras.setText(alicuotadoResponse.getQ_muestras());
+
+        idAl = alicuotadoResponse.getId_alicuotado();
+        placaAl = alicuotadoResponse.getN_placa();
+        muestrasAl = alicuotadoResponse.getQ_muestras();
+        FinicioAL = alicuotadoResponse.getF_inicio();
+        HinicioAL = alicuotadoResponse.getH_inicio();
+        FfinalAl = alicuotadoResponse.getF_final();
+        HfinalAl = alicuotadoResponse.getH_final();
+
+        if (muestrasAl.isEmpty()){
+            Aq_muestras.setText(s);
+        }else {
+            Aq_muestras.setText(muestrasAl);
+        }
     }
 
     private void conseguir (){
-        Call<List<AlicuotadoResponse>> alicuotadoList = ApiClient.getUserService().conseguirAl(AN_placa.getText().toString());
+        Call<List<AlicuotadoResponse>> alicuotadoList = ApiClient.getUserService().conseguirAl(AN_placa.getText().toString(),s);
         alicuotadoList.enqueue(new Callback<List<AlicuotadoResponse>>() {
             @Override
             public void onResponse(Call<List<AlicuotadoResponse>> call, Response<List<AlicuotadoResponse>> response) {
@@ -204,6 +207,8 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
                     List<AlicuotadoResponse> alicuotadoResponses = response.body();
                     alicuotadoAdapter.setData(alicuotadoResponses);
                     ListAlicuotado.setAdapter(alicuotadoAdapter);
+
+
                 }
             }
 
@@ -213,6 +218,6 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
             }
         });
 
-
     }
+
 }

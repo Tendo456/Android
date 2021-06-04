@@ -49,12 +49,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
         holder.tvDescripcion.setText(item.getDescripcion());
 
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                itemClick.itemClick(item);
-            }
-        });
+        holder.itemView.setOnClickListener(v -> itemClick.itemClick(item));
 
     }
 
