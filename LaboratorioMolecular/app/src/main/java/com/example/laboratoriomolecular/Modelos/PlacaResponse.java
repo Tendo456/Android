@@ -6,16 +6,15 @@ public class PlacaResponse implements Serializable {
 
     private String id_placa;
     private String N_placa;
-    private String fecha;
-    private String id_alicuotado;
-    private String id_extraccion;
-    private String id_area_limpia;
-    private String id_amplificacion;
-    private String id_resultados;
+    private String fechaP;
 
-    public String getId_placa() { return id_placa; }
+    public String getId_placa() {
+        return id_placa;
+    }
 
-    public void setId_placa(String id_placa) { this.id_placa = id_placa; }
+    public void setId_placa(String id_placa) {
+        this.id_placa = id_placa;
+    }
 
     public String getN_placa() {
         return N_placa;
@@ -25,46 +24,12 @@ public class PlacaResponse implements Serializable {
         N_placa = n_placa;
     }
 
-    public String getFecha() { return fecha; }
-
-    public void setFecha(String fecha) { this.fecha = fecha; }
-
-    public String getId_alicuotado() {
-        return id_alicuotado;
+    public String getFechaP() {
+        return fechaP;
     }
 
-    public void setId_alicuotado(String id_alicuotado) {
-        this.id_alicuotado = id_alicuotado;
-    }
-
-    public String getId_extraccion() {
-        return id_extraccion;
-    }
-
-    public void setId_extraccion(String id_extraccion) {
-        this.id_extraccion = id_extraccion;
-    }
-
-    public String getId_area_limpia() {
-        return id_area_limpia;
-    }
-
-    public void setId_area_limpia(String id_area_limpia) {
-        this.id_area_limpia = id_area_limpia;
-    }
-
-    public String getId_amplificacion() {
-        return id_amplificacion;
-    }
-
-    public void setId_amplificacion(String id_amplificacion) { this.id_amplificacion = id_amplificacion; }
-
-    public String getId_resultados() {
-        return id_resultados;
-    }
-
-    public void setId_resultados(String id_resultados) {
-        this.id_resultados = id_resultados;
+    public void setFechaP(String fechaP) {
+        this.fechaP = fechaP;
     }
 
     @Override
@@ -72,12 +37,7 @@ public class PlacaResponse implements Serializable {
         return "PlacaResponse{" +
                 "id_placa='" + id_placa + '\'' +
                 ", N_placa='" + N_placa + '\'' +
-                ", fecha='" + fecha + '\'' +
-                ", id_alicuotado='" + id_alicuotado + '\'' +
-                ", id_extraccion='" + id_extraccion + '\'' +
-                ", id_area_limpia='" + id_area_limpia + '\'' +
-                ", id_amplificacion='" + id_amplificacion + '\'' +
-                ", id_resultados='" + id_resultados + '\'' +
+                ", fechaP='" + fechaP + '\'' +
                 '}';
     }
 }

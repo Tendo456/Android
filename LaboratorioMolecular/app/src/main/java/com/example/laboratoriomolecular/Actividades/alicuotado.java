@@ -25,12 +25,14 @@ import com.example.laboratoriomolecular.Retrofit_Data.ApiClient;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
@@ -42,12 +44,11 @@ import retrofit2.Response;
 public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.ClickedItemA{
 
     Spinner spPlacasA,spOperA;
-    TextView Af_inicio,Aoperador,Adni,Aq_muestras,AN_placa;
-    private AsyncHttpClient placasA;
+    TextView AN_placa, Aq_muestras, Af_inicio, Ah_inicio, Af_final, Ah_final, Aoperador ,Adni;
     private AsyncHttpClient operadorA;
     AlicuotadoAdapter alicuotadoAdapter;
     RecyclerView ListAlicuotado;
-    String idAl,placaAl,muestrasAl,FinicioAL,HinicioAL,FfinalAl,HfinalAl,s,AN_placa1;
+    String idAl, placaAl, muestrasAl, FinicioAL, HinicioAL, FfinalAl, HfinalAl, F, H, AN_placa1;
 
 
     @Override
@@ -57,19 +58,21 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
 
         spPlacasA = findViewById(R.id.spPlacasA);
         spOperA = findViewById(R.id.spOperA);
-        Af_inicio = findViewById(R.id.Af_inicio);
-        Aoperador = findViewById(R.id.Aoperador);
         AN_placa = findViewById(R.id.AN_placa);
-        Adni = findViewById(R.id.Adni);
         Aq_muestras = findViewById(R.id.Aq_muestras);
+        Af_inicio = findViewById(R.id.Af_inicio);
+        Ah_inicio = findViewById(R.id.Ah_inicio);
+        Af_final = findViewById(R.id.Af_final);
+        Ah_final = findViewById(R.id.Ah_final);
+        Aoperador = findViewById(R.id.Aoperador);
+        Adni = findViewById(R.id.Adni);
         ListAlicuotado = findViewById(R.id.ListAlicuotado);
 
         ListAlicuotado.setLayoutManager(new LinearLayoutManager(this));
         ListAlicuotado.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
 
-        alicuotadoAdapter = new AlicuotadoAdapter(this::ClickedAlicuotado);
+        alicuotadoAdapter = new AlicuotadoAdapter(this);
 
-        placasA = new AsyncHttpClient();
         Afecha();
         operadorA = new AsyncHttpClient();
         llsOpeA();
@@ -78,13 +81,23 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
     public void Afecha (){
         final Calendar calendar = Calendar.getInstance();
         @SuppressLint("SimpleDateFormat") Format formatter = new SimpleDateFormat("yyyy-MM-dd");
-         s = formatter.format(calendar.getTime());
+         F = formatter.format(calendar.getTime());
 
-        Af_inicio.setText(s);
+        Date date = new Date();
+        @SuppressLint("SimpleDateFormat") Format h = new SimpleDateFormat("HH:mm:ss");
+        H = h.format(date);
 
+        Af_inicio.setText(F);
+        Ah_inicio.setText(H);
+        Af_final.setText(F);
+        Ah_final.setText(H);
         llenarspinnerA();
+        new Handler(Looper.getMainLooper()).postDelayed(this::conseguir,3000);
+        Ahilo();
+    }
 
-        new Handler(Looper.getMainLooper()).postDelayed(() -> conseguir(),5000);
+    public void Ahilo(){
+        new Handler(Looper.getMainLooper()).postDelayed(this::Afecha,60000);
     }
 
     public void llenarspinnerA(){
@@ -92,11 +105,12 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
         List<PlacaSpinner> Aplaca = new ArrayList<>();
         ArrayAdapter<PlacaSpinner> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,Aplaca);
 
-        Call<List<PlacaSpinner>> placaList = ApiClient.getUserService().getPlacaFe(s);
+        Call<List<PlacaSpinner>> placaList = ApiClient.getUserService().getPlacaFe(F);
         placaList.enqueue(new Callback<List<PlacaSpinner>>() {
             @Override
-            public void onResponse(Call<List<PlacaSpinner>> call, Response<List<PlacaSpinner>> response) {
+            public void onResponse(@NotNull Call<List<PlacaSpinner>> call, @NotNull Response<List<PlacaSpinner>> response) {
                 if(response.isSuccessful()){
+                    assert response.body() != null;
                     for (PlacaSpinner post : response.body()){
 
                         String plac = post.getN_placa();
@@ -123,7 +137,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
             }
 
             @Override
-            public void onFailure(Call<List<PlacaSpinner>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<PlacaSpinner>> call, @NotNull Throwable t) {
 
             }
         });
@@ -191,29 +205,28 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
         FfinalAl = alicuotadoResponse.getF_final();
         HfinalAl = alicuotadoResponse.getH_final();
 
-        if (muestrasAl.isEmpty()){
-            Aq_muestras.setText(s);
-        }else {
-            Aq_muestras.setText(muestrasAl);
-        }
+        if (muestrasAl == null){ Aq_muestras.setText("Vacio"); }else { Aq_muestras.setText(muestrasAl); }
+        if(FinicioAL == null){ Af_inicio.setText(F); }else { Af_inicio.setText(FinicioAL); }
+        if(HinicioAL == null){Ah_inicio.setText(H);} else {Ah_inicio.setText(HinicioAL);}
+        if(FfinalAl == null){Af_final.setText(F);} else {Af_final.setText(FfinalAl);}
+        if(HfinalAl == null){Ah_final.setText(H);} else {Ah_final.setText(HfinalAl);}
     }
 
     private void conseguir (){
-        Call<List<AlicuotadoResponse>> alicuotadoList = ApiClient.getUserService().conseguirAl(AN_placa.getText().toString(),s);
+        Call<List<AlicuotadoResponse>> alicuotadoList = ApiClient.getUserService().conseguirAl(F);
         alicuotadoList.enqueue(new Callback<List<AlicuotadoResponse>>() {
             @Override
-            public void onResponse(Call<List<AlicuotadoResponse>> call, Response<List<AlicuotadoResponse>> response) {
+            public void onResponse(@NotNull Call<List<AlicuotadoResponse>> call, @NotNull Response<List<AlicuotadoResponse>> response) {
                 if(response.isSuccessful()){
                     List<AlicuotadoResponse> alicuotadoResponses = response.body();
                     alicuotadoAdapter.setData(alicuotadoResponses);
                     ListAlicuotado.setAdapter(alicuotadoAdapter);
 
-
                 }
             }
 
             @Override
-            public void onFailure(Call<List<AlicuotadoResponse>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<AlicuotadoResponse>> call, @NotNull Throwable t) {
                 Log.e("Fallo ",t.getLocalizedMessage());
             }
         });

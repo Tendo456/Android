@@ -34,7 +34,7 @@ import retrofit2.Response;
 public class nueva_placa extends AppCompatActivity {
 
     EditText CodPlaca;
-    TextView fechaP;
+    TextView fechaPl;
     Button PGuardar;
     RecyclerView ListaPlaca;
     PlacaAdapter placaAdapter;
@@ -47,7 +47,7 @@ public class nueva_placa extends AppCompatActivity {
         CodPlaca = findViewById(R.id.CodPlaca);
         PGuardar = findViewById(R.id.PGuardar);
         ListaPlaca = findViewById(R.id.ListaPlaca);
-        fechaP = findViewById(R.id.fechaP);
+        fechaPl = findViewById(R.id.fechaPl);
 
         PGuardar.setOnClickListener(v -> ConfirmarPlaca());
 
@@ -64,7 +64,7 @@ public class nueva_placa extends AppCompatActivity {
         @SuppressLint("SimpleDateFormat") Format formatter = new SimpleDateFormat("yyyy-MM-dd");
         String s = formatter.format(calendar.getTime());
 
-        fechaP.setText(s);
+        fechaPl.setText(s);
         hiloPlaca();
         ListarPlaca();
     }
@@ -94,7 +94,7 @@ public class nueva_placa extends AppCompatActivity {
             CodPlaca.setError("Ingresar Placa");
 
         }else {
-            Call<PlacaResponse> call = ApiClient.getUserService().savePlaca(CodPlaca.getText().toString(),fechaP.getText().toString());
+            Call<PlacaResponse> call = ApiClient.getUserService().savePlaca(CodPlaca.getText().toString(),fechaPl.getText().toString());
             call.enqueue(new Callback<PlacaResponse>() {
                 @Override
                 public void onResponse(Call<PlacaResponse> call, Response<PlacaResponse> response) {
@@ -115,7 +115,7 @@ public class nueva_placa extends AppCompatActivity {
     }
 
     public void ListarPlaca (){
-        Call<List<PlacaResponse>> placaList = ApiClient.getUserService().getPlacaF(fechaP.getText().toString());
+        Call<List<PlacaResponse>> placaList = ApiClient.getUserService().getPlacaF(fechaPl.getText().toString());
         placaList.enqueue(new Callback<List<PlacaResponse>>() {
             @Override
             public void onResponse(Call<List<PlacaResponse>> call, Response<List<PlacaResponse>> response) {

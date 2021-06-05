@@ -16,9 +16,9 @@ public class PlacaSpinner{
     @SerializedName("N_placa")
     @Expose
     private String N_placa;
-    @SerializedName("fecha")
+    @SerializedName("fechaP")
     @Expose
-    private String fecha;
+    private String fechaP;
 
     public List<Object> getPlacas() {
         return placas;
@@ -44,12 +44,12 @@ public class PlacaSpinner{
         N_placa = n_placa;
     }
 
-    public String getFecha() {
-        return fecha;
+    public String getFechaP() {
+        return fechaP;
     }
 
-    public void setFecha(String fecha) {
-        this.fecha = fecha;
+    public void setFechaP(String fechaP) {
+        this.fechaP = fechaP;
     }
 
     public PlacaSpinner(String n_placa) { this.N_placa = n_placa; }

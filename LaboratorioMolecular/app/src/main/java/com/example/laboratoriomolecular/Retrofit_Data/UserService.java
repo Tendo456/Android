@@ -39,15 +39,14 @@ public interface UserService {
     @FormUrlEncoded
     @POST("Placas/InsertarPlaca.php")
     Call<PlacaResponse> savePlaca (@Field("N_placa") String N_placa,
-                                   @Field("fecha") String fecha);
+                                   @Field("fechaP") String fechaP);
 
     @GET("Placas/ListarPlacaF.php")
-    Call<List<PlacaResponse>> getPlacaF(@Query("fecha") String fecha);
+    Call<List<PlacaResponse>> getPlacaF(@Query("fechaP") String fechaP);
 
     @GET("Placas/ListarPlacaF.php")
-    Call<List<PlacaSpinner>> getPlacaFe(@Query("fecha") String fecha);
+    Call<List<PlacaSpinner>> getPlacaFe(@Query("fechaP") String fechaP);
 
     @GET("Alicuotado/ConseguirAlicuotado.php")
-    Call<List<AlicuotadoResponse>> conseguirAl(@Query("N_placa") String N_placa,
-                                               @Query("f_inicio") String f_inicio);
+    Call<List<AlicuotadoResponse>> conseguirAl(@Query("f_inicio") String f_inicio);
 }
