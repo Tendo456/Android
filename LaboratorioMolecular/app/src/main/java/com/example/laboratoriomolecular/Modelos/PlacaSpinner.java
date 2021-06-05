@@ -52,7 +52,7 @@ public class PlacaSpinner{
         this.fechaP = fechaP;
     }
 
-    public PlacaSpinner(String n_placa) { this.N_placa = n_placa; }
+    public PlacaSpinner(String n_placa,String id_placa) { this.N_placa = n_placa; this.id_placa = id_placa;}
     public String toString (){
         return N_placa;
     }

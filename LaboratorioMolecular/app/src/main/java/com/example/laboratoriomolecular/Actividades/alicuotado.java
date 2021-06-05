@@ -114,7 +114,8 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
                     for (PlacaSpinner post : response.body()){
 
                         String plac = post.getN_placa();
-                        PlacaSpinner placaSpinner = new PlacaSpinner(plac);
+                        String idplac = post.getId_placa();
+                        PlacaSpinner placaSpinner = new PlacaSpinner(idplac,plac);
                         Aplaca.add(placaSpinner);
 
                         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -126,7 +127,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                         AN_placa1 = parent.getItemAtPosition(position).toString();
-                        AN_placa.setText(AN_placa1);
+                        AN_placa.setText(spPlacasA.get(position).getId_placa());
                     }
 
                     @Override
@@ -195,7 +196,6 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
 
     @Override
     public void ClickedAlicuotado(AlicuotadoResponse alicuotadoResponse) {
-        //Aq_muestras.setText(alicuotadoResponse.getQ_muestras());
 
         idAl = alicuotadoResponse.getId_alicuotado();
         placaAl = alicuotadoResponse.getN_placa();
