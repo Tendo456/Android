@@ -1,31 +1,27 @@
 package com.example.laboratoriomolecular.Modelos;
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
 public class PlacaSpinner{
 
-    @SerializedName("placas")
-    @Expose
-    private List<Object> placas = null;
-    @SerializedName("id_placa")
-    @Expose
     private String id_placa;
-    @SerializedName("N_placa")
-    @Expose
     private String N_placa;
-    @SerializedName("fechaP")
-    @Expose
     private String fechaP;
 
-    public List<Object> getPlacas() {
-        return placas;
-    }
+    public PlacaSpinner(){}
 
-    public void setPlacas(List<Object> placas) {
-        this.placas = placas;
+    public PlacaSpinner(String id_placa, String N_placa, String fechaP){
+
+        this.id_placa = id_placa;
+        this.N_placa = N_placa;
+        this.fechaP = fechaP;
     }
 
     public String getId_placa() {
@@ -52,8 +48,6 @@ public class PlacaSpinner{
         this.fechaP = fechaP;
     }
 
-    public PlacaSpinner(String n_placa,String id_placa) { this.N_placa = n_placa; this.id_placa = id_placa;}
-    public String toString (){
-        return N_placa;
-    }
+    @Override
+    public String toString() { return N_placa; }
 }

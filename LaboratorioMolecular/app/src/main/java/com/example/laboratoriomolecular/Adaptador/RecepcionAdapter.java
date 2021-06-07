@@ -41,7 +41,7 @@ public class RecepcionAdapter extends RecyclerView.Adapter<RecepcionAdapter.Rece
         RecepcionResponse recepcionResponse = recepcionResponseList.get(position);
 
         String date = recepcionResponse.getFecha();
-        String prefix = recepcionResponse.getIdrecepcion();
+        String prefix = recepcionResponse.getId_recepcion();
 
         holder.prefix.setText(prefix);
         holder.dateR.setText(date);

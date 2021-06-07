@@ -8,8 +8,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -19,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.laboratoriomolecular.Adaptador.AlicuotadoAdapter;
 import com.example.laboratoriomolecular.Modelos.AlicuotadoResponse;
 import com.example.laboratoriomolecular.Modelos.OperadorResponse;
+import com.example.laboratoriomolecular.Modelos.PlacaResponse;
 import com.example.laboratoriomolecular.Modelos.PlacaSpinner;
 import com.example.laboratoriomolecular.R;
 import com.example.laboratoriomolecular.Retrofit_Data.ApiClient;
@@ -44,11 +47,13 @@ import retrofit2.Response;
 public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.ClickedItemA{
 
     Spinner spPlacasA,spOperA;
-    TextView AN_placa, Aq_muestras, Af_inicio, Ah_inicio, Af_final, Ah_final, Aoperador ,Adni;
+    TextView Aid_placa, Aq_muestras, Af_inicio, Ah_inicio, Af_final, Ah_final, Aoperador ,Adni;
     private AsyncHttpClient operadorA;
+    private AsyncHttpClient placaA;
     AlicuotadoAdapter alicuotadoAdapter;
     RecyclerView ListAlicuotado;
-    String idAl, placaAl, muestrasAl, FinicioAL, HinicioAL, FfinalAl, HfinalAl, F, H, AN_placa1;
+    String idAl, placaAl, muestrasAl, FinicioAL, HinicioAL, FfinalAl, HfinalAl, F, H, AN_placa;
+    Button Ainiciar;
 
 
     @Override
@@ -58,7 +63,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
 
         spPlacasA = findViewById(R.id.spPlacasA);
         spOperA = findViewById(R.id.spOperA);
-        AN_placa = findViewById(R.id.AN_placa);
+        Aid_placa = findViewById(R.id.Aid_placa);
         Aq_muestras = findViewById(R.id.Aq_muestras);
         Af_inicio = findViewById(R.id.Af_inicio);
         Ah_inicio = findViewById(R.id.Ah_inicio);
@@ -66,6 +71,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
         Ah_final = findViewById(R.id.Ah_final);
         Aoperador = findViewById(R.id.Aoperador);
         Adni = findViewById(R.id.Adni);
+        Ainiciar = findViewById(R.id.Ainiciar);
         ListAlicuotado = findViewById(R.id.ListAlicuotado);
 
         ListAlicuotado.setLayoutManager(new LinearLayoutManager(this));
@@ -73,9 +79,10 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
 
         alicuotadoAdapter = new AlicuotadoAdapter(this);
 
+        Ainiciar.setOnClickListener(v -> saveAlicuotado());
         Afecha();
-        operadorA = new AsyncHttpClient();
-        llsOpeA();
+
+
     }
 
     public void Afecha (){
@@ -91,7 +98,10 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
         Ah_inicio.setText(H);
         Af_final.setText(F);
         Ah_final.setText(H);
-        llenarspinnerA();
+        placaA = new AsyncHttpClient();
+        llenarspinnerAl();
+        operadorA = new AsyncHttpClient();
+        llsOpeA();
         new Handler(Looper.getMainLooper()).postDelayed(this::conseguir,3000);
         Ahilo();
     }
@@ -100,54 +110,57 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
         new Handler(Looper.getMainLooper()).postDelayed(this::Afecha,60000);
     }
 
-    public void llenarspinnerA(){
-
-        List<PlacaSpinner> Aplaca = new ArrayList<>();
-        ArrayAdapter<PlacaSpinner> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,Aplaca);
-
-        Call<List<PlacaSpinner>> placaList = ApiClient.getUserService().getPlacaFe(F);
-        placaList.enqueue(new Callback<List<PlacaSpinner>>() {
+    private void llenarspinnerAl(){
+        String url = "http://192.168.1.19/laboratorio/Placas/ListarPlacaF.php?fechaP="+F;
+        placaA.post(url, new AsyncHttpResponseHandler() {
             @Override
-            public void onResponse(@NotNull Call<List<PlacaSpinner>> call, @NotNull Response<List<PlacaSpinner>> response) {
-                if(response.isSuccessful()){
-                    assert response.body() != null;
-                    for (PlacaSpinner post : response.body()){
-
-                        String plac = post.getN_placa();
-                        String idplac = post.getId_placa();
-                        PlacaSpinner placaSpinner = new PlacaSpinner(idplac,plac);
-                        Aplaca.add(placaSpinner);
-
-                        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                        spPlacasA.setAdapter(adapter);
-                    }
-
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                if (statusCode == 200){
+                    CargarSpinnerAL(new String(responseBody));
                 }
-                spPlacasA.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        AN_placa1 = parent.getItemAtPosition(position).toString();
-                        AN_placa.setText(spPlacasA.get(position).getId_placa());
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
-
-                    }
-                });
             }
 
             @Override
-            public void onFailure(@NotNull Call<List<PlacaSpinner>> call, @NotNull Throwable t) {
-
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                Toast.makeText(alicuotado.this,"Error: Internet / Servidor", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
+    private void CargarSpinnerAL(String respuestaAl){
+        ArrayList<PlacaSpinner> Pls = new ArrayList<>();
+        try{
+            JSONArray PlacaArray = new JSONArray(respuestaAl);
+            for (int i=0; i<PlacaArray.length(); i++){
+                PlacaSpinner spP = new PlacaSpinner();
+                spP.setId_placa(PlacaArray.getJSONObject(i).getString("id_placa"));
+                spP.setN_placa(PlacaArray.getJSONObject(i).getString("N_placa"));
+                spP.setFechaP(PlacaArray.getJSONObject(i).getString("fechaP"));
+                Pls.add(spP);
+            }
+            ArrayAdapter<PlacaSpinner> Pa = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, Pls);
+            spPlacasA.setAdapter(Pa);
+            spPlacasA.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    Aid_placa.setText(Pls.get(position).getId_placa());
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+
+        }catch (Exception e){
+
+        }
+    }
+
     private void llsOpeA (){
 
-        String url = "http://10.50.1.202/laboratorio/Operador/SpOperador.php";
-        operadorA.post(url, new AsyncHttpResponseHandler() {
+        String urlOpeA = "http://192.168.1.19/laboratorio/Operador/SpOperador.php";
+        operadorA.post(urlOpeA, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
                 if (statusCode == 200){
@@ -157,7 +170,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-
+                Toast.makeText(alicuotado.this,"Error: Internet / Servidor", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -174,8 +187,8 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
                 spo.setDni(jsonArreglo.getJSONObject(i).getString("dni"));
                 spOpeA.add(spo);
             }
-            ArrayAdapter<OperadorResponse> a = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, spOpeA);
-            spOperA.setAdapter(a);
+            ArrayAdapter<OperadorResponse> Oa = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, spOpeA);
+            spOperA.setAdapter(Oa);
             spOperA.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -198,7 +211,6 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
     public void ClickedAlicuotado(AlicuotadoResponse alicuotadoResponse) {
 
         idAl = alicuotadoResponse.getId_alicuotado();
-        placaAl = alicuotadoResponse.getN_placa();
         muestrasAl = alicuotadoResponse.getQ_muestras();
         FinicioAL = alicuotadoResponse.getF_inicio();
         HinicioAL = alicuotadoResponse.getH_inicio();
@@ -231,6 +243,26 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
             }
         });
 
+    }
+
+    private void saveAlicuotado(){
+        Call<AlicuotadoResponse> callAli = ApiClient.getUserService().InsertarAlicuotado(Aq_muestras.getText().toString(),Af_inicio.getText().toString(),Ah_inicio.getText().toString(),Aoperador.getText().toString(),Adni.getText().toString(),"1",Aid_placa.getText().toString());
+        callAli.enqueue(new Callback<AlicuotadoResponse>() {
+            @Override
+            public void onResponse(Call<AlicuotadoResponse> call, Response<AlicuotadoResponse> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(alicuotado.this, "Datos Guardados", Toast.LENGTH_SHORT).show();
+                    //limpiar();
+                } else {
+                    Toast.makeText(alicuotado.this, "Error al Guardar los Datos", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AlicuotadoResponse> call, Throwable t) {
+                Toast.makeText(alicuotado.this, "Error 1" + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 }

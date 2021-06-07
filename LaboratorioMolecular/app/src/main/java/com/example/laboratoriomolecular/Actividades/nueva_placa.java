@@ -75,7 +75,7 @@ public class nueva_placa extends AppCompatActivity {
             public void run() {
                 fechaPlaca();
             }
-        },20000);
+        },3000);
     }
 
     public void ConfirmarPlaca (){

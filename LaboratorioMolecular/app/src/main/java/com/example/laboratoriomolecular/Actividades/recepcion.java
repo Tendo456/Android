@@ -54,7 +54,6 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
     RecyclerView ListRecepcion;
     Spinner spOperador;
     private AsyncHttpClient operador;
-    private boolean isFirstTime = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,7 +90,7 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
 
     private void llenarspinerO (){
 
-        String url = "http://10.50.1.202/laboratorio/Operador/SpOperador.php";
+        String url = "http://192.168.1.19/laboratorio/Operador/SpOperador.php";
         operador.post(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -124,13 +123,10 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
             spOperador.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    if(isFirstTime){
-                        isFirstTime=false;
-                    }
-                    else{
+
                         Roperador.setText(parent.getItemAtPosition(position).toString());
                         Rdni.setText(listaO.get(position).getDni());
-                        }
+
                 }
 
                 @Override

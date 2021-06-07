@@ -4,26 +4,30 @@ import java.io.Serializable;
 
 public class RecepcionResponse implements Serializable {
 
-    private String idrecepcion;
+    private String id_recepcion;
     private String fecha;
     private String hora;
     private String n_envio;
     private String q_muestras;
     private String operador;
     private String dni;
-    private String estado;
+    private String estadoRe;
 
-    public String getIdrecepcion() {
-        return idrecepcion;
+    public String getId_recepcion() {
+        return id_recepcion;
     }
 
-    public void setIdrecepcion(String idrecepcion) {
-        this.idrecepcion = idrecepcion;
+    public void setId_recepcion(String id_recepcion) {
+        this.id_recepcion = id_recepcion;
     }
 
-    public String getFecha() { return fecha; }
+    public String getFecha() {
+        return fecha;
+    }
 
-    public void setFecha(String fecha) { this.fecha = fecha; }
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
 
     public String getHora() {
         return hora;
@@ -65,25 +69,25 @@ public class RecepcionResponse implements Serializable {
         this.dni = dni;
     }
 
-    public String getEstado() {
-        return estado;
+    public String getEstadoRe() {
+        return estadoRe;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setEstadoRe(String estadoRe) {
+        this.estadoRe = estadoRe;
     }
 
     @Override
     public String toString() {
         return "RecepcionResponse{" +
-                "idrecepcion='" + idrecepcion + '\'' +
+                "id_recepcion='" + id_recepcion + '\'' +
                 ", fecha='" + fecha + '\'' +
                 ", hora='" + hora + '\'' +
                 ", n_envio='" + n_envio + '\'' +
                 ", q_muestras='" + q_muestras + '\'' +
                 ", operador='" + operador + '\'' +
                 ", dni='" + dni + '\'' +
-                ", estado='" + estado + '\'' +
+                ", estadoRe='" + estadoRe + '\'' +
                 '}';
     }
 }

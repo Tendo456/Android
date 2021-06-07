@@ -18,14 +18,14 @@ import retrofit2.http.Query;
 public interface UserService {
 
     @FormUrlEncoded
-    @POST("Recepcion/insertarRecepcion.php")
+    @POST("Recepcion/InsertarRecepcion.php")
     Call<RecepcionResponse> InsertarRecepcion (@Field("fecha") String fecha,
                                                @Field("hora") String hora,
                                                @Field("n_envio") String n_envio,
                                                @Field("q_muestras") String q_muestras,
                                                @Field("operador") String operador,
                                                @Field("dni") String dni,
-                                               @Field("estado") String estado);
+                                               @Field("estadoRe") String estadoRe);
 
     @GET("Recepcion/ListarRecepcion.php")
     Call<List<RecepcionResponse>> getRecepcion();
@@ -44,9 +44,16 @@ public interface UserService {
     @GET("Placas/ListarPlacaF.php")
     Call<List<PlacaResponse>> getPlacaF(@Query("fechaP") String fechaP);
 
-    @GET("Placas/ListarPlacaF.php")
-    Call<List<PlacaSpinner>> getPlacaFe(@Query("fechaP") String fechaP);
-
     @GET("Alicuotado/ConseguirAlicuotado.php")
     Call<List<AlicuotadoResponse>> conseguirAl(@Query("f_inicio") String f_inicio);
+
+    @FormUrlEncoded
+    @POST("Alicuotado/InsertarAlicuotado.php")
+    Call<AlicuotadoResponse> InsertarAlicuotado (@Field("q_muestras") String q_muestras,
+                                               @Field("f_inicio") String f_inicio,
+                                               @Field("h_inicio") String h_inicio,
+                                               @Field("operador") String operador,
+                                               @Field("dni") String dni,
+                                               @Field("estadoAl") String estadoAl,
+                                                @Field("id_placa") String id_placa);
 }

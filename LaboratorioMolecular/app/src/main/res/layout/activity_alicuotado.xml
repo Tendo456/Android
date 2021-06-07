@@ -238,7 +238,7 @@
             android:text="operador" />
 
         <TextView
-            android:id="@+id/AN_placa"
+            android:id="@+id/Aid_placa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Placa" />
