@@ -4,15 +4,18 @@ import java.io.Serializable;
 
 public class AlicuotadoResponse implements Serializable {
 
+
     private String id_alicuotado;
     private String q_muestras;
     private String f_inicio;
     private String h_inicio;
     private String f_final;
     private String h_final;
+    private String promedio;
     private String operador;
     private String dni;
     private String estadoAl;
+    private String id_placa;
 
     public String getId_alicuotado() {
         return id_alicuotado;
@@ -62,6 +65,10 @@ public class AlicuotadoResponse implements Serializable {
         this.h_final = h_final;
     }
 
+    public String getPromedio() { return promedio; }
+
+    public void setPromedio(String promedio) { this.promedio = promedio; }
+
     public String getOperador() {
         return operador;
     }
@@ -86,6 +93,14 @@ public class AlicuotadoResponse implements Serializable {
         this.estadoAl = estadoAl;
     }
 
+    public String getId_placa() {
+        return id_placa;
+    }
+
+    public void setId_placa(String id_placa) {
+        this.id_placa = id_placa;
+    }
+
     @Override
     public String toString() {
         return "AlicuotadoResponse{" +
@@ -95,9 +110,11 @@ public class AlicuotadoResponse implements Serializable {
                 ", h_inicio='" + h_inicio + '\'' +
                 ", f_final='" + f_final + '\'' +
                 ", h_final='" + h_final + '\'' +
+                ", promedio='" + promedio + '\'' +
                 ", operador='" + operador + '\'' +
                 ", dni='" + dni + '\'' +
                 ", estadoAl='" + estadoAl + '\'' +
+                ", id_placa='" + id_placa + '\'' +
                 '}';
     }
 }

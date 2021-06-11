@@ -21,7 +21,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.laboratoriomolecular.Adaptador.AlicuotadoAdapter;
 import com.example.laboratoriomolecular.Modelos.AlicuotadoResponse;
 import com.example.laboratoriomolecular.Modelos.OperadorResponse;
-import com.example.laboratoriomolecular.Modelos.PlacaResponse;
 import com.example.laboratoriomolecular.Modelos.PlacaSpinner;
 import com.example.laboratoriomolecular.R;
 import com.example.laboratoriomolecular.Retrofit_Data.ApiClient;
@@ -39,7 +38,6 @@ import java.util.Date;
 import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -53,7 +51,8 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
     AlicuotadoAdapter alicuotadoAdapter;
     RecyclerView ListAlicuotado;
     String idAl, placaAl, muestrasAl, FinicioAL, HinicioAL, FfinalAl, HfinalAl, F, H, AN_placa;
-    Button Ainiciar;
+    String Apromedio = "50";
+    Button Ainiciar,Afinalizar;
 
 
     @Override
@@ -72,6 +71,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
         Aoperador = findViewById(R.id.Aoperador);
         Adni = findViewById(R.id.Adni);
         Ainiciar = findViewById(R.id.Ainiciar);
+        Afinalizar = findViewById(R.id.Afinalizar);
         ListAlicuotado = findViewById(R.id.ListAlicuotado);
 
         ListAlicuotado.setLayoutManager(new LinearLayoutManager(this));
@@ -80,8 +80,9 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
         alicuotadoAdapter = new AlicuotadoAdapter(this);
 
         Ainiciar.setOnClickListener(v -> saveAlicuotado());
+        Afinalizar.setOnClickListener(v -> upDateAlicuotado());
         Afecha();
-
+        conseguir();
 
     }
 
@@ -102,7 +103,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
         llenarspinnerAl();
         operadorA = new AsyncHttpClient();
         llsOpeA();
-        new Handler(Looper.getMainLooper()).postDelayed(this::conseguir,3000);
+        //new Handler(Looper.getMainLooper()).postDelayed(this::conseguir,3000);
         Ahilo();
     }
 
@@ -111,7 +112,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
     }
 
     private void llenarspinnerAl(){
-        String url = "http://192.168.1.19/laboratorio/Placas/ListarPlacaF.php?fechaP="+F;
+        String url = "http://10.50.1.202/laboratorio/Placas/ListarPlacaF.php?fechaP="+F;
         placaA.post(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -153,13 +154,13 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
             });
 
         }catch (Exception e){
-
+            e.printStackTrace();
         }
     }
 
     private void llsOpeA (){
 
-        String urlOpeA = "http://192.168.1.19/laboratorio/Operador/SpOperador.php";
+        String urlOpeA = "http://10.50.1.202/laboratorio/Operador/SpOperador.php";
         operadorA.post(urlOpeA, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -249,9 +250,37 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
         Call<AlicuotadoResponse> callAli = ApiClient.getUserService().InsertarAlicuotado(Aq_muestras.getText().toString(),Af_inicio.getText().toString(),Ah_inicio.getText().toString(),Aoperador.getText().toString(),Adni.getText().toString(),"1",Aid_placa.getText().toString());
         callAli.enqueue(new Callback<AlicuotadoResponse>() {
             @Override
+            public void onResponse(@NotNull Call<AlicuotadoResponse> call, @NotNull Response<AlicuotadoResponse> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(alicuotado.this, "Datos Guardados", Toast.LENGTH_SHORT).show();
+                    conseguir();
+                    //limpiar();
+                } else {
+                    Toast.makeText(alicuotado.this, "Error al Guardar los Datos", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(@NotNull Call<AlicuotadoResponse> call, @NotNull Throwable t) {
+                Toast.makeText(alicuotado.this, "Error " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void upDateAlicuotado(){
+        /*AlicuotadoResponse alicuotadoResponse = new AlicuotadoResponse();
+        alicuotadoResponse.setF_final(Af_final.getText().toString());
+        alicuotadoResponse.setH_final(Ah_final.getText().toString());
+        alicuotadoResponse.setPromedio(Apromedio);*/
+        //Af_final.getText().toString(),Ah_final.getText().toString(),"50"
+
+        Call<AlicuotadoResponse> upAlic = ApiClient.getUserService().upAlicuotado(Aid_placa.getText().toString(),Af_final.getText().toString(),Ah_final.getText().toString(),"50");
+        upAlic.enqueue(new Callback<AlicuotadoResponse>() {
+            @Override
             public void onResponse(Call<AlicuotadoResponse> call, Response<AlicuotadoResponse> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(alicuotado.this, "Datos Guardados", Toast.LENGTH_SHORT).show();
+                    conseguir();
                     //limpiar();
                 } else {
                     Toast.makeText(alicuotado.this, "Error al Guardar los Datos", Toast.LENGTH_SHORT).show();
@@ -260,7 +289,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
 
             @Override
             public void onFailure(Call<AlicuotadoResponse> call, Throwable t) {
-                Toast.makeText(alicuotado.this, "Error 1" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(alicuotado.this, "Error " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
