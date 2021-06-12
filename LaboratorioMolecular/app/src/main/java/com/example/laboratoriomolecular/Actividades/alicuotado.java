@@ -53,7 +53,8 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
     private AsyncHttpClient placaA;
     AlicuotadoAdapter alicuotadoAdapter;
     RecyclerView ListAlicuotado;
-    String idAl, placaAl, muestrasAl, FinicioAL, HinicioAL, FfinalAl, HfinalAl, F, H, AN_placa;
+    String idAl, placaAl, muestrasAl, f_inicioAL, h_inicioAL, f_finalAl, h_finalAl, promedioAl ,operadorAl, dniAl, estadoAl;
+    String F, H, AN_placa;
     Button Ainiciar,Afinalizar;
 
 
@@ -235,19 +236,25 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
     public void ClickedAlicuotado(AlicuotadoResponse alicuotadoResponse) {
 
         idAl = alicuotadoResponse.getId_alicuotado();
+        placaAl = alicuotadoResponse.getN_placa();
         muestrasAl = alicuotadoResponse.getQ_muestras();
-        FinicioAL = alicuotadoResponse.getF_inicio();
-        HinicioAL = alicuotadoResponse.getH_inicio();
-        FfinalAl = alicuotadoResponse.getF_final();
-        HfinalAl = alicuotadoResponse.getH_final();
+        f_inicioAL = alicuotadoResponse.getF_inicio();
+        h_inicioAL = alicuotadoResponse.getH_inicio();
+        f_finalAl = alicuotadoResponse.getF_final();
+        h_finalAl = alicuotadoResponse.getH_final();
+        promedioAl = alicuotadoResponse.getPromedio();
+        operadorAl = alicuotadoResponse.getOperador();
+        dniAl = alicuotadoResponse.getDni();
+        estadoAl = alicuotadoResponse.getEstadoAl();
+
 
 
 
         if (muestrasAl == null){ Aq_muestras.setText("Vacio"); }else { Aq_muestras.setText(muestrasAl); }
-        if(FinicioAL == null){ Af_inicio.setText(F); }else { Af_inicio.setText(FinicioAL); }
-        if(HinicioAL == null){Ah_inicio.setText(H);} else {Ah_inicio.setText(HinicioAL);}
-        if(FfinalAl == null){Af_final.setText(F);} else {Af_final.setText(FfinalAl);}
-        if(HfinalAl == null){Ah_final.setText(H);} else {Ah_final.setText(HfinalAl);}
+        if(f_inicioAL == null){ Af_inicio.setText(F); }else { Af_inicio.setText(f_inicioAL); }
+        if(h_inicioAL == null){Ah_inicio.setText(H);} else {Ah_inicio.setText(h_inicioAL);}
+        if(f_finalAl == null){Af_final.setText(F);} else {Af_final.setText(f_finalAl);}
+        if(h_finalAl == null){Ah_final.setText(H);} else {Ah_final.setText(h_finalAl);}
 
         dialogo();
     }
@@ -271,14 +278,18 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
         diAlpromedio = view.findViewById(R.id.diAlpromedio);
         diAloperador = view.findViewById(R.id.diAloperador);
         diAldni = view.findViewById(R.id.diAldni);
-        diAldni = view.findViewById(R.id.diAlestado);
+        diAlestado = view.findViewById(R.id.diAlestado);
 
-        diAlN_placa.setText(AN_placa);
+        diAlN_placa.setText(placaAl);
         diAlq_muestras.setText(muestrasAl);
-        diAlf_inicio.setText(FinicioAL);
-        diAlh_inicio.setText(HinicioAL);
-        diAlf_final.setText(FfinalAl);
-        diAlh_final.setText(HfinalAl);
+        diAlf_inicio.setText(f_inicioAL);
+        diAlh_inicio.setText(h_inicioAL);
+        diAlf_final.setText(f_finalAl);
+        diAlh_final.setText(h_finalAl);
+        diAlpromedio.setText(promedioAl);
+        diAloperador.setText(operadorAl);
+        diAldni.setText(dniAl);
+        diAlestado.setText(estadoAl);
 
         Button diAl_ok = view.findViewById(R.id.diAl_ok);
         diAl_ok.setOnClickListener(v -> {
