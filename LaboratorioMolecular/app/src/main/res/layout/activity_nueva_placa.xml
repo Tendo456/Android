@@ -38,18 +38,21 @@
             android:gravity="center"
             android:hint="Codigo Placa" />
 
+        <TextView
+            android:id="@+id/fechaPl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/drawable_blue"
+            android:padding="5dp"
+            android:text="TextView" />
+
         <Button
 
             android:id="@+id/PGuardar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Guardar"/>
-
-        <TextView
-            android:id="@+id/fechaPl"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="Guardar" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/ListaPlaca"

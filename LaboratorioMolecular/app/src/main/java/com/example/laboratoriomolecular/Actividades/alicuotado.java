@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,6 +14,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -46,12 +48,12 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
 
     Spinner spPlacasA,spOperA;
     TextView Aid_placa, Aq_muestras, Af_inicio, Ah_inicio, Af_final, Ah_final, Aoperador ,Adni;
+    TextView diAlN_placa,diAlq_muestras,diAlf_inicio,diAlh_inicio,diAlf_final,diAlh_final,diAlpromedio,diAloperador,diAldni,diAlestado;
     private AsyncHttpClient operadorA;
     private AsyncHttpClient placaA;
     AlicuotadoAdapter alicuotadoAdapter;
     RecyclerView ListAlicuotado;
     String idAl, placaAl, muestrasAl, FinicioAL, HinicioAL, FfinalAl, HfinalAl, F, H, AN_placa;
-    String Apromedio = "50";
     Button Ainiciar,Afinalizar;
 
 
@@ -79,8 +81,8 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
 
         alicuotadoAdapter = new AlicuotadoAdapter(this);
 
-        Ainiciar.setOnClickListener(v -> saveAlicuotado());
-        Afinalizar.setOnClickListener(v -> upDateAlicuotado());
+        Ainiciar.setOnClickListener(v -> ConfirmarAlicuotado());
+        Afinalizar.setOnClickListener(v -> FinalizarAlicuotado());
         Afecha();
         conseguir();
 
@@ -112,7 +114,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
     }
 
     private void llenarspinnerAl(){
-        String url = "http://10.50.1.202/laboratorio/Placas/ListarPlacaF.php?fechaP="+F;
+        String url = "http://192.168.1.19/laboratorio/Placas/ListarPlacaF.php?fechaP="+F;
         placaA.post(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -145,6 +147,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     Aid_placa.setText(Pls.get(position).getId_placa());
+                    AN_placa = Pls.get(position).getN_placa();
                 }
 
                 @Override
@@ -160,7 +163,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
 
     private void llsOpeA (){
 
-        String urlOpeA = "http://10.50.1.202/laboratorio/Operador/SpOperador.php";
+        String urlOpeA = "http://192.168.1.19/laboratorio/Operador/SpOperador.php";
         operadorA.post(urlOpeA, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -208,6 +211,26 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
 
     }
 
+    public void ConfirmarAlicuotado (){
+        AlertDialog.Builder opcion = new AlertDialog.Builder(this);
+        opcion.setMessage("Iniciar Alicuotado para "+ AN_placa+"?");
+        opcion.setPositiveButton("Crear", (dialog, which) -> saveAlicuotado());
+        opcion.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
+
+        AlertDialog dialog = opcion.create();
+        dialog.show();
+    }
+
+    public void FinalizarAlicuotado (){
+        AlertDialog.Builder opcion = new AlertDialog.Builder(this);
+        opcion.setMessage("Finalizar Alicuotado para "+ AN_placa+"?");
+        opcion.setPositiveButton("Finalizar", (dialog, which) -> upDateAlicuotado());
+        opcion.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
+
+        AlertDialog dialog = opcion.create();
+        dialog.show();
+    }
+
     @Override
     public void ClickedAlicuotado(AlicuotadoResponse alicuotadoResponse) {
 
@@ -218,11 +241,49 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
         FfinalAl = alicuotadoResponse.getF_final();
         HfinalAl = alicuotadoResponse.getH_final();
 
+
+
         if (muestrasAl == null){ Aq_muestras.setText("Vacio"); }else { Aq_muestras.setText(muestrasAl); }
         if(FinicioAL == null){ Af_inicio.setText(F); }else { Af_inicio.setText(FinicioAL); }
         if(HinicioAL == null){Ah_inicio.setText(H);} else {Ah_inicio.setText(HinicioAL);}
         if(FfinalAl == null){Af_final.setText(F);} else {Af_final.setText(FfinalAl);}
         if(HfinalAl == null){Ah_final.setText(H);} else {Ah_final.setText(HfinalAl);}
+
+        dialogo();
+    }
+
+    public void dialogo (){
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(alicuotado.this);
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.dialodo_ali,null);
+        builder.setView(view);
+
+        final AlertDialog dialog = builder.create();
+        dialog.show();
+
+        diAlN_placa = view.findViewById(R.id.diAlN_placa);
+        diAlq_muestras = view.findViewById(R.id.diAlq_muestras);
+        diAlf_inicio = view.findViewById(R.id.diAlf_inicio);
+        diAlh_inicio = view.findViewById(R.id.diAlh_inicio);
+        diAlf_final = view.findViewById(R.id.diAlf_final);
+        diAlh_final = view.findViewById(R.id.diAlh_final);
+        diAlpromedio = view.findViewById(R.id.diAlpromedio);
+        diAloperador = view.findViewById(R.id.diAloperador);
+        diAldni = view.findViewById(R.id.diAldni);
+        diAldni = view.findViewById(R.id.diAlestado);
+
+        diAlN_placa.setText(AN_placa);
+        diAlq_muestras.setText(muestrasAl);
+        diAlf_inicio.setText(FinicioAL);
+        diAlh_inicio.setText(HinicioAL);
+        diAlf_final.setText(FfinalAl);
+        diAlh_final.setText(HfinalAl);
+
+        Button diAl_ok = view.findViewById(R.id.diAl_ok);
+        diAl_ok.setOnClickListener(v -> {
+            dialog.dismiss();
+        });
     }
 
     private void conseguir (){
@@ -254,7 +315,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
                 if (response.isSuccessful()) {
                     Toast.makeText(alicuotado.this, "Datos Guardados", Toast.LENGTH_SHORT).show();
                     conseguir();
-                    //limpiar();
+                    limpiarAlicuotado();
                 } else {
                     Toast.makeText(alicuotado.this, "Error al Guardar los Datos", Toast.LENGTH_SHORT).show();
                 }
@@ -268,11 +329,6 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
     }
 
     private void upDateAlicuotado(){
-        /*AlicuotadoResponse alicuotadoResponse = new AlicuotadoResponse();
-        alicuotadoResponse.setF_final(Af_final.getText().toString());
-        alicuotadoResponse.setH_final(Ah_final.getText().toString());
-        alicuotadoResponse.setPromedio(Apromedio);*/
-        //Af_final.getText().toString(),Ah_final.getText().toString(),"50"
 
         Call<AlicuotadoResponse> upAlic = ApiClient.getUserService().upAlicuotado(Aid_placa.getText().toString(),Af_final.getText().toString(),Ah_final.getText().toString(),"50");
         upAlic.enqueue(new Callback<AlicuotadoResponse>() {
@@ -292,6 +348,11 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
                 Toast.makeText(alicuotado.this, "Error " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void limpiarAlicuotado(){
+
+        Aq_muestras.setText(null);
     }
 
 }

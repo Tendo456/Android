@@ -62,8 +62,8 @@ public interface UserService {
                                                 @Field("id_placa") String id_placa);
 
     @FormUrlEncoded
-    @PATCH("Alicuotado/FinalizarAlicuotado.php/{id_placa}")
-    Call<AlicuotadoResponse> upAlicuotado (@Path("id_placa") String id_placa,
+    @POST("Alicuotado/FinalizarAlicuotado.php")
+    Call<AlicuotadoResponse> upAlicuotado (@Field("id_placa") String id_placa,
                                            @Field("f_final") String f_final,
                                            @Field("h_final") String h_final,
                                            @Field("promedio") String promedio);

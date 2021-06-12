@@ -100,6 +100,7 @@ public class nueva_placa extends AppCompatActivity {
                 public void onResponse(Call<PlacaResponse> call, Response<PlacaResponse> response) {
                     if (response.isSuccessful()) {
                         Toast.makeText(nueva_placa.this, "Placa Creada", Toast.LENGTH_SHORT).show();
+                        limpiarPlaca();
 
                     } else {
                         Toast.makeText(nueva_placa.this, "Error al Guardar los Datos", Toast.LENGTH_SHORT).show();
@@ -131,5 +132,9 @@ public class nueva_placa extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void limpiarPlaca(){
+        CodPlaca.getText().clear();
     }
 }
