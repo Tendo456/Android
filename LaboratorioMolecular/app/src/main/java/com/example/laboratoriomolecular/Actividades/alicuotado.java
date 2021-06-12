@@ -114,7 +114,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
     }
 
     private void llenarspinnerAl(){
-        String url = "http://192.168.1.19/laboratorio/Placas/ListarPlacaF.php?fechaP="+F;
+        String url = "http://192.168.1.5/laboratorio/Placas/ListarPlacaF.php?fechaP="+F;
         placaA.post(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -163,7 +163,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
 
     private void llsOpeA (){
 
-        String urlOpeA = "http://192.168.1.19/laboratorio/Operador/SpOperador.php";
+        String urlOpeA = "http://192.168.1.5/laboratorio/Operador/SpOperador.php";
         operadorA.post(urlOpeA, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
