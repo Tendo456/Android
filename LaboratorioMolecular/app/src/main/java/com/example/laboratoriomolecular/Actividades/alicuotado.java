@@ -38,6 +38,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import cz.msebera.android.httpclient.Header;
 import retrofit2.Call;
@@ -47,7 +48,8 @@ import retrofit2.Response;
 public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.ClickedItemA{
 
     Spinner spPlacasA,spOperA;
-    TextView Aid_placa, Aq_muestras, Af_inicio, Ah_inicio, Af_final, Ah_final, Aoperador ,Adni;
+    TextView Aid_placa, Aq_muestras, Af_inicio, Ah_inicio, Af_final, Ah_final, Apromedio, Aoperador ,Adni;
+    //dialogo
     TextView diAlN_placa,diAlq_muestras,diAlf_inicio,diAlh_inicio,diAlf_final,diAlh_final,diAlpromedio,diAloperador,diAldni,diAlestado;
     private AsyncHttpClient operadorA;
     private AsyncHttpClient placaA;
@@ -55,6 +57,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
     RecyclerView ListAlicuotado;
     String idAl, placaAl, muestrasAl, f_inicioAL, h_inicioAL, f_finalAl, h_finalAl, promedioAl ,operadorAl, dniAl, estadoAl;
     String F, H, AN_placa;
+    String CAl_fhi, CAl_fhf;
     Button Ainiciar,Afinalizar;
 
 
@@ -71,6 +74,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
         Ah_inicio = findViewById(R.id.Ah_inicio);
         Af_final = findViewById(R.id.Af_final);
         Ah_final = findViewById(R.id.Ah_final);
+        Apromedio = findViewById(R.id.Apromedio);
         Aoperador = findViewById(R.id.Aoperador);
         Adni = findViewById(R.id.Adni);
         Ainiciar = findViewById(R.id.Ainiciar);
@@ -106,8 +110,9 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
         llenarspinnerAl();
         operadorA = new AsyncHttpClient();
         llsOpeA();
-        //new Handler(Looper.getMainLooper()).postDelayed(this::conseguir,3000);
+
         Ahilo();
+
     }
 
     public void Ahilo(){
@@ -225,7 +230,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
     public void FinalizarAlicuotado (){
         AlertDialog.Builder opcion = new AlertDialog.Builder(this);
         opcion.setMessage("Finalizar Alicuotado para "+ AN_placa+"?");
-        opcion.setPositiveButton("Finalizar", (dialog, which) -> upDateAlicuotado());
+        opcion.setPositiveButton("Finalizar", (dialog, which) -> calcularPromedio());
         opcion.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
 
         AlertDialog dialog = opcion.create();
@@ -247,16 +252,16 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
         dniAl = alicuotadoResponse.getDni();
         estadoAl = alicuotadoResponse.getEstadoAl();
 
-
-
+        CAl_fhi = alicuotadoResponse.getF_inicio()+" "+alicuotadoResponse.getH_inicio();
 
         if (muestrasAl == null){ Aq_muestras.setText("Vacio"); }else { Aq_muestras.setText(muestrasAl); }
         if(f_inicioAL == null){ Af_inicio.setText(F); }else { Af_inicio.setText(f_inicioAL); }
         if(h_inicioAL == null){Ah_inicio.setText(H);} else {Ah_inicio.setText(h_inicioAL);}
-        if(f_finalAl == null){Af_final.setText(F);} else {Af_final.setText(f_finalAl);}
+        if(f_finalAl == null){Af_final.setText(F); } else {Af_final.setText(f_finalAl);}
         if(h_finalAl == null){Ah_final.setText(H);} else {Ah_final.setText(h_finalAl);}
 
         dialogo();
+
     }
 
     public void dialogo (){
@@ -341,29 +346,50 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
 
     private void upDateAlicuotado(){
 
-        Call<AlicuotadoResponse> upAlic = ApiClient.getUserService().upAlicuotado(Aid_placa.getText().toString(),Af_final.getText().toString(),Ah_final.getText().toString(),"50");
-        upAlic.enqueue(new Callback<AlicuotadoResponse>() {
-            @Override
-            public void onResponse(Call<AlicuotadoResponse> call, Response<AlicuotadoResponse> response) {
-                if (response.isSuccessful()) {
-                    Toast.makeText(alicuotado.this, "Datos Guardados", Toast.LENGTH_SHORT).show();
-                    conseguir();
-                    //limpiar();
-                } else {
-                    Toast.makeText(alicuotado.this, "Error al Guardar los Datos", Toast.LENGTH_SHORT).show();
-                }
-            }
+        if(!AN_placa.equals(placaAl)){
+            Toast.makeText(alicuotado.this,"Seleccione la Placa "+placaAl,Toast.LENGTH_SHORT).show();
+        }
+        else {
 
-            @Override
-            public void onFailure(Call<AlicuotadoResponse> call, Throwable t) {
-                Toast.makeText(alicuotado.this, "Error " + t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+            Call<AlicuotadoResponse> upAlic = ApiClient.getUserService().upAlicuotado(Aid_placa.getText().toString(), Af_final.getText().toString(), Ah_final.getText().toString(), Apromedio.getText().toString(), "2");
+            upAlic.enqueue(new Callback<AlicuotadoResponse>() {
+                @Override
+                public void onResponse(Call<AlicuotadoResponse> call, Response<AlicuotadoResponse> response) {
+                    if (response.isSuccessful()) {
+                        Toast.makeText(alicuotado.this, "Datos Guardados", Toast.LENGTH_SHORT).show();
+                        conseguir();
+                        //limpiar();
+                    } else {
+                        Toast.makeText(alicuotado.this, "Error al Guardar los Datos", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<AlicuotadoResponse> call, Throwable t) {
+                    Toast.makeText(alicuotado.this, "Error " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 
     public void limpiarAlicuotado(){
 
         Aq_muestras.setText(null);
+    }
+
+    public void calcularPromedio (){
+        CAl_fhf = Af_final.getText().toString()+" "+Ah_final.getText().toString();
+        String pf1 = CAl_fhi.replace('-','/');
+        String pf2 = CAl_fhf.replace('-','/');
+        String time;
+
+        long total = new Date(pf2).getTime() - new Date(pf1).getTime();
+        long horas = TimeUnit.MINUTES.convert(total, TimeUnit.MILLISECONDS);
+        time = String.valueOf(horas);
+
+        Apromedio.setText(time);
+
+        new Handler(Looper.getMainLooper()).postDelayed(this::upDateAlicuotado,2000);
     }
 
 }

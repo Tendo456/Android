@@ -28,21 +28,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dd5537c0-9c68-400c-b1cc-7dd54e90018a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../LaboratorioMolecular/app/src/main/java/com/example/laboratoriomolecular/Actividades/alicuotado.java" beforeDir="false" afterPath="$PROJECT_DIR$/../LaboratorioMolecular/app/src/main/java/com/example/laboratoriomolecular/Actividades/alicuotado.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../LaboratorioMolecular/app/src/main/java/com/example/laboratoriomolecular/Retrofit_Data/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../LaboratorioMolecular/app/src/main/java/com/example/laboratoriomolecular/Retrofit_Data/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LaboratorioMolecular/app/src/main/res/layout/activity_alicuotado.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../LaboratorioMolecular/app/src/main/res/layout/activity_alicuotado.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/horas/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/horas/MainActivity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[SerialNumber@R9WN92N6CBJ]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[SerialNumber@R9WN401AX4J]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -156,6 +153,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1620133344718">

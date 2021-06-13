@@ -66,7 +66,8 @@ public interface UserService {
     Call<AlicuotadoResponse> upAlicuotado (@Field("id_placa") String id_placa,
                                            @Field("f_final") String f_final,
                                            @Field("h_final") String h_final,
-                                           @Field("promedio") String promedio);
+                                           @Field("promedio") String promedio,
+                                           @Field("estadoAl") String estadoAl);
 
     @FormUrlEncoded
     @PUT ("Alicuotado/FinalizarAlicuotado.php/{id_placa}")

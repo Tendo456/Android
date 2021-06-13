@@ -165,21 +165,13 @@ public class conductor extends AppCompatActivity {
             breveteC.setError("Complete los Campos");
         } else {
 
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
-                    limpiarConductor();
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
-                }
-            }) {
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, response -> {
+                Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
+                limpiarConductor();
+            }, error -> Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show()) {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
-                    Map<String, String> parametros = new HashMap<String, String>();
+                    Map<String, String> parametros = new HashMap<>();
                     parametros.put("dni", dniC.getText().toString());
                     parametros.put("nombre_conductor", nombreC.getText().toString());
                     parametros.put("brevete", breveteC.getText().toString());
@@ -209,12 +201,7 @@ public class conductor extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
                     limpiarConductor();
                 }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
-                }
-            }) {
+            }, error -> Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show()) {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String, String> parametros = new HashMap<String, String>();
