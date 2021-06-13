@@ -55,46 +55,22 @@ public class conductor extends AppCompatActivity {
         refrescarC = findViewById(R.id.refrescarConductor);
         conductorId = findViewById(R.id.conductorId);
 
-        refrescarC.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
+        refrescarC.setOnRefreshListener(() -> {
 
-                String consulta = "https://acceso-tendo.000webhostapp.com/acceso/condutor/consultaConductor.php";
-                EnviarConductor(consulta);
-                limpiarConductor();
+            String consulta = "https://acceso-tendo.000webhostapp.com/acceso/condutor/consultaConductor.php";
+            EnviarConductor(consulta);
+            limpiarConductor();
 
-                refrescarC.setRefreshing(false);
-            }
+            refrescarC.setRefreshing(false);
         });
 
-        ingresarC.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ingresarConductor("https://acceso-tendo.000webhostapp.com/acceso/condutor/insertConductor.php");
-            }
-        });
+        ingresarC.setOnClickListener(v -> ingresarConductor("https://acceso-tendo.000webhostapp.com/acceso/condutor/insertConductor.php"));
 
-        editaC.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                editarConductor("https://acceso-tendo.000webhostapp.com/acceso/condutor/editarConductor.php");
+        editaC.setOnClickListener(v -> editarConductor("https://acceso-tendo.000webhostapp.com/acceso/condutor/editarConductor.php"));
 
-            }
-        });
+        buscarC.setOnClickListener(v -> buscarConductor("https://acceso-tendo.000webhostapp.com/acceso/condutor/buscarConductor.php?dni="+dniC.getText()));
 
-        buscarC.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                buscarConductor("https://acceso-tendo.000webhostapp.com/acceso/condutor/buscarConductor.php?dni="+dniC.getText());
-            }
-        });
-
-        eliminarC.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                eliminarConductor("https://acceso-tendo.000webhostapp.com/acceso/condutor/eliminarConductor.php");
-            }
-        });
+        eliminarC.setOnClickListener(v -> eliminarConductor("https://acceso-tendo.000webhostapp.com/acceso/condutor/eliminarConductor.php"));
 
         String Consult = "https://acceso-tendo.000webhostapp.com/acceso/condutor/consultaConductor.php";
         EnviarConductor(Consult);
@@ -106,22 +82,19 @@ public class conductor extends AppCompatActivity {
         Toast.makeText(getApplicationContext(),"cargando", Toast.LENGTH_SHORT).show();
 
         RequestQueue queue = Volley.newRequestQueue(this);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                response = response.replace("][", ",");
-                if (response.length() > 0) {
-                    try {
-                        JSONArray ja = new JSONArray(response);
-                        Log.i("sizejson", "" + ja.length());
-                        CargarListaC(ja);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, response -> {
+            response = response.replace("][", ",");
+            if (response.length() > 0) {
+                try {
+                    JSONArray ja = new JSONArray(response);
+                    Log.i("sizejson", "" + ja.length());
+                    CargarListaC(ja);
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
 
             }
+
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
@@ -148,7 +121,7 @@ public class conductor extends AppCompatActivity {
 
         }
 
-        ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, lista);
+        ArrayAdapter<String> adaptador = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, lista);
         listaC.setAdapter(adaptador);
 
 

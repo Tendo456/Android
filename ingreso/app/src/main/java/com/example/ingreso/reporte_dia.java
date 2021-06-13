@@ -49,14 +49,11 @@ public class reporte_dia extends AppCompatActivity {
         listReporteDia = findViewById(R.id.listReporteDia);
         consultar = findViewById(R.id.Consultar);
 
-        consultar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        consultar.setOnClickListener(v -> {
 
-                String Consult = "https://acceso-tendo.000webhostapp.com/acceso/RegistrosD%C3%ADa.php?fecha="+fechaReporte.getText();
-                registros_dia(Consult);
+            String Consult = "https://acceso-tendo.000webhostapp.com/acceso/RegistrosD%C3%ADa.php?fecha="+fechaReporte.getText();
+            registros_dia(Consult);
 
-            }
         });
 
 

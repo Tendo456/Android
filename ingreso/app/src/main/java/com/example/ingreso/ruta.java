@@ -70,45 +70,22 @@ public class ruta extends AppCompatActivity {
         rutaId  =findViewById(R.id.rutaId);
         refrescarR = findViewById(R.id.refrescarRuta);
 
-        refrescarR.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
+        refrescarR.setOnRefreshListener(() -> {
 
-                String consultaR = "https://acceso-tendo.000webhostapp.com/acceso/ruta/consultaRuta.php";
-                EnviarRuta(consultaR);
-                limpiarRuta();
+            String consultaR = "https://acceso-tendo.000webhostapp.com/acceso/ruta/consultaRuta.php";
+            EnviarRuta(consultaR);
+            limpiarRuta();
 
-                refrescarR.setRefreshing(false);
-            }
+            refrescarR.setRefreshing(false);
         });
 
-        ingresarR.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ingresarRuta("https://acceso-tendo.000webhostapp.com/acceso/ruta/insertRuta.php");
-            }
-        });
+        ingresarR.setOnClickListener(v -> ingresarRuta("https://acceso-tendo.000webhostapp.com/acceso/ruta/insertRuta.php"));
 
-        buscarR.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                buscarRuta("https://acceso-tendo.000webhostapp.com/acceso/ruta/buscarRuta.php?ruta="+ruta.getText());
-            }
-        });
+        buscarR.setOnClickListener(v -> buscarRuta("https://acceso-tendo.000webhostapp.com/acceso/ruta/buscarRuta.php?ruta="+ruta.getText()));
 
-        editarR.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                editarRuta("https://acceso-tendo.000webhostapp.com/acceso/ruta/editarRuta.php");
-            }
-        });
+        editarR.setOnClickListener(v -> editarRuta("https://acceso-tendo.000webhostapp.com/acceso/ruta/editarRuta.php"));
 
-        eliminarR.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                eliminarRuta("https://acceso-tendo.000webhostapp.com/acceso/ruta/eliminarRuta.php");
-            }
-        });
+        eliminarR.setOnClickListener(v -> eliminarRuta("https://acceso-tendo.000webhostapp.com/acceso/ruta/eliminarRuta.php"));
 
         RCond = new AsyncHttpClient();
         llenarspinerC();
@@ -240,28 +217,20 @@ public class ruta extends AppCompatActivity {
         Toast.makeText(getApplicationContext(),"cargando", Toast.LENGTH_SHORT).show();
 
         RequestQueue queue = Volley.newRequestQueue(this);
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                response = response.replace("][", ",");
-                if (response.length() > 0) {
-                    try {
-                        JSONArray ja = new JSONArray(response);
-                        Log.i("sizejson", "" + ja.length());
-                        CargarListaR(ja);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, URL, response -> {
+            response = response.replace("][", ",");
+            if (response.length() > 0) {
+                try {
+                    JSONArray ja = new JSONArray(response);
+                    Log.i("sizejson", "" + ja.length());
+                    CargarListaR(ja);
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
 
             }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), "Error",Toast.LENGTH_SHORT).show();
-            }
-        });
+
+        }, error -> Toast.makeText(getApplicationContext(), "Error",Toast.LENGTH_SHORT).show());
 
         queue.add(stringRequest);
 
@@ -294,18 +263,10 @@ public class ruta extends AppCompatActivity {
             ruta.setError("Complete los campos");}
 
        else {
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
-                    limpiarRuta();
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
-                }
-            }) {
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, response -> {
+                Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
+                limpiarRuta();
+            }, error -> Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show()) {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String, String> parametros = new HashMap<String, String>();
@@ -327,18 +288,10 @@ public class ruta extends AppCompatActivity {
             ruta.setError("Complete los campos");}
 
         else {
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-                    Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
-                    limpiarRuta();
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
-                }
-            }) {
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, response -> {
+                Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
+                limpiarRuta();
+            }, error -> Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show()) {
                 @Override
                 protected Map<String, String> getParams() throws AuthFailureError {
                     Map<String, String> parametros = new HashMap<String, String>();
@@ -356,28 +309,20 @@ public class ruta extends AppCompatActivity {
     }
 
     private void buscarRuta (String URL){
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray response) {
-                JSONObject jsonObject = null;
-                for (int i = 0; i < response.length(); i++) {
-                    try {
-                        jsonObject = response.getJSONObject(i);
-                        rutaId.setText(jsonObject.getString("idruta"));
-                        idVehiculo.setText(jsonObject.getString("idvehiculo"));
-                        idConductor.setText(jsonObject.getString("idconductor"));
-                    } catch (JSONException e) {
-                        Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(URL, response -> {
+            JSONObject jsonObject = null;
+            for (int i = 0; i < response.length(); i++) {
+                try {
+                    jsonObject = response.getJSONObject(i);
+                    rutaId.setText(jsonObject.getString("idruta"));
+                    idVehiculo.setText(jsonObject.getString("idvehiculo"));
+                    idConductor.setText(jsonObject.getString("idconductor"));
+                } catch (JSONException e) {
+                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
+
             }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), "Ruta no Encontrada",Toast.LENGTH_SHORT).show();
-            }
-        }
+        }, error -> Toast.makeText(getApplicationContext(), "Ruta no Encontrada",Toast.LENGTH_SHORT).show()
         );
 
         requestQueue= Volley.newRequestQueue(this);
@@ -385,18 +330,10 @@ public class ruta extends AppCompatActivity {
     }
 
     private void eliminarRuta (String URL){
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
-                limpiarRuta();
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show();
-            }
-        }){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, response -> {
+            Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
+            limpiarRuta();
+        }, error -> Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_SHORT).show()){
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String>parametros=new HashMap<String, String>();

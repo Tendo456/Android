@@ -324,12 +324,16 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
     }
 
     private void saveAlicuotado(){
+        if (Aq_muestras.getText().toString().isEmpty()){
+            Aq_muestras.setError("Ingrese Cantidad de Muestras");
+        }
         Call<AlicuotadoResponse> callAli = ApiClient.getUserService().InsertarAlicuotado(Aq_muestras.getText().toString(),Af_inicio.getText().toString(),Ah_inicio.getText().toString(),Aoperador.getText().toString(),Adni.getText().toString(),"1",Aid_placa.getText().toString());
         callAli.enqueue(new Callback<AlicuotadoResponse>() {
             @Override
             public void onResponse(@NotNull Call<AlicuotadoResponse> call, @NotNull Response<AlicuotadoResponse> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(alicuotado.this, "Datos Guardados", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(alicuotado.this, "Datos Guardados", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),""+ response.message(),Toast.LENGTH_LONG).show();
                     conseguir();
                     limpiarAlicuotado();
                 } else {
