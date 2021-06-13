@@ -15,6 +15,7 @@ public class AlicuotadoResponse implements Serializable {
     private String operador;
     private String dni;
     private String estadoAl;
+    private String id_placa;
     private String N_placa;
 
     public String getId_alicuotado() {
@@ -65,9 +66,13 @@ public class AlicuotadoResponse implements Serializable {
         this.h_final = h_final;
     }
 
-    public String getPromedio() { return promedio; }
+    public String getPromedio() {
+        return promedio;
+    }
 
-    public void setPromedio(String promedio) { this.promedio = promedio; }
+    public void setPromedio(String promedio) {
+        this.promedio = promedio;
+    }
 
     public String getOperador() {
         return operador;
@@ -93,9 +98,21 @@ public class AlicuotadoResponse implements Serializable {
         this.estadoAl = estadoAl;
     }
 
-    public String getN_placa() { return N_placa; }
+    public String getId_placa() {
+        return id_placa;
+    }
 
-    public void setN_placa(String n_placa) { N_placa = n_placa; }
+    public void setId_placa(String id_placa) {
+        this.id_placa = id_placa;
+    }
+
+    public String getN_placa() {
+        return N_placa;
+    }
+
+    public void setN_placa(String n_placa) {
+        N_placa = n_placa;
+    }
 
     @Override
     public String toString() {
@@ -110,6 +127,7 @@ public class AlicuotadoResponse implements Serializable {
                 ", operador='" + operador + '\'' +
                 ", dni='" + dni + '\'' +
                 ", estadoAl='" + estadoAl + '\'' +
+                ", id_placa='" + id_placa + '\'' +
                 ", N_placa='" + N_placa + '\'' +
                 '}';
     }

@@ -55,7 +55,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
     private AsyncHttpClient placaA;
     AlicuotadoAdapter alicuotadoAdapter;
     RecyclerView ListAlicuotado;
-    String idAl, placaAl, muestrasAl, f_inicioAL, h_inicioAL, f_finalAl, h_finalAl, promedioAl ,operadorAl, dniAl, estadoAl;
+    String idAl, placaAl, muestrasAl, f_inicioAL, h_inicioAL, f_finalAl, h_finalAl, promedioAl ,operadorAl, dniAl,id_placaAl, estadoAl;
     String F, H, AN_placa;
     String CAl_fhi, CAl_fhf;
     Button Ainiciar,Afinalizar;
@@ -242,6 +242,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
 
         idAl = alicuotadoResponse.getId_alicuotado();
         placaAl = alicuotadoResponse.getN_placa();
+        id_placaAl = alicuotadoResponse.getId_placa();
         muestrasAl = alicuotadoResponse.getQ_muestras();
         f_inicioAL = alicuotadoResponse.getF_inicio();
         h_inicioAL = alicuotadoResponse.getH_inicio();
@@ -252,6 +253,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
         dniAl = alicuotadoResponse.getDni();
         estadoAl = alicuotadoResponse.getEstadoAl();
 
+        Aid_placa.setText(id_placaAl);
         CAl_fhi = alicuotadoResponse.getF_inicio()+" "+alicuotadoResponse.getH_inicio();
 
         if (muestrasAl == null){ Aq_muestras.setText("Vacio"); }else { Aq_muestras.setText(muestrasAl); }
@@ -348,12 +350,11 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
         });
     }
 
-    private void upDateAlicuotado(){
+    private void upDateAlicuotado() {
+        if (placaAl == null) {
+            Toast.makeText(this, "Seleccione La Placa a Finalizar en la Lista", Toast.LENGTH_LONG).show();
+        } else {
 
-        if(!AN_placa.equals(placaAl)){
-            Toast.makeText(alicuotado.this,"Seleccione la Placa "+placaAl,Toast.LENGTH_SHORT).show();
-        }
-        else {
 
             Call<AlicuotadoResponse> upAlic = ApiClient.getUserService().upAlicuotado(Aid_placa.getText().toString(), Af_final.getText().toString(), Ah_final.getText().toString(), Apromedio.getText().toString(), "2");
             upAlic.enqueue(new Callback<AlicuotadoResponse>() {
@@ -374,6 +375,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
                 }
             });
         }
+
     }
 
     public void limpiarAlicuotado(){
@@ -381,19 +383,23 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
         Aq_muestras.setText(null);
     }
 
-    public void calcularPromedio (){
-        CAl_fhf = Af_final.getText().toString()+" "+Ah_final.getText().toString();
-        String pf1 = CAl_fhi.replace('-','/');
-        String pf2 = CAl_fhf.replace('-','/');
-        String time;
+    public void calcularPromedio () {
+        if (CAl_fhi == null) {
+            Toast.makeText(this, "Seleccione La Placa a Finalizar en la Lista y Spinner", Toast.LENGTH_LONG).show();
+        } else {
+            CAl_fhf = Af_final.getText().toString() + " " + Ah_final.getText().toString();
+            String pf1 = CAl_fhi.replace('-', '/');
+            String pf2 = CAl_fhf.replace('-', '/');
+            String time;
 
-        long total = new Date(pf2).getTime() - new Date(pf1).getTime();
-        long horas = TimeUnit.MINUTES.convert(total, TimeUnit.MILLISECONDS);
-        time = String.valueOf(horas);
+            long total = new Date(pf2).getTime() - new Date(pf1).getTime();
+            long horas = TimeUnit.MINUTES.convert(total, TimeUnit.MILLISECONDS);
+            time = String.valueOf(horas);
 
-        Apromedio.setText(time);
+            Apromedio.setText(time);
 
-        new Handler(Looper.getMainLooper()).postDelayed(this::upDateAlicuotado,2000);
+            new Handler(Looper.getMainLooper()).postDelayed(this::upDateAlicuotado, 2000);
+        }
     }
 
 }
