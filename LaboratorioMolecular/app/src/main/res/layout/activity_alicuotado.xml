@@ -87,6 +87,7 @@
                             android:layout_weight="1"
                             android:background="@drawable/drawable_blue"
                             android:ems="10"
+                            android:hint="Cantidad de Muestras"
                             android:gravity="center"
                             android:inputType="number"
                             android:maxLength="4"
