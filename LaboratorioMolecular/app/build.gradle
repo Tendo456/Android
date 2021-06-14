@@ -45,4 +45,5 @@ dependencies {
     implementation 'com.google.gms:google-services:4.3.8'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.5.0'
     implementation 'com.loopj.android:android-async-http:1.4.9'
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 }

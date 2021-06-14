@@ -62,67 +62,58 @@ public class Home extends AppCompatActivity {
         buscador = findViewById(R.id.buscador);
 
 
-        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
+        refreshLayout.setOnRefreshListener(() -> {
 
-                mostrardatos();
-                buscador.setText("");
+            mostrardatos();
+            buscador.setText("");
 
-                refreshLayout.setRefreshing(false);
-            }
+            refreshLayout.setRefreshing(false);
         });
 
 
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-                ProgressDialog progressDialog = new ProgressDialog(view.getContext());
-                CharSequence [] dialogoItem = {"Ver datos", "Editar datos","Temperatura","Editar Temperatura","Ver Temperatura","Ver Registros", "Eliminar datos"};
-                builder.setTitle(users.get(position).getNombres());
-                builder.setItems(dialogoItem, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int i) {
+        list.setOnItemClickListener((parent, view, position, id) -> {
+            AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
+            ProgressDialog progressDialog = new ProgressDialog(view.getContext());
+            CharSequence [] dialogoItem = {"Ver datos", "Editar datos","Temperatura","Editar Temperatura","Ver Temperatura","Ver Registros", "Eliminar datos"};
+            builder.setTitle(users.get(position).getNombres());
+            builder.setItems(dialogoItem, (dialog, i) -> {
 
-                        switch (i){
-                            case 0:
-                                startActivity(new Intent(getApplicationContext(),Detalles.class).
-                                        putExtra("position",position));
-                                break;
-                            case 1:
-                                startActivity(new Intent(getApplicationContext(),Editar.class).
-                                        putExtra("position",position));
-                                break;
-                            case 2:
-                                startActivity(new Intent(getApplicationContext(),tempIn.class).
-                                        putExtra("position",position));
-                                break;
-                            case 3:
-                                startActivity(new Intent(getApplicationContext(),editTemp.class).
-                                        putExtra("position",position));
-                                break;
-                            case 4:
-                                startActivity(new Intent(getApplicationContext(),DetalleTemp.class).
-                                        putExtra("position",position));
-                                break;
-                            case 5:
-                                startActivity(new Intent(getApplicationContext(),reporteTemp.class).
-                                        putExtra("position",position));
-                                break;
-                            case 6:
-                                //Borrardatos(users.get(position).getId_Personal());
-                                tras = users.get(position).getId_Personal();
-                                EliminarConfirmar();
+                switch (i){
+                    case 0:
+                        startActivity(new Intent(getApplicationContext(),Detalles.class).
+                                putExtra("position",position));
+                        break;
+                    case 1:
+                        startActivity(new Intent(getApplicationContext(),Editar.class).
+                                putExtra("position",position));
+                        break;
+                    case 2:
+                        startActivity(new Intent(getApplicationContext(),tempIn.class).
+                                putExtra("position",position));
+                        break;
+                    case 3:
+                        startActivity(new Intent(getApplicationContext(),editTemp.class).
+                                putExtra("position",position));
+                        break;
+                    case 4:
+                        startActivity(new Intent(getApplicationContext(),DetalleTemp.class).
+                                putExtra("position",position));
+                        break;
+                    case 5:
+                        startActivity(new Intent(getApplicationContext(),reporteTemp.class).
+                                putExtra("position",position));
+                        break;
+                    case 6:
+                        //Borrardatos(users.get(position).getId_Personal());
+                        tras = users.get(position).getId_Personal();
+                        EliminarConfirmar();
 
 
-                                break;
-                        }
-                    }
-                });
+                        break;
+                }
+            });
 
-                builder.create().show();
-            }
+            builder.create().show();
         });
         mostrardatos();
 

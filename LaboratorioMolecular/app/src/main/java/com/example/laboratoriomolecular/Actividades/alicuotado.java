@@ -20,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.laboratoriomolecular.Adaptador.AlicuotadoAdapter;
 import com.example.laboratoriomolecular.Modelos.AlicuotadoResponse;
@@ -48,6 +49,7 @@ import retrofit2.Response;
 
 public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.ClickedItemA{
 
+    SwipeRefreshLayout Alrefresh;
     Spinner spPlacasA,spOperA;
     EditText Aq_muestras;
     TextView Aid_placa, Aid_placaSp, Af_inicio, Ah_inicio, Af_final, Ah_final, Apromedio, Aoperador ,Adni;
@@ -68,6 +70,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alicuotado);
 
+        Alrefresh = findViewById(R.id.Alrefresh);
         spPlacasA = findViewById(R.id.spPlacasA);
         spOperA = findViewById(R.id.spOperA);
         Aid_placa = findViewById(R.id.Aid_placa);
@@ -95,6 +98,11 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
         Afinalizar.setOnClickListener(v -> FinalizarAlicuotado());
         Afecha();
         conseguirAl();
+
+        Alrefresh.setOnRefreshListener(()->{
+            Afecha();
+            Alrefresh.setRefreshing(false);
+        });
 
     }
 
