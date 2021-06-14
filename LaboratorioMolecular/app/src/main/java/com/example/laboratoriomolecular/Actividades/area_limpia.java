@@ -5,6 +5,7 @@ import android.hardware.Camera;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -273,14 +274,14 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
         if(f_finalAr == null){Arf_final.setText(ArF); Arfinalizar.setEnabled(true);} else {Arf_final.setText(f_finalAr); Arfinalizar.setEnabled(false);}
         if(h_finalAr == null){Arh_final.setText(ArH);} else {Arh_final.setText(h_finalAr);}
 
-        dialogoAl();
+        dialogoAr();
     }
 
-    public void dialogoAl (){
+    public void dialogoAr (){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(area_limpia.this);
         LayoutInflater inflater = getLayoutInflater();
-        View view = inflater.inflate(R.layout.dialogo_ali,null);
+        View view = inflater.inflate(R.layout.dialogo_ar,null);
         builder.setView(view);
 
         final AlertDialog dialog = builder.create();
@@ -308,8 +309,8 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
         diArdni.setText(dniAr);
         diArestado.setText(estadoAr);
 
-        Button diAl_ok = view.findViewById(R.id.diAl_ok);
-        diAl_ok.setOnClickListener(v -> dialog.dismiss());
+        Button diAr_ok = view.findViewById(R.id.diAr_ok);
+        diAr_ok.setOnClickListener(v -> dialog.dismiss());
     }
 
     private void conseguirAr (){
@@ -321,16 +322,12 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
                     List<AreaResponse> areaResponses = response.body();
                     areaAdapter.setData(areaResponses);
                     ListArea.setAdapter(areaAdapter);
-
-                    //AreaResponce mensaje = response.body();
-                    //Toast.makeText(area_limpia.this, "" + mensaje.getMensaje(), Toast.LENGTH_SHORT).show();
-
                 }
             }
 
             @Override
             public void onFailure(Call<List<AreaResponse>> call, Throwable t) {
-
+                Log.e("Fallo ",t.getLocalizedMessage());
             }
         });
 
