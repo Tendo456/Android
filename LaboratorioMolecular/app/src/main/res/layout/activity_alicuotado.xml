@@ -100,7 +100,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/blue_white"
                         android:gravity="center"
-                        android:text="H. Inicio"
+                        android:text="F/H. Inicio"
                         android:textColor="@color/white"
                         android:textSize="18sp" />
 
@@ -147,7 +147,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/blue_white"
                         android:gravity="center"
-                        android:text="H. Final"
+                        android:text="F/H. Final"
                         android:textColor="@color/white"
                         android:textSize="18sp" />
 
@@ -243,21 +243,31 @@
                 android:orientation="horizontal">
 
                 <TextView
+                    android:id="@+id/Aid_placaSp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Placa Spinner" />
+
+                <TextView
                     android:id="@+id/Aid_placa"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Placa" />
+                    android:layout_weight="1"
+                    android:text="Placa Lista" />
 
                 <TextView
                     android:id="@+id/Aoperador"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="operador" />
 
                 <TextView
                     android:id="@+id/Apromedio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:text="promedio" />
             </LinearLayout>
 

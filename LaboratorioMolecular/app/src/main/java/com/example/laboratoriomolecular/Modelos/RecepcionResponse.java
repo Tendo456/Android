@@ -12,6 +12,7 @@ public class RecepcionResponse implements Serializable {
     private String operador;
     private String dni;
     private String estadoRe;
+    private String mensaje;
 
     public String getId_recepcion() {
         return id_recepcion;
@@ -75,6 +76,10 @@ public class RecepcionResponse implements Serializable {
 
     public void setEstadoRe(String estadoRe) {
         this.estadoRe = estadoRe;
+    }
+
+    public String getMensaje() {
+        return mensaje;
     }
 
     @Override

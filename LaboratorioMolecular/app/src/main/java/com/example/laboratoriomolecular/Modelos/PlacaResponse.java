@@ -7,6 +7,7 @@ public class PlacaResponse implements Serializable {
     private String id_placa;
     private String N_placa;
     private String fechaP;
+    private String mensaje;
 
     public String getId_placa() {
         return id_placa;
@@ -30,6 +31,10 @@ public class PlacaResponse implements Serializable {
 
     public void setFechaP(String fechaP) {
         this.fechaP = fechaP;
+    }
+
+    public String getMensaje() {
+        return mensaje;
     }
 
     @Override

@@ -17,6 +17,7 @@ public class AlicuotadoResponse implements Serializable {
     private String estadoAl;
     private String id_placa;
     private String N_placa;
+    private String mensaje;
 
     public String getId_alicuotado() {
         return id_alicuotado;
@@ -112,6 +113,10 @@ public class AlicuotadoResponse implements Serializable {
 
     public void setN_placa(String n_placa) {
         N_placa = n_placa;
+    }
+
+    public String getMensaje() {
+        return mensaje;
     }
 
     @Override

@@ -43,7 +43,7 @@ public class AlicuotadoAdapter extends RecyclerView.Adapter<AlicuotadoAdapter.Al
 
         AlicuotadoResponse alicuotadoResponse = alicuotadoResponseList.get(position);
 
-        String date = alicuotadoResponse.getOperador();
+        String date = alicuotadoResponse.getN_placa();
         String prefix = alicuotadoResponse.getId_alicuotado();
 
         holder.prefix.setText(prefix);

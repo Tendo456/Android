@@ -30,6 +30,7 @@ import com.example.laboratoriomolecular.Retrofit_Data.ApiClient;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 
 import java.text.DateFormat;
@@ -90,7 +91,7 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
 
     private void llenarspinerO (){
 
-        String url = "http://192.168.1.5/laboratorio/Operador/SpOperador.php";
+        String url = "http://192.168.1.19/laboratorio/Operador/SpOperador.php";
         operador.post(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -178,12 +179,13 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
             Call<RecepcionResponse> call = ApiClient.getUserService().InsertarRecepcion(Rfecha.getText().toString(), Rhora.getText().toString(), Rnenvio.getText().toString(), Rqmuestras.getText().toString(), Roperador.getText().toString(), Rdni.getText().toString(), "1");
             call.enqueue(new Callback<RecepcionResponse>() {
                 @Override
-                public void onResponse(Call<RecepcionResponse> call, Response<RecepcionResponse> response) {
+                public void onResponse(@NotNull Call<RecepcionResponse> call, @NotNull Response<RecepcionResponse> response) {
                     if (response.isSuccessful()) {
-                        Toast.makeText(recepcion.this, "Datos Guardados", Toast.LENGTH_SHORT).show();
+                        RecepcionResponse mensaje = response.body();
+                        Toast.makeText(recepcion.this, ""+mensaje.getMensaje()+" "+response.code(), Toast.LENGTH_SHORT).show();
                         limpiar();
                     } else {
-                        Toast.makeText(recepcion.this, "Error al Guardar los Datos", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(recepcion.this, "Error al Guardar los Datos " +response.code(), Toast.LENGTH_SHORT).show();
                     }
                 }
 

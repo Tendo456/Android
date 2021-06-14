@@ -1,11 +1,5 @@
 package com.example.laboratoriomolecular.Actividades;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,16 +9,22 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.laboratoriomolecular.Adaptador.PlacaAdapter;
 import com.example.laboratoriomolecular.Modelos.PlacaResponse;
-import com.example.laboratoriomolecular.Modelos.RecepcionResponse;
 import com.example.laboratoriomolecular.R;
 import com.example.laboratoriomolecular.Retrofit_Data.ApiClient;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -70,12 +70,7 @@ public class nueva_placa extends AppCompatActivity {
     }
 
     public void hiloPlaca(){
-        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                fechaPlaca();
-            }
-        },3000);
+        new Handler(Looper.getMainLooper()).postDelayed(this::fechaPlaca,3000);
     }
 
     public void ConfirmarPlaca (){
@@ -97,18 +92,20 @@ public class nueva_placa extends AppCompatActivity {
             Call<PlacaResponse> call = ApiClient.getUserService().savePlaca(CodPlaca.getText().toString(),fechaPl.getText().toString());
             call.enqueue(new Callback<PlacaResponse>() {
                 @Override
-                public void onResponse(Call<PlacaResponse> call, Response<PlacaResponse> response) {
+                public void onResponse(@NotNull Call<PlacaResponse> call, @NotNull Response<PlacaResponse> response) {
                     if (response.isSuccessful()) {
-                        Toast.makeText(nueva_placa.this, "Placa Creada", Toast.LENGTH_SHORT).show();
+
+                        PlacaResponse mensaje = response.body();
+                        Toast.makeText(nueva_placa.this, ""+ mensaje.getMensaje()+" "+response.code(), Toast.LENGTH_SHORT).show();
                         limpiarPlaca();
 
                     } else {
-                        Toast.makeText(nueva_placa.this, "Error al Guardar los Datos", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(nueva_placa.this, "Error al Guardar los Datos "+ response.code(), Toast.LENGTH_SHORT).show();
                     }
                 }
 
                 @Override
-                public void onFailure(Call<PlacaResponse> call, Throwable t) {
+                public void onFailure(@NotNull Call<PlacaResponse> call, @NotNull Throwable t) {
                     Toast.makeText(nueva_placa.this, "Error Codigo: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
@@ -119,7 +116,7 @@ public class nueva_placa extends AppCompatActivity {
         Call<List<PlacaResponse>> placaList = ApiClient.getUserService().getPlacaF(fechaPl.getText().toString());
         placaList.enqueue(new Callback<List<PlacaResponse>>() {
             @Override
-            public void onResponse(Call<List<PlacaResponse>> call, Response<List<PlacaResponse>> response) {
+            public void onResponse(@NotNull Call<List<PlacaResponse>> call, @NotNull Response<List<PlacaResponse>> response) {
                 if(response.isSuccessful()){
                     List<PlacaResponse> placaResponses = response.body();
                     placaAdapter.setData(placaResponses);
@@ -128,7 +125,7 @@ public class nueva_placa extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<PlacaResponse>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<PlacaResponse>> call, @NotNull Throwable t) {
 
             }
         });

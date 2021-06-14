@@ -1,9 +1,9 @@
 package com.example.laboratoriomolecular.Retrofit_Data;
 
 import com.example.laboratoriomolecular.Modelos.AlicuotadoResponse;
+import com.example.laboratoriomolecular.Modelos.ExtraccionResponse;
 import com.example.laboratoriomolecular.Modelos.OperadorResponse;
 import com.example.laboratoriomolecular.Modelos.PlacaResponse;
-import com.example.laboratoriomolecular.Modelos.PlacaSpinner;
 import com.example.laboratoriomolecular.Modelos.RecepcionResponse;
 
 import java.util.List;
@@ -13,7 +13,6 @@ import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
-import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
@@ -69,7 +68,25 @@ public interface UserService {
                                            @Field("promedio") String promedio,
                                            @Field("estadoAl") String estadoAl);
 
+    @GET("Extraccion/ConseguirExtraccion.php")
+    Call<List<ExtraccionResponse>> conseguirExtraccion(@Query("f_inicio") String f_inicio);
+
     @FormUrlEncoded
-    @PUT ("Alicuotado/FinalizarAlicuotado.php/{id_placa}")
-    Call<AlicuotadoResponse> upAlicuotado1 (@Path("id_placa") String id_placa, @Body AlicuotadoResponse alicuotadoResponse);
+    @POST("Extraccion/InsertarExtraccion.php")
+    Call<ExtraccionResponse> InsertarExtraccion (@Field("f_inicio") String f_inicio,
+                                                 @Field("h_inicio") String h_inicio,
+                                                 @Field("operador") String operador,
+                                                 @Field("dni") String dni,
+                                                 @Field("estadoEx") String estadoEx,
+                                                 @Field("id_placa") String id_placa);
+
+    @FormUrlEncoded
+    @POST("Extraccion/FinalizarExtraccion.php")
+    Call<ExtraccionResponse> upExtraccion (@Field("id_placa") String id_placa,
+                                           @Field("f_final") String f_final,
+                                           @Field("h_final") String h_final,
+                                           @Field("promedio") String promedio,
+                                           @Field("estadoEx") String estadoEx);
+
+
 }
