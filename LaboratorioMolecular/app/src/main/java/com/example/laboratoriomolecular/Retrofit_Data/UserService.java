@@ -1,6 +1,7 @@
 package com.example.laboratoriomolecular.Retrofit_Data;
 
 import com.example.laboratoriomolecular.Modelos.AlicuotadoResponse;
+import com.example.laboratoriomolecular.Modelos.AreaResponse;
 import com.example.laboratoriomolecular.Modelos.ExtraccionResponse;
 import com.example.laboratoriomolecular.Modelos.OperadorResponse;
 import com.example.laboratoriomolecular.Modelos.PlacaResponse;
@@ -9,13 +10,10 @@ import com.example.laboratoriomolecular.Modelos.RecepcionResponse;
 import java.util.List;
 
 import retrofit2.Call;
-import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
-import retrofit2.http.PUT;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface UserService {
@@ -87,6 +85,27 @@ public interface UserService {
                                            @Field("h_final") String h_final,
                                            @Field("promedio") String promedio,
                                            @Field("estadoEx") String estadoEx);
+
+    @GET("Area_Limpia/ConseguirArea.php")
+    Call<List<AreaResponse>> conseguirArea(@Query("f_inicio") String f_inicio);
+
+    @FormUrlEncoded
+    @POST("Area_Limpia/InsertarArea.php")
+    Call<AreaResponse> InsertarArea (@Field("q_muestras") String q_muestras,
+                                     @Field("f_inicio") String f_inicio,
+                                     @Field("h_inicio") String h_inicio,
+                                     @Field("operador") String operador,
+                                     @Field("dni") String dni,
+                                     @Field("estadoAr") String estadoAr,
+                                     @Field("id_placa") String id_placa);
+
+    @FormUrlEncoded
+    @POST("Area_Limpia/FinalizarArea.php")
+    Call<AreaResponse> upArea (@Field("id_placa") String id_placa,
+                               @Field("f_final") String f_final,
+                               @Field("h_final") String h_final,
+                               @Field("promedio") String promedio,
+                               @Field("estadoAr") String estadoAr);
 
 
 }

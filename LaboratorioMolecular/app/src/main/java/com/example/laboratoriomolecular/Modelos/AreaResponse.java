@@ -2,7 +2,7 @@ package com.example.laboratoriomolecular.Modelos;
 
 import java.io.Serializable;
 
-public class AreaResponce implements Serializable {
+public class AreaResponse implements Serializable {
 
     private String id_area_limpia;
     private String q_muestras;
