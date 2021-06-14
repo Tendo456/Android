@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -48,7 +49,8 @@ import retrofit2.Response;
 public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.ClickedItemA{
 
     Spinner spPlacasA,spOperA;
-    TextView Aid_placa, Aid_placaSp, Aq_muestras, Af_inicio, Ah_inicio, Af_final, Ah_final, Apromedio, Aoperador ,Adni;
+    EditText Aq_muestras;
+    TextView Aid_placa, Aid_placaSp, Af_inicio, Ah_inicio, Af_final, Ah_final, Apromedio, Aoperador ,Adni;
     //dialogo
     TextView diAlN_placa,diAlq_muestras,diAlf_inicio,diAlh_inicio,diAlf_final,diAlh_final,diAlpromedio,diAloperador,diAldni,diAlestado;
     private AsyncHttpClient operadorA;
@@ -123,7 +125,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
     }
 
     private void llenarspinnerAl(){
-        String url = "http://192.168.1.19/laboratorio/Placas/spPlacaAl.php?fechaP="+F;
+        String url = "http://192.168.1.5/laboratorio/Placas/spPlacaAl.php?fechaP="+F;
         placaA.post(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -178,7 +180,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
 
     private void llsOpeA (){
 
-        String urlOpeA = "http://192.168.1.19/laboratorio/Operador/SpOperador.php";
+        String urlOpeA = "http://192.168.1.5/laboratorio/Operador/SpOperador.php";
         operadorA.post(urlOpeA, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
