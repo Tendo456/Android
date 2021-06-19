@@ -123,24 +123,20 @@ public class reporte_dia extends AppCompatActivity {
         mes= calendar.get(Calendar.MONTH);
         año = calendar.get(Calendar.YEAR);
 
-        DatePickerDialog dateDlg = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener()
-        {
+        DatePickerDialog dateDlg = new DatePickerDialog(this, (view1, year, monthOfYear, dayOfMonth) -> {
+            fechaReporte.setText(year+"-"+(monthOfYear+1)+"-"+dayOfMonth);
 
-            public void onDateSet(DatePicker view, int year,int monthOfYear, int dayOfMonth)
-            {
-                fechaReporte.setText(year+"-"+(monthOfYear+1)+"-"+dayOfMonth);
+            Calendar cal = Calendar.getInstance();
+            cal.setTimeInMillis(0);
+            cal.set(year, monthOfYear, dayOfMonth, 0, 0, 0);
+            Date chosenDate = cal.getTime();
 
-                Calendar cal = Calendar.getInstance();
-                cal.setTimeInMillis(0);
-                cal.set(year, monthOfYear, dayOfMonth, 0, 0, 0);
-                Date chosenDate = cal.getTime();
-
-                DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-                String s = formatter.format(chosenDate);
-                fechaReporte.setText(s);
+            DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            String s = formatter.format(chosenDate);
+            fechaReporte.setText(s);
 
 
-            }} ,año,mes,dia);
+        },año,mes,dia);
         dateDlg.show();
     }
 

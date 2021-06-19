@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -34,6 +35,7 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 
+import java.text.DateFormat;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -63,6 +65,9 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
     String F, H, AN_placaF,AN_placaI;
     String CAl_fhi, CAl_fhf;
     Button Ainiciar,Afinalizar;
+    int dia ,mes, año;
+    String dayer;
+    CheckBox chAyer;
 
 
     @Override
@@ -85,6 +90,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
         Adni = findViewById(R.id.Adni);
         Ainiciar = findViewById(R.id.Ainiciar);
         Afinalizar = findViewById(R.id.Afinalizar);
+        chAyer = findViewById(R.id.chAyer);
         ListAlicuotado = findViewById(R.id.ListAlicuotado);
 
         Afinalizar.setEnabled(false);
@@ -111,6 +117,13 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
         @SuppressLint("SimpleDateFormat") Format formatter = new SimpleDateFormat("yyyy-MM-dd");
          F = formatter.format(calendar.getTime());
 
+         if (chAyer.isChecked()){
+             ayer();
+         }else{
+             dayer = F;
+         }
+
+
         Date date = new Date();
         @SuppressLint("SimpleDateFormat") Format h = new SimpleDateFormat("HH:mm:ss");
         H = h.format(date);
@@ -128,12 +141,25 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
 
     }
 
+    public void ayer (){
+
+        Calendar calendar = Calendar.getInstance();
+
+        calendar.add(Calendar.DAY_OF_YEAR, -1);
+        Date ayer = calendar.getTime();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        dayer = dateFormat.format(ayer);
+        Toast.makeText(alicuotado.this,"ayer "+ dayer,Toast.LENGTH_SHORT).show();
+
+    }
+
     public void Ahilo(){
         new Handler(Looper.getMainLooper()).postDelayed(this::Afecha,60000);
     }
 
     private void llenarspinnerAl(){
-        String url = "http://192.168.1.19/laboratorio/Placas/spPlacaAl.php?fechaP="+F;
+
+        String url = "http://192.168.1.5/laboratorio/Placas/spPlacaAl.php?fechaP="+dayer;
         placaA.post(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -188,7 +214,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
 
     private void llsOpeA (){
 
-        String urlOpeA = "http://192.168.1.19/laboratorio/Operador/SpOperador.php";
+        String urlOpeA = "http://192.168.1.5/laboratorio/Operador/SpOperador.php";
         operadorA.post(urlOpeA, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {

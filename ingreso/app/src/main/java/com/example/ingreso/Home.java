@@ -173,36 +173,33 @@ public class Home extends AppCompatActivity {
 
     public void mostrardatos(){
 
-        StringRequest request=new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                users.clear();
-                try {
-                    JSONObject jsonObject=new JSONObject(response);
-                    String success=jsonObject.getString("success");
+        StringRequest request=new StringRequest(Request.Method.POST, url, response -> {
+            users.clear();
+            try {
+                JSONObject jsonObject=new JSONObject(response);
+                String success=jsonObject.getString("success");
 
-                    JSONArray jsonArray=jsonObject.getJSONArray("personal");
+                JSONArray jsonArray=jsonObject.getJSONArray("personal");
 
-                    if(success.equals("1")){
-                        for(int i=0;i<jsonArray.length();i++){
-                            JSONObject object=jsonArray.getJSONObject(i);
-                            String id_personal=object.getString("id_personal");
-                            String nombres=object.getString("nombres");
-                            String dni=object.getString("dni");
-                            String edad=object.getString("edad");
-                            String sexo=object.getString("sexo");
-                            String idruta=object.getString("idruta");
+                if(success.equals("1")){
+                    for(int i=0;i<jsonArray.length();i++){
+                        JSONObject object=jsonArray.getJSONObject(i);
+                        String id_personal=object.getString("id_personal");
+                        String nombres=object.getString("nombres");
+                        String dni=object.getString("dni");
+                        String edad=object.getString("edad");
+                        String sexo=object.getString("sexo");
+                        String idruta=object.getString("idruta");
 
 
-                            usuarios=new Users1(id_personal,nombres,dni,edad,sexo,idruta);
-                            users.add(usuarios);
-                            adaptador.notifyDataSetChanged();
+                        usuarios=new Users1(id_personal,nombres,dni,edad,sexo,idruta);
+                        users.add(usuarios);
+                        adaptador.notifyDataSetChanged();
 
-                        }
                     }
-                }catch (JSONException e){
-                    e.printStackTrace();
                 }
+            }catch (JSONException e){
+                e.printStackTrace();
             }
         }, new Response.ErrorListener() {
             @Override
@@ -216,38 +213,35 @@ public class Home extends AppCompatActivity {
 
     public void buscardatos (View view){
         StringRequest request=new StringRequest(Request.Method.POST,
-                "https://acceso-tendo.000webhostapp.com/acceso/buscador.php?nombres="+buscador.getText(), new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                users.clear();
-                try {
-                    JSONObject jsonObject=new JSONObject(response);
-                    String success=jsonObject.getString("success");
+                "https://acceso-tendo.000webhostapp.com/acceso/buscador.php?nombres="+buscador.getText(), response -> {
+                    users.clear();
+                    try {
+                        JSONObject jsonObject=new JSONObject(response);
+                        String success=jsonObject.getString("success");
 
-                    JSONArray jsonArray=jsonObject.getJSONArray("personal");
+                        JSONArray jsonArray=jsonObject.getJSONArray("personal");
 
-                    if(success.equals("1")){
-                        for(int i=0;i<jsonArray.length();i++){
-                            JSONObject object=jsonArray.getJSONObject(i);
-                            String id_personal=object.getString("id_personal");
-                            String nombres=object.getString("nombres");
-                            String dni=object.getString("dni");
-                            String edad=object.getString("edad");
-                            String sexo=object.getString("sexo");
-                            String idruta=object.getString("idruta");
+                        if(success.equals("1")){
+                            for(int i=0;i<jsonArray.length();i++){
+                                JSONObject object=jsonArray.getJSONObject(i);
+                                String id_personal=object.getString("id_personal");
+                                String nombres=object.getString("nombres");
+                                String dni=object.getString("dni");
+                                String edad=object.getString("edad");
+                                String sexo=object.getString("sexo");
+                                String idruta=object.getString("idruta");
 
 
-                            usuarios=new Users1(id_personal,nombres,dni,edad,sexo,idruta);
-                            users.add(usuarios);
-                            adaptador.notifyDataSetChanged();
+                                usuarios=new Users1(id_personal,nombres,dni,edad,sexo,idruta);
+                                users.add(usuarios);
+                                adaptador.notifyDataSetChanged();
 
+                            }
                         }
+                    }catch (JSONException e){
+                        e.printStackTrace();
                     }
-                }catch (JSONException e){
-                    e.printStackTrace();
-                }
-            }
-        }, new Response.ErrorListener() {
+                }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 Toast.makeText(Home.this,error.getMessage(),Toast.LENGTH_SHORT).show();

@@ -46,12 +46,7 @@ public class tempIn extends AppCompatActivity {
         tempe2txt = findViewById(R.id.tempe2txt);
 
         btnTempin = findViewById(R.id.btnTempin);
-        btnTempin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                InTemp();
-            }
-        });
+        btnTempin.setOnClickListener(v -> InTemp());
 
         Intent intent = getIntent();
         position=intent.getExtras().getInt("position");
@@ -90,14 +85,10 @@ public class tempIn extends AppCompatActivity {
                       progressDialog.dismiss();
                   }
               }
-          }, new Response.ErrorListener(){
-              @Override
-              public void onErrorResponse(VolleyError error) {
-                  Toast.makeText(tempIn.this,"Error",Toast.LENGTH_SHORT).show();
-                  progressDialog.dismiss();
-              }
-
-          } ){
+          }, error -> {
+              Toast.makeText(tempIn.this,"Error",Toast.LENGTH_SHORT).show();
+              progressDialog.dismiss();
+          }){
               @Override
               protected Map<String, String> getParams() throws AuthFailureError {
                   Map<String ,String>params=new HashMap<String, String>();
