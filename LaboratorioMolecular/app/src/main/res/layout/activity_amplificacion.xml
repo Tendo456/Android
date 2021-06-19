@@ -22,14 +22,14 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical">
 
             <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
                 android:id="@+id/Amrefresh"
                 android:layout_width="match_parent"
-                android:layout_height="350dp"
+                android:layout_height="450dp"
                 android:layout_weight="1">
 
                 <TableLayout
@@ -87,8 +87,8 @@
                             android:layout_weight="1"
                             android:background="@drawable/drawable_blue"
                             android:ems="10"
-                            android:hint="Cantidad Muestras"
                             android:gravity="center"
+                            android:hint="Cantidad Muestras"
                             android:inputType="number"
                             android:maxLength="4"
                             android:textCursorDrawable="@null" />
@@ -147,7 +147,7 @@
                         android:background="@drawable/drawable_blue">
 
                         <TextView
-                            android:id="@+id/textView3"
+                            android:id="@+id/textView1"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -194,6 +194,105 @@
                         android:background="@drawable/drawable_blue">
 
                         <TextView
+                            android:id="@+id/textView12"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/blue_white"
+                            android:gravity="center"
+                            android:text="Muestras"
+                            android:textColor="@color/white"
+                            android:textSize="18sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/AmM_valido"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_margin="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/drawable_blue"
+                                android:gravity="center"
+                                android:hint="Valido"
+                                android:maxLength="4"
+                                android:textSize="18sp" />
+
+                            <EditText
+                                android:id="@+id/AmM_invalido"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_margin="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/drawable_blue"
+                                android:gravity="center"
+                                android:hint="Invalido"
+                                android:maxLength="4"
+                                android:textSize="18sp" />
+                        </LinearLayout>
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/drawable_blue">
+
+                        <TextView
+                            android:id="@+id/textView3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/blue_white"
+                            android:gravity="center"
+                            android:text="Control Interno"
+                            android:textColor="@color/white"
+                            android:textSize="18sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/AmCi_valido"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_margin="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/drawable_blue"
+                                android:gravity="center"
+                                android:hint="Valido"
+                                android:maxLength="4"
+                                android:textSize="18sp" />
+
+                            <EditText
+                                android:id="@+id/AmCi_invalido"
+                                android:layout_width="match_parent"
+                                android:layout_height="45dp"
+                                android:layout_margin="5dp"
+                                android:layout_weight="1"
+                                android:background="@drawable/drawable_blue"
+                                android:gravity="center"
+                                android:hint="Invalido"
+                                android:maxLength="4"
+                                android:textSize="18sp" />
+                        </LinearLayout>
+
+                    </TableRow>
+
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/drawable_blue">
+
+                        <TextView
                             android:id="@+id/textViewO"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
@@ -205,7 +304,7 @@
                             android:textSize="18sp" />
 
                         <Spinner
-                            android:id="@+id/spOperAm"
+                            android:id="@+id/spOperadorAm"
                             android:layout_width="match_parent"
                             android:layout_height="45dp"
                             android:layout_margin="5dp"
@@ -239,7 +338,7 @@
                             android:background="@drawable/drawable_blue"
                             android:gravity="center"
                             android:textColor="@color/black"
-                            android:textSize="18dp" />
+                            android:textSize="18sp" />
                     </TableRow>
                 </TableLayout>
 

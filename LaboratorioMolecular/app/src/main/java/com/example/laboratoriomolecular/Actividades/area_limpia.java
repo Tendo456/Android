@@ -21,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.laboratoriomolecular.Adaptador.AreaAdapter;
 import com.example.laboratoriomolecular.Modelos.AlicuotadoResponse;
@@ -50,6 +51,7 @@ import retrofit2.Response;
 
 public class area_limpia extends AppCompatActivity implements AreaAdapter.ClickedItemAr{
 
+    SwipeRefreshLayout Arrefresh;
     Spinner spPlacasAr,spOperaAr;
     EditText Arq_muestras;
     TextView Arid_placa, Arid_placaSp, Arf_inicio, Arh_inicio, Arf_final, Arh_final, Arpromedio, Aroperador ,Ardni;
@@ -69,6 +71,7 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_area_limpia);
 
+        Arrefresh = findViewById(R.id.Arrefresh);
         spPlacasAr = findViewById(R.id.spPlacasAr);
         spOperaAr = findViewById(R.id.spOperAr);
         Arid_placa = findViewById(R.id.Arid_placa);
@@ -96,6 +99,11 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
 
         Arefecha();
         conseguirAr();
+
+        Arrefresh.setOnRefreshListener(()->{
+            Arefecha();
+            Arrefresh.setRefreshing(false);
+        });
 
     }
 
@@ -126,7 +134,7 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
     }
 
     private void llenarspinnerAr(){
-        String url = "http://192.168.1.5/laboratorio/Placas/spPlacaAr.php?fechaP="+ArF;
+        String url = "http://192.168.1.19/laboratorio/Placas/spPlacaAr.php?fechaP="+ArF;
         placaAre.post(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -181,7 +189,7 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
 
     private void llsOpeA (){
 
-        String urlOpeA = "http://192.168.1.5/laboratorio/Operador/SpOperador.php";
+        String urlOpeA = "http://192.168.1.19/laboratorio/Operador/SpOperador.php";
         operadorAre.post(urlOpeA, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {

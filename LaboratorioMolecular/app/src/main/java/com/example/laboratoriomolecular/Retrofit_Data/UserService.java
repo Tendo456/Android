@@ -1,6 +1,7 @@
 package com.example.laboratoriomolecular.Retrofit_Data;
 
 import com.example.laboratoriomolecular.Modelos.AlicuotadoResponse;
+import com.example.laboratoriomolecular.Modelos.AmplificacionResponse;
 import com.example.laboratoriomolecular.Modelos.AreaResponse;
 import com.example.laboratoriomolecular.Modelos.ExtraccionResponse;
 import com.example.laboratoriomolecular.Modelos.OperadorResponse;
@@ -106,6 +107,31 @@ public interface UserService {
                                @Field("h_final") String h_final,
                                @Field("promedio") String promedio,
                                @Field("estadoAr") String estadoAr);
+
+    @GET("Amplificacion/ConseguirAmplificacion.php")
+    Call<List<AmplificacionResponse>> conseguirAmplificacion(@Query("f_inicio") String f_inicio);
+
+    @FormUrlEncoded
+    @POST("Amplificacion/InsertarAmplificacion.php")
+    Call<AmplificacionResponse> InsertarAmplificacion (@Field("q_muestras") String q_muestras,
+                                              @Field("f_inicio") String f_inicio,
+                                              @Field("h_inicio") String h_inicio,
+                                              @Field("operador") String operador,
+                                              @Field("dni") String dni,
+                                              @Field("estadoAm") String estadoAm,
+                                              @Field("id_placa") String id_placa);
+
+    @FormUrlEncoded
+    @POST("Amplificacion/FinalizarAmplificacion.php")
+    Call<AmplificacionResponse> upAmplificacion (@Field("id_placa") String id_placa,
+                                                 @Field("f_final") String f_final,
+                                                 @Field("h_final") String h_final,
+                                                 @Field("promedio") String promedio,
+                                                 @Field("M_valido") String M_valido,
+                                                 @Field("M_invalido") String M_invalido,
+                                                 @Field("Ci_valido") String Ci_valido,
+                                                 @Field("Ci_invalido") String Ci_invalido,
+                                                 @Field("estadoAm") String estadoAm);
 
 
 }

@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".reporte_dia"></activity>
+        <activity android:name=".reporte_dia" />
         <activity android:name=".iniciar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

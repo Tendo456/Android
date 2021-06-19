@@ -316,7 +316,7 @@
                 android:textSize="16sp" />
 
             <TextView
-                android:id="@+id/diAloperador"
+                android:id="@+id/diAmoperador"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
