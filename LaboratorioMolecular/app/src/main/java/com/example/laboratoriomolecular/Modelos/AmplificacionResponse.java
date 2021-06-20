@@ -20,13 +20,16 @@ public class AmplificacionResponse implements Serializable {
     private String estadoAm;
     private String id_placa;
     private String N_placa;
+    private String total;
     private String mensaje;
 
     public String getId_amplificacion() {
         return id_amplificacion;
     }
 
-    public void setId_amplificacion(String id_amplificacion) { this.id_amplificacion = id_amplificacion; }
+    public void setId_amplificacion(String id_amplificacion) {
+        this.id_amplificacion = id_amplificacion;
+    }
 
     public String getQ_muestras() {
         return q_muestras;
@@ -148,13 +151,21 @@ public class AmplificacionResponse implements Serializable {
         N_placa = n_placa;
     }
 
+    public String getTotal() {
+        return total;
+    }
+
+    public void setTotal(String total) {
+        this.total = total;
+    }
+
     public String getMensaje() {
         return mensaje;
     }
 
     @Override
     public String toString() {
-        return "AmpliacionResponse{" +
+        return "AmplificacionResponse{" +
                 "id_amplificacion='" + id_amplificacion + '\'' +
                 ", q_muestras='" + q_muestras + '\'' +
                 ", f_inicio='" + f_inicio + '\'' +
@@ -171,6 +182,7 @@ public class AmplificacionResponse implements Serializable {
                 ", estadoAm='" + estadoAm + '\'' +
                 ", id_placa='" + id_placa + '\'' +
                 ", N_placa='" + N_placa + '\'' +
+                ", total='" + total + '\'' +
                 '}';
     }
 }

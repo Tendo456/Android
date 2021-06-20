@@ -134,4 +134,9 @@ public interface UserService {
                                                  @Field("estadoAm") String estadoAm);
 
 
+    @GET("Placas/CountPlacaRes.php")
+    Call<List<AmplificacionResponse>> countPlaca(@Query("f_inicio") String f_inicio);
+
+    @GET("Resultados/FirstPro.php")
+    Call<List<AlicuotadoResponse>> firstProc(@Query("f_inicio") String f_inicio);
 }

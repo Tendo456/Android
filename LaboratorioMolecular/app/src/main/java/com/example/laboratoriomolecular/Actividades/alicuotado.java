@@ -65,7 +65,6 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
     String F, H, AN_placaF,AN_placaI;
     String CAl_fhi, CAl_fhf;
     Button Ainiciar,Afinalizar;
-    int dia ,mes, año;
     String dayer;
     CheckBox chAyer;
 

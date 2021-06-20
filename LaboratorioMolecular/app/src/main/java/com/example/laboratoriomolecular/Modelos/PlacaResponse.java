@@ -7,6 +7,7 @@ public class PlacaResponse implements Serializable {
     private String id_placa;
     private String N_placa;
     private String fechaP;
+    private String total;
     private String mensaje;
 
     public String getId_placa() {
@@ -33,6 +34,14 @@ public class PlacaResponse implements Serializable {
         this.fechaP = fechaP;
     }
 
+    public String getTotal() {
+        return total;
+    }
+
+    public void setTotal(String total) {
+        this.total = total;
+    }
+
     public String getMensaje() {
         return mensaje;
     }
@@ -43,6 +52,7 @@ public class PlacaResponse implements Serializable {
                 "id_placa='" + id_placa + '\'' +
                 ", N_placa='" + N_placa + '\'' +
                 ", fechaP='" + fechaP + '\'' +
+                ", total='" + total + '\'' +
                 '}';
     }
 }
