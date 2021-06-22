@@ -135,7 +135,7 @@ public class resultados extends AppCompatActivity {
 
     private void llsOpeRes (){
 
-        String urlOpeA = "http://192.168.1.19/laboratorio/Operador/SpOperador.php";
+        String urlOpeA = "http://10.50.1.238/laboratorio/Operador/SpOperador.php";
         operadorRes.post(urlOpeA, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
