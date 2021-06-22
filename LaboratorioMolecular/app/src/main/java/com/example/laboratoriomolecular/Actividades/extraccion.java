@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.laboratoriomolecular.Adaptador.ExtraccionAdapter;
 import com.example.laboratoriomolecular.Modelos.ExtraccionResponse;
@@ -58,6 +59,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
     String ExF,ExH,ExN_placa;
     String CEx_fhi, CEx_fhf;
     ExtraccionAdapter extraccionAdapter;
+    SwipeRefreshLayout Exrefresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +79,10 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
         Exdni = findViewById(R.id.Exdni);
         Exiniciar = findViewById(R.id.Exiniciar);
         Exfinalizar = findViewById(R.id.Exfinalizar);
+        Exrefresh = findViewById(R.id.Exrefresh);
         ListaExtraccion = findViewById(R.id.ListExtraccion);
+
+        Exfinalizar.setEnabled(false);
 
         ListaExtraccion.setLayoutManager(new LinearLayoutManager(this));
         ListaExtraccion.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
@@ -89,6 +94,11 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
 
         Exfecha();
         conseguirEx();
+
+        Exrefresh.setOnRefreshListener(()->{
+            Exfecha();
+            Exrefresh.setRefreshing(false);
+        });
     }
 
     public void Exfecha (){
@@ -117,7 +127,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
     }
 
     public void llenarspinnerEx(){
-        String url = "http://192.168.1.5/laboratorio/Placas/spPlacaEx.php?fechaP="+ExF;
+        String url = "http://192.168.1.19/laboratorio/Placas/spPlacaEx.php?fechaP="+ExF;
         placasExt.post(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -171,7 +181,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
 
     private void llsOpeEx (){
 
-        String urlOpeA = "http://192.168.1.5/laboratorio/Operador/SpOperador.php";
+        String urlOpeA = "http://192.168.1.19/laboratorio/Operador/SpOperador.php";
         operadorExt.post(urlOpeA, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {

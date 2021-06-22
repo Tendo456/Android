@@ -7,7 +7,12 @@ public class PlacaResponse implements Serializable {
     private String id_placa;
     private String N_placa;
     private String fechaP;
-    private String total;
+    private String id_recepcion;
+    private String estadoRe;
+    private String estadoAl;
+    private String estadoEx;
+    private String estadoAr;
+    private String estadoAm;
     private String mensaje;
 
     public String getId_placa() {
@@ -34,12 +39,52 @@ public class PlacaResponse implements Serializable {
         this.fechaP = fechaP;
     }
 
-    public String getTotal() {
-        return total;
+    public String getId_recepcion() {
+        return id_recepcion;
     }
 
-    public void setTotal(String total) {
-        this.total = total;
+    public void setId_recepcion(String id_recepcion) {
+        this.id_recepcion = id_recepcion;
+    }
+
+    public String getEstadoRe() {
+        return estadoRe;
+    }
+
+    public void setEstadoRe(String estadoRe) {
+        this.estadoRe = estadoRe;
+    }
+
+    public String getEstadoAl() {
+        return estadoAl;
+    }
+
+    public void setEstadoAl(String estadoAl) {
+        this.estadoAl = estadoAl;
+    }
+
+    public String getEstadoEx() {
+        return estadoEx;
+    }
+
+    public void setEstadoEx(String estadoEx) {
+        this.estadoEx = estadoEx;
+    }
+
+    public String getEstadoAr() {
+        return estadoAr;
+    }
+
+    public void setEstadoAr(String estadoAr) {
+        this.estadoAr = estadoAr;
+    }
+
+    public String getEstadoAm() {
+        return estadoAm;
+    }
+
+    public void setEstadoAm(String estadoAm) {
+        this.estadoAm = estadoAm;
     }
 
     public String getMensaje() {
@@ -52,7 +97,12 @@ public class PlacaResponse implements Serializable {
                 "id_placa='" + id_placa + '\'' +
                 ", N_placa='" + N_placa + '\'' +
                 ", fechaP='" + fechaP + '\'' +
-                ", total='" + total + '\'' +
+                ", id_recepcion='" + id_recepcion + '\'' +
+                ", estadoRe='" + estadoRe + '\'' +
+                ", estadoAl='" + estadoAl + '\'' +
+                ", estadoEx='" + estadoEx + '\'' +
+                ", estadoAr='" + estadoAr + '\'' +
+                ", estadoAm='" + estadoAm + '\'' +
                 '}';
     }
 }

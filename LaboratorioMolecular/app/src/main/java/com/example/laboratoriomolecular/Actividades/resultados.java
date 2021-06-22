@@ -1,5 +1,6 @@
 package com.example.laboratoriomolecular.Actividades;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -21,11 +22,13 @@ import com.example.laboratoriomolecular.Modelos.AlicuotadoResponse;
 import com.example.laboratoriomolecular.Modelos.AmplificacionResponse;
 import com.example.laboratoriomolecular.Modelos.OperadorResponse;
 import com.example.laboratoriomolecular.Modelos.PlacaResponse;
+import com.example.laboratoriomolecular.Modelos.ResultadoResponse;
 import com.example.laboratoriomolecular.R;
 import com.example.laboratoriomolecular.Retrofit_Data.ApiClient;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 
 import java.text.DateFormat;
@@ -35,6 +38,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import cz.msebera.android.httpclient.Header;
 import retrofit2.Call;
@@ -43,15 +47,17 @@ import retrofit2.Response;
 
 public class resultados extends AppCompatActivity {
 
-    TextView CPlacasRes, Resf_inicio, Resh_inicio, Resf_final, Resh_final, Respromedio, Resoperador ,Resdni;
+    TextView CPlacasRes, Resf_inicio, Resh_inicio, Resf_final, Resh_final, Respromedio, Resoperador ,Resdni,IDs;
     Spinner spOperadorRes;
-    Button Resiniciar,Resfinalizar;
+    Button Resfinalizar;
     CheckBox chResAyer;
     RecyclerView ListResultados;
     String ResF, ResH;
     String ResdAyer;
+    String CRes_fhi,CRes_fhf;
     private AsyncHttpClient operadorRes;
     SwipeRefreshLayout Resrefresh;
+    String idp1,idp2,idp3,idp4,idp5,idp6,idp7,idp8,idp9,idp10,idp11,idp12,idp13;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,16 +73,19 @@ public class resultados extends AppCompatActivity {
         Respromedio = findViewById(R.id.Respromedio);
         Resoperador = findViewById(R.id.Resoperador);
         Resdni = findViewById(R.id.Resdni);
-        Resiniciar = findViewById(R.id.Resiniciar);
         Resfinalizar = findViewById(R.id.Resfinalizar);
         chResAyer = findViewById(R.id.chResAyer);
         ListResultados = findViewById(R.id.ListResultados);
         Resrefresh = findViewById(R.id.Resrefresh);
+        IDs = findViewById(R.id.IDs);
+
+        Resfinalizar.setOnClickListener(v -> FinalizarRes());
 
         Resfecha();
-
+        idPlacas();
         Resrefresh.setOnRefreshListener(()->{
             Resfecha();
+            idPlacas();
             Resrefresh.setRefreshing(false);
         });
     }
@@ -126,7 +135,7 @@ public class resultados extends AppCompatActivity {
 
     private void llsOpeRes (){
 
-        String urlOpeA = "http://192.168.1.5/laboratorio/Operador/SpOperador.php";
+        String urlOpeA = "http://192.168.1.19/laboratorio/Operador/SpOperador.php";
         operadorRes.post(urlOpeA, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -174,6 +183,16 @@ public class resultados extends AppCompatActivity {
 
     }
 
+    public void FinalizarRes (){
+        AlertDialog.Builder opcion = new AlertDialog.Builder(this);
+        opcion.setMessage("Finalizar Resultados?");
+        opcion.setPositiveButton("Finalizar", (dialog, which) -> PromedioRes());
+        opcion.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
+
+        AlertDialog dialog = opcion.create();
+        dialog.show();
+    }
+
     public void countPlaca(){
         Call<List<AmplificacionResponse>> count = ApiClient.getUserService().countPlaca(ResdAyer);
         count.enqueue(new Callback<List<AmplificacionResponse>>() {
@@ -181,6 +200,7 @@ public class resultados extends AppCompatActivity {
             public void onResponse(Call<List<AmplificacionResponse>> call, Response<List<AmplificacionResponse>> response) {
                 if(response.isSuccessful()){
                     List<AmplificacionResponse> cuenta = response.body();
+                    assert cuenta != null;
                     for (AmplificacionResponse amplificacionResponse: cuenta){
                         CPlacasRes.setText(amplificacionResponse.getTotal());
                     }
@@ -209,6 +229,7 @@ public class resultados extends AppCompatActivity {
                         Resf_inicio.setText(alicuotadoResponse.getF_inicio());
                         Resh_inicio.setText(alicuotadoResponse.getH_inicio());
                     }
+                    CRes_fhi = Resf_inicio.getText().toString()+" "+Resh_inicio.getText().toString();
                 }else {
                     Toast.makeText(resultados.this, "Error Code: "+response.code(),Toast.LENGTH_SHORT).show();
                 }
@@ -219,5 +240,78 @@ public class resultados extends AppCompatActivity {
                 Toast.makeText(resultados.this, ""+t.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void finResultados(){
+        Call<ResultadoResponse> finRes = ApiClient.getUserService().FinalizarResultado(CPlacasRes.getText().toString(),Resf_inicio.getText().toString(),Resh_inicio.getText().toString(),Resf_final.getText().toString(),Resh_final.getText().toString(),Respromedio.getText().toString(),Resoperador.getText().toString(),Resdni.getText().toString(),"2");
+        finRes.enqueue(new Callback<ResultadoResponse>() {
+            @Override
+            public void onResponse(Call<ResultadoResponse> call, Response<ResultadoResponse> response) {
+                if (response.isSuccessful()) {
+                    ResultadoResponse mensaje = response.body();
+                    Toast.makeText(resultados.this, "" + mensaje.getMensaje(), Toast.LENGTH_SHORT).show();
+                    //conseguirAl();
+                    //limpiarAlicuotado();
+                    Resfinalizar.setEnabled(false);
+                } else {
+                    Toast.makeText(resultados.this, "Error al Guardar los Datos", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(@NotNull Call<ResultadoResponse> call, @NotNull Throwable t) {
+                Toast.makeText(resultados.this, "Error " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void idPlacas(){
+        Call<List<PlacaResponse>> placaids = ApiClient.getUserService().getPlacaF(ResdAyer);
+        placaids.enqueue(new Callback<List<PlacaResponse>>() {
+            @Override
+            public void onResponse(@NotNull Call<List<PlacaResponse>> call, @NotNull Response<List<PlacaResponse>> response) {
+                if(response.isSuccessful()) {
+                    String resu = "";
+                    List<PlacaResponse> IDEs = response.body();
+                    for (PlacaResponse placaResponse : IDEs) {
+                        resu = placaResponse.getId_placa() + "-";
+                    }
+                    String cade;
+                    IDs.append(resu);
+                    cade = IDs.getText().toString();
+                    String[] parts = cade.split("-");
+                    idp1 = parts[0];
+                    idp2 = parts[1];
+                    idp3 = parts[2];
+
+                    Toast.makeText(resultados.this,""+idp1,Toast.LENGTH_LONG).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(@NotNull Call<List<PlacaResponse>> call, @NotNull Throwable t) {
+                Toast.makeText(resultados.this, ""+t.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void PromedioRes () {
+        if (CRes_fhi == null) {
+            Toast.makeText(this, "No hay Placas hoy", Toast.LENGTH_LONG).show();
+        } else {
+            CRes_fhf = Resf_final.getText().toString() + " " + Resh_final.getText().toString();
+            String pf1 = CRes_fhi.replace('-', '/');
+            String pf2 = CRes_fhf.replace('-', '/');
+            String time;
+
+            long total = new Date(pf2).getTime() - new Date(pf1).getTime();
+            long horas = TimeUnit.MINUTES.convert(total, TimeUnit.MILLISECONDS);
+            time = String.valueOf(horas);
+
+            Respromedio.setText(time);
+
+            new Handler(Looper.getMainLooper()).postDelayed(this::finResultados, 2000);
+        }
     }
 }

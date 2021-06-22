@@ -9,4 +9,13 @@
     <string name="amplificacion">Amplificación</string>
     <string name="resultados">Resultados</string>
 
+    <string-array name="procesos">
+        <item>Recepción</item>
+        <item>Alicuotado</item>
+        <item>Extracción</item>
+        <item>Area Limpia</item>
+        <item>Amplificación</item>
+        <item>Rersultados</item>
+    </string-array>
+
 </resources>

@@ -38,14 +38,37 @@
             android:gravity="center"
             android:hint="Codigo Placa" />
 
-        <TextView
-            android:id="@+id/fechaPl"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:background="@drawable/drawable_blue"
-            android:padding="5dp"
-            android:text="TextView" />
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/spRecepcion"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:layout_weight="1"
+                android:background="@drawable/spinner" />
+
+            <TextView
+                android:id="@+id/fechaPl"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/drawable_blue"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Fecha" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/id_recepcion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="recepcion" />
 
         <Button
 

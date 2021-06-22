@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LaboratorioMolecular"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Actividades.nueva_placa"></activity>
+        <activity android:name=".Actividades.PlacasDetails"></activity>
+        <activity android:name=".Actividades.nueva_placa" />
         <activity android:name=".Actividades.RecepcionDetails" />
         <activity android:name=".Actividades.resultados" />
         <activity android:name=".Actividades.amplificacion" />

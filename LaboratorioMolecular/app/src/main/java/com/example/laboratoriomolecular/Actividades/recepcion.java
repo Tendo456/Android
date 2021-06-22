@@ -21,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.laboratoriomolecular.Adaptador.RecepcionAdapter;
 import com.example.laboratoriomolecular.Modelos.OperadorResponse;
@@ -50,11 +51,12 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
 
     EditText Rnenvio,Rqmuestras;
     TextView Roperador,Rhora,Rdni,Rfecha,Fechapiker;
-    Button RGuardar,BuscarF;
+    Button RGuardar;
     RecepcionAdapter recepcionAdapter;
     RecyclerView ListRecepcion;
     Spinner spOperador;
     private AsyncHttpClient operador;
+    SwipeRefreshLayout Recrefresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,27 +73,32 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
         ListRecepcion = findViewById(R.id.ListRecepcion);
         spOperador = findViewById(R.id.spOperador);
         Fechapiker = findViewById(R.id.Fechapiker);
-        BuscarF = findViewById(R.id.BuscarF);
+        Recrefresh = findViewById(R.id.Recrefresh);
 
         ListRecepcion.setLayoutManager(new LinearLayoutManager(this));
         ListRecepcion.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
 
-        recepcionAdapter = new RecepcionAdapter(this::ClickedRecepcion);
+        recepcionAdapter = new RecepcionAdapter(this);
 
         fecha();
-        BuscarF.setOnClickListener(v -> getAllRecepcion());
 
         RGuardar.setOnClickListener(v -> ConfirmarRecepcion());
 
         operador = new AsyncHttpClient();
         llenarspinerO();
 
+        Recrefresh.setOnRefreshListener(()->{
+            fecha();
+            limpiar();
+            Recrefresh.setRefreshing(false);
+        });
+
 
     }
 
     private void llenarspinerO (){
 
-        String url = "http://192.168.1.5/laboratorio/Operador/SpOperador.php";
+        String url = "http://192.168.1.19/laboratorio/Operador/SpOperador.php";
         operador.post(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -150,8 +157,10 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
         String ho = h.format(date);
 
         Rfecha.setText(s);
+        Fechapiker.setText(s);
         Rhora.setText(ho);
         hilo();
+        getAllRecepcion();
     }
 
     public void ConfirmarRecepcion (){
@@ -175,8 +184,7 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
             Rdni.setError("Seleccione un Operador");
         } else {
 
-
-            Call<RecepcionResponse> call = ApiClient.getUserService().InsertarRecepcion(Rfecha.getText().toString(), Rhora.getText().toString(), Rnenvio.getText().toString(), Rqmuestras.getText().toString(), Roperador.getText().toString(), Rdni.getText().toString(), "1");
+            Call<RecepcionResponse> call = ApiClient.getUserService().InsertarRecepcion(Rfecha.getText().toString(), Rhora.getText().toString(), Rnenvio.getText().toString(), Rqmuestras.getText().toString(), Roperador.getText().toString(), Rdni.getText().toString(), "2");
             call.enqueue(new Callback<RecepcionResponse>() {
                 @Override
                 public void onResponse(@NotNull Call<RecepcionResponse> call, @NotNull Response<RecepcionResponse> response) {
@@ -250,8 +258,6 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
     public void limpiar (){
         Rnenvio.getText().clear();
         Rqmuestras.getText().clear();
-        Rdni.setText("");
-
     }
 
 

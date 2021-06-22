@@ -50,7 +50,7 @@ public class RecepcionAdapter extends RecyclerView.Adapter<RecepcionAdapter.Rece
     }
 
     public interface ClickedItem{
-        public void ClickedRecepcion(RecepcionResponse recepcionResponse);
+        void ClickedRecepcion(RecepcionResponse recepcionResponse);
     }
 
     @Override

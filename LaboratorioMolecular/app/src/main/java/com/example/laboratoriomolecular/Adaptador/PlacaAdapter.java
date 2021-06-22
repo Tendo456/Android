@@ -21,9 +21,9 @@ public class PlacaAdapter extends RecyclerView.Adapter<PlacaAdapter.PlacaAdapter
 
     private List<PlacaResponse> placaResponseList;
     private Context context;
+    private ClickedItemP clickedItemP;
 
-    public PlacaAdapter() {
-    }
+    public PlacaAdapter(ClickedItemP clickedItemP) {this.clickedItemP = clickedItemP;}
 
     public void setData(List<PlacaResponse> placaResponseList) {
         this.placaResponseList = placaResponseList;
@@ -39,6 +39,7 @@ public class PlacaAdapter extends RecyclerView.Adapter<PlacaAdapter.PlacaAdapter
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull PlacaAdapterVH holder, int position) {
+
         PlacaResponse placaResponse = placaResponseList.get(position);
 
         String date = placaResponse.getN_placa();
@@ -46,7 +47,7 @@ public class PlacaAdapter extends RecyclerView.Adapter<PlacaAdapter.PlacaAdapter
 
         holder.prefix.setText(prefix);
         holder.date.setText(date);
-        //holder.imagemore.setOnClickListener(v -> clickedItem.ClickedRecepcion(placaResponse));
+        holder.imagemore.setOnClickListener(v -> clickedItemP.ClickedNueva_placa(placaResponse));
 
     }
 
@@ -55,6 +56,10 @@ public class PlacaAdapter extends RecyclerView.Adapter<PlacaAdapter.PlacaAdapter
     @Override
     public int getItemCount() {
         return placaResponseList.size();
+    }
+
+    public interface ClickedItemP {
+        void ClickedNueva_placa(PlacaResponse placaResponse);
     }
 
     public class PlacaAdapterVH extends RecyclerView.ViewHolder {

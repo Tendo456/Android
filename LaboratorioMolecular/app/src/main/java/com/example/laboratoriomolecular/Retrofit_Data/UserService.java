@@ -7,6 +7,7 @@ import com.example.laboratoriomolecular.Modelos.ExtraccionResponse;
 import com.example.laboratoriomolecular.Modelos.OperadorResponse;
 import com.example.laboratoriomolecular.Modelos.PlacaResponse;
 import com.example.laboratoriomolecular.Modelos.RecepcionResponse;
+import com.example.laboratoriomolecular.Modelos.ResultadoResponse;
 
 import java.util.List;
 
@@ -41,9 +42,10 @@ public interface UserService {
     @FormUrlEncoded
     @POST("Placas/InsertarPlaca.php")
     Call<PlacaResponse> savePlaca (@Field("N_placa") String N_placa,
-                                   @Field("fechaP") String fechaP);
+                                   @Field("fechaP") String fechaP,
+                                   @Field("id_recepcion") String id_recepcion);
 
-    @GET("Placas/ListarPlacaF.php")
+    @GET("Placas/lineaPlacas.php")
     Call<List<PlacaResponse>> getPlacaF(@Query("fechaP") String fechaP);
 
     @GET("Alicuotado/ConseguirAlicuotado.php")
@@ -139,4 +141,16 @@ public interface UserService {
 
     @GET("Resultados/FirstPro.php")
     Call<List<AlicuotadoResponse>> firstProc(@Query("f_inicio") String f_inicio);
+
+    @FormUrlEncoded
+    @POST("Resultados/FinalizarResultados.php")
+    Call<ResultadoResponse> FinalizarResultado (@Field("placas") String placas,
+                                                @Field("f_inicio") String f_inicio,
+                                                @Field("h_inicio") String h_inicio,
+                                                @Field("f_final") String f_final,
+                                                @Field("h_final") String h_final,
+                                                @Field("promedio") String promedio,
+                                                @Field("operador") String operador,
+                                                @Field("dni") String dni,
+                                                @Field("estadoRes") String estadoAm);
 }
