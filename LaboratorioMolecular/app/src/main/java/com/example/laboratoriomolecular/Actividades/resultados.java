@@ -49,7 +49,7 @@ public class resultados extends AppCompatActivity {
 
     TextView CPlacasRes, Resf_inicio, Resh_inicio, Resf_final, Resh_final, Respromedio, Resoperador ,Resdni,IDs;
     Spinner spOperadorRes;
-    Button Resfinalizar;
+    Button Resiniciar,Resfinalizar;
     CheckBox chResAyer;
     RecyclerView ListResultados;
     String ResF, ResH;
@@ -73,6 +73,7 @@ public class resultados extends AppCompatActivity {
         Respromedio = findViewById(R.id.Respromedio);
         Resoperador = findViewById(R.id.Resoperador);
         Resdni = findViewById(R.id.Resdni);
+        Resiniciar = findViewById(R.id.Resiniciar);
         Resfinalizar = findViewById(R.id.Resfinalizar);
         chResAyer = findViewById(R.id.chResAyer);
         ListResultados = findViewById(R.id.ListResultados);
@@ -80,12 +81,12 @@ public class resultados extends AppCompatActivity {
         IDs = findViewById(R.id.IDs);
 
         Resfinalizar.setOnClickListener(v -> FinalizarRes());
+        Resiniciar.setOnClickListener(v -> IniciarRes());
 
         Resfecha();
-        idPlacas();
+
         Resrefresh.setOnRefreshListener(()->{
             Resfecha();
-            idPlacas();
             Resrefresh.setRefreshing(false);
         });
     }
@@ -113,7 +114,6 @@ public class resultados extends AppCompatActivity {
 
         countPlaca();
         firstPro();
-
         Reshilo();
 
     }
@@ -183,6 +183,16 @@ public class resultados extends AppCompatActivity {
 
     }
 
+    public void IniciarRes (){
+        AlertDialog.Builder opcion = new AlertDialog.Builder(this);
+        opcion.setMessage("Iniciar Resultados?");
+        opcion.setPositiveButton("Finalizar", (dialog, which) -> SaveResultados());
+        opcion.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
+
+        AlertDialog dialog = opcion.create();
+        dialog.show();
+    }
+
     public void FinalizarRes (){
         AlertDialog.Builder opcion = new AlertDialog.Builder(this);
         opcion.setMessage("Finalizar Resultados?");
@@ -242,8 +252,8 @@ public class resultados extends AppCompatActivity {
         });
     }
 
-    public void finResultados(){
-        Call<ResultadoResponse> finRes = ApiClient.getUserService().FinalizarResultado(CPlacasRes.getText().toString(),Resf_inicio.getText().toString(),Resh_inicio.getText().toString(),Resf_final.getText().toString(),Resh_final.getText().toString(),Respromedio.getText().toString(),Resoperador.getText().toString(),Resdni.getText().toString(),"2");
+    public void SaveResultados(){
+        Call<ResultadoResponse> finRes = ApiClient.getUserService().IniciarResultado(CPlacasRes.getText().toString(),Resf_inicio.getText().toString(),Resh_inicio.getText().toString(),Resoperador.getText().toString(),Resdni.getText().toString(),"1");
         finRes.enqueue(new Callback<ResultadoResponse>() {
             @Override
             public void onResponse(Call<ResultadoResponse> call, Response<ResultadoResponse> response) {
@@ -265,33 +275,26 @@ public class resultados extends AppCompatActivity {
         });
     }
 
-    public void idPlacas(){
-        Call<List<PlacaResponse>> placaids = ApiClient.getUserService().getPlacaF(ResdAyer);
-        placaids.enqueue(new Callback<List<PlacaResponse>>() {
+    public void finResultados(){
+        Call<ResultadoResponse> iniRes = ApiClient.getUserService().FinalizarResultado(CPlacasRes.getText().toString(),Resf_final.getText().toString(),Resh_final.getText().toString(),Respromedio.getText().toString(),"2");
+        iniRes.enqueue(new Callback<ResultadoResponse>() {
             @Override
-            public void onResponse(@NotNull Call<List<PlacaResponse>> call, @NotNull Response<List<PlacaResponse>> response) {
-                if(response.isSuccessful()) {
-                    String resu = "";
-                    List<PlacaResponse> IDEs = response.body();
-                    for (PlacaResponse placaResponse : IDEs) {
-                        resu = placaResponse.getId_placa() + "-";
-                    }
-                    String cade;
-                    IDs.append(resu);
-                    cade = IDs.getText().toString();
-                    String[] parts = cade.split("-");
-                    idp1 = parts[0];
-                    idp2 = parts[1];
-                    idp3 = parts[2];
-
-                    Toast.makeText(resultados.this,""+idp1,Toast.LENGTH_LONG).show();
+            public void onResponse(@NotNull Call<ResultadoResponse> call, @NotNull Response<ResultadoResponse> response) {
+                if (response.isSuccessful()) {
+                    ResultadoResponse mensaje = response.body();
+                    assert mensaje != null;
+                    Toast.makeText(resultados.this, "" + mensaje.getMensaje(), Toast.LENGTH_SHORT).show();
+                    //conseguirAl();
+                    //limpiarAlicuotado();
+                    Resfinalizar.setEnabled(false);
+                } else {
+                    Toast.makeText(resultados.this, "Error al Guardar los Datos", Toast.LENGTH_SHORT).show();
                 }
-
             }
 
             @Override
-            public void onFailure(@NotNull Call<List<PlacaResponse>> call, @NotNull Throwable t) {
-                Toast.makeText(resultados.this, ""+t.getMessage(),Toast.LENGTH_SHORT).show();
+            public void onFailure(@NotNull Call<ResultadoResponse> call, @NotNull Throwable t) {
+
             }
         });
     }

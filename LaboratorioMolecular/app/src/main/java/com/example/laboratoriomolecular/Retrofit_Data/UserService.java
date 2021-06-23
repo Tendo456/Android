@@ -142,15 +142,23 @@ public interface UserService {
     @GET("Resultados/FirstPro.php")
     Call<List<AlicuotadoResponse>> firstProc(@Query("f_inicio") String f_inicio);
 
+    @GET("Resultados/ConseguirResultados.php")
+    Call<List<ResultadoResponse>> conseguirResultados(@Query("f_inicio") String f_inicio);
+
+    @FormUrlEncoded
+    @POST("Resultados/iniciarResultados.php")
+    Call<ResultadoResponse> IniciarResultado (@Field("placas") String placas,
+                                                @Field("f_inicio") String f_inicio,
+                                                @Field("h_inicio") String h_inicio,
+                                                @Field("operador") String operador,
+                                                @Field("dni") String dni,
+                                                @Field("estadoRes") String estadoAm);
+
     @FormUrlEncoded
     @POST("Resultados/FinalizarResultados.php")
     Call<ResultadoResponse> FinalizarResultado (@Field("placas") String placas,
-                                                @Field("f_inicio") String f_inicio,
-                                                @Field("h_inicio") String h_inicio,
                                                 @Field("f_final") String f_final,
                                                 @Field("h_final") String h_final,
                                                 @Field("promedio") String promedio,
-                                                @Field("operador") String operador,
-                                                @Field("dni") String dni,
                                                 @Field("estadoRes") String estadoAm);
 }
