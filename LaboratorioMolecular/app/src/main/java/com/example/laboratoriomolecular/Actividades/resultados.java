@@ -221,7 +221,7 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
         Call<List<AmplificacionResponse>> count = ApiClient.getUserService().countPlaca(ResdAyer);
         count.enqueue(new Callback<List<AmplificacionResponse>>() {
             @Override
-            public void onResponse(Call<List<AmplificacionResponse>> call, Response<List<AmplificacionResponse>> response) {
+            public void onResponse(@NotNull Call<List<AmplificacionResponse>> call, @NotNull Response<List<AmplificacionResponse>> response) {
                 if(response.isSuccessful()){
                     List<AmplificacionResponse> cuenta = response.body();
                     assert cuenta != null;
@@ -234,7 +234,7 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
             }
 
             @Override
-            public void onFailure(Call<List<AmplificacionResponse>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<AmplificacionResponse>> call, @NotNull Throwable t) {
                 Toast.makeText(resultados.this, ""+t.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
@@ -246,7 +246,7 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
         Call<List<AlicuotadoResponse>> first = ApiClient.getUserService().firstProc(ResdAyer);
         first.enqueue(new Callback<List<AlicuotadoResponse>>() {
             @Override
-            public void onResponse(Call<List<AlicuotadoResponse>> call, Response<List<AlicuotadoResponse>> response) {
+            public void onResponse(@NotNull Call<List<AlicuotadoResponse>> call, @NotNull Response<List<AlicuotadoResponse>> response) {
                 if(response.isSuccessful()){
                     List<AlicuotadoResponse> primer = response.body();
                     for (AlicuotadoResponse alicuotadoResponse: primer){
@@ -260,7 +260,7 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
             }
 
             @Override
-            public void onFailure(Call<List<AlicuotadoResponse>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<AlicuotadoResponse>> call, @NotNull Throwable t) {
                 Toast.makeText(resultados.this, ""+t.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
@@ -270,7 +270,7 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
         Call<List<ResultadosResponse>> resulList = ApiClient.getUserService().conseguirResultados(ResdAyer);
         resulList.enqueue(new Callback<List<ResultadosResponse>>() {
             @Override
-            public void onResponse(Call<List<ResultadosResponse>> call, Response<List<ResultadosResponse>> response) {
+            public void onResponse(@NotNull Call<List<ResultadosResponse>> call, @NotNull Response<List<ResultadosResponse>> response) {
                 if(response.isSuccessful()){
                     List<ResultadosResponse> resultadosResponses = response.body();
                     resultadosAdapter.setData(resultadosResponses);
@@ -280,7 +280,7 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
             }
 
             @Override
-            public void onFailure(Call<List<ResultadosResponse>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<ResultadosResponse>> call, @NotNull Throwable t) {
                 Log.e("Fallo ",t.getLocalizedMessage());
             }
         });
@@ -290,7 +290,7 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
         Call<ResultadosResponse> finRes = ApiClient.getUserService().IniciarResultado(CPlacasRes.getText().toString(),Resf_inicio.getText().toString(),Resh_inicio.getText().toString(),Resoperador.getText().toString(),Resdni.getText().toString(),"1");
         finRes.enqueue(new Callback<ResultadosResponse>() {
             @Override
-            public void onResponse(Call<ResultadosResponse> call, Response<ResultadosResponse> response) {
+            public void onResponse(@NotNull Call<ResultadosResponse> call, @NotNull Response<ResultadosResponse> response) {
                 if (response.isSuccessful()) {
                     ResultadosResponse mensaje = response.body();
                     Toast.makeText(resultados.this, "" + mensaje.getMensaje(), Toast.LENGTH_SHORT).show();
