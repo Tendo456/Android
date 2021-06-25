@@ -74,6 +74,7 @@ public class nueva_placa extends AppCompatActivity implements PlacaAdapter.Click
         placaAdapter = new PlacaAdapter(this);
 
         fechaPlaca();
+
     }
 
     public void fechaPlaca (){
@@ -163,6 +164,7 @@ public class nueva_placa extends AppCompatActivity implements PlacaAdapter.Click
                         PlacaResponse mensaje = response.body();
                         Toast.makeText(nueva_placa.this, ""+ mensaje.getMensaje()+" "+response.code(), Toast.LENGTH_SHORT).show();
                         limpiarPlaca();
+                        ListarPlaca();
 
                     } else {
                         Toast.makeText(nueva_placa.this, "Error al Guardar los Datos "+ response.code(), Toast.LENGTH_SHORT).show();
