@@ -8,6 +8,8 @@ import com.shuhart.stepview.StepView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,6 +56,15 @@ public class PlacasDetails extends AppCompatActivity {
             fechaP.setText(fechaPl);
         }
 
+        PDhilo();
+
+    }
+
+    public void PDhilo(){
+        new Handler(Looper.getMainLooper()).postDelayed(this::agregar,2000);
+    }
+
+    public void agregar(){
         if(estadoRe != null){
             if (estadoRe.equals("2")){
                 paso();
@@ -75,7 +86,7 @@ public class PlacasDetails extends AppCompatActivity {
                 paso();
             }else {
                 Toast.makeText(PlacasDetails.this,"Proceso Actual Extracción",Toast.LENGTH_LONG).show();
-        }
+            }
         }
 
         if (estadoAr != null){

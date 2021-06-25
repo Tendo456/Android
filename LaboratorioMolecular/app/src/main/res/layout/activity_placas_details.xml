@@ -13,41 +13,103 @@
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="5dp"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/id_placa"
+        <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="ID_placa" />
+            android:layout_margin="5dp">
 
-        <TextView
-            android:id="@+id/N_placa"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="N_placa" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/fechaP"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="fechaP" />
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/blue_white"
+                    android:gravity="center"
+                    android:text="Placa ID"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
+                <TextView
+                    android:id="@+id/id_placa"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/drawable_blue"
+                    android:gravity="center"
+                    android:text="ID_placa"
+                    android:textSize="18sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/blue_white"
+                    android:gravity="center"
+                    android:text="Placa"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/N_placa"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/drawable_blue"
+                    android:gravity="center"
+                    android:text="N_placa"
+                    android:textSize="18sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/blue_white"
+                    android:gravity="center"
+                    android:text="Fecha"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/fechaP"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/drawable_blue"
+                    android:gravity="center"
+                    android:text="fechaP"
+                    android:textSize="18sp" />
+            </TableRow>
+
+        </TableLayout>
 
         <com.shuhart.stepview.StepView
             android:id="@+id/step_view"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:padding="5dp"
+            android:layout_margin="5dp"
             app:sv_animationType="All"
             app:sv_doneCircleColor="@color/indigo_500"
             app:sv_doneCircleRadius="12dp"
@@ -65,5 +127,17 @@
             app:sv_stepPadding="4dp"
             app:sv_stepViewStyle="@style/StepView"
             app:sv_steps="@array/procesos" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/imageView4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="5dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/microscope" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
