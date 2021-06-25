@@ -6,280 +6,276 @@
     android:layout_height="match_parent"
     tools:context=".Actividades.extraccion">
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="5dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/Exrefresh"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
+            android:layout_height="300dp">
 
-            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-                android:id="@+id/Exrefresh"
+            <TableLayout
                 android:layout_width="match_parent"
-                android:layout_height="300dp">
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
 
-                <TableLayout
+                <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
+                    android:layout_height="match_parent"
                     android:background="@drawable/drawable_blue">
 
-                    <TableRow
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/blue_white"
+                        android:gravity="center"
+                        android:text="N° Placa"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                    <Spinner
+                        android:id="@+id/spPLacasEx"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/spinner" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/drawable_blue">
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/blue_white"
+                        android:gravity="center"
+                        android:text="F/H. Inicio"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/drawable_blue">
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/textView5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:background="@drawable/blue_white"
-                            android:gravity="center"
-                            android:text="N° Placa"
-                            android:textColor="@color/white"
-                            android:textSize="18sp" />
-
-                        <Spinner
-                            android:id="@+id/spPLacasEx"
+                            android:id="@+id/Exf_inicio"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_margin="5dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/spinner" />
-
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/drawable_blue">
-
-                        <TextView
-                            android:id="@+id/textView2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:background="@drawable/blue_white"
-                            android:gravity="center"
-                            android:text="F/H. Inicio"
-                            android:textColor="@color/white"
-                            android:textSize="18sp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/Exf_inicio"
-                                android:layout_width="match_parent"
-                                android:layout_height="45dp"
-                                android:layout_margin="5dp"
-                                android:layout_weight="1"
-                                android:background="@drawable/drawable_blue"
-                                android:gravity="center"
-                                android:text="Fecha"
-                                android:textSize="18sp" />
-
-                            <TextView
-                                android:id="@+id/Exh_inicio"
-                                android:layout_width="match_parent"
-                                android:layout_height="45dp"
-                                android:layout_margin="5dp"
-                                android:layout_weight="1"
-                                android:background="@drawable/drawable_blue"
-                                android:gravity="center"
-                                android:text="Hora"
-                                android:textSize="18sp" />
-                        </LinearLayout>
-
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/drawable_blue">
-
-                        <TextView
-                            android:id="@+id/textView3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:background="@drawable/blue_white"
-                            android:gravity="center"
-                            android:text="F/H. Final"
-                            android:textColor="@color/white"
-                            android:textSize="18sp" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                android:id="@+id/Exf_final"
-                                android:layout_width="match_parent"
-                                android:layout_height="45dp"
-                                android:layout_margin="5dp"
-                                android:layout_weight="1"
-                                android:background="@drawable/drawable_blue"
-                                android:gravity="center"
-                                android:text="Fecha"
-                                android:textSize="18sp" />
-
-                            <TextView
-                                android:id="@+id/Exh_final"
-                                android:layout_width="match_parent"
-                                android:layout_height="45dp"
-                                android:layout_margin="5dp"
-                                android:layout_weight="1"
-                                android:background="@drawable/drawable_blue"
-                                android:gravity="center"
-                                android:text="Hora"
-                                android:textSize="18sp" />
-                        </LinearLayout>
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/drawable_blue">
-
-                        <TextView
-                            android:id="@+id/textViewO"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:background="@drawable/blue_white"
-                            android:gravity="center"
-                            android:text="Operador"
-                            android:textColor="@color/white"
-                            android:textSize="18sp" />
-
-                        <Spinner
-                            android:id="@+id/spOperadorEx"
-                            android:layout_width="match_parent"
-                            android:layout_height="45dp"
-                            android:layout_margin="5dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/spinner" />
-
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/drawable_blue">
-
-                        <TextView
-                            android:id="@+id/textView4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:background="@drawable/blue_white"
-                            android:gravity="center"
-                            android:text="Firma"
-                            android:textColor="@color/white"
-                            android:textSize="18sp" />
-
-                        <TextView
-                            android:id="@+id/Exdni"
-                            android:layout_width="wrap_content"
                             android:layout_height="45dp"
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/drawable_blue"
                             android:gravity="center"
-                            android:textColor="@color/black"
-                            android:textSize="18dp" />
-                    </TableRow>
-                </TableLayout>
+                            android:text="Fecha"
+                            android:textSize="18sp" />
 
-            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+                        <TextView
+                            android:id="@+id/Exh_inicio"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/drawable_blue"
+                            android:gravity="center"
+                            android:text="Hora"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/drawable_blue">
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/blue_white"
+                        android:gravity="center"
+                        android:text="F/H. Final"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/Exf_final"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/drawable_blue"
+                            android:gravity="center"
+                            android:text="Fecha"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:id="@+id/Exh_final"
+                            android:layout_width="match_parent"
+                            android:layout_height="45dp"
+                            android:layout_margin="5dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/drawable_blue"
+                            android:gravity="center"
+                            android:text="Hora"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/drawable_blue">
+
+                    <TextView
+                        android:id="@+id/textViewO"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/blue_white"
+                        android:gravity="center"
+                        android:text="Operador"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                    <Spinner
+                        android:id="@+id/spOperadorEx"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/spinner" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/drawable_blue">
+
+                    <TextView
+                        android:id="@+id/textView4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/blue_white"
+                        android:gravity="center"
+                        android:text="Firma"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/Exdni"
+                        android:layout_width="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/drawable_blue"
+                        android:gravity="center"
+                        android:textColor="@color/black"
+                        android:textSize="18dp" />
+                </TableRow>
+            </TableLayout>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/Exid_placaSp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Id_placaSp" />
+            <TextView
+                android:id="@+id/Exid_placaSp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Id_placaSp"
+                android:visibility="invisible" />
 
-                <TextView
-                    android:id="@+id/Exid_placa"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="id_placa" />
+            <TextView
+                android:id="@+id/Exid_placa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="id_placa"
+                android:visibility="invisible" />
 
-                <TextView
-                    android:id="@+id/Exoperador"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="operador" />
+            <TextView
+                android:id="@+id/Exoperador"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="operador"
+                android:visibility="invisible" />
 
-                <TextView
-                    android:id="@+id/Expromedio"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="promedio" />
-            </LinearLayout>
+            <TextView
+                android:id="@+id/Expromedio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="promedio"
+                android:visibility="invisible" />
+        </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-                <Button
-                    android:id="@+id/Exiniciar"
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="Iniciar" />
+            <Button
+                android:id="@+id/Exiniciar"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Iniciar" />
 
-                <Button
-                    android:id="@+id/Exfinalizar"
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:text="Finalizar" />
-
-            </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/ListExtraccion"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:background="@drawable/drawable_blue" />
+            <Button
+                android:id="@+id/Exfinalizar"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:text="Finalizar" />
 
         </LinearLayout>
-    </ScrollView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/ListExtraccion"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:background="@drawable/drawable_blue" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

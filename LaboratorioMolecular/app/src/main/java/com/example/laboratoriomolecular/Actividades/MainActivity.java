@@ -3,28 +3,49 @@ package com.example.laboratoriomolecular.Actividades;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.Window;
+import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.laboratoriomolecular.R;
 
+import java.util.Objects;
+
 public class MainActivity extends AppCompatActivity {
 
-    TextView hola;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
-        hola = findViewById(R.id.hola);
+        Animation animation1 = AnimationUtils.loadAnimation(this, R.anim.desplazamiento_arriba);
+        Animation animation2 = AnimationUtils.loadAnimation(this, R.anim.desplazamiento_abajo);
 
-        hola.setOnClickListener(v ->siguiente() );
+        TextView tendo = findViewById(R.id.tendo);
+        ImageView logo = findViewById(R.id.logo);
+
+        tendo.setAnimation(animation2);
+        logo.setAnimation(animation1);
+
+        new Handler().postDelayed(() -> {
+            Intent intent = new Intent(MainActivity.this, Formularios.class);
+            startActivity(intent);
+            finish();
+        }, 5000);
 
     }
 
-    public void siguiente (){
-        startActivity(new Intent(getApplicationContext(),Formularios.class));
-    }
+
+
 
 }

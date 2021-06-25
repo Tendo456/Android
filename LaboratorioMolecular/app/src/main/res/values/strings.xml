@@ -1,5 +1,15 @@
 <resources>
     <string name="app_name">Laboratorio Molecular</string>
+    <string name="Formularios_title">Selección de Procedimiento</string>
+    <string name="Recepcion_title">Recepción</string>
+    <string name="RecepcionD_title">Detalles</string>
+    <string name="Nueva_placa_title">Nueva Placa</string>
+    <string name="Nueva_placaD_title">Detalles</string>
+    <string name="Alicuotado_title">Alicuotado</string>
+    <string name="Extraccion_title">Extracción</string>
+    <string name="Area_title">Área Limpia</string>
+    <string name="Amplificacion_title">Amplificación</string>
+    <string name="Resultados_title">Resultados</string>
 
     <string name="mas">Más</string>
     <string name="recepcion">Recepción</string>

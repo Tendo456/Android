@@ -46,6 +46,7 @@ public class PlacasDetails extends AppCompatActivity {
             estadoEx = placaResponse.getEstadoEx();
             estadoAr = placaResponse.getEstadoAr();
             estadoAm = placaResponse.getEstadoAm();
+            estadoRes = placaResponse.getEstadoRes();
             //estadoRes = placaResponse.getEstadoRe();
 
             id_placa.setText(idplaca);
@@ -87,6 +88,13 @@ public class PlacasDetails extends AppCompatActivity {
 
         if(estadoAm != null){
             if (estadoAm.equals("2")){
+                paso();
+            }else {
+                Toast.makeText(PlacasDetails.this,"Proceso Actual Amplificación",Toast.LENGTH_LONG).show();
+            }
+        }
+        if(estadoRes != null){
+            if (estadoRes.equals("2")){
                 paso();
             }else {
                 Toast.makeText(PlacasDetails.this,"Proceso Actual Amplificación",Toast.LENGTH_LONG).show();

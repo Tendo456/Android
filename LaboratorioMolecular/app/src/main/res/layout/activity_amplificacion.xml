@@ -219,6 +219,7 @@
                                 android:background="@drawable/drawable_blue"
                                 android:gravity="center"
                                 android:hint="Valido"
+                                android:inputType="number"
                                 android:maxLength="4"
                                 android:textSize="18sp" />
 
@@ -231,6 +232,7 @@
                                 android:background="@drawable/drawable_blue"
                                 android:gravity="center"
                                 android:hint="Invalido"
+                                android:inputType="number"
                                 android:maxLength="4"
                                 android:textSize="18sp" />
                         </LinearLayout>
@@ -268,6 +270,7 @@
                                 android:background="@drawable/drawable_blue"
                                 android:gravity="center"
                                 android:hint="Valido"
+                                android:inputType="number"
                                 android:maxLength="4"
                                 android:textSize="18sp" />
 
@@ -280,6 +283,7 @@
                                 android:background="@drawable/drawable_blue"
                                 android:gravity="center"
                                 android:hint="Invalido"
+                                android:inputType="number"
                                 android:maxLength="4"
                                 android:textSize="18sp" />
                         </LinearLayout>
@@ -355,28 +359,32 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Placa Spinner" />
+                    android:text="Placa Spinner"
+                    android:visibility="invisible" />
 
                 <TextView
                     android:id="@+id/Amid_placa"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Placa Lista" />
+                    android:text="Placa Lista"
+                    android:visibility="invisible" />
 
                 <TextView
                     android:id="@+id/Amoperador"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="operador" />
+                    android:text="operador"
+                    android:visibility="invisible" />
 
                 <TextView
                     android:id="@+id/Ampromedio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="promedio" />
+                    android:text="promedio"
+                    android:visibility="invisible" />
             </LinearLayout>
 
             <LinearLayout

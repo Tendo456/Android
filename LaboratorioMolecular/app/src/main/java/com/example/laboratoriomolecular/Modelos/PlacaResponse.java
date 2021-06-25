@@ -13,6 +13,7 @@ public class PlacaResponse implements Serializable {
     private String estadoEx;
     private String estadoAr;
     private String estadoAm;
+    private String estadoRes;
     private String mensaje;
 
     public String getId_placa() {
@@ -87,6 +88,14 @@ public class PlacaResponse implements Serializable {
         this.estadoAm = estadoAm;
     }
 
+    public String getEstadoRes() {
+        return estadoRes;
+    }
+
+    public void setEstadoRes(String estadoRes) {
+        this.estadoRes = estadoRes;
+    }
+
     public String getMensaje() {
         return mensaje;
     }
@@ -103,6 +112,7 @@ public class PlacaResponse implements Serializable {
                 ", estadoEx='" + estadoEx + '\'' +
                 ", estadoAr='" + estadoAr + '\'' +
                 ", estadoAm='" + estadoAm + '\'' +
+                ", estadoRes='" + estadoRes + '\'' +
                 '}';
     }
 }

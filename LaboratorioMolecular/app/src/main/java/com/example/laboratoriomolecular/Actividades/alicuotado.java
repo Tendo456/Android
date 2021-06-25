@@ -106,6 +106,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
 
         Alrefresh.setOnRefreshListener(()->{
             Afecha();
+            conseguirAl();
             limpiarAlicuotado();
             Alrefresh.setRefreshing(false);
         });
@@ -119,6 +120,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
 
          if (chAyer.isChecked()){
              ayer();
+
          }else{
              dayer = F;
          }
@@ -150,7 +152,6 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         dayer = dateFormat.format(ayer);
         Toast.makeText(alicuotado.this,"ayer "+ dayer,Toast.LENGTH_SHORT).show();
-
     }
 
     public void Ahilo(){
@@ -159,7 +160,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
 
     private void llenarspinnerAl(){
 
-        String url = "http://10.50.1.238/laboratorio/Placas/spPlacaAl.php?fechaP="+dayer;
+        String url = "http://192.168.1.19/laboratorio/Placas/spPlacaAl.php?fechaP="+dayer;
         placaA.post(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -214,7 +215,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
 
     private void llsOpeA (){
 
-        String urlOpeA = "http://10.50.1.238/laboratorio/Operador/SpOperador.php";
+        String urlOpeA = "http://192.168.1.19/laboratorio/Operador/SpOperador.php";
         operadorA.post(urlOpeA, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -349,7 +350,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
     }
 
     private void conseguirAl (){
-        Call<List<AlicuotadoResponse>> alicuotadoList = ApiClient.getUserService().conseguirAl(F);
+        Call<List<AlicuotadoResponse>> alicuotadoList = ApiClient.getUserService().conseguirAl(dayer);
         alicuotadoList.enqueue(new Callback<List<AlicuotadoResponse>>() {
             @Override
             public void onResponse(@NotNull Call<List<AlicuotadoResponse>> call, @NotNull Response<List<AlicuotadoResponse>> response) {

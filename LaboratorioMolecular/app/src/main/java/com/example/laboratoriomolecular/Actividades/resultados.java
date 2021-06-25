@@ -2,6 +2,8 @@ package com.example.laboratoriomolecular.Actividades;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
@@ -9,6 +11,8 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,11 +22,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.laboratoriomolecular.Adaptador.ResultadosAdapter;
 import com.example.laboratoriomolecular.Modelos.AlicuotadoResponse;
 import com.example.laboratoriomolecular.Modelos.AmplificacionResponse;
 import com.example.laboratoriomolecular.Modelos.OperadorResponse;
-import com.example.laboratoriomolecular.Modelos.PlacaResponse;
-import com.example.laboratoriomolecular.Modelos.ResultadoResponse;
+import com.example.laboratoriomolecular.Modelos.ResultadosResponse;
 import com.example.laboratoriomolecular.R;
 import com.example.laboratoriomolecular.Retrofit_Data.ApiClient;
 import com.loopj.android.http.AsyncHttpClient;
@@ -45,9 +49,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class resultados extends AppCompatActivity {
+public class resultados extends AppCompatActivity implements ResultadosAdapter.ClickedItemRes {
 
-    TextView CPlacasRes, Resf_inicio, Resh_inicio, Resf_final, Resh_final, Respromedio, Resoperador ,Resdni,IDs;
+    TextView CPlacasRes, Resf_inicio, Resh_inicio, Resf_final, Resh_final, Respromedio, Resoperador ,Resdni,Resid_resultados;
+    TextView diResN_placa,diResf_inicio,diResh_inicio,diResf_final,diResh_final,diRespromedio,diResoperador,diResdni,diResestado;
+    String idRes, placaRes, f_inicioRes, h_inicioRes, f_finalRes, h_finalRes, promedioRes ,operadorResu, dniRes, estadoRes;
     Spinner spOperadorRes;
     Button Resiniciar,Resfinalizar;
     CheckBox chResAyer;
@@ -57,7 +63,7 @@ public class resultados extends AppCompatActivity {
     String CRes_fhi,CRes_fhf;
     private AsyncHttpClient operadorRes;
     SwipeRefreshLayout Resrefresh;
-    String idp1,idp2,idp3,idp4,idp5,idp6,idp7,idp8,idp9,idp10,idp11,idp12,idp13;
+    ResultadosAdapter resultadosAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,15 +84,23 @@ public class resultados extends AppCompatActivity {
         chResAyer = findViewById(R.id.chResAyer);
         ListResultados = findViewById(R.id.ListResultados);
         Resrefresh = findViewById(R.id.Resrefresh);
-        IDs = findViewById(R.id.IDs);
+        Resid_resultados = findViewById(R.id.Resid_resultados);
+
+        ListResultados.setLayoutManager(new LinearLayoutManager(this));
+        ListResultados.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
+
+        resultadosAdapter = new ResultadosAdapter(this);
+        Resfinalizar.setEnabled(false);
 
         Resfinalizar.setOnClickListener(v -> FinalizarRes());
         Resiniciar.setOnClickListener(v -> IniciarRes());
 
         Resfecha();
+        ConseguirResul();
 
         Resrefresh.setOnRefreshListener(()->{
             Resfecha();
+            ConseguirResul();
             Resrefresh.setRefreshing(false);
         });
     }
@@ -135,7 +149,7 @@ public class resultados extends AppCompatActivity {
 
     private void llsOpeRes (){
 
-        String urlOpeA = "http://10.50.1.238/laboratorio/Operador/SpOperador.php";
+        String urlOpeA = "http://192.168.1.19/laboratorio/Operador/SpOperador.php";
         operadorRes.post(urlOpeA, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -186,7 +200,7 @@ public class resultados extends AppCompatActivity {
     public void IniciarRes (){
         AlertDialog.Builder opcion = new AlertDialog.Builder(this);
         opcion.setMessage("Iniciar Resultados?");
-        opcion.setPositiveButton("Finalizar", (dialog, which) -> SaveResultados());
+        opcion.setPositiveButton("Iniciar Resultados?", (dialog, which) -> SaveResultados());
         opcion.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
 
         AlertDialog dialog = opcion.create();
@@ -252,13 +266,33 @@ public class resultados extends AppCompatActivity {
         });
     }
 
-    public void SaveResultados(){
-        Call<ResultadoResponse> finRes = ApiClient.getUserService().IniciarResultado(CPlacasRes.getText().toString(),Resf_inicio.getText().toString(),Resh_inicio.getText().toString(),Resoperador.getText().toString(),Resdni.getText().toString(),"1");
-        finRes.enqueue(new Callback<ResultadoResponse>() {
+    public void ConseguirResul(){
+        Call<List<ResultadosResponse>> resulList = ApiClient.getUserService().conseguirResultados(ResdAyer);
+        resulList.enqueue(new Callback<List<ResultadosResponse>>() {
             @Override
-            public void onResponse(Call<ResultadoResponse> call, Response<ResultadoResponse> response) {
+            public void onResponse(Call<List<ResultadosResponse>> call, Response<List<ResultadosResponse>> response) {
+                if(response.isSuccessful()){
+                    List<ResultadosResponse> resultadosResponses = response.body();
+                    resultadosAdapter.setData(resultadosResponses);
+                    ListResultados.setAdapter(resultadosAdapter);
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<ResultadosResponse>> call, Throwable t) {
+                Log.e("Fallo ",t.getLocalizedMessage());
+            }
+        });
+    }
+
+    public void SaveResultados(){
+        Call<ResultadosResponse> finRes = ApiClient.getUserService().IniciarResultado(CPlacasRes.getText().toString(),Resf_inicio.getText().toString(),Resh_inicio.getText().toString(),Resoperador.getText().toString(),Resdni.getText().toString(),"1");
+        finRes.enqueue(new Callback<ResultadosResponse>() {
+            @Override
+            public void onResponse(Call<ResultadosResponse> call, Response<ResultadosResponse> response) {
                 if (response.isSuccessful()) {
-                    ResultadoResponse mensaje = response.body();
+                    ResultadosResponse mensaje = response.body();
                     Toast.makeText(resultados.this, "" + mensaje.getMensaje(), Toast.LENGTH_SHORT).show();
                     //conseguirAl();
                     //limpiarAlicuotado();
@@ -269,19 +303,19 @@ public class resultados extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(@NotNull Call<ResultadoResponse> call, @NotNull Throwable t) {
+            public void onFailure(@NotNull Call<ResultadosResponse> call, @NotNull Throwable t) {
                 Toast.makeText(resultados.this, "Error " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     public void finResultados(){
-        Call<ResultadoResponse> iniRes = ApiClient.getUserService().FinalizarResultado(CPlacasRes.getText().toString(),Resf_final.getText().toString(),Resh_final.getText().toString(),Respromedio.getText().toString(),"2");
-        iniRes.enqueue(new Callback<ResultadoResponse>() {
+        Call<ResultadosResponse> iniRes = ApiClient.getUserService().FinalizarResultado(Resid_resultados.getText().toString(),CPlacasRes.getText().toString(),Resf_inicio.getText().toString(),Resf_final.getText().toString(),Resh_final.getText().toString(),Respromedio.getText().toString(),"2");
+        iniRes.enqueue(new Callback<ResultadosResponse>() {
             @Override
-            public void onResponse(@NotNull Call<ResultadoResponse> call, @NotNull Response<ResultadoResponse> response) {
+            public void onResponse(@NotNull Call<ResultadosResponse> call, @NotNull Response<ResultadosResponse> response) {
                 if (response.isSuccessful()) {
-                    ResultadoResponse mensaje = response.body();
+                    ResultadosResponse mensaje = response.body();
                     assert mensaje != null;
                     Toast.makeText(resultados.this, "" + mensaje.getMensaje(), Toast.LENGTH_SHORT).show();
                     //conseguirAl();
@@ -293,7 +327,7 @@ public class resultados extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(@NotNull Call<ResultadoResponse> call, @NotNull Throwable t) {
+            public void onFailure(@NotNull Call<ResultadosResponse> call, @NotNull Throwable t) {
 
             }
         });
@@ -316,5 +350,60 @@ public class resultados extends AppCompatActivity {
 
             new Handler(Looper.getMainLooper()).postDelayed(this::finResultados, 2000);
         }
+    }
+
+    @Override
+    public void ClickedResultados(ResultadosResponse resultadosResponse) {
+        idRes = resultadosResponse.getId_resultados();
+        placaRes = resultadosResponse.getPlacas();
+        f_inicioRes = resultadosResponse.getF_inicio();
+        h_inicioRes = resultadosResponse.getH_inicio();
+        f_finalRes = resultadosResponse.getF_final();
+        h_finalRes= resultadosResponse.getH_final();
+        promedioRes = resultadosResponse.getPromedio();
+        operadorResu = resultadosResponse.getOperador();
+        dniRes = resultadosResponse.getDni();
+        estadoRes = resultadosResponse.getEstadoRes();
+
+        Resid_resultados.setText(idRes);
+
+        if(f_finalRes == null){Resf_final.setText(ResF); Resfinalizar.setEnabled(true);} else {Resf_final.setText(f_finalRes); Resfinalizar.setEnabled(false);}
+        if(h_finalRes == null){Resh_final.setText(ResH);} else {Resh_final.setText(h_finalRes);}
+
+        dialogoRes();
+    }
+
+    public void dialogoRes (){
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(resultados.this);
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.dialogo_res,null);
+        builder.setView(view);
+
+        final AlertDialog dialog = builder.create();
+        dialog.show();
+
+        diResN_placa = view.findViewById(R.id.diResN_placa);
+        diResf_inicio = view.findViewById(R.id.diResf_inicio);
+        diResh_inicio = view.findViewById(R.id.diResh_inicio);
+        diResf_final = view.findViewById(R.id.diResf_final);
+        diResh_final = view.findViewById(R.id.diResh_final);
+        diRespromedio = view.findViewById(R.id.diRespromedio);
+        diResoperador = view.findViewById(R.id.diResoperador);
+        diResdni = view.findViewById(R.id.diResdni);
+        diResestado = view.findViewById(R.id.diResestado);
+
+        diResN_placa.setText(placaRes);
+        diResf_inicio.setText(f_inicioRes);
+        diResh_inicio.setText(h_inicioRes);
+        diResf_final.setText(f_finalRes);
+        diResh_final.setText(h_finalRes);
+        diRespromedio.setText(promedioRes);
+        diResoperador.setText(operadorResu);
+        diResdni.setText(dniRes);
+        diResestado.setText(estadoRes);
+
+        Button diRes_ok = view.findViewById(R.id.diRes_ok);
+        diRes_ok.setOnClickListener(v -> dialog.dismiss());
     }
 }

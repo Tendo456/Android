@@ -7,7 +7,7 @@ import com.example.laboratoriomolecular.Modelos.ExtraccionResponse;
 import com.example.laboratoriomolecular.Modelos.OperadorResponse;
 import com.example.laboratoriomolecular.Modelos.PlacaResponse;
 import com.example.laboratoriomolecular.Modelos.RecepcionResponse;
-import com.example.laboratoriomolecular.Modelos.ResultadoResponse;
+import com.example.laboratoriomolecular.Modelos.ResultadosResponse;
 
 import java.util.List;
 
@@ -143,22 +143,24 @@ public interface UserService {
     Call<List<AlicuotadoResponse>> firstProc(@Query("f_inicio") String f_inicio);
 
     @GET("Resultados/ConseguirResultados.php")
-    Call<List<ResultadoResponse>> conseguirResultados(@Query("f_inicio") String f_inicio);
+    Call<List<ResultadosResponse>> conseguirResultados(@Query("f_inicio") String f_inicio);
 
     @FormUrlEncoded
     @POST("Resultados/iniciarResultados.php")
-    Call<ResultadoResponse> IniciarResultado (@Field("placas") String placas,
-                                                @Field("f_inicio") String f_inicio,
-                                                @Field("h_inicio") String h_inicio,
-                                                @Field("operador") String operador,
-                                                @Field("dni") String dni,
-                                                @Field("estadoRes") String estadoAm);
+    Call<ResultadosResponse> IniciarResultado (@Field("placas") String placas,
+                                               @Field("f_inicio") String f_inicio,
+                                               @Field("h_inicio") String h_inicio,
+                                               @Field("operador") String operador,
+                                               @Field("dni") String dni,
+                                               @Field("estadoRes") String estadoRes);
 
     @FormUrlEncoded
     @POST("Resultados/FinalizarResultados.php")
-    Call<ResultadoResponse> FinalizarResultado (@Field("placas") String placas,
-                                                @Field("f_final") String f_final,
-                                                @Field("h_final") String h_final,
-                                                @Field("promedio") String promedio,
-                                                @Field("estadoRes") String estadoAm);
+    Call<ResultadosResponse> FinalizarResultado (@Field("id_resultados") String id_resultados,
+                                                 @Field("placas") String placas,
+                                                 @Field("f_inicio") String f_inicio,
+                                                 @Field("f_final") String f_final,
+                                                 @Field("h_final") String h_final,
+                                                 @Field("promedio") String promedio,
+                                                 @Field("estadoRes") String estadoRes);
 }

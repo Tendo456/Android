@@ -90,6 +90,7 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
         Recrefresh.setOnRefreshListener(()->{
             fecha();
             limpiar();
+            getAllRecepcion();
             Recrefresh.setRefreshing(false);
         });
 
@@ -98,7 +99,7 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
 
     private void llenarspinerO (){
 
-        String url = "http://10.50.1.238/laboratorio/Operador/SpOperador.php";
+        String url = "http://192.168.1.19/laboratorio/Operador/SpOperador.php";
         operador.post(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -192,6 +193,7 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
                         RecepcionResponse mensaje = response.body();
                         Toast.makeText(recepcion.this, ""+mensaje.getMensaje()+" "+response.code(), Toast.LENGTH_SHORT).show();
                         limpiar();
+                        getAllRecepcion();
                     } else {
                         Toast.makeText(recepcion.this, "Error al Guardar los Datos " +response.code(), Toast.LENGTH_SHORT).show();
                     }
