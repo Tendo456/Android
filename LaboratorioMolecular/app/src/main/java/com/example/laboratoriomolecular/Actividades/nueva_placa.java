@@ -22,7 +22,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.laboratoriomolecular.Adaptador.PlacaAdapter;
 import com.example.laboratoriomolecular.Modelos.PlacaResponse;
-import com.example.laboratoriomolecular.Modelos.PlacaSpinner;
 import com.example.laboratoriomolecular.Modelos.RecepcionSpinner;
 import com.example.laboratoriomolecular.R;
 import com.example.laboratoriomolecular.Retrofit_Data.ApiClient;
