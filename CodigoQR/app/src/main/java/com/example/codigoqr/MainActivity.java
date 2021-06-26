@@ -93,13 +93,10 @@ public class MainActivity extends AppCompatActivity {
         url=txtLink.getText().toString();
 
         try{
-        if (url == null){
-            Toast.makeText(this,"texto vacio",Toast.LENGTH_SHORT).show();
-        }else{
-        Uri link = Uri.parse(url);
-        Intent i = new Intent(Intent.ACTION_VIEW,link);
-        startActivity(i);
-        }}
+            Uri link = Uri.parse(url);
+            Intent i = new Intent(Intent.ACTION_VIEW,link);
+            startActivity(i);
+        }
         catch (ActivityNotFoundException e){
             Toast.makeText(this, "No Formato URL", Toast.LENGTH_LONG).show();
         }
