@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         integrador.setCameraId(0);
         integrador.setOrientationLocked(false);
         integrador.setBeepEnabled(true);
-        integrador.setBarcodeImageEnabled(false);
+        integrador.setBarcodeImageEnabled(true);
         integrador.initiateScan();
 
     }
