@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +29,7 @@ import com.example.laboratoriomolecular.Retrofit_Data.ApiClient;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 
 import java.text.Format;
@@ -311,7 +311,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
         Call<List<ExtraccionResponse>> extraccionList = ApiClient.getUserService().conseguirExtraccion(ExF);
         extraccionList.enqueue(new Callback<List<ExtraccionResponse>>() {
             @Override
-            public void onResponse(Call<List<ExtraccionResponse>> call, Response<List<ExtraccionResponse>> response) {
+            public void onResponse(@NotNull Call<List<ExtraccionResponse>> call, @NotNull Response<List<ExtraccionResponse>> response) {
                 if(response.isSuccessful()){
                     List<ExtraccionResponse> extraccionResponses = response.body();
                     extraccionAdapter.setData(extraccionResponses);
@@ -320,7 +320,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
             }
 
             @Override
-            public void onFailure(Call<List<ExtraccionResponse>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<ExtraccionResponse>> call, @NotNull Throwable t) {
 
             }
         });
@@ -330,11 +330,12 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
         Call<ExtraccionResponse> callEx = ApiClient.getUserService().InsertarExtraccion(Exf_inicio.getText().toString(),Exh_inicio.getText().toString(),Exoperador.getText().toString(),Exdni.getText().toString(),"1",Exid_placaSp.getText().toString());
         callEx.enqueue(new Callback<ExtraccionResponse>() {
             @Override
-            public void onResponse(Call<ExtraccionResponse> call, Response<ExtraccionResponse> response) {
+            public void onResponse(@NotNull Call<ExtraccionResponse> call, @NotNull Response<ExtraccionResponse> response) {
                 if(response.isSuccessful()){
                     ExtraccionResponse mensaje = response.body();
                     Toast.makeText(extraccion.this, ""+mensaje.getMensaje()+" "+response.code(), Toast.LENGTH_SHORT).show();
                     conseguirEx();
+                    Exfecha();
 
                 }
                 else {
@@ -343,7 +344,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
             }
 
             @Override
-            public void onFailure(Call<ExtraccionResponse> call, Throwable t) {
+            public void onFailure(@NotNull Call<ExtraccionResponse> call, @NotNull Throwable t) {
                 Toast.makeText(extraccion.this, "Error " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
@@ -357,7 +358,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
             Call<ExtraccionResponse> upEx = ApiClient.getUserService().upExtraccion(Exid_placa.getText().toString(), Exf_final.getText().toString(), Exh_final.getText().toString(), Expromedio.getText().toString(), "2");
             upEx.enqueue(new Callback<ExtraccionResponse>() {
                 @Override
-                public void onResponse(Call<ExtraccionResponse> call, Response<ExtraccionResponse> response) {
+                public void onResponse(@NotNull Call<ExtraccionResponse> call, @NotNull Response<ExtraccionResponse> response) {
                     if (response.isSuccessful()) {
                         ExtraccionResponse mensaje = response.body();
                         Toast.makeText(extraccion.this, "" + mensaje.getMensaje() + " " + response.code(), Toast.LENGTH_SHORT).show();
@@ -370,7 +371,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
                 }
 
                 @Override
-                public void onFailure(Call<ExtraccionResponse> call, Throwable t) {
+                public void onFailure(@NotNull Call<ExtraccionResponse> call, @NotNull Throwable t) {
                     Toast.makeText(extraccion.this, "Error " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });

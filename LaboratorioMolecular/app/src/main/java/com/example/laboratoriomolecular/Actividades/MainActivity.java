@@ -1,23 +1,17 @@
 package com.example.laboratoriomolecular.Actividades;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.laboratoriomolecular.R;
+import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.Objects;
+import com.example.laboratoriomolecular.R;
 
 public class MainActivity extends AppCompatActivity {
 

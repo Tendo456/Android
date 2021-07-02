@@ -200,7 +200,7 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
                 }
 
                 @Override
-                public void onFailure(Call<RecepcionResponse> call, Throwable t) {
+                public void onFailure(@NotNull Call<RecepcionResponse> call, @NotNull Throwable t) {
                     Toast.makeText(recepcion.this, "Error " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
@@ -213,14 +213,14 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
     }
 
     public void hilo(){
-        new Handler(Looper.getMainLooper()).postDelayed(() -> fecha(),60000);
+        new Handler(Looper.getMainLooper()).postDelayed(this::fecha,60000);
     }
 
     public void getAllRecepcion(){
         Call<List<RecepcionResponse>> recepcionList = ApiClient.getUserService().getRecepcionF(Fechapiker.getText().toString());
         recepcionList.enqueue(new Callback<List<RecepcionResponse>>() {
             @Override
-            public void onResponse(Call<List<RecepcionResponse>> call, Response<List<RecepcionResponse>> response) {
+            public void onResponse(@NotNull Call<List<RecepcionResponse>> call, @NotNull Response<List<RecepcionResponse>> response) {
                 if(response.isSuccessful()){
                     List<RecepcionResponse> recepcionResponses = response.body();
                     recepcionAdapter.setData(recepcionResponses);
@@ -229,7 +229,7 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
             }
 
             @Override
-            public void onFailure(Call<List<RecepcionResponse>> call, Throwable t) {
+            public void onFailure(@NotNull Call<List<RecepcionResponse>> call, @NotNull Throwable t) {
                 Log.e("Fallo ",t.getLocalizedMessage());
             }
         });

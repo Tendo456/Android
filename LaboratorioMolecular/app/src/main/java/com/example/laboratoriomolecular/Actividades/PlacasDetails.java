@@ -31,9 +31,7 @@ public class PlacasDetails extends AppCompatActivity {
         fechaP = findViewById(R.id.fechaP);
         step_view = findViewById(R.id.step_view);
 
-        step_view.setOnStepClickListener(step -> {
-            Toast.makeText(PlacasDetails.this, "Proceso " + step, Toast.LENGTH_SHORT).show();
-        });
+        step_view.setOnStepClickListener(step -> Toast.makeText(PlacasDetails.this, "Proceso " + step, Toast.LENGTH_SHORT).show());
 
         Intent intent = getIntent();
 
