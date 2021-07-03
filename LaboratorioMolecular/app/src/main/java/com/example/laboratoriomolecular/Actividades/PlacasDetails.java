@@ -15,7 +15,7 @@ import android.widget.Toast;
 
 public class PlacasDetails extends AppCompatActivity {
 
-    TextView id_placa,N_placa,fechaP;
+    TextView id_placa,N_placa,fechaP,N_corrida;
     PlacaResponse placaResponse;
     String estadoRe,estadoAl,estadoEx,estadoAr,estadoAm,estadoRes;
     StepView step_view;
@@ -28,6 +28,7 @@ public class PlacasDetails extends AppCompatActivity {
 
         id_placa = findViewById(R.id.id_placa);
         N_placa = findViewById(R.id.N_placa);
+        N_corrida = findViewById(R.id.N_corrida);
         fechaP = findViewById(R.id.fechaP);
         step_view = findViewById(R.id.step_view);
 
@@ -40,6 +41,7 @@ public class PlacasDetails extends AppCompatActivity {
 
             String idplaca = placaResponse.getId_placa();
             String Nplaca = placaResponse.getN_placa();
+            String Ncorrida = placaResponse.getN_corrida();
             String fechaPl = placaResponse.getFechaP();
             estadoRe = placaResponse.getEstadoRe();
             estadoAl = placaResponse.getEstadoAl();
@@ -51,6 +53,7 @@ public class PlacasDetails extends AppCompatActivity {
 
             id_placa.setText(idplaca);
             N_placa.setText(Nplaca);
+            N_corrida.setText(Ncorrida);
             fechaP.setText(fechaPl);
         }
 

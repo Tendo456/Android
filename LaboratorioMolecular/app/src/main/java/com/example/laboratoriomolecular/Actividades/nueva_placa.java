@@ -45,11 +45,11 @@ import retrofit2.Response;
 public class nueva_placa extends AppCompatActivity implements PlacaAdapter.ClickedItemP {
 
     EditText CodPlaca;
-    TextView fechaPl, id_recepcion;
+    TextView fechaPl, id_recepcion, N_corrida;
     Button PGuardar;
     RecyclerView ListaPlaca;
     PlacaAdapter placaAdapter;
-    Spinner spRecepcion;
+    Spinner spRecepcion,spCorrida;
     private AsyncHttpClient spRecepcion1;
     String s;
 
@@ -63,7 +63,9 @@ public class nueva_placa extends AppCompatActivity implements PlacaAdapter.Click
         ListaPlaca = findViewById(R.id.ListaPlaca);
         fechaPl = findViewById(R.id.fechaPl);
         spRecepcion = findViewById(R.id.spRecepcion);
+        spCorrida = findViewById(R.id.spCorrida);
         id_recepcion = findViewById(R.id.id_recepcion);
+        N_corrida = findViewById(R.id.N_corrida);
 
         PGuardar.setOnClickListener(v -> ConfirmarPlaca());
 
@@ -73,6 +75,21 @@ public class nueva_placa extends AppCompatActivity implements PlacaAdapter.Click
         placaAdapter = new PlacaAdapter(this);
 
         fechaPlaca();
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.numeros, R.layout.support_simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spCorrida.setAdapter(adapter);
+        spCorrida.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                N_corrida.setText(parent.getItemAtPosition(position).toString());
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
     }
 
@@ -120,6 +137,7 @@ public class nueva_placa extends AppCompatActivity implements PlacaAdapter.Click
                 Pls.add(spP);
             }
             ArrayAdapter<RecepcionSpinner> Pa = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, Pls);
+            Pa.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
             spRecepcion.setAdapter(Pa);
             spRecepcion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
@@ -154,7 +172,7 @@ public class nueva_placa extends AppCompatActivity implements PlacaAdapter.Click
             CodPlaca.setError("Ingresar Placa");
 
         }else {
-            Call<PlacaResponse> call = ApiClient.getUserService().savePlaca(CodPlaca.getText().toString(),fechaPl.getText().toString(),id_recepcion.getText().toString());
+            Call<PlacaResponse> call = ApiClient.getUserService().savePlaca(CodPlaca.getText().toString(), N_corrida.getText().toString(),fechaPl.getText().toString(),id_recepcion.getText().toString());
             call.enqueue(new Callback<PlacaResponse>() {
                 @Override
                 public void onResponse(@NotNull Call<PlacaResponse> call, @NotNull Response<PlacaResponse> response) {

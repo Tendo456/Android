@@ -82,6 +82,32 @@
                 android:layout_height="match_parent">
 
                 <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/blue_white"
+                    android:gravity="center"
+                    android:text="Corrida"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/N_corrida"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/drawable_blue"
+                    android:gravity="center"
+                    android:text="N_corrida"
+                    android:textSize="18sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
                     android:id="@+id/textView14"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"

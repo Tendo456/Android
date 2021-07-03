@@ -35,7 +35,8 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@drawable/drawable_blue">
 
                 <TextView
                     android:id="@+id/textView24"
@@ -61,7 +62,8 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent"
+                android:background="@drawable/drawable_blue">
 
                 <TextView
                     android:id="@+id/textView25"
@@ -89,7 +91,8 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent"
+                android:background="@drawable/drawable_blue">
 
                 <TextView
                     android:id="@+id/textView23"
@@ -100,7 +103,7 @@
                     android:gravity="center"
                     android:text="N° Envio"
                     android:textColor="@color/white"
-                    android:textSize="18sp"/>
+                    android:textSize="18sp" />
 
                 <Spinner
                     android:id="@+id/spRecepcion"
@@ -113,7 +116,8 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent"
+                android:background="@drawable/drawable_blue">
 
                 <TextView
                     android:id="@+id/textView26"
@@ -136,12 +140,26 @@
             </TableRow>
         </TableLayout>
 
-        <TextView
-            android:id="@+id/id_recepcion"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="recepcion"
-            android:visibility="invisible" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/N_corrida"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Corrida" />
+
+            <TextView
+                android:id="@+id/id_recepcion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Recepcion"
+                android:visibility="visible" />
+        </LinearLayout>
 
         <Button
 
