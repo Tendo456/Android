@@ -320,6 +320,8 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
         estadoRes = resultadosResponse.getEstadoRes();
 
         Resid_resultados.setText(idRes);
+        CPlacasRes.setText(placaRes);
+        CRes_fhi = resultadosResponse.getF_inicio()+" "+resultadosResponse.getH_inicio();
 
         if(f_finalRes == null){Resf_final.setText(ResF); Resfinalizar.setEnabled(true);} else {Resf_final.setText(f_finalRes); Resfinalizar.setEnabled(false);}
         if(h_finalRes == null){Resh_final.setText(ResH);} else {Resh_final.setText(h_finalRes);}

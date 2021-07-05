@@ -221,7 +221,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="ID"
-                android:visibility="invisible" />
+                android:visibility="visible" />
 
             <TextView
                 android:id="@+id/Resoperador"
@@ -229,7 +229,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="operador"
-                android:visibility="invisible" />
+                android:visibility="visible" />
 
             <TextView
                 android:id="@+id/Respromedio"
@@ -237,7 +237,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="promedio"
-                android:visibility="invisible" />
+                android:visibility="visible" />
 
             <CheckBox
                 android:id="@+id/chResAyer"
