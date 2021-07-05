@@ -309,7 +309,7 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
     @Override
     public void ClickedResultados(ResultadosResponse resultadosResponse) {
         idRes = resultadosResponse.getId_resultados();
-        placaRes = resultadosResponse.getPlacas();
+        placaRes = resultadosResponse.getN_corrida();
         f_inicioRes = resultadosResponse.getF_inicio();
         h_inicioRes = resultadosResponse.getH_inicio();
         f_finalRes = resultadosResponse.getF_final();
