@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class ResultadosResponse implements Serializable {
 
     private String id_resultados;
-    private String placas;
+    private String corrida;
     private String f_inicio;
     private String h_inicio;
     private String f_final;
@@ -24,12 +24,12 @@ public class ResultadosResponse implements Serializable {
         this.id_resultados = id_resultados;
     }
 
-    public String getPlacas() {
-        return placas;
+    public String getCorrida() {
+        return corrida;
     }
 
-    public void setPlacas(String placas) {
-        this.placas = placas;
+    public void setCorrida(String corrida) {
+        this.corrida = corrida;
     }
 
     public String getF_inicio() {
@@ -102,9 +102,9 @@ public class ResultadosResponse implements Serializable {
 
     @Override
     public String toString() {
-        return "ResultadoResponse{" +
+        return "ResultadosResponse{" +
                 "id_resultados='" + id_resultados + '\'' +
-                ", placas='" + placas + '\'' +
+                ", corrida='" + corrida + '\'' +
                 ", f_inicio='" + f_inicio + '\'' +
                 ", h_inicio='" + h_inicio + '\'' +
                 ", f_final='" + f_final + '\'' +

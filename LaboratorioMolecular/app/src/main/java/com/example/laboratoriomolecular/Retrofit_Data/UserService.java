@@ -60,7 +60,8 @@ public interface UserService {
                                                @Field("operador") String operador,
                                                @Field("dni") String dni,
                                                @Field("estadoAl") String estadoAl,
-                                                @Field("id_placa") String id_placa);
+                                                @Field("id_placa") String id_placa,
+                                                 @Field("N_corrida") String N_corrida);
 
     @FormUrlEncoded
     @POST("Alicuotado/FinalizarAlicuotado.php")
@@ -137,19 +138,12 @@ public interface UserService {
                                                  @Field("Ci_invalido") String Ci_invalido,
                                                  @Field("estadoAm") String estadoAm);
 
-
-    @GET("Placas/CountPlacaRes.php")
-    Call<List<AmplificacionResponse>> countPlaca(@Query("f_inicio") String f_inicio);
-
-    @GET("Resultados/FirstPro.php")
-    Call<List<AlicuotadoResponse>> firstProc(@Query("f_inicio") String f_inicio);
-
     @GET("Resultados/ConseguirResultados.php")
     Call<List<ResultadosResponse>> conseguirResultados(@Query("f_inicio") String f_inicio);
 
     @FormUrlEncoded
     @POST("Resultados/iniciarResultados.php")
-    Call<ResultadosResponse> IniciarResultado (@Field("placas") String placas,
+    Call<ResultadosResponse> IniciarResultado (@Field("N_corrida") String N_corrida,
                                                @Field("f_inicio") String f_inicio,
                                                @Field("h_inicio") String h_inicio,
                                                @Field("operador") String operador,
@@ -159,7 +153,7 @@ public interface UserService {
     @FormUrlEncoded
     @POST("Resultados/FinalizarResultados.php")
     Call<ResultadosResponse> FinalizarResultado (@Field("id_resultados") String id_resultados,
-                                                 @Field("placas") String placas,
+                                                 @Field("N_corrida") String N_corrida,
                                                  @Field("f_inicio") String f_inicio,
                                                  @Field("f_final") String f_final,
                                                  @Field("h_final") String h_final,

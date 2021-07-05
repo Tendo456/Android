@@ -34,6 +34,7 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.text.DateFormat;
 import java.text.Format;
@@ -54,7 +55,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
     SwipeRefreshLayout Alrefresh;
     Spinner spPlacasA,spOperA;
     EditText Aq_muestras;
-    TextView Aid_placa, Aid_placaSp, Af_inicio, Ah_inicio, Af_final, Ah_final, Apromedio, Aoperador ,Adni;
+    TextView Aid_placa, Aid_placaSp, Af_inicio, Ah_inicio, Af_final, Ah_final, Apromedio, Aoperador ,Adni,AN_corrida;
     //dialogo
     TextView diAlN_placa,diAlq_muestras,diAlf_inicio,diAlh_inicio,diAlf_final,diAlh_final,diAlpromedio,diAloperador,diAldni,diAlestado;
     private AsyncHttpClient operadorA;
@@ -91,6 +92,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
         Afinalizar = findViewById(R.id.Afinalizar);
         chAyer = findViewById(R.id.chAyer);
         ListAlicuotado = findViewById(R.id.ListAlicuotado);
+        AN_corrida = findViewById(R.id.AN_corrida);
 
         Afinalizar.setEnabled(false);
 
@@ -185,6 +187,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
                 PlacaSpinner spP = new PlacaSpinner();
                 spP.setId_placa(PlacaArray.getJSONObject(i).getString("id_placa"));
                 spP.setN_placa(PlacaArray.getJSONObject(i).getString("N_placa"));
+                spP.setN_corrida(PlacaArray.getJSONObject(i).getString("N_corrida"));
                 spP.setFechaP(PlacaArray.getJSONObject(i).getString("fechaP"));
                 Pls.add(spP);
             }
@@ -195,6 +198,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     Aid_placaSp.setText(Pls.get(position).getId_placa());
                     AN_placaI = Pls.get(position).getN_placa();
+                    AN_corrida.setText(Pls.get(position).getN_corrida());
                     Af_inicio.setText(F);
                     Ah_inicio.setText(H);
                     Af_final.setText(F);
@@ -375,7 +379,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
         if (Aq_muestras.getText().toString().isEmpty()){
             Aq_muestras.setError("Ingrese Cantidad de Muestras");
         }
-        Call<AlicuotadoResponse> callAli = ApiClient.getUserService().InsertarAlicuotado(Aq_muestras.getText().toString(),Af_inicio.getText().toString(),Ah_inicio.getText().toString(),Aoperador.getText().toString(),Adni.getText().toString(),"1",Aid_placaSp.getText().toString());
+        Call<AlicuotadoResponse> callAli = ApiClient.getUserService().InsertarAlicuotado(Aq_muestras.getText().toString(),Af_inicio.getText().toString(),Ah_inicio.getText().toString(),Aoperador.getText().toString(),Adni.getText().toString(),"1",Aid_placaSp.getText().toString(),AN_corrida.getText().toString());
         callAli.enqueue(new Callback<AlicuotadoResponse>() {
             @Override
             public void onResponse(@NotNull Call<AlicuotadoResponse> call, @NotNull Response<AlicuotadoResponse> response) {

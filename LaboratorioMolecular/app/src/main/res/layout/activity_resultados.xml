@@ -42,11 +42,11 @@
                         android:layout_weight="1"
                         android:background="@drawable/blue_white"
                         android:gravity="center"
-                        android:text="Placas"
+                        android:text="Corrida"
                         android:textColor="@color/white"
                         android:textSize="18sp" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/CPlacasRes"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
@@ -55,7 +55,7 @@
                         android:background="@drawable/drawable_blue"
                         android:gravity="center"
                         android:textSize="18sp"
-                        tools:text="Placas" />
+                        android:hint="N° Corrida"/>
 
                 </TableRow>
 

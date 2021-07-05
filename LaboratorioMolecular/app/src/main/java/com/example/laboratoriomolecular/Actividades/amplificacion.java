@@ -170,7 +170,7 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
 
             @Override
             public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
-                Toast.makeText(amplificacion.this,"Error: Internet / Servidor", Toast.LENGTH_SHORT).show();
+                Toast.makeText(amplificacion.this,"Error: Internet / Servidor: "+error, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -199,7 +199,6 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
                     Amh_inicio.setText(AmH);
                     Amf_final.setText(AmF);
                     Amh_final.setText(AmH);
-                    limpiarAmplificacion();
                     Amfinalizar.setEnabled(false);
                 }
 

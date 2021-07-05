@@ -197,7 +197,6 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
                     Arh_inicio.setText(ArH);
                     Arf_final.setText(ArF);
                     Arh_final.setText(ArH);
-                    limpiarAlicuotado();
                     Arfinalizar.setEnabled(false);
                 }
 

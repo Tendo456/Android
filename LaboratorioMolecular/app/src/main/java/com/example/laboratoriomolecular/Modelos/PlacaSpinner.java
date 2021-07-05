@@ -1,28 +1,21 @@
 package com.example.laboratoriomolecular.Modelos;
 
-import androidx.annotation.NonNull;
-
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
-import org.jetbrains.annotations.NotNull;
-
-import java.util.List;
-
 public class PlacaSpinner{
 
     private String id_placa;
     private String N_placa;
     private String q_muestras;
+    private String N_corrida;
     private String fechaP;
 
     public PlacaSpinner(){}
 
-    public PlacaSpinner(String id_placa, String q_muestras, String N_placa, String fechaP){
+    public PlacaSpinner(String id_placa, String q_muestras, String N_placa, String N_corrida, String fechaP){
 
         this.id_placa = id_placa;
         this.N_placa = N_placa;
         this.q_muestras = q_muestras;
+        this.N_corrida = N_corrida;
         this.fechaP = fechaP;
     }
 
@@ -48,6 +41,14 @@ public class PlacaSpinner{
 
     public void setQ_muestras(String q_muestras) {
         this.q_muestras = q_muestras;
+    }
+
+    public String getN_corrida() {
+        return N_corrida;
+    }
+
+    public void setN_corrida(String n_corrida) {
+        N_corrida = n_corrida;
     }
 
     public String getFechaP() {

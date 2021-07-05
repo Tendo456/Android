@@ -17,6 +17,7 @@ public class AlicuotadoResponse implements Serializable {
     private String estadoAl;
     private String id_placa;
     private String N_placa;
+    private String N_corrida;
     private String mensaje;
 
     public String getId_alicuotado() {
@@ -115,6 +116,14 @@ public class AlicuotadoResponse implements Serializable {
         N_placa = n_placa;
     }
 
+    public String getN_corrida() {
+        return N_corrida;
+    }
+
+    public void setN_corrida(String n_corrida) {
+        N_corrida = n_corrida;
+    }
+
     public String getMensaje() {
         return mensaje;
     }
@@ -134,6 +143,7 @@ public class AlicuotadoResponse implements Serializable {
                 ", estadoAl='" + estadoAl + '\'' +
                 ", id_placa='" + id_placa + '\'' +
                 ", N_placa='" + N_placa + '\'' +
+                ", N_corrida='" + N_corrida + '\'' +
                 '}';
     }
 }

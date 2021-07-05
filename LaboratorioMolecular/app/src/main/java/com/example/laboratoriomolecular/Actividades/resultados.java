@@ -18,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,7 +52,7 @@ import retrofit2.Response;
 
 public class resultados extends AppCompatActivity implements ResultadosAdapter.ClickedItemRes {
 
-    TextView CPlacasRes, Resf_inicio, Resh_inicio, Resf_final, Resh_final, Respromedio, Resoperador ,Resdni,Resid_resultados;
+    TextView  Resf_inicio, Resh_inicio, Resf_final, Resh_final, Respromedio, Resoperador ,Resdni,Resid_resultados;
     TextView diResN_placa,diResf_inicio,diResh_inicio,diResf_final,diResh_final,diRespromedio,diResoperador,diResdni,diResestado;
     String idRes, placaRes, f_inicioRes, h_inicioRes, f_finalRes, h_finalRes, promedioRes ,operadorResu, dniRes, estadoRes;
     Spinner spOperadorRes;
@@ -64,6 +65,7 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
     private AsyncHttpClient operadorRes;
     SwipeRefreshLayout Resrefresh;
     ResultadosAdapter resultadosAdapter;
+    EditText CPlacasRes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,13 +123,12 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
         @SuppressLint("SimpleDateFormat") Format h = new SimpleDateFormat("HH:mm:ss");
         ResH = h.format(date);
 
+        Resf_inicio.setText(ResF);
+        Resh_inicio.setText(ResH);
         Resf_final.setText(ResF);
         Resh_final.setText(ResH);
         operadorRes = new AsyncHttpClient();
         llsOpeRes();
-
-        countPlaca();
-        firstPro();
         Reshilo();
 
     }
@@ -217,54 +218,7 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
         dialog.show();
     }
 
-    public void countPlaca(){
-        Call<List<AmplificacionResponse>> count = ApiClient.getUserService().countPlaca(ResdAyer);
-        count.enqueue(new Callback<List<AmplificacionResponse>>() {
-            @Override
-            public void onResponse(@NotNull Call<List<AmplificacionResponse>> call, @NotNull Response<List<AmplificacionResponse>> response) {
-                if(response.isSuccessful()){
-                    List<AmplificacionResponse> cuenta = response.body();
-                    assert cuenta != null;
-                    for (AmplificacionResponse amplificacionResponse: cuenta){
-                        CPlacasRes.setText(amplificacionResponse.getTotal());
-                    }
-                }else {
-                    Toast.makeText(resultados.this, "Error Code: "+response.code(),Toast.LENGTH_SHORT).show();
-                }
-            }
 
-            @Override
-            public void onFailure(@NotNull Call<List<AmplificacionResponse>> call, @NotNull Throwable t) {
-                Toast.makeText(resultados.this, ""+t.getMessage(),Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
-    }
-
-    public void firstPro (){
-        Call<List<AlicuotadoResponse>> first = ApiClient.getUserService().firstProc(ResdAyer);
-        first.enqueue(new Callback<List<AlicuotadoResponse>>() {
-            @Override
-            public void onResponse(@NotNull Call<List<AlicuotadoResponse>> call, @NotNull Response<List<AlicuotadoResponse>> response) {
-                if(response.isSuccessful()){
-                    List<AlicuotadoResponse> primer = response.body();
-                    for (AlicuotadoResponse alicuotadoResponse: primer){
-                        Resf_inicio.setText(alicuotadoResponse.getF_inicio());
-                        Resh_inicio.setText(alicuotadoResponse.getH_inicio());
-                    }
-                    CRes_fhi = Resf_inicio.getText().toString()+" "+Resh_inicio.getText().toString();
-                }else {
-                    Toast.makeText(resultados.this, "Error Code: "+response.code(),Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(@NotNull Call<List<AlicuotadoResponse>> call, @NotNull Throwable t) {
-                Toast.makeText(resultados.this, ""+t.getMessage(),Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 
     public void ConseguirResul(){
         Call<List<ResultadosResponse>> resulList = ApiClient.getUserService().conseguirResultados(ResdAyer);

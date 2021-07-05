@@ -248,7 +248,6 @@
                 android:id="@+id/Aid_placaSp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="Placa Spinner"
                 android:visibility="invisible" />
 
@@ -256,7 +255,6 @@
                 android:id="@+id/Aid_placa"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="Placa Lista"
                 android:visibility="invisible" />
 
@@ -264,7 +262,6 @@
                 android:id="@+id/Aoperador"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="operador"
                 android:visibility="invisible" />
 
@@ -272,9 +269,15 @@
                 android:id="@+id/Apromedio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:text="promedio"
                 android:visibility="invisible" />
+
+            <TextView
+                android:id="@+id/AN_corrida"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="corrida" />
 
             <CheckBox
                 android:id="@+id/chAyer"
