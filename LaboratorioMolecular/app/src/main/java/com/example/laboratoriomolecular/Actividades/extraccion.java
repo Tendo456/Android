@@ -52,10 +52,10 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
     private AsyncHttpClient placasExt;
     TextView Exid_placa,Exq_muestras,Exid_placaSp,Exf_inicio, Exh_inicio, Exf_final, Exh_final, Expromedio, Exoperador, Exdni;
     //dialogo
-    TextView diExN_placa,diExf_inicio,diExh_inicio,diExf_final,diExh_final,diExpromedio,diExoperador,diExdni,diExestado;
+    TextView diExN_placa,diExq_muestras,diExf_inicio,diExh_inicio,diExf_final,diExh_final,diExpromedio,diExoperador,diExdni,diExestado;
     Button Exiniciar,Exfinalizar;
     RecyclerView ListaExtraccion;
-    String idEx, placaEx, f_inicioEx, h_inicioEx, f_finalEx, h_finalEx, promedioEx ,operadorEx, dniEx,id_placaEx, estadoEx;
+    String idEx, placaEx, q_muestrasEx, f_inicioEx, h_inicioEx, f_finalEx, h_finalEx, promedioEx ,operadorEx, dniEx,id_placaEx, estadoEx;
     String ExF,ExH,ExN_placa;
     String CEx_fhi, CEx_fhf;
     ExtraccionAdapter extraccionAdapter;
@@ -255,6 +255,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
         idEx = extraccionResponse.getId_extraccion();
         placaEx = extraccionResponse.getN_placa();
         id_placaEx = extraccionResponse.getId_placa();
+        q_muestrasEx = extraccionResponse.getQ_muestras();
         f_inicioEx = extraccionResponse.getF_inicio();
         h_inicioEx = extraccionResponse.getH_inicio();
         f_finalEx = extraccionResponse.getF_final();
@@ -285,6 +286,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
         dialog.show();
 
         diExN_placa = view.findViewById(R.id.diExN_placa);
+        diExq_muestras = view.findViewById(R.id.diExq_muestras);
         diExf_inicio = view.findViewById(R.id.diExf_inicio);
         diExh_inicio = view.findViewById(R.id.diExh_inicio);
         diExf_final = view.findViewById(R.id.diExf_final);
@@ -295,6 +297,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
         diExestado = view.findViewById(R.id.diExestado);
 
         diExN_placa.setText(placaEx);
+        diExq_muestras.setText(q_muestrasEx);
         diExf_inicio.setText(f_inicioEx);
         diExh_inicio.setText(h_inicioEx);
         diExf_final.setText(f_finalEx);
@@ -328,7 +331,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
     }
 
     public void saveExtraccion (){
-        Call<ExtraccionResponse> callEx = ApiClient.getUserService().InsertarExtraccion(Exf_inicio.getText().toString(),Exh_inicio.getText().toString(),Exoperador.getText().toString(),Exdni.getText().toString(),"1",Exid_placaSp.getText().toString());
+        Call<ExtraccionResponse> callEx = ApiClient.getUserService().InsertarExtraccion(Exq_muestras.getText().toString(),Exf_inicio.getText().toString(),Exh_inicio.getText().toString(),Exoperador.getText().toString(),Exdni.getText().toString(),"1",Exid_placaSp.getText().toString());
         callEx.enqueue(new Callback<ExtraccionResponse>() {
             @Override
             public void onResponse(@NotNull Call<ExtraccionResponse> call, @NotNull Response<ExtraccionResponse> response) {
@@ -356,7 +359,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
             Toast.makeText(this, "Seleccione La Placa a Finalizar en la Lista", Toast.LENGTH_LONG).show();
         } else {
 
-            Call<ExtraccionResponse> upEx = ApiClient.getUserService().upExtraccion(Exq_muestras.getText().toString(),Exid_placa.getText().toString(), Exf_final.getText().toString(), Exh_final.getText().toString(), Expromedio.getText().toString(), "2");
+            Call<ExtraccionResponse> upEx = ApiClient.getUserService().upExtraccion(Exid_placa.getText().toString(), Exf_final.getText().toString(), Exh_final.getText().toString(), Expromedio.getText().toString(), "2");
             upEx.enqueue(new Callback<ExtraccionResponse>() {
                 @Override
                 public void onResponse(@NotNull Call<ExtraccionResponse> call, @NotNull Response<ExtraccionResponse> response) {

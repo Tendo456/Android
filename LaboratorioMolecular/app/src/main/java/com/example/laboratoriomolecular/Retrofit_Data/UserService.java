@@ -75,7 +75,8 @@ public interface UserService {
 
     @FormUrlEncoded
     @POST("Extraccion/InsertarExtraccion.php")
-    Call<ExtraccionResponse> InsertarExtraccion (@Field("f_inicio") String f_inicio,
+    Call<ExtraccionResponse> InsertarExtraccion (@Field("q_muestras") String q_muestras,
+                                                 @Field("f_inicio") String f_inicio,
                                                  @Field("h_inicio") String h_inicio,
                                                  @Field("operador") String operador,
                                                  @Field("dni") String dni,
@@ -84,8 +85,7 @@ public interface UserService {
 
     @FormUrlEncoded
     @POST("Extraccion/FinalizarExtraccion.php")
-    Call<ExtraccionResponse> upExtraccion (@Field("q_muestras") String q_muestras,
-                                           @Field("id_placa") String id_placa,
+    Call<ExtraccionResponse> upExtraccion (@Field("id_placa") String id_placa,
                                            @Field("f_final") String f_final,
                                            @Field("h_final") String h_final,
                                            @Field("promedio") String promedio,
