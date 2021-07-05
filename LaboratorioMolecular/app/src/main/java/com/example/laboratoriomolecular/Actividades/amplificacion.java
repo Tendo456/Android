@@ -183,6 +183,7 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
                 PlacaSpinner spAm = new PlacaSpinner();
                 spAm.setId_placa(PlacaArray.getJSONObject(i).getString("id_placa"));
                 spAm.setN_placa(PlacaArray.getJSONObject(i).getString("N_placa"));
+                spAm.setQ_muestras(PlacaArray.getJSONObject(i).getString("q_muestras"));
                 spAm.setFechaP(PlacaArray.getJSONObject(i).getString("fechaP"));
                 spAmp.add(spAm);
             }
@@ -193,6 +194,7 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     Amid_placaSp.setText(spAmp.get(position).getId_placa());
                     AmN_placaI = spAmp.get(position).getN_placa();
+                    Amq_muestras.setText(spAmp.get(position).getQ_muestras());
                     Amf_inicio.setText(AmF);
                     Amh_inicio.setText(AmH);
                     Amf_final.setText(AmF);

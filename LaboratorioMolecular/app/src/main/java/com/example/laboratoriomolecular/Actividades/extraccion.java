@@ -174,6 +174,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
                 PlacaSpinner spP = new PlacaSpinner();
                 spP.setId_placa(PlacaArray.getJSONObject(i).getString("id_placa"));
                 spP.setN_placa(PlacaArray.getJSONObject(i).getString("N_placa"));
+                spP.setQ_muestras(PlacaArray.getJSONObject(i).getString("q_muestras"));
                 spP.setFechaP(PlacaArray.getJSONObject(i).getString("fechaP"));
                 plEx.add(spP);
             }
@@ -184,6 +185,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     Exid_placaSp.setText(plEx.get(position).getId_placa());
                     ExN_placa = plEx.get(position).getN_placa();
+                    Exq_muestras.setText(plEx.get(position).getQ_muestras());
                     Exf_inicio.setText(ExF);
                     Exh_inicio.setText(ExH);
                     Exf_final.setText(ExF);

@@ -181,6 +181,7 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
                 PlacaSpinner spP = new PlacaSpinner();
                 spP.setId_placa(PlacaArray.getJSONObject(i).getString("id_placa"));
                 spP.setN_placa(PlacaArray.getJSONObject(i).getString("N_placa"));
+                spP.setQ_muestras(PlacaArray.getJSONObject(i).getString("q_muestras"));
                 spP.setFechaP(PlacaArray.getJSONObject(i).getString("fechaP"));
                 plAr.add(spP);
             }
@@ -191,6 +192,7 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     Arid_placaSp.setText(plAr.get(position).getId_placa());
                     ArN_placaI = plAr.get(position).getN_placa();
+                    Arq_muestras.setText(plAr.get(position).getQ_muestras());
                     Arf_inicio.setText(ArF);
                     Arh_inicio.setText(ArH);
                     Arf_final.setText(ArF);

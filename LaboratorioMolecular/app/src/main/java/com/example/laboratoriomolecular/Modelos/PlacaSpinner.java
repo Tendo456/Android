@@ -13,14 +13,16 @@ public class PlacaSpinner{
 
     private String id_placa;
     private String N_placa;
+    private String q_muestras;
     private String fechaP;
 
     public PlacaSpinner(){}
 
-    public PlacaSpinner(String id_placa, String N_placa, String fechaP){
+    public PlacaSpinner(String id_placa, String q_muestras, String N_placa, String fechaP){
 
         this.id_placa = id_placa;
         this.N_placa = N_placa;
+        this.q_muestras = q_muestras;
         this.fechaP = fechaP;
     }
 
@@ -38,6 +40,14 @@ public class PlacaSpinner{
 
     public void setN_placa(String n_placa) {
         N_placa = n_placa;
+    }
+
+    public String getQ_muestras() {
+        return q_muestras;
+    }
+
+    public void setQ_muestras(String q_muestras) {
+        this.q_muestras = q_muestras;
     }
 
     public String getFechaP() {
