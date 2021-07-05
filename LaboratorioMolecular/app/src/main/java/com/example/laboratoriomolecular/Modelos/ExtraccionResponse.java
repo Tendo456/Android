@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class ExtraccionResponse implements Serializable{
 
     private String id_extraccion;
+    private String q_muestras;
     private String f_inicio;
     private String h_inicio;
     private String f_final;
@@ -23,6 +24,14 @@ public class ExtraccionResponse implements Serializable{
 
     public void setId_extraccion(String id_extraccion) {
         this.id_extraccion = id_extraccion;
+    }
+
+    public String getQ_muestras() {
+        return q_muestras;
+    }
+
+    public void setQ_muestras(String q_muestras) {
+        this.q_muestras = q_muestras;
     }
 
     public String getF_inicio() {
@@ -113,6 +122,7 @@ public class ExtraccionResponse implements Serializable{
     public String toString() {
         return "ExtraccionResponse{" +
                 "id_extraccion='" + id_extraccion + '\'' +
+                ", q_muestras='" + q_muestras + '\'' +
                 ", f_inicio='" + f_inicio + '\'' +
                 ", h_inicio='" + h_inicio + '\'' +
                 ", f_final='" + f_final + '\'' +

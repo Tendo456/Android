@@ -50,7 +50,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
     Spinner spPlacasEx, spOperadorEx;
     private AsyncHttpClient operadorExt;
     private AsyncHttpClient placasExt;
-    TextView Exid_placa,Exid_placaSp,Exf_inicio, Exh_inicio, Exf_final, Exh_final, Expromedio, Exoperador, Exdni;
+    TextView Exid_placa,Exq_muestras,Exid_placaSp,Exf_inicio, Exh_inicio, Exf_final, Exh_final, Expromedio, Exoperador, Exdni;
     //dialogo
     TextView diExN_placa,diExf_inicio,diExh_inicio,diExf_final,diExh_final,diExpromedio,diExoperador,diExdni,diExestado;
     Button Exiniciar,Exfinalizar;
@@ -69,6 +69,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
         spPlacasEx = findViewById(R.id.spPLacasEx);
         spOperadorEx = findViewById(R.id.spOperadorEx);
         Exid_placa = findViewById(R.id.Exid_placa);
+        Exq_muestras = findViewById(R.id.Exq_muestras);
         Exid_placaSp = findViewById(R.id.Exid_placaSp);
         Exf_inicio = findViewById(R.id.Exf_inicio);
         Exh_inicio = findViewById(R.id.Exh_inicio);
@@ -355,7 +356,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
             Toast.makeText(this, "Seleccione La Placa a Finalizar en la Lista", Toast.LENGTH_LONG).show();
         } else {
 
-            Call<ExtraccionResponse> upEx = ApiClient.getUserService().upExtraccion(Exid_placa.getText().toString(), Exf_final.getText().toString(), Exh_final.getText().toString(), Expromedio.getText().toString(), "2");
+            Call<ExtraccionResponse> upEx = ApiClient.getUserService().upExtraccion(Exq_muestras.getText().toString(),Exid_placa.getText().toString(), Exf_final.getText().toString(), Exh_final.getText().toString(), Expromedio.getText().toString(), "2");
             upEx.enqueue(new Callback<ExtraccionResponse>() {
                 @Override
                 public void onResponse(@NotNull Call<ExtraccionResponse> call, @NotNull Response<ExtraccionResponse> response) {

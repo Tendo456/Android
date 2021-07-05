@@ -84,7 +84,8 @@ public interface UserService {
 
     @FormUrlEncoded
     @POST("Extraccion/FinalizarExtraccion.php")
-    Call<ExtraccionResponse> upExtraccion (@Field("id_placa") String id_placa,
+    Call<ExtraccionResponse> upExtraccion (@Field("q_muestras") String q_muestras,
+                                           @Field("id_placa") String id_placa,
                                            @Field("f_final") String f_final,
                                            @Field("h_final") String h_final,
                                            @Field("promedio") String promedio,
