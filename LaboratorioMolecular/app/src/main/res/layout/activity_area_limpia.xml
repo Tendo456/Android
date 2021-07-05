@@ -81,6 +81,7 @@
                         android:background="@drawable/drawable_blue"
                         android:ems="10"
                         android:gravity="center"
+                        android:hint="Cantidad de Muestras"
                         android:inputType="number"
                         android:maxLength="4"
                         android:textCursorDrawable="@null" />
@@ -218,7 +219,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/blue_white"
                         android:gravity="center"
-                        android:text="Firma"
+                        android:text="DNI"
                         android:textColor="@color/white"
                         android:textSize="18sp" />
 
@@ -275,6 +276,14 @@
                 android:layout_weight="1"
                 android:text="promedio"
                 android:visibility="invisible" />
+
+            <CheckBox
+                android:id="@+id/chArAyer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:buttonTint="@color/indigo_500"
+                android:text="Ayer" />
         </LinearLayout>
 
         <LinearLayout

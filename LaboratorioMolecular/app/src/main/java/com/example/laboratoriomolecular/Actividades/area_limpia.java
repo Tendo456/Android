@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -36,6 +37,7 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 
+import java.text.DateFormat;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -62,9 +64,10 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
     AreaAdapter areaAdapter;
     RecyclerView ListArea;
     String idAr, placaAr, muestrasAr, f_inicioAr, h_inicioAr, f_finalAr, h_finalAr, promedioAr ,operadorAr, dniAr,id_placaAr, estadoAr;
-    String ArF, ArH, ArN_placaF,ArN_placaI;
+    String ArF, ArH, ArN_placaF,ArN_placaI, dayerAr;
     String CAr_fhi, CAr_fhf;
     Button Ariniciar,Arfinalizar;
+    CheckBox chArAyer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +90,7 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
         Ariniciar = findViewById(R.id.Ariniciar);
         Arfinalizar = findViewById(R.id.Arfinalizar);
         ListArea = findViewById(R.id.ListArea);
+        chArAyer = findViewById(R.id.chArAyer);
 
         Arfinalizar.setEnabled(false);
 
@@ -103,6 +107,7 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
         Arrefresh.setOnRefreshListener(()->{
             Arefecha();
             limpiarAlicuotado();
+            conseguirAr();
             Arrefresh.setRefreshing(false);
         });
 
@@ -112,6 +117,13 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
         final Calendar calendar = Calendar.getInstance();
         @SuppressLint("SimpleDateFormat") Format formatter = new SimpleDateFormat("yyyy-MM-dd");
         ArF = formatter.format(calendar.getTime());
+
+        if (chArAyer.isChecked()){
+            ayerAr();
+
+        }else{
+            dayerAr = ArF;
+        }
 
         Date date = new Date();
         @SuppressLint("SimpleDateFormat") Format h = new SimpleDateFormat("HH:mm:ss");
@@ -127,7 +139,17 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
         llsOpeA();
 
         Arhilo();
+    }
 
+    public void ayerAr (){
+
+        Calendar calendar = Calendar.getInstance();
+
+        calendar.add(Calendar.DAY_OF_YEAR, -1);
+        Date ayer = calendar.getTime();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        dayerAr = dateFormat.format(ayer);
+        //Toast.makeText(alicuotado.this,"ayer "+ dayer,Toast.LENGTH_SHORT).show();
     }
 
     public void Arhilo(){
@@ -323,7 +345,7 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
     }
 
     private void conseguirAr (){
-        Call<List<AreaResponse>> areaList = ApiClient.getUserService().conseguirArea(ArF);
+        Call<List<AreaResponse>> areaList = ApiClient.getUserService().conseguirArea(dayerAr);
         areaList.enqueue(new Callback<List<AreaResponse>>() {
             @Override
             public void onResponse(Call<List<AreaResponse>> call, Response<List<AreaResponse>> response) {

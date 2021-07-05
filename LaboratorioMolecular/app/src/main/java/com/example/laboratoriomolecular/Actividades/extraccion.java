@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,6 +33,7 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 
+import java.text.DateFormat;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -56,10 +58,11 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
     Button Exiniciar,Exfinalizar;
     RecyclerView ListaExtraccion;
     String idEx, placaEx, q_muestrasEx, f_inicioEx, h_inicioEx, f_finalEx, h_finalEx, promedioEx ,operadorEx, dniEx,id_placaEx, estadoEx;
-    String ExF,ExH,ExN_placa;
+    String ExF,ExH,ExN_placa,dayerEx;
     String CEx_fhi, CEx_fhf;
     ExtraccionAdapter extraccionAdapter;
     SwipeRefreshLayout Exrefresh;
+    CheckBox chExAyer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +85,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
         Exfinalizar = findViewById(R.id.Exfinalizar);
         Exrefresh = findViewById(R.id.Exrefresh);
         ListaExtraccion = findViewById(R.id.ListExtraccion);
+        chExAyer = findViewById(R.id.chExAyer);
 
         Exfinalizar.setEnabled(false);
 
@@ -99,6 +103,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
         Exrefresh.setOnRefreshListener(()->{
             Exfecha();
             Exrefresh.setRefreshing(false);
+            conseguirEx();
         });
     }
 
@@ -106,6 +111,13 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
         final Calendar calendar = Calendar.getInstance();
         @SuppressLint("SimpleDateFormat") Format formatter = new SimpleDateFormat("yyyy-MM-dd");
         ExF = formatter.format(calendar.getTime());
+
+        if (chExAyer.isChecked()){
+            ayerEx();
+
+        }else{
+            dayerEx = ExF;
+        }
 
         Date date = new Date();
         @SuppressLint("SimpleDateFormat") Format h = new SimpleDateFormat("HH:mm:ss");
@@ -121,6 +133,16 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
         llsOpeEx();
 
         Exhilo();
+    }
+
+    public void ayerEx (){
+
+        Calendar calendar = Calendar.getInstance();
+
+        calendar.add(Calendar.DAY_OF_YEAR, -1);
+        Date ayer = calendar.getTime();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        dayerEx = dateFormat.format(ayer);
     }
 
     public void Exhilo(){
@@ -312,7 +334,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
     }
 
     public void conseguirEx (){
-        Call<List<ExtraccionResponse>> extraccionList = ApiClient.getUserService().conseguirExtraccion(ExF);
+        Call<List<ExtraccionResponse>> extraccionList = ApiClient.getUserService().conseguirExtraccion(dayerEx);
         extraccionList.enqueue(new Callback<List<ExtraccionResponse>>() {
             @Override
             public void onResponse(@NotNull Call<List<ExtraccionResponse>> call, @NotNull Response<List<ExtraccionResponse>> response) {

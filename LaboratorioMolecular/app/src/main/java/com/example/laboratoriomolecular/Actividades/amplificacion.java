@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -34,6 +35,7 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 
+import java.text.DateFormat;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -60,9 +62,10 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
     AmplificacionAdapter amplificacionAdapter;
     RecyclerView ListAmplificacion;
     String idAm, placaAm, muestrasAm, f_inicioAm, h_inicioAm, f_finalAm, h_finalAm, promedioAm, M_validoAm, M_invalidoAm, Ci_validoAm, Ci_ivalidoAm ,operadorAm, dniAm,id_placaAm, estadoAm;
-    String AmF, AmH, AmN_placaF,AmN_placaI;
+    String AmF, AmH, AmN_placaF,AmN_placaI,dayerAm;
     String CAm_fhi, CAm_fhf;
     Button Aminiciar,Amfinalizar;
+    CheckBox chAmAyer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +92,7 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
         Aminiciar = findViewById(R.id.Aminiciar);
         Amfinalizar = findViewById(R.id.Amfinalizar);
         ListAmplificacion = findViewById(R.id.ListAmplificacion);
+        chAmAyer = findViewById(R.id.chAmAyer);
 
         Amfinalizar.setEnabled(false);
 
@@ -106,6 +110,7 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
             Amfecha();
             limpiarAmplificacion();
             Amrefresh.setRefreshing(false);
+            conseguirAm();
         });
     }
 
@@ -113,6 +118,13 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
         final Calendar calendar = Calendar.getInstance();
         @SuppressLint("SimpleDateFormat") Format formatter = new SimpleDateFormat("yyyy-MM-dd");
         AmF = formatter.format(calendar.getTime());
+
+        if (chAmAyer.isChecked()){
+            ayerAm();
+
+        }else{
+            dayerAm = AmF;
+        }
 
         Date date = new Date();
         @SuppressLint("SimpleDateFormat") Format h = new SimpleDateFormat("HH:mm:ss");
@@ -129,6 +141,17 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
 
         Ahilo();
 
+    }
+
+    public void ayerAm (){
+
+        Calendar calendar = Calendar.getInstance();
+
+        calendar.add(Calendar.DAY_OF_YEAR, -1);
+        Date ayer = calendar.getTime();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        dayerAm = dateFormat.format(ayer);
+        //Toast.makeText(alicuotado.this,"ayer "+ dayer,Toast.LENGTH_SHORT).show();
     }
 
     public void Ahilo(){
@@ -338,7 +361,7 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
     }
 
     private void conseguirAm (){
-        Call<List<AmplificacionResponse>> amplificacionList = ApiClient.getUserService().conseguirAmplificacion(AmF);
+        Call<List<AmplificacionResponse>> amplificacionList = ApiClient.getUserService().conseguirAmplificacion(dayerAm);
         amplificacionList.enqueue(new Callback<List<AmplificacionResponse>>() {
             @Override
             public void onResponse(@NotNull Call<List<AmplificacionResponse>> call, @NotNull Response<List<AmplificacionResponse>> response) {

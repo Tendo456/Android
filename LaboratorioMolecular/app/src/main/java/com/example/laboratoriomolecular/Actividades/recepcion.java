@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -57,6 +58,8 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
     Spinner spOperador;
     private AsyncHttpClient operador;
     SwipeRefreshLayout Recrefresh;
+    CheckBox chRecAyer;
+    String Frec,dayerRec;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +77,7 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
         spOperador = findViewById(R.id.spOperador);
         Fechapiker = findViewById(R.id.Fechapiker);
         Recrefresh = findViewById(R.id.Recrefresh);
+        chRecAyer = findViewById(R.id.chRecAyer);
 
         ListRecepcion.setLayoutManager(new LinearLayoutManager(this));
         ListRecepcion.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
@@ -151,17 +155,35 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
     public void fecha (){
         final Calendar calendar = Calendar.getInstance();
         @SuppressLint("SimpleDateFormat") Format formatter = new SimpleDateFormat("yyyy-MM-dd");
-        String s = formatter.format(calendar.getTime());
+        Frec = formatter.format(calendar.getTime());
+
+        if (chRecAyer.isChecked()){
+            Recayer();
+
+        }else{
+            dayerRec = Frec;
+        }
 
         Date date = new Date();
         @SuppressLint("SimpleDateFormat") Format h = new SimpleDateFormat("HH:mm:ss");
         String ho = h.format(date);
 
-        Rfecha.setText(s);
-        Fechapiker.setText(s);
+        Rfecha.setText(Frec);
+        Fechapiker.setText(dayerRec);
         Rhora.setText(ho);
         hilo();
         getAllRecepcion();
+    }
+
+    public void Recayer (){
+
+        Calendar calendar = Calendar.getInstance();
+
+        calendar.add(Calendar.DAY_OF_YEAR, -1);
+        Date ayer = calendar.getTime();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        dayerRec = dateFormat.format(ayer);
+        //Toast.makeText(recepcion.this,"ayer "+ dayerRec,Toast.LENGTH_SHORT).show();
     }
 
     public void ConfirmarRecepcion (){
