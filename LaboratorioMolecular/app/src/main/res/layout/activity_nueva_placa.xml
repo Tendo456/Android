@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Actividades.nueva_placa">
 
+
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -20,125 +21,125 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView19"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/NPrefresh"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:gravity="center"
-            android:text="Ingresar Nueva Placa"
-            android:textSize="20sp" />
+            android:layout_height="230dp">
 
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TableRow
+            <TableLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/drawable_blue">
+                android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/textView24"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/blue_white"
-                    android:gravity="center"
-                    android:text="Cod Placa"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-
-                <EditText
-                    android:id="@+id/CodPlaca"
+                <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/drawable_blue"
-                    android:gravity="center"
-                    android:hint="Codigo Placa" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/drawable_blue">
-
-                <TextView
-                    android:id="@+id/textView25"
-                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/blue_white"
-                    android:gravity="center"
-                    android:text="Fecha"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:background="@drawable/drawable_blue">
 
-                <TextView
-                    android:id="@+id/fechaPl"
+                    <TextView
+                        android:id="@+id/textView24"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/blue_white"
+                        android:gravity="center"
+                        android:text="Cod Placa"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/CodPlaca"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/drawable_blue"
+                        android:gravity="center"
+                        android:hint="Codigo Placa" />
+                </TableRow>
+
+                <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/drawable_blue"
-                    android:gravity="center"
-                    android:padding="5dp"
-                    android:text="Fecha"
-                    android:textSize="18sp" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/drawable_blue">
-
-                <TextView
-                    android:id="@+id/textView23"
-                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/blue_white"
-                    android:gravity="center"
-                    android:text="N° Envio"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:background="@drawable/drawable_blue">
 
-                <Spinner
-                    android:id="@+id/spRecepcion"
+                    <TextView
+                        android:id="@+id/textView25"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/blue_white"
+                        android:gravity="center"
+                        android:text="Fecha"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/fechaPl"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/drawable_blue"
+                        android:gravity="center"
+                        android:padding="5dp"
+                        android:text="Fecha"
+                        android:textSize="18sp" />
+                </TableRow>
+
+                <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/spinner" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/drawable_blue">
-
-                <TextView
-                    android:id="@+id/textView26"
-                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/blue_white"
-                    android:gravity="center"
-                    android:text="N° Corrida"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
+                    android:background="@drawable/drawable_blue">
 
-                <Spinner
-                    android:id="@+id/spCorrida"
+                    <TextView
+                        android:id="@+id/textView23"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/blue_white"
+                        android:gravity="center"
+                        android:text="N° Envio"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                    <Spinner
+                        android:id="@+id/spRecepcion"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/spinner" />
+                </TableRow>
+
+                <TableRow
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/spinner" />
-            </TableRow>
-        </TableLayout>
+                    android:layout_height="match_parent"
+                    android:background="@drawable/drawable_blue">
+
+                    <TextView
+                        android:id="@+id/textView26"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/blue_white"
+                        android:gravity="center"
+                        android:text="N° Corrida"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                    <Spinner
+                        android:id="@+id/spCorrida"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/spinner" />
+                </TableRow>
+            </TableLayout>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
 
         <LinearLayout
             android:layout_width="match_parent"

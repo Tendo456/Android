@@ -27,6 +27,7 @@ import com.example.laboratoriomolecular.Adaptador.ResultadosAdapter;
 import com.example.laboratoriomolecular.Modelos.AlicuotadoResponse;
 import com.example.laboratoriomolecular.Modelos.AmplificacionResponse;
 import com.example.laboratoriomolecular.Modelos.OperadorResponse;
+import com.example.laboratoriomolecular.Modelos.PlacaResponse;
 import com.example.laboratoriomolecular.Modelos.ResultadosResponse;
 import com.example.laboratoriomolecular.R;
 import com.example.laboratoriomolecular.Retrofit_Data.ApiClient;
@@ -53,19 +54,18 @@ import retrofit2.Response;
 public class resultados extends AppCompatActivity implements ResultadosAdapter.ClickedItemRes {
 
     TextView  Resf_inicio, Resh_inicio, Resf_final, Resh_final, Respromedio, Resoperador ,Resdni,Resid_resultados;
-    TextView diResN_placa,diResf_inicio,diResh_inicio,diResf_final,diResh_final,diRespromedio,diResoperador,diResdni,diResestado;
+    TextView diResN_placa,diResf_inicio,diResh_inicio,diResf_final,diResh_final,diRespromedio,diResoperador,diResdni,diResestado,CPlacasRes;
     String idRes, placaRes, f_inicioRes, h_inicioRes, f_finalRes, h_finalRes, promedioRes ,operadorResu, dniRes, estadoRes;
-    Spinner spOperadorRes;
+    Spinner spOperadorRes,spCorridaRes;
     Button Resiniciar,Resfinalizar;
     CheckBox chResAyer;
     RecyclerView ListResultados;
     String ResF, ResH;
-    String ResdAyer;
+    String ResdAyer,Ncorre;
     String CRes_fhi,CRes_fhf;
     private AsyncHttpClient operadorRes;
     SwipeRefreshLayout Resrefresh;
     ResultadosAdapter resultadosAdapter;
-    EditText CPlacasRes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +73,7 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
         setContentView(R.layout.activity_resultados);
 
         spOperadorRes = findViewById(R.id.spOperadorRes);
+        spCorridaRes = findViewById(R.id.spCorridaRes);
         CPlacasRes = findViewById(R.id.CPlacasRes);
         Resf_inicio = findViewById(R.id.Resf_inicio);
         Resh_inicio = findViewById(R.id.Resh_inicio);
@@ -86,7 +87,6 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
         chResAyer = findViewById(R.id.chResAyer);
         ListResultados = findViewById(R.id.ListResultados);
         Resrefresh = findViewById(R.id.Resrefresh);
-        Resid_resultados = findViewById(R.id.Resid_resultados);
 
         ListResultados.setLayoutManager(new LinearLayoutManager(this));
         ListResultados.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
@@ -104,6 +104,22 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
             Resfecha();
             ConseguirResul();
             Resrefresh.setRefreshing(false);
+        });
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.numeros, R.layout.support_simple_spinner_dropdown_item);
+        adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        spCorridaRes.setAdapter(adapter);
+        spCorridaRes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                CPlacasRes.setText(parent.getItemAtPosition(position).toString());
+                Ncorre = CPlacasRes.getText().toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
         });
     }
 
@@ -217,8 +233,6 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
         AlertDialog dialog = opcion.create();
         dialog.show();
     }
-
-
 
     public void ConseguirResul(){
         Call<List<ResultadosResponse>> resulList = ApiClient.getUserService().conseguirResultados(ResdAyer);

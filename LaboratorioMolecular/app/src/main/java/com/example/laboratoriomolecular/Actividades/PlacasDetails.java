@@ -4,14 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.laboratoriomolecular.Modelos.PlacaResponse;
 import com.example.laboratoriomolecular.R;
+import com.example.laboratoriomolecular.Retrofit_Data.ApiClient;
 import com.shuhart.stepview.StepView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class PlacasDetails extends AppCompatActivity {
 
@@ -20,6 +26,8 @@ public class PlacasDetails extends AppCompatActivity {
     String estadoRe,estadoAl,estadoEx,estadoAr,estadoAm,estadoRes;
     StepView step_view;
     int count = 0;
+    String idplaca;
+    Button reiniciarPl;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +39,9 @@ public class PlacasDetails extends AppCompatActivity {
         N_corrida = findViewById(R.id.N_corrida);
         fechaP = findViewById(R.id.fechaP);
         step_view = findViewById(R.id.step_view);
+        reiniciarPl = findViewById(R.id.reiniciarPl);
+
+        reiniciarPl.setOnClickListener(v -> Reiniciar());
 
         step_view.setOnStepClickListener(step -> Toast.makeText(PlacasDetails.this, "Proceso " + step, Toast.LENGTH_SHORT).show());
 
@@ -39,7 +50,7 @@ public class PlacasDetails extends AppCompatActivity {
         if (intent.getExtras() != null){
             placaResponse = (PlacaResponse) intent.getSerializableExtra("dataP");
 
-            String idplaca = placaResponse.getId_placa();
+            idplaca = placaResponse.getId_placa();
             String Nplaca = placaResponse.getN_placa();
             String Ncorrida = placaResponse.getN_corrida();
             String fechaPl = placaResponse.getFechaP();
@@ -124,5 +135,24 @@ public class PlacasDetails extends AppCompatActivity {
                 step_view.done(true);
             }
 
+    }
+
+    public void Reiniciar (){
+        Call<PlacaResponse> restart = ApiClient.getUserService().reiniciarPlaca(idplaca);
+        restart.enqueue(new Callback<PlacaResponse>() {
+            @Override
+            public void onResponse(Call<PlacaResponse> call, Response<PlacaResponse> response) {
+                if(response.isSuccessful()){
+                    PlacaResponse mensaje = response.body();
+                    Toast.makeText(PlacasDetails.this, ""+ mensaje.getMensaje()+" "+response.code(), Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<PlacaResponse> call, Throwable t) {
+                Toast.makeText(PlacasDetails.this,"Error: "+t.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

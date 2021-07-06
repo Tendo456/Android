@@ -49,6 +49,10 @@ public interface UserService {
     @GET("Placas/lineaPlacas.php")
     Call<List<PlacaResponse>> getPlacaF(@Query("fechaP") String fechaP);
 
+    @FormUrlEncoded
+    @POST("Placas/ReiniciarPlaca.php")
+    Call<PlacaResponse> reiniciarPlaca (@Field("id_placa") String id_placa);
+
     @GET("Alicuotado/ConseguirAlicuotado.php")
     Call<List<AlicuotadoResponse>> conseguirAl(@Query("f_inicio") String f_inicio);
 

@@ -46,16 +46,13 @@
                         android:textColor="@color/white"
                         android:textSize="18sp" />
 
-                    <EditText
-                        android:id="@+id/CPlacasRes"
+                    <Spinner
+                        android:id="@+id/spCorridaRes"
                         android:layout_width="match_parent"
                         android:layout_height="45dp"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:background="@drawable/drawable_blue"
-                        android:gravity="center"
-                        android:textSize="18sp"
-                        android:hint="N° Corrida"/>
+                        android:background="@drawable/spinner" />
 
                 </TableRow>
 
@@ -216,18 +213,17 @@
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/Resid_resultados"
+                android:id="@+id/CPlacasRes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="ID"
-                android:visibility="visible" />
+                android:layout_margin="1dp"
+                android:text="corrida" />
 
             <TextView
                 android:id="@+id/Resoperador"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_margin="1dp"
                 android:text="operador"
                 android:visibility="visible" />
 
@@ -235,7 +231,7 @@
                 android:id="@+id/Respromedio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_margin="1dp"
                 android:text="promedio"
                 android:visibility="visible" />
 

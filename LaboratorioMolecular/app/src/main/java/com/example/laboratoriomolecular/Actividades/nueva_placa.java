@@ -19,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.laboratoriomolecular.Adaptador.PlacaAdapter;
 import com.example.laboratoriomolecular.Modelos.PlacaResponse;
@@ -52,6 +53,7 @@ public class nueva_placa extends AppCompatActivity implements PlacaAdapter.Click
     Spinner spRecepcion,spCorrida;
     private AsyncHttpClient spRecepcion1;
     String s;
+    SwipeRefreshLayout NPrefresh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +68,7 @@ public class nueva_placa extends AppCompatActivity implements PlacaAdapter.Click
         spCorrida = findViewById(R.id.spCorrida);
         id_recepcion = findViewById(R.id.id_recepcion);
         N_corrida = findViewById(R.id.N_corrida);
+        NPrefresh = findViewById(R.id.NPrefresh);
 
         PGuardar.setOnClickListener(v -> ConfirmarPlaca());
 
@@ -89,6 +92,12 @@ public class nueva_placa extends AppCompatActivity implements PlacaAdapter.Click
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
+        });
+
+        NPrefresh.setOnRefreshListener(()->{
+            fechaPlaca();
+            ListarPlaca();
+            NPrefresh.setRefreshing(false);
         });
 
     }
