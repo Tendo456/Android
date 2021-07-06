@@ -39,7 +39,8 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@drawable/drawable_blue">
 
                 <TextView
                     android:id="@+id/textView8"
@@ -55,7 +56,8 @@
                 <TextView
                     android:id="@+id/RDhora"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/drawable_blue"
                     android:gravity="center"
@@ -67,7 +69,8 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@drawable/drawable_blue">
 
                 <TextView
                     android:id="@+id/textView9"
@@ -83,7 +86,8 @@
                 <TextView
                     android:id="@+id/RDn_envio"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/drawable_blue"
                     android:gravity="center"
@@ -95,7 +99,8 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@drawable/drawable_blue">
 
                 <TextView
                     android:id="@+id/textView11"
@@ -111,7 +116,8 @@
                 <TextView
                     android:id="@+id/RDq_muestras"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/drawable_blue"
                     android:gravity="center"
@@ -123,7 +129,8 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@drawable/drawable_blue">
 
                 <TextView
                     android:id="@+id/textView13"
@@ -139,7 +146,8 @@
                 <TextView
                     android:id="@+id/RDoperador"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/drawable_blue"
                     android:gravity="center"
@@ -152,7 +160,8 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@drawable/drawable_blue">
 
                 <TextView
                     android:id="@+id/textView7"
@@ -168,7 +177,8 @@
                 <TextView
                     android:id="@+id/RDdni"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/drawable_blue"
                     android:gravity="center"

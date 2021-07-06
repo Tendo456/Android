@@ -24,7 +24,7 @@
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/Alrefresh"
             android:layout_width="match_parent"
-            android:layout_height="400dp">
+            android:layout_height="360dp">
 
             <TableLayout
                 android:layout_width="match_parent"
@@ -50,7 +50,7 @@
                     <Spinner
                         android:id="@+id/spPlacasA"
                         android:layout_width="match_parent"
-                        android:layout_height="45dp"
+                        android:layout_height="40dp"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/spinner" />
@@ -76,7 +76,7 @@
                     <EditText
                         android:id="@+id/Acorrida"
                         android:layout_width="wrap_content"
-                        android:layout_height="45dp"
+                        android:layout_height="40dp"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/drawable_blue"
@@ -107,7 +107,7 @@
                     <EditText
                         android:id="@+id/Aq_muestras"
                         android:layout_width="wrap_content"
-                        android:layout_height="45dp"
+                        android:layout_height="40dp"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/drawable_blue"
@@ -144,7 +144,7 @@
                         <TextView
                             android:id="@+id/Af_inicio"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
+                            android:layout_height="40dp"
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/drawable_blue"
@@ -155,7 +155,7 @@
                         <TextView
                             android:id="@+id/Ah_inicio"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
+                            android:layout_height="40dp"
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/drawable_blue"
@@ -191,7 +191,7 @@
                         <TextView
                             android:id="@+id/Af_final"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
+                            android:layout_height="40dp"
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/drawable_blue"
@@ -202,7 +202,7 @@
                         <TextView
                             android:id="@+id/Ah_final"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
+                            android:layout_height="40dp"
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/drawable_blue"
@@ -232,7 +232,7 @@
                     <Spinner
                         android:id="@+id/spOperA"
                         android:layout_width="match_parent"
-                        android:layout_height="45dp"
+                        android:layout_height="40dp"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/spinner" />
@@ -258,7 +258,7 @@
                     <TextView
                         android:id="@+id/Adni"
                         android:layout_width="wrap_content"
-                        android:layout_height="45dp"
+                        android:layout_height="40dp"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/drawable_blue"

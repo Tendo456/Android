@@ -27,7 +27,8 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@drawable/drawable_blue">
 
                 <TextView
                     android:id="@+id/textView6"
@@ -43,7 +44,8 @@
                 <TextView
                     android:id="@+id/id_placa"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/drawable_blue"
                     android:gravity="center"
@@ -53,7 +55,8 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@drawable/drawable_blue">
 
                 <TextView
                     android:id="@+id/textView10"
@@ -69,7 +72,8 @@
                 <TextView
                     android:id="@+id/N_placa"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/drawable_blue"
                     android:gravity="center"
@@ -79,7 +83,8 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@drawable/drawable_blue">
 
                 <TextView
                     android:id="@+id/textView11"
@@ -95,7 +100,8 @@
                 <TextView
                     android:id="@+id/N_corrida"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/drawable_blue"
                     android:gravity="center"
@@ -105,7 +111,8 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="@drawable/drawable_blue">
 
                 <TextView
                     android:id="@+id/textView14"
@@ -121,7 +128,8 @@
                 <TextView
                     android:id="@+id/fechaP"
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/drawable_blue"
                     android:gravity="center"

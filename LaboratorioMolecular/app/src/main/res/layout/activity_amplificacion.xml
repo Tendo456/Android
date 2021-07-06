@@ -23,7 +23,7 @@
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/Amrefresh"
             android:layout_width="match_parent"
-            android:layout_height="450dp">
+            android:layout_height="410dp">
 
             <TableLayout
                 android:layout_width="match_parent"
@@ -49,7 +49,7 @@
                     <Spinner
                         android:id="@+id/spPlacasAm"
                         android:layout_width="match_parent"
-                        android:layout_height="45dp"
+                        android:layout_height="40dp"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/spinner" />
@@ -75,7 +75,7 @@
                     <EditText
                         android:id="@+id/Amq_muestras"
                         android:layout_width="wrap_content"
-                        android:layout_height="45dp"
+                        android:layout_height="40dp"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/drawable_blue"
@@ -112,7 +112,7 @@
                         <TextView
                             android:id="@+id/Amf_inicio"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
+                            android:layout_height="40dp"
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/drawable_blue"
@@ -123,7 +123,7 @@
                         <TextView
                             android:id="@+id/Amh_inicio"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
+                            android:layout_height="40dp"
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/drawable_blue"
@@ -159,7 +159,7 @@
                         <TextView
                             android:id="@+id/Amf_final"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
+                            android:layout_height="40dp"
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/drawable_blue"
@@ -170,7 +170,7 @@
                         <TextView
                             android:id="@+id/Amh_final"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
+                            android:layout_height="40dp"
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/drawable_blue"
@@ -206,7 +206,7 @@
                         <EditText
                             android:id="@+id/AmM_valido"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
+                            android:layout_height="40dp"
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/drawable_blue"
@@ -219,7 +219,7 @@
                         <EditText
                             android:id="@+id/AmM_invalido"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
+                            android:layout_height="40dp"
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/drawable_blue"
@@ -257,7 +257,7 @@
                         <EditText
                             android:id="@+id/AmCi_valido"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
+                            android:layout_height="40dp"
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/drawable_blue"
@@ -270,7 +270,7 @@
                         <EditText
                             android:id="@+id/AmCi_invalido"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
+                            android:layout_height="40dp"
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/drawable_blue"
@@ -303,7 +303,7 @@
                     <Spinner
                         android:id="@+id/spOperadorAm"
                         android:layout_width="match_parent"
-                        android:layout_height="45dp"
+                        android:layout_height="40dp"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/spinner" />
@@ -329,7 +329,7 @@
                     <TextView
                         android:id="@+id/Amdni"
                         android:layout_width="wrap_content"
-                        android:layout_height="45dp"
+                        android:layout_height="40dp"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/drawable_blue"

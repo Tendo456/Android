@@ -23,7 +23,7 @@
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/Resrefresh"
             android:layout_width="match_parent"
-            android:layout_height="300dp">
+            android:layout_height="260dp">
 
             <TableLayout
                 android:layout_width="match_parent"
@@ -49,7 +49,7 @@
                     <Spinner
                         android:id="@+id/spCorridaRes"
                         android:layout_width="match_parent"
-                        android:layout_height="45dp"
+                        android:layout_height="40dp"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/spinner" />
@@ -128,7 +128,7 @@
                         <TextView
                             android:id="@+id/Resf_final"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
+                            android:layout_height="40dp"
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/drawable_blue"
@@ -139,7 +139,7 @@
                         <TextView
                             android:id="@+id/Resh_final"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
+                            android:layout_height="40dp"
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/drawable_blue"
@@ -168,7 +168,7 @@
                     <Spinner
                         android:id="@+id/spOperadorRes"
                         android:layout_width="match_parent"
-                        android:layout_height="45dp"
+                        android:layout_height="40dp"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/spinner" />
@@ -194,7 +194,7 @@
                     <TextView
                         android:id="@+id/Resdni"
                         android:layout_width="wrap_content"
-                        android:layout_height="45dp"
+                        android:layout_height="40dp"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/drawable_blue"
