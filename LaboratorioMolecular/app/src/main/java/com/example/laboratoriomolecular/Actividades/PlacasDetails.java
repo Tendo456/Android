@@ -1,5 +1,6 @@
 package com.example.laboratoriomolecular.Actividades;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.laboratoriomolecular.Modelos.PlacaResponse;
@@ -41,7 +42,7 @@ public class PlacasDetails extends AppCompatActivity {
         step_view = findViewById(R.id.step_view);
         reiniciarPl = findViewById(R.id.reiniciarPl);
 
-        reiniciarPl.setOnClickListener(v -> Reiniciar());
+        reiniciarPl.setOnClickListener(v -> ConfirmarReinicio());
 
         step_view.setOnStepClickListener(step -> Toast.makeText(PlacasDetails.this, "Proceso " + step, Toast.LENGTH_SHORT).show());
 
@@ -70,6 +71,18 @@ public class PlacasDetails extends AppCompatActivity {
 
         PDhilo();
 
+
+
+    }
+
+    public void ConfirmarReinicio (){
+        AlertDialog.Builder opcion = new AlertDialog.Builder(this);
+        opcion.setMessage("Reiniciar Placa?");
+        opcion.setPositiveButton("Reiniciar", (dialog, which) -> Reiniciar());
+        opcion.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
+
+        AlertDialog dialog = opcion.create();
+        dialog.show();
     }
 
     public void PDhilo(){

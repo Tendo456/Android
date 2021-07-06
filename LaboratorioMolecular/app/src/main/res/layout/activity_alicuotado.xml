@@ -24,7 +24,7 @@
         <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
             android:id="@+id/Alrefresh"
             android:layout_width="match_parent"
-            android:layout_height="350dp">
+            android:layout_height="400dp">
 
             <TableLayout
                 android:layout_width="match_parent"
@@ -55,6 +55,37 @@
                         android:layout_weight="1"
                         android:background="@drawable/spinner" />
 
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/drawable_blue">
+
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/blue_white"
+                        android:gravity="center"
+                        android:text="Corrida"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                    <EditText
+                        android:id="@+id/Acorrida"
+                        android:layout_width="wrap_content"
+                        android:layout_height="45dp"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/drawable_blue"
+                        android:ems="10"
+                        android:gravity="center"
+                        android:hint="Cantidad de Muestras"
+                        android:inputType="number"
+                        android:maxLength="4"
+                        android:textCursorDrawable="@null" />
                 </TableRow>
 
                 <TableRow
@@ -277,7 +308,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="corrida" />
+                android:text="corrida"
+                android:visibility="visible" />
 
             <CheckBox
                 android:id="@+id/chAyer"

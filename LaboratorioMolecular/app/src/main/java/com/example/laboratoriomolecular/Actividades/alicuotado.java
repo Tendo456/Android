@@ -55,7 +55,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
     SwipeRefreshLayout Alrefresh;
     Spinner spPlacasA,spOperA;
     EditText Aq_muestras;
-    TextView Aid_placa, Aid_placaSp, Af_inicio, Ah_inicio, Af_final, Ah_final, Apromedio, Aoperador ,Adni,AN_corrida;
+    TextView Aid_placa, Aid_placaSp, Af_inicio, Ah_inicio, Af_final, Ah_final, Apromedio, Aoperador ,Adni,AN_corrida,Acorrida;
     //dialogo
     TextView diAlN_placa,diAlq_muestras,diAlf_inicio,diAlh_inicio,diAlf_final,diAlh_final,diAlpromedio,diAloperador,diAldni,diAlestado;
     private AsyncHttpClient operadorA;
@@ -93,6 +93,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
         chAyer = findViewById(R.id.chAyer);
         ListAlicuotado = findViewById(R.id.ListAlicuotado);
         AN_corrida = findViewById(R.id.AN_corrida);
+        Acorrida  =findViewById( R.id.Acorrida);
 
         Afinalizar.setEnabled(false);
 
@@ -199,6 +200,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
                     Aid_placaSp.setText(Pls.get(position).getId_placa());
                     AN_placaI = Pls.get(position).getN_placa();
                     AN_corrida.setText(Pls.get(position).getN_corrida());
+                    Acorrida.setText(Pls.get(position).getN_corrida());
                     Af_inicio.setText(F);
                     Ah_inicio.setText(H);
                     Af_final.setText(F);

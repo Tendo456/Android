@@ -347,6 +347,15 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
+            <CheckBox
+                android:id="@+id/chAmAyer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:buttonTint="@color/indigo_500"
+                android:text="Ayer" />
+
             <TextView
                 android:id="@+id/Amid_placaSp"
                 android:layout_width="wrap_content"
@@ -403,15 +412,6 @@
                 android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:text="Finalizar" />
-
-            <CheckBox
-                android:id="@+id/chAmAyer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:layout_weight="1"
-                android:buttonTint="@color/indigo_500"
-                android:text="Ayer" />
 
         </LinearLayout>
 

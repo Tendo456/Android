@@ -212,11 +212,20 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
+            <CheckBox
+                android:id="@+id/chResAyer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:buttonTint="@color/indigo_500"
+                android:text="Ayer" />
+
             <TextView
                 android:id="@+id/CPlacasRes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
+                android:layout_weight="1"
                 android:text="corrida" />
 
             <TextView
@@ -224,6 +233,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
+                android:layout_weight="1"
                 android:text="operador"
                 android:visibility="visible" />
 
@@ -232,16 +242,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
+                android:layout_weight="1"
                 android:text="promedio"
                 android:visibility="visible" />
 
-            <CheckBox
-                android:id="@+id/chResAyer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:buttonTint="@color/indigo_500"
-                android:text="Ayer" />
         </LinearLayout>
 
         <LinearLayout
