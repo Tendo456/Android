@@ -75,6 +75,13 @@ public interface UserService {
                                                  @Field("N_corrida") String N_corrida);
 
     @FormUrlEncoded
+    @POST("Alicuotado/AlExAr.php")
+    Call<AlicuotadoResponse> Salto (@Field("q_muestras") String q_muestras,
+                                                 @Field("f_inicio") String f_inicio,
+                                                 @Field("id_placa") String id_placa,
+                                                 @Field("N_corrida") String N_corrida);
+
+    @FormUrlEncoded
     @POST("Alicuotado/FinalizarAlicuotado.php")
     Call<AlicuotadoResponse> upAlicuotado (@Field("id_placa") String id_placa,
                                            @Field("f_final") String f_final,

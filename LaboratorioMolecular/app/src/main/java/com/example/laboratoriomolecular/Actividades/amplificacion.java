@@ -390,7 +390,7 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
     private void saveAmplificacion(){
         if (Amq_muestras.getText().toString().isEmpty()){
             Amq_muestras.setError("Ingrese Cantidad de Muestras");
-        }
+        }else {
         Call<AmplificacionResponse> callAli = ApiClient.getUserService().InsertarAmplificacion(Amq_muestras.getText().toString(),Amf_inicio.getText().toString(),Amh_inicio.getText().toString(),Amoperador.getText().toString(),Amdni.getText().toString(),"1",Amid_placaSp.getText().toString());
         callAli.enqueue(new Callback<AmplificacionResponse>() {
             @Override
@@ -411,6 +411,7 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
                 Toast.makeText(amplificacion.this, "Error " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+        }
     }
 
     private void upDateAmplificacion() {

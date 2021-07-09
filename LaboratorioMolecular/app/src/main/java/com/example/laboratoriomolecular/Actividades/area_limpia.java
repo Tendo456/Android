@@ -373,7 +373,7 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
     private void saveArea(){
         if (Arq_muestras.getText().toString().isEmpty()){
             Arq_muestras.setError("Ingrese Cantidad de Muestras");
-        }
+        }else {
         Call<AreaResponse> callAli = ApiClient.getUserService().InsertarArea(Arq_muestras.getText().toString(),Arf_inicio.getText().toString(),Arh_inicio.getText().toString(),Aroperador.getText().toString(),Ardni.getText().toString(),"1",Arid_placaSp.getText().toString());
         callAli.enqueue(new Callback<AreaResponse>() {
             @Override
@@ -394,6 +394,7 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
                 Toast.makeText(area_limpia.this, "Error " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+        }
     }
 
     private void upDateArea() {

@@ -139,7 +139,7 @@ public class nueva_placa extends AppCompatActivity implements PlacaAdapter.Click
         Date ayer = calendar.getTime();
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         PDayer = dateFormat.format(ayer);
-        Toast.makeText(nueva_placa.this,"ayer "+ PDayer,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(nueva_placa.this,"ayer "+ PDayer,Toast.LENGTH_SHORT).show();
     }
 
     public void hiloPlaca(){

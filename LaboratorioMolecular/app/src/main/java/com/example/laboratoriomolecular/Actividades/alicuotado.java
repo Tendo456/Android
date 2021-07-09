@@ -67,7 +67,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
     String CAl_fhi, CAl_fhf;
     Button Ainiciar,Afinalizar;
     String dayer;
-    CheckBox chAyer;
+    CheckBox chAyer,Salto;
 
 
     @Override
@@ -93,6 +93,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
         chAyer = findViewById(R.id.chAyer);
         ListAlicuotado = findViewById(R.id.ListAlicuotado);
         AN_corrida = findViewById(R.id.AN_corrida);
+        Salto = findViewById(R.id.Salto);
 
 
         Afinalizar.setEnabled(false);
@@ -102,7 +103,10 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
 
         alicuotadoAdapter = new AlicuotadoAdapter(this);
 
-        Ainiciar.setOnClickListener(v -> ConfirmarAlicuotado());
+        Ainiciar.setOnClickListener(v -> {if(Salto.isChecked()){
+            SaltoPlaca();
+        }else { ConfirmarAlicuotado(); }
+        });
         Afinalizar.setOnClickListener(v -> FinalizarAlicuotado());
         Afecha();
         conseguirAl();
@@ -269,6 +273,16 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
 
     }
 
+    public void SaltoPlaca (){
+        AlertDialog.Builder opcion = new AlertDialog.Builder(this);
+        opcion.setMessage("Iniciar Salto para "+ AN_placaI+"?");
+        opcion.setPositiveButton("Crear", (dialog, which) -> salto());
+        opcion.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
+
+        AlertDialog dialog = opcion.create();
+        dialog.show();
+    }
+
     public void ConfirmarAlicuotado (){
         AlertDialog.Builder opcion = new AlertDialog.Builder(this);
         opcion.setMessage("Iniciar Alicuotado para "+ AN_placaI+"?");
@@ -366,7 +380,6 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
                     List<AlicuotadoResponse> alicuotadoResponses = response.body();
                     alicuotadoAdapter.setData(alicuotadoResponses);
                     ListAlicuotado.setAdapter(alicuotadoAdapter);
-
                 }
             }
 
@@ -378,12 +391,12 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
 
     }
 
-    private void saveAlicuotado(){
+    private void salto(){
         if (Aq_muestras.getText().toString().isEmpty()){
             Aq_muestras.setError("Ingrese Cantidad de Muestras");
         }
-        Call<AlicuotadoResponse> callAli = ApiClient.getUserService().InsertarAlicuotado(Aq_muestras.getText().toString(),Af_inicio.getText().toString(),Ah_inicio.getText().toString(),Aoperador.getText().toString(),Adni.getText().toString(),"1",Aid_placaSp.getText().toString(),AN_corrida.getText().toString());
-        callAli.enqueue(new Callback<AlicuotadoResponse>() {
+        Call<AlicuotadoResponse> salto = ApiClient.getUserService().Salto(Aq_muestras.getText().toString(),Af_inicio.getText().toString(),Aid_placaSp.getText().toString(),AN_corrida.getText().toString());
+        salto.enqueue(new Callback<AlicuotadoResponse>() {
             @Override
             public void onResponse(@NotNull Call<AlicuotadoResponse> call, @NotNull Response<AlicuotadoResponse> response) {
                 if (response.isSuccessful()) {
@@ -402,6 +415,34 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
                 Toast.makeText(alicuotado.this, "Error " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void saveAlicuotado(){
+            if (Aq_muestras.getText().toString().isEmpty()){
+                Aq_muestras.setError("Ingrese Cantidad de Muestras");
+            }else {
+            Call<AlicuotadoResponse> callAli = ApiClient.getUserService().InsertarAlicuotado(Aq_muestras.getText().toString(),Af_inicio.getText().toString(),Ah_inicio.getText().toString(),Aoperador.getText().toString(),Adni.getText().toString(),"1",Aid_placaSp.getText().toString(),AN_corrida.getText().toString());
+            callAli.enqueue(new Callback<AlicuotadoResponse>() {
+                @Override
+                public void onResponse(@NotNull Call<AlicuotadoResponse> call, @NotNull Response<AlicuotadoResponse> response) {
+                    if (response.isSuccessful()) {
+                        AlicuotadoResponse mensaje = response.body();
+                        Toast.makeText(alicuotado.this, ""+mensaje.getMensaje()+" "+response.code(), Toast.LENGTH_SHORT).show();
+                        conseguirAl();
+                        limpiarAlicuotado();
+                        Afecha();
+                    } else {
+                        Toast.makeText(alicuotado.this, "Error al Guardar los Datos "+response.code(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(@NotNull Call<AlicuotadoResponse> call, @NotNull Throwable t) {
+                    Toast.makeText(alicuotado.this, "Error " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+            }
+
     }
 
     private void upDateAlicuotado() {
