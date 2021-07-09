@@ -270,14 +270,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="2dp"
             android:orientation="horizontal">
 
             <CheckBox
                 android:id="@+id/Salto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/indigo_500"
                 android:layout_weight="1"
+                android:buttonTint="@color/indigo_500"
                 android:text="Salto" />
 
             <CheckBox
