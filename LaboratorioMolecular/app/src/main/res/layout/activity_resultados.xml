@@ -225,7 +225,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="id_Resultado" />
+                android:text="id_Resultado"
+                android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/CPlacasRes"
@@ -233,7 +234,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="1dp"
                 android:layout_weight="1"
-                android:text="corrida" />
+                android:text="corrida"
+                android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/Resoperador"
@@ -242,7 +244,7 @@
                 android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:text="operador"
-                android:visibility="visible" />
+                android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/Respromedio"
@@ -251,7 +253,7 @@
                 android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:text="promedio"
-                android:visibility="visible" />
+                android:visibility="invisible" />
 
         </LinearLayout>
 

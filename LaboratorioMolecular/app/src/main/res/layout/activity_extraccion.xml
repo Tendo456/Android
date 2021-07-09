@@ -288,7 +288,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Id_placaSp"
-                android:visibility="visible" />
+                android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/Exid_placa"
@@ -296,7 +296,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="id_placa"
-                android:visibility="visible" />
+                android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/Exoperador"
@@ -304,7 +304,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="operador"
-                android:visibility="visible" />
+                android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/Expromedio"
@@ -312,7 +312,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="promedio"
-                android:visibility="visible" />
+                android:visibility="invisible" />
 
         </LinearLayout>
 

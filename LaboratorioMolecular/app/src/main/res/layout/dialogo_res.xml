@@ -23,7 +23,7 @@
                 android:background="@drawable/blue_white"
                 android:gravity="center"
                 android:padding="5dp"
-                android:text="Placa :"
+                android:text="Corrida:"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 

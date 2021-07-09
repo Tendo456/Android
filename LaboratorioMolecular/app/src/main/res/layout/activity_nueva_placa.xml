@@ -160,7 +160,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Corrida" />
+                android:text="Corrida"
+                android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/id_recepcion"
@@ -168,7 +169,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Recepcion"
-                android:visibility="visible" />
+                android:visibility="invisible" />
 
         </LinearLayout>
 
