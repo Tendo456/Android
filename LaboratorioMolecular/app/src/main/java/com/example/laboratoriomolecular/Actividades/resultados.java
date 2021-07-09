@@ -156,7 +156,7 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
 
     private void llenarspinnerRes(){
 
-        String url = "http://192.168.1.24/laboratorio/Placas/spNCorridaRes.php?fechaP="+ResdAyer;
+        String url = "http://10.50.1.184/laboratorio/Placas/spNCorridaRes.php?fechaP="+ResdAyer;
         placasResul.post(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -204,7 +204,7 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
 
     private void llsOpeRes (){
 
-        String urlOpeA = "http://192.168.1.24/laboratorio/Operador/SpOperador.php";
+        String urlOpeA = "http://10.50.1.184/laboratorio/Operador/SpOperador.php";
         operadorRes.post(urlOpeA, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
