@@ -103,8 +103,8 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
 
         Exrefresh.setOnRefreshListener(()->{
             Exfecha();
-            Exrefresh.setRefreshing(false);
             conseguirEx();
+            Exrefresh.setRefreshing(false);
         });
     }
 
@@ -151,7 +151,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
     }
 
     public void llenarspinnerEx(){
-        String url = "http://190.119.144.250:83/laboratorio/Placas/spPlacaEx.php?fechaP="+ExF;
+        String url = "http://190.119.144.250:83/laboratorio/Placas/spPlacaEx.php?fechaP="+dayerEx;
         placasExt.post(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {

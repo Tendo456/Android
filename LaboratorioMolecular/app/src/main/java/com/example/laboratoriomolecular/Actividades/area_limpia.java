@@ -158,7 +158,7 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
     }
 
     private void llenarspinnerAr(){
-        String url = "http://190.119.144.250:83/laboratorio/Placas/spPlacaAr.php?fechaP="+ArF;
+        String url = "http://190.119.144.250:83/laboratorio/Placas/spPlacaAr.php?fechaP="+dayerAr;
         placaAre.post(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
