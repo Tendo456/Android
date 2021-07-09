@@ -158,7 +158,7 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
     }
 
     private void llenarspinnerAr(){
-        String url = "http://10.50.1.184/laboratorio/Placas/spPlacaAr.php?fechaP="+ArF;
+        String url = "http://190.119.144.250:83/laboratorio/Placas/spPlacaAr.php?fechaP="+ArF;
         placaAre.post(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -216,7 +216,7 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
 
     private void llsOpeA (){
 
-        String urlOpeA = "http://10.50.1.184/laboratorio/Operador/SpOperador.php";
+        String urlOpeA = "http://190.119.144.250:83/laboratorio/Operador/SpOperador.php";
         operadorAre.post(urlOpeA, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
