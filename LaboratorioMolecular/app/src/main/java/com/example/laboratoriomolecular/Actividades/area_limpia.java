@@ -56,14 +56,14 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
     SwipeRefreshLayout Arrefresh;
     Spinner spPlacasAr,spOperaAr;
     EditText Arq_muestras;
-    TextView Arid_placa, Arid_placaSp, Arf_inicio, Arh_inicio, Arf_final, Arh_final, Arpromedio, Aroperador ,Ardni;
+    TextView Arid_placa, Arid_placaSp, Arf_inicio, Arh_inicio, Arf_final, Arh_final, Arpromedio, Aroperador, Ardni, ArN_corrida;
     //dialogo
     TextView diArN_placa,diArq_muestras,diArf_inicio,diArh_inicio,diArf_final,diArh_final,diArpromedio,diAroperador,diArdni,diArestado;
     private AsyncHttpClient operadorAre;
     private AsyncHttpClient placaAre;
     AreaAdapter areaAdapter;
     RecyclerView ListArea;
-    String idAr, placaAr, muestrasAr, f_inicioAr, h_inicioAr, f_finalAr, h_finalAr, promedioAr ,operadorAr, dniAr,id_placaAr, estadoAr;
+    String idAr, placaAr, muestrasAr, f_inicioAr, h_inicioAr, f_finalAr, h_finalAr, promedioAr ,operadorAr, dniAr,id_placaAr, estadoAr, N_corridaAr;
     String ArF, ArH, ArN_placaF,ArN_placaI, dayerAr;
     String CAr_fhi, CAr_fhf;
     Button Ariniciar,Arfinalizar;
@@ -91,6 +91,7 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
         Arfinalizar = findViewById(R.id.Arfinalizar);
         ListArea = findViewById(R.id.ListArea);
         chArAyer = findViewById(R.id.chArAyer);
+        ArN_corrida = findViewById(R.id.ArN_corrida);
 
         Arfinalizar.setEnabled(false);
 
@@ -157,7 +158,7 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
     }
 
     private void llenarspinnerAr(){
-        String url = "http://10.50.1.184/laboratorio/Placas/spPlacaAr.php?fechaP="+ArF;
+        String url = "http://192.168.1.24/laboratorio/Placas/spPlacaAr.php?fechaP="+ArF;
         placaAre.post(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -181,6 +182,7 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
                 PlacaSpinner spP = new PlacaSpinner();
                 spP.setId_placa(PlacaArray.getJSONObject(i).getString("id_placa"));
                 spP.setN_placa(PlacaArray.getJSONObject(i).getString("N_placa"));
+                spP.setN_corrida(PlacaArray.getJSONObject(i).getString("N_corrida"));
                 spP.setQ_muestras(PlacaArray.getJSONObject(i).getString("q_muestras"));
                 spP.setFechaP(PlacaArray.getJSONObject(i).getString("fechaP"));
                 plAr.add(spP);
@@ -192,6 +194,7 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     Arid_placaSp.setText(plAr.get(position).getId_placa());
                     ArN_placaI = plAr.get(position).getN_placa();
+                    ArN_corrida.setText(plAr.get(position).getN_corrida());
                     Arq_muestras.setText(plAr.get(position).getQ_muestras());
                     Arf_inicio.setText(ArF);
                     Arh_inicio.setText(ArH);
@@ -213,7 +216,7 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
 
     private void llsOpeA (){
 
-        String urlOpeA = "http://10.50.1.184/laboratorio/Operador/SpOperador.php";
+        String urlOpeA = "http://192.168.1.24/laboratorio/Operador/SpOperador.php";
         operadorAre.post(urlOpeA, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -286,6 +289,7 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
         idAr = areaResponse.getId_area_limpia();
         placaAr = areaResponse.getN_placa();
         id_placaAr = areaResponse.getId_placa();
+        N_corridaAr = areaResponse.getN_corrida();
         muestrasAr = areaResponse.getQ_muestras();
         f_inicioAr = areaResponse.getF_inicio();
         h_inicioAr = areaResponse.getH_inicio();
@@ -300,6 +304,7 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
         ArN_placaF = placaAr;
         CAr_fhi = areaResponse.getF_inicio()+" "+areaResponse.getH_inicio();
 
+        if (N_corridaAr == null){ ArN_corrida.setText("Vacio"); }else { ArN_corrida.setText(N_corridaAr); }
         if (muestrasAr == null){ Arq_muestras.setText("Vacio"); }else { Arq_muestras.setText(muestrasAr); }
         if(f_inicioAr == null){ Arf_inicio.setText(ArF); }else { Arf_inicio.setText(f_inicioAr); }
         if(h_inicioAr == null){Arh_inicio.setText(ArH);} else {Arh_inicio.setText(h_inicioAr);}

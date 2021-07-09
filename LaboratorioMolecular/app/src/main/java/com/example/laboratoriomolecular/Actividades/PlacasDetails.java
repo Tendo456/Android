@@ -16,6 +16,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.jetbrains.annotations.NotNull;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -86,7 +88,7 @@ public class PlacasDetails extends AppCompatActivity {
     }
 
     public void PDhilo(){
-        new Handler(Looper.getMainLooper()).postDelayed(this::agregar,2000);
+        new Handler(Looper.getMainLooper()).postDelayed(this::agregar,1000);
     }
 
     public void agregar(){
@@ -100,7 +102,7 @@ public class PlacasDetails extends AppCompatActivity {
 
         if(estadoAl != null){
             if (estadoAl.equals("2")){
-                paso();
+                new Handler(Looper.getMainLooper()).postDelayed(this::paso,300);
             }else {
                 Toast.makeText(PlacasDetails.this,"Proceso Actual Alicuotado",Toast.LENGTH_LONG).show();
             }
@@ -108,7 +110,7 @@ public class PlacasDetails extends AppCompatActivity {
 
         if(estadoEx != null){
             if (estadoEx.equals("2")){
-                paso();
+                new Handler(Looper.getMainLooper()).postDelayed(this::paso,600);
             }else {
                 Toast.makeText(PlacasDetails.this,"Proceso Actual Extracción",Toast.LENGTH_LONG).show();
             }
@@ -116,7 +118,7 @@ public class PlacasDetails extends AppCompatActivity {
 
         if (estadoAr != null){
             if (estadoAr.equals("2")){
-                paso();
+                new Handler(Looper.getMainLooper()).postDelayed(this::paso,900);
             }else {
                 Toast.makeText(PlacasDetails.this,"Proceso Actual Area Limpia",Toast.LENGTH_LONG).show();
             }
@@ -124,14 +126,15 @@ public class PlacasDetails extends AppCompatActivity {
 
         if(estadoAm != null){
             if (estadoAm.equals("2")){
-                paso();
+                new Handler(Looper.getMainLooper()).postDelayed(this::paso,1200);
             }else {
                 Toast.makeText(PlacasDetails.this,"Proceso Actual Amplificación",Toast.LENGTH_LONG).show();
             }
         }
         if(estadoRes != null){
             if (estadoRes.equals("2")){
-                paso();
+                reiniciarPl.setEnabled(false);
+                new Handler(Looper.getMainLooper()).postDelayed(this::paso,1500);
             }else {
                 Toast.makeText(PlacasDetails.this,"Proceso Actual Amplificación",Toast.LENGTH_LONG).show();
             }
@@ -154,7 +157,7 @@ public class PlacasDetails extends AppCompatActivity {
         Call<PlacaResponse> restart = ApiClient.getUserService().reiniciarPlaca(idplaca);
         restart.enqueue(new Callback<PlacaResponse>() {
             @Override
-            public void onResponse(Call<PlacaResponse> call, Response<PlacaResponse> response) {
+            public void onResponse(@NotNull Call<PlacaResponse> call, @NotNull Response<PlacaResponse> response) {
                 if(response.isSuccessful()){
                     PlacaResponse mensaje = response.body();
                     Toast.makeText(PlacasDetails.this, ""+ mensaje.getMensaje()+" "+response.code(), Toast.LENGTH_SHORT).show();
@@ -163,7 +166,7 @@ public class PlacasDetails extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<PlacaResponse> call, Throwable t) {
+            public void onFailure(@NotNull Call<PlacaResponse> call, @NotNull Throwable t) {
                 Toast.makeText(PlacasDetails.this,"Error: "+t.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });

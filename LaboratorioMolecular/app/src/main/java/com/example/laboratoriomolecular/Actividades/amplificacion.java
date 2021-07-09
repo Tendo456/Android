@@ -54,14 +54,14 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
     SwipeRefreshLayout Amrefresh;
     Spinner spPlacasAm,spOperadorAm;
     EditText Amq_muestras,AmM_valido, AmM_invalido,AmCi_valido,AmCi_invalido;
-    TextView Amid_placa, Amid_placaSp, Amf_inicio, Amh_inicio, Amf_final, Amh_final, Ampromedio, Amoperador ,Amdni;
+    TextView Amid_placa, Amid_placaSp, Amf_inicio, Amh_inicio, Amf_final, Amh_final, Ampromedio, Amoperador, Amdni, AmN_corrida;
     //dialogo
     TextView diAmN_placa,diAmq_muestras,diAmf_inicio,diAmh_inicio,diAmf_final,diAmh_final,diAmpromedio, diAmM_valido, diAmM_invalido, diAmCi_valido, diAmCi_invalido, diAmoperador,diAmdni,diAmestado;
     private AsyncHttpClient operadorAmp;
     private AsyncHttpClient placasAmp;
     AmplificacionAdapter amplificacionAdapter;
     RecyclerView ListAmplificacion;
-    String idAm, placaAm, muestrasAm, f_inicioAm, h_inicioAm, f_finalAm, h_finalAm, promedioAm, M_validoAm, M_invalidoAm, Ci_validoAm, Ci_ivalidoAm ,operadorAm, dniAm,id_placaAm, estadoAm;
+    String idAm, placaAm, muestrasAm, f_inicioAm, h_inicioAm, f_finalAm, h_finalAm, promedioAm, M_validoAm, M_invalidoAm, Ci_validoAm, Ci_ivalidoAm ,operadorAm, dniAm,id_placaAm, estadoAm, N_corridaAm;
     String AmF, AmH, AmN_placaF,AmN_placaI,dayerAm;
     String CAm_fhi, CAm_fhf;
     Button Aminiciar,Amfinalizar;
@@ -93,6 +93,7 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
         Amfinalizar = findViewById(R.id.Amfinalizar);
         ListAmplificacion = findViewById(R.id.ListAmplificacion);
         chAmAyer = findViewById(R.id.chAmAyer);
+        AmN_corrida = findViewById(R.id.AmN_corrida);
 
         Amfinalizar.setEnabled(false);
 
@@ -159,7 +160,7 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
     }
 
     private void llenarspinnerAm(){
-        String url = "http://10.50.1.184/laboratorio/Placas/spPlacaAm.php?fechaP="+AmF;
+        String url = "http://192.168.1.24/laboratorio/Placas/spPlacaAm.php?fechaP="+dayerAm;
         placasAmp.post(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -183,6 +184,7 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
                 PlacaSpinner spAm = new PlacaSpinner();
                 spAm.setId_placa(PlacaArray.getJSONObject(i).getString("id_placa"));
                 spAm.setN_placa(PlacaArray.getJSONObject(i).getString("N_placa"));
+                spAm.setN_corrida(PlacaArray.getJSONObject(i).getString("N_corrida"));
                 spAm.setQ_muestras(PlacaArray.getJSONObject(i).getString("q_muestras"));
                 spAm.setFechaP(PlacaArray.getJSONObject(i).getString("fechaP"));
                 spAmp.add(spAm);
@@ -194,6 +196,7 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     Amid_placaSp.setText(spAmp.get(position).getId_placa());
                     AmN_placaI = spAmp.get(position).getN_placa();
+                    AmN_corrida.setText(spAmp.get(position).getN_corrida());
                     Amq_muestras.setText(spAmp.get(position).getQ_muestras());
                     Amf_inicio.setText(AmF);
                     Amh_inicio.setText(AmH);
@@ -215,7 +218,7 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
 
     private void llsOpeAmp (){
 
-        String urlOpeA = "http://10.50.1.184/laboratorio/Operador/SpOperador.php";
+        String urlOpeA = "http://192.168.1.24/laboratorio/Operador/SpOperador.php";
         operadorAmp.post(urlOpeA, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -288,6 +291,7 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
 
         idAm = amplificacionResponse.getId_amplificacion();
         placaAm = amplificacionResponse.getN_placa();
+        N_corridaAm = amplificacionResponse.getN_corrida();
         id_placaAm = amplificacionResponse.getId_placa();
         muestrasAm = amplificacionResponse.getQ_muestras();
         f_inicioAm = amplificacionResponse.getF_inicio();
@@ -307,6 +311,7 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
         AmN_placaF = placaAm;
         CAm_fhi = amplificacionResponse.getF_inicio()+" "+amplificacionResponse.getH_inicio();
 
+        if (N_corridaAm == null){ AmN_corrida.setText("Vacio"); }else { AmN_corrida.setText(N_corridaAm); }
         if (muestrasAm == null){ Amq_muestras.setText("Vacio"); }else { Amq_muestras.setText(muestrasAm); }
         if(f_inicioAm == null){ Amf_inicio.setText(AmF); }else { Amf_inicio.setText(f_inicioAm); }
         if(h_inicioAm == null){Amh_inicio.setText(AmH);} else {Amh_inicio.setText(h_inicioAm);}
@@ -410,8 +415,14 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
 
     private void upDateAmplificacion() {
 
-        if (placaAm == null) {
-            Toast.makeText(this, "Seleccione La Placa a Finalizar en la Lista", Toast.LENGTH_LONG).show();
+        if (AmM_valido.getText().toString().isEmpty()){
+            AmM_valido.setError("Ingrese Cantidad de Muestras");
+        }else if (AmM_invalido.getText().toString().isEmpty()){
+            AmM_invalido.setError("Ingrese Cantidad de Muestras");
+        } else if (AmCi_valido.getText().toString().isEmpty()){
+            AmCi_valido.setError("Ingrese Cantidad de Muestras");
+        }else if (AmCi_invalido.getText().toString().isEmpty()){
+            AmCi_invalido.setError("Ingrese Cantidad de Muestras");
         } else {
 
             Call<AmplificacionResponse> upAlic = ApiClient.getUserService().upAmplificacion(Amid_placa.getText().toString(), Amf_final.getText().toString(), Amh_final.getText().toString(), Ampromedio.getText().toString(), AmM_valido.getText().toString(),AmM_invalido.getText().toString(),AmCi_valido.getText().toString(),AmCi_invalido.getText().toString(), "2");

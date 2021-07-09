@@ -52,12 +52,12 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
     Spinner spPlacasEx, spOperadorEx;
     private AsyncHttpClient operadorExt;
     private AsyncHttpClient placasExt;
-    TextView Exid_placa,Exq_muestras,Exid_placaSp,Exf_inicio, Exh_inicio, Exf_final, Exh_final, Expromedio, Exoperador, Exdni;
+    TextView Exid_placa,Exq_muestras,Exid_placaSp,Exf_inicio, Exh_inicio, Exf_final, Exh_final, Expromedio, Exoperador, Exdni, ExN_corrida;
     //dialogo
     TextView diExN_placa,diExq_muestras,diExf_inicio,diExh_inicio,diExf_final,diExh_final,diExpromedio,diExoperador,diExdni,diExestado;
     Button Exiniciar,Exfinalizar;
     RecyclerView ListaExtraccion;
-    String idEx, placaEx, q_muestrasEx, f_inicioEx, h_inicioEx, f_finalEx, h_finalEx, promedioEx ,operadorEx, dniEx,id_placaEx, estadoEx;
+    String idEx, placaEx, q_muestrasEx, f_inicioEx, h_inicioEx, f_finalEx, h_finalEx, promedioEx ,operadorEx, dniEx,id_placaEx, estadoEx, N_corridaEx;
     String ExF,ExH,ExN_placa,dayerEx;
     String CEx_fhi, CEx_fhf;
     ExtraccionAdapter extraccionAdapter;
@@ -86,6 +86,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
         Exrefresh = findViewById(R.id.Exrefresh);
         ListaExtraccion = findViewById(R.id.ListExtraccion);
         chExAyer = findViewById(R.id.chExAyer);
+        ExN_corrida = findViewById(R.id.ExN_corrida);
 
         Exfinalizar.setEnabled(false);
 
@@ -150,7 +151,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
     }
 
     public void llenarspinnerEx(){
-        String url = "http://10.50.1.184/laboratorio/Placas/spPlacaEx.php?fechaP="+ExF;
+        String url = "http://192.168.1.24/laboratorio/Placas/spPlacaEx.php?fechaP="+ExF;
         placasExt.post(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -174,6 +175,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
                 PlacaSpinner spP = new PlacaSpinner();
                 spP.setId_placa(PlacaArray.getJSONObject(i).getString("id_placa"));
                 spP.setN_placa(PlacaArray.getJSONObject(i).getString("N_placa"));
+                spP.setN_corrida(PlacaArray.getJSONObject(i).getString("N_corrida"));
                 spP.setQ_muestras(PlacaArray.getJSONObject(i).getString("q_muestras"));
                 spP.setFechaP(PlacaArray.getJSONObject(i).getString("fechaP"));
                 plEx.add(spP);
@@ -185,6 +187,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                     Exid_placaSp.setText(plEx.get(position).getId_placa());
                     ExN_placa = plEx.get(position).getN_placa();
+                    ExN_corrida.setText(plEx.get(position).getN_corrida());
                     Exq_muestras.setText(plEx.get(position).getQ_muestras());
                     Exf_inicio.setText(ExF);
                     Exh_inicio.setText(ExH);
@@ -206,7 +209,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
 
     private void llsOpeEx (){
 
-        String urlOpeA = "http://10.50.1.184/laboratorio/Operador/SpOperador.php";
+        String urlOpeA = "http://192.168.1.24/laboratorio/Operador/SpOperador.php";
         operadorExt.post(urlOpeA, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -278,6 +281,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
     public void ClickedExtraccion(ExtraccionResponse extraccionResponse) {
         idEx = extraccionResponse.getId_extraccion();
         placaEx = extraccionResponse.getN_placa();
+        N_corridaEx = extraccionResponse.getN_corrida();
         id_placaEx = extraccionResponse.getId_placa();
         q_muestrasEx = extraccionResponse.getQ_muestras();
         f_inicioEx = extraccionResponse.getF_inicio();
@@ -292,6 +296,8 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
         Exid_placa.setText(id_placaEx);
         CEx_fhi = extraccionResponse.getF_inicio()+" "+extraccionResponse.getH_inicio();
 
+        if(N_corridaEx == null){ExN_corrida.setText("Vacio");}else {ExN_corrida.setText(N_corridaEx);}
+        if(q_muestrasEx == null){Exq_muestras.setText("Vacio");}else {Exq_muestras.setText(q_muestrasEx);}
         if(f_inicioEx == null){ Exf_inicio.setText(ExF);}else { Exf_inicio.setText(f_inicioEx);}
         if(h_inicioEx == null){Exh_inicio.setText(ExH);} else {Exh_inicio.setText(h_inicioEx);}
         if(f_finalEx == null){Exf_final.setText(ExF); Exfinalizar.setEnabled(true); } else {Exf_final.setText(f_finalEx); Exfinalizar.setEnabled(false);}

@@ -28,6 +28,8 @@ import com.example.laboratoriomolecular.Modelos.AlicuotadoResponse;
 import com.example.laboratoriomolecular.Modelos.AmplificacionResponse;
 import com.example.laboratoriomolecular.Modelos.OperadorResponse;
 import com.example.laboratoriomolecular.Modelos.PlacaResponse;
+import com.example.laboratoriomolecular.Modelos.PlacaSpinner;
+import com.example.laboratoriomolecular.Modelos.PlacaSpinnerRes;
 import com.example.laboratoriomolecular.Modelos.ResultadosResponse;
 import com.example.laboratoriomolecular.R;
 import com.example.laboratoriomolecular.Retrofit_Data.ApiClient;
@@ -61,9 +63,10 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
     CheckBox chResAyer;
     RecyclerView ListResultados;
     String ResF, ResH;
-    String ResdAyer,Ncorre;
+    String ResdAyer;
     String CRes_fhi,CRes_fhf;
     private AsyncHttpClient operadorRes;
+    private AsyncHttpClient placasResul;
     SwipeRefreshLayout Resrefresh;
     ResultadosAdapter resultadosAdapter;
 
@@ -87,6 +90,7 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
         chResAyer = findViewById(R.id.chResAyer);
         ListResultados = findViewById(R.id.ListResultados);
         Resrefresh = findViewById(R.id.Resrefresh);
+        Resid_resultados = findViewById(R.id.Resid_resultados);
 
         ListResultados.setLayoutManager(new LinearLayoutManager(this));
         ListResultados.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
@@ -106,21 +110,6 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
             Resrefresh.setRefreshing(false);
         });
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.numeros, R.layout.support_simple_spinner_dropdown_item);
-        adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
-        spCorridaRes.setAdapter(adapter);
-        spCorridaRes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                CPlacasRes.setText(parent.getItemAtPosition(position).toString());
-                Ncorre = CPlacasRes.getText().toString();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
     }
 
     public void Resfecha (){
@@ -134,7 +123,6 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
             ResdAyer = ResF;
         }
 
-
         Date date = new Date();
         @SuppressLint("SimpleDateFormat") Format h = new SimpleDateFormat("HH:mm:ss");
         ResH = h.format(date);
@@ -143,6 +131,8 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
         Resh_inicio.setText(ResH);
         Resf_final.setText(ResF);
         Resh_final.setText(ResH);
+        placasResul = new AsyncHttpClient();
+        llenarspinnerRes();
         operadorRes = new AsyncHttpClient();
         llsOpeRes();
         Reshilo();
@@ -164,9 +154,57 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
         new Handler(Looper.getMainLooper()).postDelayed(this::Resfecha,60000);
     }
 
+    private void llenarspinnerRes(){
+
+        String url = "http://192.168.1.24/laboratorio/Placas/spNCorridaRes.php?fechaP="+ResdAyer;
+        placasResul.post(url, new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                if (statusCode == 200){
+                    CargarSpinnerRes(new String(responseBody));
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                Toast.makeText(resultados.this,"Error: Internet / Servidor", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void CargarSpinnerRes(String respuestaAl){
+        ArrayList<PlacaSpinnerRes> PlsRes = new ArrayList<>();
+        try{
+            JSONArray PlacaArray = new JSONArray(respuestaAl);
+            for (int i=0; i<PlacaArray.length(); i++){
+                PlacaSpinnerRes spPRes = new PlacaSpinnerRes();
+
+                spPRes.setN_corrida(PlacaArray.getJSONObject(i).getString("N_corrida"));
+
+                PlsRes.add(spPRes);
+            }
+            ArrayAdapter<PlacaSpinnerRes> PRes = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, PlsRes);
+            spCorridaRes.setAdapter(PRes);
+            spCorridaRes.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                    CPlacasRes.setText(PlsRes.get(position).getN_corrida());
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parent) {
+
+                }
+            });
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
     private void llsOpeRes (){
 
-        String urlOpeA = "http://10.50.1.184/laboratorio/Operador/SpOperador.php";
+        String urlOpeA = "http://192.168.1.24/laboratorio/Operador/SpOperador.php";
         operadorRes.post(urlOpeA, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -214,6 +252,8 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
 
     }
 
+
+
     public void IniciarRes (){
         AlertDialog.Builder opcion = new AlertDialog.Builder(this);
         opcion.setMessage("Iniciar Resultados?");
@@ -243,7 +283,6 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
                     List<ResultadosResponse> resultadosResponses = response.body();
                     resultadosAdapter.setData(resultadosResponses);
                     ListResultados.setAdapter(resultadosAdapter);
-
                 }
             }
 
@@ -262,8 +301,8 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
                 if (response.isSuccessful()) {
                     ResultadosResponse mensaje = response.body();
                     Toast.makeText(resultados.this, "" + mensaje.getMensaje(), Toast.LENGTH_SHORT).show();
-                    //conseguirAl();
-                    //limpiarAlicuotado();
+                    ConseguirResul();
+                    Resfecha();
                     Resfinalizar.setEnabled(false);
                 } else {
                     Toast.makeText(resultados.this, "Error al Guardar los Datos", Toast.LENGTH_SHORT).show();
@@ -286,8 +325,7 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
                     ResultadosResponse mensaje = response.body();
                     assert mensaje != null;
                     Toast.makeText(resultados.this, "" + mensaje.getMensaje(), Toast.LENGTH_SHORT).show();
-                    //conseguirAl();
-                    //limpiarAlicuotado();
+                    ConseguirResul();
                     Resfinalizar.setEnabled(false);
                 } else {
                     Toast.makeText(resultados.this, "Error al Guardar los Datos", Toast.LENGTH_SHORT).show();

@@ -20,6 +20,7 @@ public class AmplificacionResponse implements Serializable {
     private String estadoAm;
     private String id_placa;
     private String N_placa;
+    private String N_corrida;
     private String total;
     private String mensaje;
 
@@ -151,6 +152,14 @@ public class AmplificacionResponse implements Serializable {
         N_placa = n_placa;
     }
 
+    public String getN_corrida() {
+        return N_corrida;
+    }
+
+    public void setN_corrida(String n_corrida) {
+        N_corrida = n_corrida;
+    }
+
     public String getTotal() {
         return total;
     }
@@ -182,6 +191,7 @@ public class AmplificacionResponse implements Serializable {
                 ", estadoAm='" + estadoAm + '\'' +
                 ", id_placa='" + id_placa + '\'' +
                 ", N_placa='" + N_placa + '\'' +
+                ", N_corrida='" + N_corrida + '\'' +
                 ", total='" + total + '\'' +
                 '}';
     }

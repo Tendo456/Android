@@ -74,7 +74,7 @@
                         android:textSize="18sp" />
 
                     <EditText
-                        android:id="@+id/Acorrida"
+                        android:id="@+id/AN_corrida"
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
                         android:layout_margin="5dp"
@@ -302,14 +302,6 @@
                 android:layout_height="wrap_content"
                 android:text="promedio"
                 android:visibility="invisible" />
-
-            <TextView
-                android:id="@+id/AN_corrida"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="corrida"
-                android:visibility="visible" />
 
             <CheckBox
                 android:id="@+id/chAyer"

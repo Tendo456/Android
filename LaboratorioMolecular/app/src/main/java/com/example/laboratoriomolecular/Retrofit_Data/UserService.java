@@ -46,7 +46,14 @@ public interface UserService {
                                    @Field("fechaP") String fechaP,
                                    @Field("id_recepcion") String id_recepcion);
 
-    @GET("Placas/lineaPlacas.php")
+    @FormUrlEncoded
+    @POST("Placas/ActualizarPlaca.php")
+    Call<PlacaResponse> updatePlaca (@Field("id_placa") String id_placa,
+                                   @Field("N_corrida") String N_corrida,
+                                   @Field("fechaP") String fechaP,
+                                   @Field("id_recepcion") String id_recepcion);
+
+    @GET("Placas/LineaPlacas.php")
     Call<List<PlacaResponse>> getPlacaF(@Query("fechaP") String fechaP);
 
     @FormUrlEncoded
@@ -146,7 +153,7 @@ public interface UserService {
     Call<List<ResultadosResponse>> conseguirResultados(@Query("f_inicio") String f_inicio);
 
     @FormUrlEncoded
-    @POST("Resultados/iniciarResultados.php")
+    @POST("Resultados/iniciarResultados2.php")
     Call<ResultadosResponse> IniciarResultado (@Field("N_corrida") String N_corrida,
                                                @Field("f_inicio") String f_inicio,
                                                @Field("h_inicio") String h_inicio,

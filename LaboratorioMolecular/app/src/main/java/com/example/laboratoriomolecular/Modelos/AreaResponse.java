@@ -16,6 +16,7 @@ public class AreaResponse implements Serializable {
     private String estadoAr;
     private String id_placa;
     private String N_placa;
+    private String N_corrida;
     private String mensaje;
 
     public String getId_area_limpia() {
@@ -114,13 +115,21 @@ public class AreaResponse implements Serializable {
         N_placa = n_placa;
     }
 
+    public String getN_corrida() {
+        return N_corrida;
+    }
+
+    public void setN_corrida(String n_corrida) {
+        N_corrida = n_corrida;
+    }
+
     public String getMensaje() {
         return mensaje;
     }
 
     @Override
     public String toString() {
-        return "AreaResponce{" +
+        return "AreaResponse{" +
                 "id_area_limpia='" + id_area_limpia + '\'' +
                 ", q_muestras='" + q_muestras + '\'' +
                 ", f_inicio='" + f_inicio + '\'' +
@@ -133,6 +142,7 @@ public class AreaResponse implements Serializable {
                 ", estadoAr='" + estadoAr + '\'' +
                 ", id_placa='" + id_placa + '\'' +
                 ", N_placa='" + N_placa + '\'' +
+                ", N_corrida='" + N_corrida + '\'' +
                 '}';
     }
 }

@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -32,10 +33,12 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 
+import java.text.DateFormat;
 import java.text.Format;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
@@ -47,13 +50,14 @@ public class nueva_placa extends AppCompatActivity implements PlacaAdapter.Click
 
     EditText CodPlaca;
     TextView fechaPl, id_recepcion, N_corrida;
-    Button PGuardar;
+    Button PGuardar,PActualizar;
     RecyclerView ListaPlaca;
     PlacaAdapter placaAdapter;
     Spinner spRecepcion,spCorrida;
     private AsyncHttpClient spRecepcion1;
-    String s;
+    String s,PDayer;
     SwipeRefreshLayout NPrefresh;
+    CheckBox chNPAyer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +66,7 @@ public class nueva_placa extends AppCompatActivity implements PlacaAdapter.Click
 
         CodPlaca = findViewById(R.id.CodPlaca);
         PGuardar = findViewById(R.id.PGuardar);
+        PActualizar = findViewById(R.id.PActualizar);
         ListaPlaca = findViewById(R.id.ListaPlaca);
         fechaPl = findViewById(R.id.fechaPl);
         spRecepcion = findViewById(R.id.spRecepcion);
@@ -69,8 +74,10 @@ public class nueva_placa extends AppCompatActivity implements PlacaAdapter.Click
         id_recepcion = findViewById(R.id.id_recepcion);
         N_corrida = findViewById(R.id.N_corrida);
         NPrefresh = findViewById(R.id.NPrefresh);
+        chNPAyer = findViewById(R.id.chNPAyer);
 
         PGuardar.setOnClickListener(v -> ConfirmarPlaca());
+        PActualizar.setOnClickListener(v -> ActualizarPlaca());
 
         ListaPlaca.setLayoutManager(new LinearLayoutManager(this));
         ListaPlaca.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
@@ -78,6 +85,7 @@ public class nueva_placa extends AppCompatActivity implements PlacaAdapter.Click
         placaAdapter = new PlacaAdapter(this);
 
         fechaPlaca();
+        ListarPlaca();
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.numeros, R.layout.support_simple_spinner_dropdown_item);
         adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
@@ -103,15 +111,35 @@ public class nueva_placa extends AppCompatActivity implements PlacaAdapter.Click
     }
 
     public void fechaPlaca (){
+
         final Calendar calendar = Calendar.getInstance();
         @SuppressLint("SimpleDateFormat") Format formatter = new SimpleDateFormat("yyyy-MM-dd");
         s = formatter.format(calendar.getTime());
+
+
+        if (chNPAyer.isChecked()){
+            NPayer();
+
+        }else{
+            PDayer = s;
+        }
         fechaPl.setText(s);
 
         spRecepcion1 = new AsyncHttpClient();
         llenarspinnerRecep();
         hiloPlaca();
-        ListarPlaca();
+
+    }
+
+    public void NPayer (){
+
+        Calendar calendar = Calendar.getInstance();
+
+        calendar.add(Calendar.DAY_OF_YEAR, -1);
+        Date ayer = calendar.getTime();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        PDayer = dateFormat.format(ayer);
+        Toast.makeText(nueva_placa.this,"ayer "+ PDayer,Toast.LENGTH_SHORT).show();
     }
 
     public void hiloPlaca(){
@@ -119,7 +147,7 @@ public class nueva_placa extends AppCompatActivity implements PlacaAdapter.Click
     }
 
     public void llenarspinnerRecep(){
-        String url = "http://10.50.1.184/laboratorio/Placas/spRecepcion.php?fecha="+s;
+        String url = "http://192.168.1.24/laboratorio/Placas/spRecepcion.php?fecha="+s;
         spRecepcion1.post(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -175,6 +203,35 @@ public class nueva_placa extends AppCompatActivity implements PlacaAdapter.Click
         dialog.show();
     }
 
+    public void ActualizarPlaca (){
+        AlertDialog.Builder opcion = new AlertDialog.Builder(this);
+        opcion.setMessage("Actualizar Placa?");
+        opcion.setPositiveButton("Actualizar", (dialog, which) -> Actualizar());
+        opcion.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
+
+        AlertDialog dialog = opcion.create();
+        dialog.show();
+    }
+
+    public void ListarPlaca (){
+        Call<List<PlacaResponse>> placaList = ApiClient.getUserService().getPlacaF(PDayer);
+        placaList.enqueue(new Callback<List<PlacaResponse>>() {
+            @Override
+            public void onResponse(@NotNull Call<List<PlacaResponse>> call, @NotNull Response<List<PlacaResponse>> response) {
+                if(response.isSuccessful()){
+                    List<PlacaResponse> placaResponses = response.body();
+                    placaAdapter.setData(placaResponses);
+                    ListaPlaca.setAdapter(placaAdapter);
+                }
+            }
+
+            @Override
+            public void onFailure(@NotNull Call<List<PlacaResponse>> call, @NotNull Throwable t) {
+
+            }
+        });
+    }
+
     private void Placa (){
 
         if(CodPlaca.getText().toString().isEmpty()){
@@ -205,21 +262,27 @@ public class nueva_placa extends AppCompatActivity implements PlacaAdapter.Click
         }
     }
 
-    public void ListarPlaca (){
-        Call<List<PlacaResponse>> placaList = ApiClient.getUserService().getPlacaF(fechaPl.getText().toString());
-        placaList.enqueue(new Callback<List<PlacaResponse>>() {
+
+    public void Actualizar (){
+        Call<PlacaResponse> upPlaca = ApiClient.getUserService().updatePlaca(CodPlaca.getText().toString(), N_corrida.getText().toString(),fechaPl.getText().toString(),id_recepcion.getText().toString());
+        upPlaca.enqueue(new Callback<PlacaResponse>() {
             @Override
-            public void onResponse(@NotNull Call<List<PlacaResponse>> call, @NotNull Response<List<PlacaResponse>> response) {
-                if(response.isSuccessful()){
-                    List<PlacaResponse> placaResponses = response.body();
-                    placaAdapter.setData(placaResponses);
-                    ListaPlaca.setAdapter(placaAdapter);
+            public void onResponse(Call<PlacaResponse> call, Response<PlacaResponse> response) {
+                if (response.isSuccessful()) {
+
+                    PlacaResponse mensaje = response.body();
+                    Toast.makeText(nueva_placa.this, ""+ mensaje.getMensaje()+" "+response.code(), Toast.LENGTH_SHORT).show();
+                    limpiarPlaca();
+                    ListarPlaca();
+
+                } else {
+                    Toast.makeText(nueva_placa.this, "Error al Guardar los Datos "+ response.code(), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(@NotNull Call<List<PlacaResponse>> call, @NotNull Throwable t) {
-
+            public void onFailure(Call<PlacaResponse> call, Throwable t) {
+                Toast.makeText(nueva_placa.this, "Error Codigo: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

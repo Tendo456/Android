@@ -16,6 +16,7 @@ public class ExtraccionResponse implements Serializable{
     private String estadoEx;
     private String id_placa;
     private String N_placa;
+    private String N_corrida;
     private String mensaje;
 
     public String getId_extraccion() {
@@ -114,6 +115,14 @@ public class ExtraccionResponse implements Serializable{
         N_placa = n_placa;
     }
 
+    public String getN_corrida() {
+        return N_corrida;
+    }
+
+    public void setN_corrida(String n_corrida) {
+        N_corrida = n_corrida;
+    }
+
     public String getMensaje() {
         return mensaje;
     }
@@ -133,6 +142,7 @@ public class ExtraccionResponse implements Serializable{
                 ", estadoEx='" + estadoEx + '\'' +
                 ", id_placa='" + id_placa + '\'' +
                 ", N_placa='" + N_placa + '\'' +
+                ", N_corrida='" + N_corrida + '\'' +
                 '}';
     }
 }

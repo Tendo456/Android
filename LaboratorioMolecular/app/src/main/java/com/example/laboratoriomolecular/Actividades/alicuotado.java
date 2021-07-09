@@ -55,14 +55,14 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
     SwipeRefreshLayout Alrefresh;
     Spinner spPlacasA,spOperA;
     EditText Aq_muestras;
-    TextView Aid_placa, Aid_placaSp, Af_inicio, Ah_inicio, Af_final, Ah_final, Apromedio, Aoperador ,Adni,AN_corrida,Acorrida;
+    TextView Aid_placa, Aid_placaSp, Af_inicio, Ah_inicio, Af_final, Ah_final, Apromedio, Aoperador ,Adni,AN_corrida;
     //dialogo
     TextView diAlN_placa,diAlq_muestras,diAlf_inicio,diAlh_inicio,diAlf_final,diAlh_final,diAlpromedio,diAloperador,diAldni,diAlestado;
     private AsyncHttpClient operadorA;
     private AsyncHttpClient placaA;
     AlicuotadoAdapter alicuotadoAdapter;
     RecyclerView ListAlicuotado;
-    String idAl, placaAl, muestrasAl, f_inicioAl, h_inicioAl, f_finalAl, h_finalAl, promedioAl ,operadorAl, dniAl,id_placaAl, estadoAl;
+    String idAl, placaAl, muestrasAl, f_inicioAl, h_inicioAl, f_finalAl, h_finalAl, promedioAl ,operadorAl, dniAl,id_placaAl, estadoAl,N_corridaAl;
     String F, H, AN_placaF,AN_placaI;
     String CAl_fhi, CAl_fhf;
     Button Ainiciar,Afinalizar;
@@ -93,7 +93,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
         chAyer = findViewById(R.id.chAyer);
         ListAlicuotado = findViewById(R.id.ListAlicuotado);
         AN_corrida = findViewById(R.id.AN_corrida);
-        Acorrida  =findViewById( R.id.Acorrida);
+
 
         Afinalizar.setEnabled(false);
 
@@ -164,7 +164,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
 
     private void llenarspinnerAl(){
 
-        String url = "http://10.50.1.184/laboratorio/Placas/spPlacaAl.php?fechaP="+dayer;
+        String url = "http://192.168.1.24/laboratorio/Placas/spPlacaAl.php?fechaP="+dayer;
         placaA.post(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -200,7 +200,6 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
                     Aid_placaSp.setText(Pls.get(position).getId_placa());
                     AN_placaI = Pls.get(position).getN_placa();
                     AN_corrida.setText(Pls.get(position).getN_corrida());
-                    Acorrida.setText(Pls.get(position).getN_corrida());
                     Af_inicio.setText(F);
                     Ah_inicio.setText(H);
                     Af_final.setText(F);
@@ -222,7 +221,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
 
     private void llsOpeA (){
 
-        String urlOpeA = "http://10.50.1.184/laboratorio/Operador/SpOperador.php";
+        String urlOpeA = "http://192.168.1.24/laboratorio/Operador/SpOperador.php";
         operadorA.post(urlOpeA, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -295,6 +294,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
 
         idAl = alicuotadoResponse.getId_alicuotado();
         placaAl = alicuotadoResponse.getN_placa();
+        N_corridaAl = alicuotadoResponse.getN_corrida();
         id_placaAl = alicuotadoResponse.getId_placa();
         muestrasAl = alicuotadoResponse.getQ_muestras();
         f_inicioAl = alicuotadoResponse.getF_inicio();
@@ -310,6 +310,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
         AN_placaF = placaAl;
         CAl_fhi = alicuotadoResponse.getF_inicio()+" "+alicuotadoResponse.getH_inicio();
 
+        if (N_corridaAl == null){ AN_corrida.setText("Vacio"); }else { AN_corrida.setText(N_corridaAl); }
         if (muestrasAl == null){ Aq_muestras.setText("Vacio"); }else { Aq_muestras.setText(muestrasAl); }
         if(f_inicioAl == null){ Af_inicio.setText(F); }else { Af_inicio.setText(f_inicioAl); }
         if(h_inicioAl == null){Ah_inicio.setText(H);} else {Ah_inicio.setText(h_inicioAl);}
