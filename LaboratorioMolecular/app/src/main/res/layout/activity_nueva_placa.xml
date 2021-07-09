@@ -54,7 +54,8 @@
                         android:layout_weight="1"
                         android:background="@drawable/drawable_blue"
                         android:gravity="center"
-                        android:hint="Codigo Placa" />
+                        android:hint="Codigo Placa"
+                        android:inputType="textCapCharacters" />
                 </TableRow>
 
                 <TableRow

@@ -73,7 +73,7 @@
                         android:textColor="@color/white"
                         android:textSize="18sp" />
 
-                    <EditText
+                    <TextView
                         android:id="@+id/AN_corrida"
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
@@ -82,10 +82,7 @@
                         android:background="@drawable/drawable_blue"
                         android:ems="10"
                         android:gravity="center"
-                        android:hint="Cantidad de Muestras"
-                        android:inputType="number"
-                        android:maxLength="4"
-                        android:textCursorDrawable="@null" />
+                        android:maxLength="4"/>
                 </TableRow>
 
                 <TableRow
