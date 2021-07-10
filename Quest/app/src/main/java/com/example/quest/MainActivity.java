@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     String p1,p2,p3,p4,p5,p6,lugares;
     ImageView fondo;
     Animation transparencia;
-    int dia,mes,año;
+    int dia,mes,year;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -153,8 +153,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         Enviar.setOnClickListener(v -> confirmar());
-
-
+        
 
     }
 
@@ -211,8 +210,8 @@ public class MainActivity extends AppCompatActivity {
             }, error -> Toast.makeText(getApplicationContext(), "Error al Enviar los Datos", Toast.LENGTH_SHORT).show()){
                 
                 @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
-                    Map<String, String> parametros = new HashMap<String, String>();
+                protected Map<String, String> getParams() {
+                    Map<String, String> parametros = new HashMap<>();
                     parametros.put("fecha", fecha.getText().toString());
                     parametros.put("hora", hora.getText().toString());
                     parametros.put("lugar", lugares);
@@ -237,7 +236,7 @@ public class MainActivity extends AppCompatActivity {
         final Calendar calendar = Calendar.getInstance();
         dia =calendar.get(Calendar.DAY_OF_MONTH);
         mes= calendar.get(Calendar.MONTH);
-        año = calendar.get(Calendar.YEAR);
+        year = calendar.get(Calendar.YEAR);
         @SuppressLint("SimpleDateFormat") Format formatter = new SimpleDateFormat("yyyy-MM-dd");
         //Format formatter = new SimpleDateFormat("yyyy-MM-dd");
         String s = formatter.format(calendar.getTime());
