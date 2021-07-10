@@ -18,7 +18,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
@@ -148,12 +147,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
         lugares=Lugar.getText().toString();
-
         fecha();
-
-
         Enviar.setOnClickListener(v -> confirmar());
-        
+
 
     }
 
@@ -162,7 +158,6 @@ public class MainActivity extends AppCompatActivity {
         opcion.setMessage("Enviar los Datos?");
         opcion.setPositiveButton("Enviar", (dialog, which) ->
                 enviar("http://190.119.144.250:83/encuesta/ocupacional/insertarOcupacional.php"));
-        //http://190.119.144.250:83/encuesta/insertarEncuesta.php
         opcion.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
 
         AlertDialog dialog = opcion.create();
