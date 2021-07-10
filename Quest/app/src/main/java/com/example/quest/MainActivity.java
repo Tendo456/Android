@@ -247,7 +247,5 @@ public class MainActivity extends AppCompatActivity {
         hora.setText(ho);
     }
 
-
-
 }
 
