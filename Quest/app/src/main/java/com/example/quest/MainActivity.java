@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         hora = findViewById(R.id.hora);
 
         fondo.setAnimation(transparencia);
-        
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.numeros, R.layout.spinner_text);
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_text);
         puntaje_1.setAdapter(adapter);
