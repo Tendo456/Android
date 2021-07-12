@@ -4,6 +4,7 @@
     package="com.example.quest">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -14,7 +15,7 @@
         android:theme="@style/Theme.Quest"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".carga"></activity>
+        <activity android:name=".carga" />
         <activity android:name=".Mensaje" />
         <activity android:name=".inicio">
             <intent-filter>

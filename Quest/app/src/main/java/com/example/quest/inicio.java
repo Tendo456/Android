@@ -43,7 +43,7 @@ public class inicio extends AppCompatActivity {
     }
 
     private void continuar (){
-        Intent intent = new Intent(inicio.this, MainActivity.class);
+        Intent intent = new Intent(inicio.this, carga.class);
         startActivity(intent);
         finish();
     }
