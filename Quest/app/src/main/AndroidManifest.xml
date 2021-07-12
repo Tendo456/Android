@@ -14,7 +14,8 @@
         android:theme="@style/Theme.Quest"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".Mensaje"/>
+        <activity android:name=".carga"></activity>
+        <activity android:name=".Mensaje" />
         <activity android:name=".inicio">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +25,5 @@
         </activity>
         <activity android:name=".MainActivity" />
     </application>
-
-
 
 </manifest>
