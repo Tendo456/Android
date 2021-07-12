@@ -71,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 p1 = parent.getItemAtPosition(position).toString();
-
             }
 
             @Override
