@@ -2,6 +2,8 @@ package com.example.quest;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -22,6 +24,11 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.novoda.merlin.Bindable;
+import com.novoda.merlin.Connectable;
+import com.novoda.merlin.Disconnectable;
+import com.novoda.merlin.Merlin;
+import com.novoda.merlin.NetworkStatus;
 
 import java.text.Format;
 import java.text.SimpleDateFormat;
@@ -30,8 +37,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Connectable, Disconnectable, Bindable {
 
+    private Merlin merlin;
     Spinner puntaje_1,puntaje_2,puntaje_3,puntaje_4,puntaje_5,puntaje_6;
     TextView resp7,resp8,fecha,hora,Lugar;
     Button Enviar;
@@ -61,6 +69,15 @@ public class MainActivity extends AppCompatActivity {
         Enviar = findViewById(R.id.Enviar);
         fondo = findViewById(R.id.fondo);
         hora = findViewById(R.id.hora);
+
+        merlin = new Merlin.Builder().withConnectableCallbacks()
+                .withDisconnectableCallbacks()
+                .withBindableCallbacks()
+                .build(this);
+
+        merlin.registerBindable(this);
+        merlin.registerConnectable(this);
+        merlin.registerDisconnectable(this);
 
         fondo.setAnimation(transparencia);
 
@@ -245,5 +262,49 @@ public class MainActivity extends AppCompatActivity {
         hora.setText(ho);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(merlin != null){
+            merlin.bind();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(merlin != null){
+            merlin.unbind();
+        }
+    }
+
+    @Override
+    public void onBind(NetworkStatus networkStatus) {
+        if(!networkStatus.isAvailable()){
+            onDisconnect();
+        }
+    }
+
+    @Override
+    public void onConnect() {
+        Toast toast = Toast.makeText(this,"En Linea",Toast.LENGTH_SHORT);
+        View view = toast.getView();
+        TextView text = view.findViewById(android.R.id.message);
+        text.setTextColor(Color.WHITE);
+        view.getBackground().setColorFilter(Color.parseColor("#669933"), PorterDuff.Mode.SRC_IN);
+        toast.show();
+    }
+
+    @Override
+    public void onDisconnect() {
+        runOnUiThread(() -> {
+            Toast toast = Toast.makeText(this,"Fuera de Linea",Toast.LENGTH_SHORT);
+            View view = toast.getView();
+            TextView text = view.findViewById(android.R.id.message);
+            text.setTextColor(Color.WHITE);
+            view.getBackground().setColorFilter(Color.parseColor("#B71C1C"), PorterDuff.Mode.SRC_IN);
+            toast.show();
+        });
+    }
 }
 

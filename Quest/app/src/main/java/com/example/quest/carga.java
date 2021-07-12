@@ -2,7 +2,11 @@ package com.example.quest;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.novoda.merlin.Bindable;
@@ -56,7 +60,12 @@ public class carga extends AppCompatActivity implements Connectable, Disconnecta
 
     @Override
     public void onConnect() {
-        Toast.makeText(this,"En Linea",Toast.LENGTH_SHORT).show();
+        Toast toast = Toast.makeText(this,"En Linea",Toast.LENGTH_SHORT);
+        View view = toast.getView();
+        TextView text = view.findViewById(android.R.id.message);
+        text.setTextColor(Color.WHITE);
+        view.getBackground().setColorFilter(Color.parseColor("#669933"), PorterDuff.Mode.SRC_IN);
+        toast.show();
     }
 
     @Override
