@@ -287,7 +287,7 @@ public class MainActivity extends AppCompatActivity implements Connectable, Disc
 
     @Override
     public void onConnect() {
-        Toast toast = Toast.makeText(this,"En Linea",Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(this,"En Linea ✓",Toast.LENGTH_SHORT);
         View view = toast.getView();
         TextView text = view.findViewById(android.R.id.message);
         text.setTextColor(Color.WHITE);
