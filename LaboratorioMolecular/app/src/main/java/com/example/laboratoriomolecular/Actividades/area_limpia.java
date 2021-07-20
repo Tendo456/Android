@@ -158,7 +158,7 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
     }
 
     private void llenarspinnerAr(){
-        String url = "http://190.119.144.250:83/laboratorio/Placas/spPlacaAr.php?fechaP="+dayerAr;
+        String url = "http://10.50.1.184/laboratorio/Placas/spPlacaAr.php?fechaP="+dayerAr;
         placaAre.post(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -183,7 +183,7 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
                 spP.setId_placa(PlacaArray.getJSONObject(i).getString("id_placa"));
                 spP.setN_placa(PlacaArray.getJSONObject(i).getString("N_placa"));
                 spP.setN_corrida(PlacaArray.getJSONObject(i).getString("N_corrida"));
-                spP.setQ_muestras(PlacaArray.getJSONObject(i).getString("q_muestras"));
+                spP.setQ_muestrasP(PlacaArray.getJSONObject(i).getString("q_muestrasP"));
                 spP.setFechaP(PlacaArray.getJSONObject(i).getString("fechaP"));
                 plAr.add(spP);
             }
@@ -195,7 +195,7 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
                     Arid_placaSp.setText(plAr.get(position).getId_placa());
                     ArN_placaI = plAr.get(position).getN_placa();
                     ArN_corrida.setText(plAr.get(position).getN_corrida());
-                    Arq_muestras.setText(plAr.get(position).getQ_muestras());
+                    Arq_muestras.setText(plAr.get(position).getQ_muestrasP());
                     Arf_inicio.setText(ArF);
                     Arh_inicio.setText(ArH);
                     Arf_final.setText(ArF);
@@ -216,7 +216,7 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
 
     private void llsOpeA (){
 
-        String urlOpeA = "http://190.119.144.250:83/laboratorio/Operador/SpOperador.php";
+        String urlOpeA = "http://10.50.1.184/laboratorio/Operador/SpOperador.php";
         operadorAre.post(urlOpeA, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {

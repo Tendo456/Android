@@ -160,7 +160,7 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
     }
 
     private void llenarspinnerAm(){
-        String url = "http://190.119.144.250:83/laboratorio/Placas/spPlacaAm.php?fechaP="+dayerAm;
+        String url = "http://10.50.1.184/laboratorio/Placas/spPlacaAm.php?fechaP="+dayerAm;
         placasAmp.post(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -185,7 +185,7 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
                 spAm.setId_placa(PlacaArray.getJSONObject(i).getString("id_placa"));
                 spAm.setN_placa(PlacaArray.getJSONObject(i).getString("N_placa"));
                 spAm.setN_corrida(PlacaArray.getJSONObject(i).getString("N_corrida"));
-                spAm.setQ_muestras(PlacaArray.getJSONObject(i).getString("q_muestras"));
+                spAm.setQ_muestrasP(PlacaArray.getJSONObject(i).getString("q_muestrasP"));
                 spAm.setFechaP(PlacaArray.getJSONObject(i).getString("fechaP"));
                 spAmp.add(spAm);
             }
@@ -197,7 +197,7 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
                     Amid_placaSp.setText(spAmp.get(position).getId_placa());
                     AmN_placaI = spAmp.get(position).getN_placa();
                     AmN_corrida.setText(spAmp.get(position).getN_corrida());
-                    Amq_muestras.setText(spAmp.get(position).getQ_muestras());
+                    Amq_muestras.setText(spAmp.get(position).getQ_muestrasP());
                     Amf_inicio.setText(AmF);
                     Amh_inicio.setText(AmH);
                     Amf_final.setText(AmF);
@@ -218,7 +218,7 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
 
     private void llsOpeAmp (){
 
-        String urlOpeA = "http://190.119.144.250:83/laboratorio/Operador/SpOperador.php";
+        String urlOpeA = "http://10.50.1.184/laboratorio/Operador/SpOperador.php";
         operadorAmp.post(urlOpeA, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -400,7 +400,7 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
                     Toast.makeText(amplificacion.this, ""+mensaje.getMensaje()+" "+response.code(), Toast.LENGTH_SHORT).show();
                     conseguirAm();
                     limpiarAmplificacion();
-                    Amfecha();
+                    //Amfecha();
                 } else {
                     Toast.makeText(amplificacion.this, "Error al Guardar los Datos "+response.code(), Toast.LENGTH_SHORT).show();
                 }

@@ -293,28 +293,36 @@
                 android:id="@+id/Aid_placaSp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="Placa Spinner"
+                android:textSize="8sp"
                 android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/Aid_placa"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="Placa Lista"
+                android:textSize="8sp"
                 android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/Aoperador"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="operador"
+                android:textSize="8sp"
                 android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/Apromedio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="promedio"
+                android:textSize="8sp"
                 android:visibility="invisible" />
 
         </LinearLayout>

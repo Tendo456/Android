@@ -58,7 +58,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
     Button Exiniciar,Exfinalizar;
     RecyclerView ListaExtraccion;
     String idEx, placaEx, q_muestrasEx, f_inicioEx, h_inicioEx, f_finalEx, h_finalEx, promedioEx ,operadorEx, dniEx,id_placaEx, estadoEx, N_corridaEx;
-    String ExF,ExH,ExN_placa,dayerEx;
+    String ExF,ExH,ExN_placa,ExN_placaF,dayerEx;
     String CEx_fhi, CEx_fhf;
     ExtraccionAdapter extraccionAdapter;
     SwipeRefreshLayout Exrefresh;
@@ -151,7 +151,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
     }
 
     public void llenarspinnerEx(){
-        String url = "http://190.119.144.250:83/laboratorio/Placas/spPlacaEx.php?fechaP="+dayerEx;
+        String url = "http://10.50.1.184/laboratorio/Placas/spPlacaEx.php?fechaP="+dayerEx;
         placasExt.post(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -176,7 +176,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
                 spP.setId_placa(PlacaArray.getJSONObject(i).getString("id_placa"));
                 spP.setN_placa(PlacaArray.getJSONObject(i).getString("N_placa"));
                 spP.setN_corrida(PlacaArray.getJSONObject(i).getString("N_corrida"));
-                spP.setQ_muestras(PlacaArray.getJSONObject(i).getString("q_muestras"));
+                spP.setQ_muestrasP(PlacaArray.getJSONObject(i).getString("q_muestrasP"));
                 spP.setFechaP(PlacaArray.getJSONObject(i).getString("fechaP"));
                 plEx.add(spP);
             }
@@ -188,7 +188,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
                     Exid_placaSp.setText(plEx.get(position).getId_placa());
                     ExN_placa = plEx.get(position).getN_placa();
                     ExN_corrida.setText(plEx.get(position).getN_corrida());
-                    Exq_muestras.setText(plEx.get(position).getQ_muestras());
+                    Exq_muestras.setText(plEx.get(position).getQ_muestrasP());
                     Exf_inicio.setText(ExF);
                     Exh_inicio.setText(ExH);
                     Exf_final.setText(ExF);
@@ -209,7 +209,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
 
     private void llsOpeEx (){
 
-        String urlOpeA = "http://190.119.144.250:83/laboratorio/Operador/SpOperador.php";
+        String urlOpeA = "http://10.50.1.184/laboratorio/Operador/SpOperador.php";
         operadorExt.post(urlOpeA, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -269,7 +269,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
 
     public void FinalizarExtraccion (){
         AlertDialog.Builder opcion = new AlertDialog.Builder(this);
-        opcion.setMessage("Finalizar Extraccion para "+ ExN_placa+"?");
+        opcion.setMessage("Finalizar Extraccion para "+ ExN_placaF+"?");
         opcion.setPositiveButton("Finalizar", (dialog, which) -> calcularPromedioEx());
         opcion.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
 
@@ -294,6 +294,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
         estadoEx = extraccionResponse.getEstadoEx();
 
         Exid_placa.setText(id_placaEx);
+        ExN_placaF=placaEx;
         CEx_fhi = extraccionResponse.getF_inicio()+" "+extraccionResponse.getH_inicio();
 
         if(N_corridaEx == null){ExN_corrida.setText("Vacio");}else {ExN_corrida.setText(N_corridaEx);}
@@ -372,7 +373,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
                     ExtraccionResponse mensaje = response.body();
                     Toast.makeText(extraccion.this, ""+mensaje.getMensaje()+" "+response.code(), Toast.LENGTH_SHORT).show();
                     conseguirEx();
-                    Exfecha();
+                    //Exfecha();
 
                 }
                 else {

@@ -4,17 +4,17 @@ public class PlacaSpinner{
 
     private String id_placa;
     private String N_placa;
-    private String q_muestras;
+    private String q_muestrasP;
     private String N_corrida;
     private String fechaP;
 
     public PlacaSpinner(){}
 
-    public PlacaSpinner(String id_placa, String q_muestras, String N_placa, String N_corrida, String fechaP){
+    public PlacaSpinner(String id_placa, String q_muestrasP, String N_placa, String N_corrida, String fechaP){
 
         this.id_placa = id_placa;
         this.N_placa = N_placa;
-        this.q_muestras = q_muestras;
+        this.q_muestrasP = q_muestrasP;
         this.N_corrida = N_corrida;
         this.fechaP = fechaP;
     }
@@ -35,12 +35,12 @@ public class PlacaSpinner{
         N_placa = n_placa;
     }
 
-    public String getQ_muestras() {
-        return q_muestras;
+    public String getQ_muestrasP() {
+        return q_muestrasP;
     }
 
-    public void setQ_muestras(String q_muestras) {
-        this.q_muestras = q_muestras;
+    public void setQ_muestrasP(String q_muestrasP) {
+        this.q_muestrasP = q_muestrasP;
     }
 
     public String getN_corrida() {

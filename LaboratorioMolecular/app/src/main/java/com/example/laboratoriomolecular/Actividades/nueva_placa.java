@@ -147,7 +147,7 @@ public class nueva_placa extends AppCompatActivity implements PlacaAdapter.Click
     }
 
     public void llenarspinnerRecep(){
-        String url = "http://190.119.144.250:83/laboratorio/Placas/spRecepcion.php?fecha="+s;
+        String url = "http://10.50.1.184/laboratorio/Placas/spRecepcion.php?fecha="+s;
         spRecepcion1.post(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
