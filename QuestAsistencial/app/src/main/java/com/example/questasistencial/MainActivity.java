@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
     TextView resp7,resp8,fecha,hora;
     Button Enviar;
     String p1,p2,p3,p4,p5,p6,lugares;
-    ImageView fondo;
+    ImageView fondo,image1,image2,image3,image4,image5;
     Animation transparencia;
     int dia,mes,año;
 
@@ -65,6 +65,11 @@ public class MainActivity extends AppCompatActivity {
         Enviar = findViewById(R.id.Enviar);
         fondo = findViewById(R.id.fondo);
         hora = findViewById(R.id.hora);
+        image1 = findViewById(R.id.image1);
+        image2 = findViewById(R.id.image2);
+        image3 = findViewById(R.id.image3);
+        image4 = findViewById(R.id.image4);
+        image5 = findViewById(R.id.image5);
 
         fondo.setAnimation(transparencia);
 
@@ -144,6 +149,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 lugares = parent.getItemAtPosition(position).toString();
+                if(lugares.equals("Expats")){
+                    image1.setImageResource(R.drawable.verybad);
+                    image2.setImageResource(R.drawable.bad);
+                    image3.setImageResource(R.drawable.fair);
+                    image4.setImageResource(R.drawable.good);
+                    image5.setImageResource(R.drawable.excellent);
+                }else {
+                    image1.setImageResource(R.drawable.muy_malo);
+                    image2.setImageResource(R.drawable.malo);
+                    image3.setImageResource(R.drawable.regular);
+                    image4.setImageResource(R.drawable.bueno);
+                    image5.setImageResource(R.drawable.muy_bueno);
+                }
 
             }
 
