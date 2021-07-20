@@ -151,7 +151,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
     }
 
     public void llenarspinnerEx(){
-        String url = "http://10.50.1.184/laboratorio/Placas/spPlacaEx.php?fechaP="+dayerEx;
+        String url = "http://190.119.144.250:83/laboratorio/Placas/spPlacaEx.php?fechaP="+dayerEx;
         placasExt.post(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -209,7 +209,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
 
     private void llsOpeEx (){
 
-        String urlOpeA = "http://10.50.1.184/laboratorio/Operador/SpOperador.php";
+        String urlOpeA = "http://190.119.144.250:83/laboratorio/Operador/SpOperador.php";
         operadorExt.post(urlOpeA, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
