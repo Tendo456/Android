@@ -400,7 +400,7 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
                     Toast.makeText(amplificacion.this, ""+mensaje.getMensaje()+" "+response.code(), Toast.LENGTH_SHORT).show();
                     conseguirAm();
                     limpiarAmplificacion();
-                    //Amfecha();
+                    Amfecha();
                 } else {
                     Toast.makeText(amplificacion.this, "Error al Guardar los Datos "+response.code(), Toast.LENGTH_SHORT).show();
                 }

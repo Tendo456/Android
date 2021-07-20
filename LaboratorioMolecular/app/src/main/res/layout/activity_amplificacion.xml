@@ -389,6 +389,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Placa Spinner"
+                android:textSize="8sp"
                 android:visibility="invisible" />
 
             <TextView
@@ -397,6 +398,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Placa Lista"
+                android:textSize="8sp"
                 android:visibility="invisible" />
 
             <TextView
@@ -405,6 +407,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="operador"
+                android:textSize="8sp"
                 android:visibility="invisible" />
 
             <TextView
@@ -413,6 +416,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="promedio"
+                android:textSize="8sp"
                 android:visibility="invisible" />
 
         </LinearLayout>

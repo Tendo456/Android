@@ -226,6 +226,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="id_Resultado"
+                android:textSize="8sp"
                 android:visibility="invisible" />
 
             <TextView
@@ -235,6 +236,7 @@
                 android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:text="corrida"
+                android:textSize="8sp"
                 android:visibility="invisible" />
 
             <TextView
@@ -244,6 +246,7 @@
                 android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:text="operador"
+                android:textSize="8sp"
                 android:visibility="invisible" />
 
             <TextView
@@ -253,6 +256,7 @@
                 android:layout_margin="1dp"
                 android:layout_weight="1"
                 android:text="promedio"
+                android:textSize="8sp"
                 android:visibility="invisible" />
 
         </LinearLayout>

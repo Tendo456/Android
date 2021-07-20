@@ -373,7 +373,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
                     ExtraccionResponse mensaje = response.body();
                     Toast.makeText(extraccion.this, ""+mensaje.getMensaje()+" "+response.code(), Toast.LENGTH_SHORT).show();
                     conseguirEx();
-                    //Exfecha();
+                    Exfecha();
 
                 }
                 else {
