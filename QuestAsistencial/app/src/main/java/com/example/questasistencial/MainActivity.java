@@ -155,12 +155,16 @@ public class MainActivity extends AppCompatActivity {
                     image3.setImageResource(R.drawable.fair);
                     image4.setImageResource(R.drawable.good);
                     image5.setImageResource(R.drawable.excellent);
+                    Enviar.setText("Send");
+                    rbSi.setText("Yes");
                 }else {
                     image1.setImageResource(R.drawable.muy_malo);
                     image2.setImageResource(R.drawable.malo);
                     image3.setImageResource(R.drawable.regular);
                     image4.setImageResource(R.drawable.bueno);
                     image5.setImageResource(R.drawable.muy_bueno);
+                    Enviar.setText("Enviar");
+                    rbSi.setText("Si");
                 }
 
             }

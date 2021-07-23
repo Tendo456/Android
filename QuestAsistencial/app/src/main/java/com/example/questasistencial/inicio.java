@@ -11,11 +11,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public class inicio extends AppCompatActivity {
 
     TextView tendo, texto;
     ImageView logo;
-    Button continuar;
+    FloatingActionButton continuar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
