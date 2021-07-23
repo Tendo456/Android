@@ -20,6 +20,34 @@
         The satisfaction of our customers is very important to us, so please take a few minutes to rate our service.
     </string>
 
+    <string name="titulo">ENCUESTA DE SATISFACCIÓN</string>
+    <string name="encabezado1">Por favor califique las siguientes características</string>
+    <string name="encabezado2">Puntaje</string>
+    <string name="encabezado3">Adicionalmente, responda las siguientes preguntas</string>
+
+
+    <string name="numero1">Limpieza y comodidad de las instalaciones</string>
+    <string name="numero2">Existen medidas para la protección de la salud: el personal utiliza mascarilla y/o guantes así como adecuada y constante higiene de manos, alcohol-gel en todas las áreas, se toma la temperatura a la entrada de las instalaciones, se respeta la distancia social entre pacientes</string>
     <string name="numero3">El personal responsable de atenderlo(a) cumplió con sus expectativas, demostró dominio del tema consultado y lo(a) trató con respeto y amabilidad. <br/> <small>En caso no haya sido así, indicarlo en la pregunta N° 8.</small></string>
+    <string name="numero4">La experiencia durante su visita resultó satisfactoria.</string>
+    <string name="numero5">El personal fue abierto a responder sus preguntas y preocupaciones.</string>
+    <string name="numero6">¿Resolvimos su problema o motivo de consulta? \n \n</string>
+    <string name="numero7">Indiquenos el/los nombres de las personas que excedieron sus espectavivas de servicio</string>
+    <string name="numero8">Indiquenos si tiene alguna observación o sugerencia adicional</string>
+
+    <string name="title">CUSTOMER SATISFACTION SURVEY</string>
+    <string name="header1">Rate the following characteristics from 1 to 5*.</string>
+    <string name="header2">Score</string>
+    <string name="header3">In addition, answer the following questions</string>
+
+
+    <string name="number1">Cleanliness and comfort of the facilities</string>
+    <string name="number2">Health protection measures are in place: the staff use masks and/or gloves as well as adequate and constant hand hygiene, alcohol-gel in all areas, temperature is taken before to entrance to the facilities, social distance between patients is respected.</string>
+    <string name="number3">The staff responsible for assisting you met your expectations, demonstrated mastery of the topic consulted and treated you with respect and kindness <br/> <small>If this was not the case, please indicate it in question N° 8.</small></string>
+    <string name="number4">The experience during your visit was satisfactory.</string>
+    <string name="number5">The staff was open to answering your questions and concerns.</string>
+    <string name="number6">Did we solve your problem or reason for consultation? \n \n</string>
+    <string name="number7">Tell us the name(s) of the person(s) who exceeded your service expectations.</string>
+    <string name="number8">Please let us know if you have any additional comments or suggestions.</string>
 
 </resources>

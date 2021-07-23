@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
     Spinner puntaje_1,puntaje_2,puntaje_3,puntaje_4,puntaje_5,spLugar;
     RadioButton rbSi,rbNo;
-    TextView resp7,resp8,fecha,hora;
+    TextView resp7,resp8,fecha,hora,title,encabezado1,encabezado2,encabezado3,pregunta1,pregunta2,pregunta3,pregunta4,pregunta5,pregunta6,pregunta7,pregunta8;
     Button Enviar;
     String p1,p2,p3,p4,p5,p6,lugares;
     ImageView fondo,image1,image2,image3,image4,image5;
@@ -70,6 +70,18 @@ public class MainActivity extends AppCompatActivity {
         image3 = findViewById(R.id.image3);
         image4 = findViewById(R.id.image4);
         image5 = findViewById(R.id.image5);
+        title = findViewById(R.id.title);
+        encabezado1 = findViewById(R.id.encabezado1);
+        encabezado2 = findViewById(R.id.encabezado2);
+        encabezado3 = findViewById(R.id.encabezado3);
+        pregunta1 = findViewById(R.id.pregunta1);
+        pregunta2 = findViewById(R.id.pregunta2);
+        pregunta3 = findViewById(R.id.pregunta3);
+        pregunta4 = findViewById(R.id.pregunta4);
+        pregunta5 = findViewById(R.id.pregunta5);
+        pregunta6 = findViewById(R.id.pregunta6);
+        pregunta7 = findViewById(R.id.pregunta7);
+        pregunta8 = findViewById(R.id.pregunta8);
 
         fondo.setAnimation(transparencia);
 
@@ -157,6 +169,19 @@ public class MainActivity extends AppCompatActivity {
                     image5.setImageResource(R.drawable.excellent);
                     Enviar.setText("Send");
                     rbSi.setText("Yes");
+                    title.setText(R.string.title);
+                    encabezado1.setText(R.string.header1);
+                    encabezado2.setText(R.string.header2);
+                    encabezado3.setText(R.string.header3);
+                    pregunta1.setText(R.string.number1);
+                    pregunta2.setText(R.string.number2);
+                    pregunta3.setText(R.string.number3);
+                    pregunta4.setText(R.string.number4);
+                    pregunta5.setText(R.string.number5);
+                    pregunta6.setText(R.string.number6);
+                    pregunta7.setText(R.string.number7);
+                    pregunta8.setText(R.string.number8);
+
                 }else {
                     image1.setImageResource(R.drawable.muy_malo);
                     image2.setImageResource(R.drawable.malo);
@@ -165,6 +190,18 @@ public class MainActivity extends AppCompatActivity {
                     image5.setImageResource(R.drawable.muy_bueno);
                     Enviar.setText("Enviar");
                     rbSi.setText("Si");
+                    title.setText(R.string.titulo);
+                    encabezado1.setText(R.string.encabezado1);
+                    encabezado2.setText(R.string.encabezado2);
+                    encabezado3.setText(R.string.encabezado3);
+                    pregunta1.setText(R.string.numero1);
+                    pregunta2.setText(R.string.numero2);
+                    pregunta3.setText(R.string.numero3);
+                    pregunta4.setText(R.string.numero4);
+                    pregunta5.setText(R.string.numero5);
+                    pregunta6.setText(R.string.numero6);
+                    pregunta7.setText(R.string.numero7);
+                    pregunta8.setText(R.string.numero8);
                 }
 
             }

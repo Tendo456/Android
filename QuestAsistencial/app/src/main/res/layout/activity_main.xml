@@ -43,12 +43,12 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:gravity="center_horizontal"
-                android:text="Encuesta de Satisfacción"
+                android:text="@string/titulo"
                 android:textColor="@color/black"
                 android:textSize="30sp" />
 
@@ -150,23 +150,23 @@
                         android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/textView3"
+                        android:id="@+id/encabezado1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/drawable_cell_shape"
                         android:padding="5dp"
-                        android:text="Por favor califique las siguientes características"
+                        android:text="@string/encabezado1"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/textView4"
-                        android:layout_width="match_parent"
+                        android:id="@+id/encabezado2"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:padding="5dp"
-                        android:text="Puntaje"
+                        android:text="@string/encabezado2"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
                 </TableRow>
@@ -187,13 +187,13 @@
                         android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/textView9"
+                        android:id="@+id/pregunta1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/drawable_cell_shape"
                         android:padding="5dp"
-                        android:text="Limpieza y comodidad de las instalaciones"
+                        android:text="@string/numero1"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -223,13 +223,13 @@
                         android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/textView11"
+                        android:id="@+id/pregunta2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/drawable_cell_shape"
                         android:padding="5dp"
-                        android:text="Existen medidas para la protección de la salud: el personal utiliza mascarilla y/o guantes así como adecuada y constante higiene de manos, alcohol-gel en todas las áreas, se toma la temperatura a la entrada de las instalaciones, se respeta la distancia social entre pacientes"
+                        android:text="@string/numero2"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -259,7 +259,7 @@
                         android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/textView13"
+                        android:id="@+id/pregunta3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -295,13 +295,13 @@
                         android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/textView17"
+                        android:id="@+id/pregunta4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/drawable_cell_shape"
                         android:padding="5dp"
-                        android:text="La experiencia durante su visita resultó satisfactoria."
+                        android:text="@string/numero4"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -322,7 +322,7 @@
                     android:gravity="center_vertical">
 
                     <TextView
-                        android:id="@+id/textView20"
+                        android:id="@+id/textView13"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:padding="5dp"
@@ -331,13 +331,13 @@
                         android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/textView21"
+                        android:id="@+id/pregunta5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/drawable_cell_shape"
                         android:padding="5dp"
-                        android:text="El personal fue abierto a responder sus preguntas y preocupaciones."
+                        android:text="@string/numero5"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -359,14 +359,14 @@
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/enuciado"
+                        android:id="@+id/encabezado3"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="30dp"
                         android:layout_weight="1"
                         android:background="@color/indigo_700"
                         android:padding="5dp"
-                        android:text="Adicionalmente, responda las siguientes preguntas"
+                        android:text="@string/encabezado3"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
 
@@ -388,14 +388,14 @@
                         android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/textView23"
+                        android:id="@+id/pregunta6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/drawable_cell_shape"
                         android:gravity="center_vertical"
                         android:padding="5dp"
-                        android:text="¿Resolvimos su problema o motivo de consulta? \n \n"
+                        android:text="@string/numero6"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -440,13 +440,13 @@
                         android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/textView19"
+                        android:id="@+id/pregunta7"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/drawable_cell_shape"
                         android:padding="5dp"
-                        android:text="Indiquenos el/los nombres de las personas que excedieron sus espectavivas de servicio"
+                        android:text="@string/numero7"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -471,7 +471,7 @@
                             android:layout_height="110dp"
                             android:background="@drawable/drawable_cell_shape"
                             android:gravity="start|top"
-                            android:hint="Respuesta"
+                            android:hint="Respuesta / Answer"
                             android:inputType="textMultiLine|textPersonName"
                             android:maxLength="100"
                             android:textColor="@color/black"
@@ -497,13 +497,13 @@
                         android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/textView6"
+                        android:id="@+id/pregunta8"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/drawable_cell_shape"
                         android:padding="5dp"
-                        android:text="Indiquenos si tiene alguna observación o sugerencia adicional"
+                        android:text="@string/numero8"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -528,7 +528,7 @@
                             android:layout_height="110dp"
                             android:background="@drawable/drawable_cell_shape"
                             android:gravity="start|top"
-                            android:hint="Respuesta"
+                            android:hint="Respuesta / Answer"
                             android:inputType="textMultiLine|textPersonName"
                             android:maxLength="100"
                             android:textColor="@color/black"
