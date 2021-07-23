@@ -13,6 +13,9 @@ import android.widget.TextView;
 
 public class Mensaje extends AppCompatActivity {
 
+    TextView gracias;
+    String places;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,22 +25,27 @@ public class Mensaje extends AppCompatActivity {
         Animation animation1 = AnimationUtils.loadAnimation(this, R.anim.desplazamiento_arriba);
         Animation animation2 = AnimationUtils.loadAnimation(this, R.anim.desplazamiento_abajo);
 
-        TextView gracias = findViewById(R.id.gracias);
+        places = getIntent().getStringExtra("place");
+
+        gracias = findViewById(R.id.gracias);
         ImageView logo1 = findViewById(R.id.logo1);
         ImageView aspa = findViewById(R.id.aspa);
+
+        if(places.equals("Expats")){
+            gracias.setText("Thanks");
+        }else {
+            gracias.setText("Gracias");
+        }
 
         logo1.setAnimation(animation1);
         aspa.setAnimation(animation2);
         gracias.setAnimation(animation2);
 
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(Mensaje.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
+        new Handler().postDelayed(() -> {
+            Intent intent = new Intent(Mensaje.this, MainActivity.class);
+            startActivity(intent);
+            finish();
         }, 4000);
     }
 }

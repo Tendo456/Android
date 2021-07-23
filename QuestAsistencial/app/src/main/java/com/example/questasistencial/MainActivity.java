@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -24,6 +26,11 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.novoda.merlin.Bindable;
+import com.novoda.merlin.Connectable;
+import com.novoda.merlin.Disconnectable;
+import com.novoda.merlin.Merlin;
+import com.novoda.merlin.NetworkStatus;
 
 import java.text.Format;
 import java.text.SimpleDateFormat;
@@ -32,16 +39,17 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Connectable, Disconnectable, Bindable {
 
     Spinner puntaje_1,puntaje_2,puntaje_3,puntaje_4,puntaje_5,spLugar;
     RadioButton rbSi,rbNo;
     TextView resp7,resp8,fecha,hora,title,encabezado1,encabezado2,encabezado3,pregunta1,pregunta2,pregunta3,pregunta4,pregunta5,pregunta6,pregunta7,pregunta8;
     Button Enviar;
-    String p1,p2,p3,p4,p5,p6,lugares;
+    String p1,p2,p3,p4,p5,p6,lugares,mensaje1,mensaje2,obligatorio;
     ImageView fondo,image1,image2,image3,image4,image5;
     Animation transparencia;
     int dia,mes,año;
+    private Merlin merlin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +92,15 @@ public class MainActivity extends AppCompatActivity {
         pregunta8 = findViewById(R.id.pregunta8);
 
         fondo.setAnimation(transparencia);
+
+        merlin = new Merlin.Builder().withConnectableCallbacks()
+                .withDisconnectableCallbacks()
+                .withBindableCallbacks()
+                .build(this);
+
+        merlin.registerBindable(this);
+        merlin.registerConnectable(this);
+        merlin.registerDisconnectable(this);
 
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.numeros, R.layout.spinner_text);
@@ -181,6 +198,10 @@ public class MainActivity extends AppCompatActivity {
                     pregunta6.setText(R.string.number6);
                     pregunta7.setText(R.string.number7);
                     pregunta8.setText(R.string.number8);
+                    Enviar.setOnClickListener(v -> confirm());
+                    mensaje1 = getText(R.string.message1).toString();
+                    mensaje2 = getText(R.string.message2).toString();
+                    obligatorio = getText(R.string.required).toString();
 
                 }else {
                     image1.setImageResource(R.drawable.muy_malo);
@@ -202,6 +223,10 @@ public class MainActivity extends AppCompatActivity {
                     pregunta6.setText(R.string.numero6);
                     pregunta7.setText(R.string.numero7);
                     pregunta8.setText(R.string.numero8);
+                    Enviar.setOnClickListener(v -> confirmar());
+                    mensaje1 = getText(R.string.mensaje1).toString();
+                    mensaje2 = getText(R.string.mensaje2).toString();
+                    obligatorio = getText(R.string.obligatorio).toString();
                 }
 
             }
@@ -213,8 +238,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
         fecha();
-
-        Enviar.setOnClickListener(v -> confirmar());
 
         pre6();
         rbSi.setOnClickListener(v -> pre6());
@@ -233,11 +256,23 @@ public class MainActivity extends AppCompatActivity {
 
     public void confirmar(){
         AlertDialog.Builder opcion = new AlertDialog.Builder(this);
-        opcion.setMessage("Enviar los Datos?");
+        opcion.setMessage("Enviar Respuestas?");
         opcion.setPositiveButton("Enviar", (dialog, which) ->
                 enviar("http://190.119.144.250:83/encuesta/asistencial/insertarAsistencial.php"));
         //http://190.119.144.250:83/encuesta/insertarEncuesta.php
         opcion.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
+
+        AlertDialog dialog = opcion.create();
+        dialog.show();
+    }
+
+    public void confirm(){
+        AlertDialog.Builder opcion = new AlertDialog.Builder(this);
+        opcion.setMessage("Send Answers?");
+        opcion.setPositiveButton("Send", (dialog, which) ->
+                enviar("http://190.119.144.250:83/encuesta/asistencial/insertarAsistencial.php"));
+        //http://190.119.144.250:83/encuesta/insertarEncuesta.php
+        opcion.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
 
         AlertDialog dialog = opcion.create();
         dialog.show();
@@ -249,39 +284,52 @@ public class MainActivity extends AppCompatActivity {
         hora();
 
         if (p1.equals("0")) {
-            Toast.makeText(getApplicationContext(), "Preguntas del 1 al 6 obligatorias", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), obligatorio, Toast.LENGTH_SHORT).show();
         }
 
         else if (p2.equals("0")) {
-            Toast.makeText(getApplicationContext(), "Preguntas del 1 al 6 obligatorias", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), obligatorio, Toast.LENGTH_SHORT).show();
         }
 
         else if (p3.equals("0")) {
-            Toast.makeText(getApplicationContext(), "Preguntas del 1 al 6 obligatorias", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), obligatorio, Toast.LENGTH_SHORT).show();
         }
 
         else if (p4.equals("0")) {
-            Toast.makeText(getApplicationContext(), "Preguntas del 1 al 6 obligatorias", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), obligatorio, Toast.LENGTH_SHORT).show();
         }
 
         else if (p5.equals("0")) {
-            Toast.makeText(getApplicationContext(), "Preguntas del 1 al 6 obligatorias", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), obligatorio, Toast.LENGTH_SHORT).show();
         }
 
 
         else {
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, response -> {
-                Toast.makeText(getApplicationContext(), "Procesando Respuestas", Toast.LENGTH_SHORT).show();
+
+                Toast toast = Toast.makeText(this,mensaje1,Toast.LENGTH_SHORT);
+                View view = toast.getView();
+                TextView text = view.findViewById(android.R.id.message);
+                text.setTextColor(Color.WHITE);
+                view.getBackground().setColorFilter(Color.parseColor("#669933"), PorterDuff.Mode.SRC_IN);
+                toast.show();
+
                 Intent intent = new Intent(MainActivity.this, Mensaje.class);
+                intent.putExtra("place",lugares);
                 startActivity(intent);
                 finish();
 
-            }, error -> Toast.makeText(getApplicationContext(), "Error al Enviar los Datos", Toast.LENGTH_SHORT).show()){
+            }, error -> {Toast toast = Toast.makeText(this,mensaje2,Toast.LENGTH_SHORT);
+                View view = toast.getView();
+                TextView text = view.findViewById(android.R.id.message);
+                text.setTextColor(Color.WHITE);
+                view.getBackground().setColorFilter(Color.parseColor("#B71C1C"), PorterDuff.Mode.SRC_IN);
+                toast.show();} ){
 
                 @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
-                    Map<String, String> parametros = new HashMap<String, String>();
+                protected Map<String, String> getParams() {
+                    Map<String, String> parametros = new HashMap<>();
                     parametros.put("fecha", fecha.getText().toString());
                     parametros.put("hora", hora.getText().toString());
                     parametros.put("lugar", lugares);
@@ -320,5 +368,51 @@ public class MainActivity extends AppCompatActivity {
         @SuppressLint("SimpleDateFormat") Format h = new SimpleDateFormat("HH:mm:ss");
         String ho = h.format(date);
         hora.setText(ho);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(merlin != null){
+            merlin.bind();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(merlin != null){
+            merlin.unbind();
+        }
+
+    }
+
+    @Override
+    public void onBind(NetworkStatus networkStatus) {
+        if(!networkStatus.isAvailable()){
+            onDisconnect();
+        }
+    }
+
+    @Override
+    public void onConnect() {
+        Toast toast = Toast.makeText(this,"En Linea ✓",Toast.LENGTH_SHORT);
+        View view = toast.getView();
+        TextView text = view.findViewById(android.R.id.message);
+        text.setTextColor(Color.WHITE);
+        view.getBackground().setColorFilter(Color.parseColor("#669933"), PorterDuff.Mode.SRC_IN);
+        toast.show();
+    }
+
+    @Override
+    public void onDisconnect() {
+        runOnUiThread(() -> {
+            Toast toast = Toast.makeText(this,"Fuera de Linea",Toast.LENGTH_SHORT);
+            View view = toast.getView();
+            TextView text = view.findViewById(android.R.id.message);
+            text.setTextColor(Color.WHITE);
+            view.getBackground().setColorFilter(Color.parseColor("#B71C1C"), PorterDuff.Mode.SRC_IN);
+            toast.show();
+        });
     }
 }

@@ -32,12 +32,15 @@
     <string name="numero4">La experiencia durante su visita resultó satisfactoria.</string>
     <string name="numero5">El personal fue abierto a responder sus preguntas y preocupaciones.</string>
     <string name="numero6">¿Resolvimos su problema o motivo de consulta? \n \n</string>
-    <string name="numero7">Indiquenos el/los nombres de las personas que excedieron sus espectavivas de servicio</string>
-    <string name="numero8">Indiquenos si tiene alguna observación o sugerencia adicional</string>
+    <string name="numero7">Indiquenos el/los nombres de las personas que excedieron sus espectavivas de servicio.</string>
+    <string name="numero8">Indiquenos si tiene alguna observación o sugerencia adicional.</string>
+    <string name="mensaje1">Procesando Respuestas.</string>
+    <string name="mensaje2">Error al Enviar las Respuestas.</string>
+    <string name="obligatorio">Preguntas del 1 al 6 obligatorias.</string>
 
     <string name="title">CUSTOMER SATISFACTION SURVEY</string>
     <string name="header1">Rate the following characteristics from 1 to 5*.</string>
-    <string name="header2">Score</string>
+    <string name="header2">Score():</string>
     <string name="header3">In addition, answer the following questions</string>
 
 
@@ -49,5 +52,8 @@
     <string name="number6">Did we solve your problem or reason for consultation? \n \n</string>
     <string name="number7">Tell us the name(s) of the person(s) who exceeded your service expectations.</string>
     <string name="number8">Please let us know if you have any additional comments or suggestions.</string>
+    <string name="message1">Processing Answers</string>
+    <string name="message2">Error Submitting Responses</string>
+    <string name="required">Questions 1 to 6 are required</string>
 
 </resources>

@@ -15,7 +15,6 @@
         android:theme="@style/Theme.Quest"
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
-        <activity android:name=".carga" />
         <activity android:name=".Mensaje" />
         <activity android:name=".inicio">
             <intent-filter>
