@@ -1,3 +1,38 @@
 <resources>
     <string name="app_name">Laboratorio</string>
+    <string name="Formularios_title">Selección de Procedimiento</string>
+    <string name="Recepcion_title">Recepción</string>
+    <string name="RecepcionD_title">Detalles</string>
+    <string name="Nueva_placa_title">Nueva Placa</string>
+    <string name="Nueva_placaD_title">Detalles</string>
+    <string name="Alicuotado_title">Alicuotado</string>
+    <string name="Extraccion_title">Extracción</string>
+    <string name="Area_title">Área Limpia</string>
+    <string name="Amplificacion_title">Amplificación</string>
+    <string name="Resultados_title">Resultados</string>
+
+    <string name="mas">Más</string>
+    <string name="recepcion">Recepción</string>
+    <string name="alicuotado">Alicuotado</string>
+    <string name="extraccion">Extracción</string>
+    <string name="area">Area Limpia</string>
+    <string name="amplificacion">Amplificación</string>
+    <string name="resultados">Resultados</string>
+
+    <string-array name="procesos">
+        <item>Recepción</item>
+        <item>Alicuotado</item>
+        <item>Extracción</item>
+        <item>Area Limpia</item>
+        <item>Amplificación</item>
+        <item>Rersultados</item>
+    </string-array>
+
+    <string-array name="numeros">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
 </resources>

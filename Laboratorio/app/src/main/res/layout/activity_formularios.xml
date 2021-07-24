@@ -6,4 +6,99 @@
     android:layout_height="match_parent"
     tools:context=".Actividades.Formularios">
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/imageView4"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/background_bubble"
+        app:lottie_colorFilter="@color/indigo_700"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/FRecepcion"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:drawableLeft="@drawable/ic_gotero"
+            android:drawableRight="@drawable/ic_recepcion"
+            android:text="RECEPCION" />
+
+        <Button
+            android:id="@+id/FPlaca"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:drawableLeft="@drawable/ic_gotero"
+            android:drawableRight="@drawable/ic_recepcion"
+            android:text="Nueva Placa" />
+
+        <Button
+            android:id="@+id/FAlicuotado"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:drawableLeft="@drawable/ic_gotero"
+            android:drawableRight="@drawable/ic_recepcion"
+            android:text="ALICUOTADO" />
+
+        <Button
+            android:id="@+id/FExtraccion"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:drawableLeft="@drawable/ic_gotero"
+            android:drawableRight="@drawable/ic_recepcion"
+            android:text="EXTRACCION" />
+
+        <Button
+            android:id="@+id/FArea"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:drawableLeft="@drawable/ic_gotero"
+            android:drawableRight="@drawable/ic_recepcion"
+            android:text="AREA LIMPIA" />
+
+        <Button
+            android:id="@+id/FAmplificacion"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:drawableLeft="@drawable/ic_gotero"
+            android:drawableRight="@drawable/ic_recepcion"
+            android:text="AMPLIFICACION" />
+
+        <Button
+            android:id="@+id/FResultados"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:drawableLeft="@drawable/ic_gotero"
+            android:drawableRight="@drawable/ic_recepcion"
+            android:text="RESULTADOS" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
