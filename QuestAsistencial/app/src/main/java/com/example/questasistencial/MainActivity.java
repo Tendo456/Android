@@ -267,7 +267,7 @@ public class MainActivity extends AppCompatActivity implements Connectable, Disc
 
     public void confirm(){
         AlertDialog.Builder opcion = new AlertDialog.Builder(this);
-        opcion.setMessage("Send Answers?");
+        opcion.setMessage("Send Replay?");
         opcion.setPositiveButton("Send", (dialog, which) ->
                 enviar("http://190.119.144.250:83/encuesta/asistencial/insertarAsistencial.php"));
         opcion.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());

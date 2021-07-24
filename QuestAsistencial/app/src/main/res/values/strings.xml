@@ -52,8 +52,8 @@
     <string name="number6">Did we solve your problem or reason for consultation? \n \n</string>
     <string name="number7">Tell us the name(s) of the person(s) who exceeded your service expectations.</string>
     <string name="number8">Please let us know if you have any additional comments or suggestions.</string>
-    <string name="message1">Processing Answers</string>
-    <string name="message2">Error Submitting Responses</string>
-    <string name="required">Questions 1 to 6 are required</string>
+    <string name="message1">Processing</string>
+    <string name="message2">Error to send replay</string>
+    <string name="required">Questions 1 to 6 are mandatory.</string>
 
 </resources>
