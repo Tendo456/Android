@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Quest Asistencial</string>
+    <string name="app_name">Encuesta Asistencial</string>
 
     <string-array name="numeros">
         <item>0</item>

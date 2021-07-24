@@ -170,7 +170,7 @@ public class MainActivity extends AppCompatActivity implements Connectable, Disc
 
     public void confirmar(){
         AlertDialog.Builder opcion = new AlertDialog.Builder(this);
-        opcion.setMessage("Enviar los Datos?");
+        opcion.setMessage("Enviar las Respuestas?");
         opcion.setPositiveButton("Enviar", (dialog, which) ->
                 enviar("http://190.119.144.250:83/encuesta/ocupacional/insertarOcupacional.php"));
         opcion.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
@@ -185,39 +185,81 @@ public class MainActivity extends AppCompatActivity implements Connectable, Disc
         hora();
 
         if (p1.equals("0")) {
-            Toast.makeText(getApplicationContext(), "Preguntas del 1 al 6 obligatorias", Toast.LENGTH_SHORT).show();
+            Toast toast = Toast.makeText(this,"Preguntas del 1 al 6 obligatorias",Toast.LENGTH_SHORT);
+            View view = toast.getView();
+            TextView text = view.findViewById(android.R.id.message);
+            text.setTextColor(Color.WHITE);
+            view.getBackground().setColorFilter(Color.parseColor("#B71C1C"), PorterDuff.Mode.SRC_IN);
+            toast.show();
         }
 
         else if (p2.equals("0")) {
-            Toast.makeText(getApplicationContext(), "Preguntas del 1 al 6 obligatorias", Toast.LENGTH_SHORT).show();
+            Toast toast = Toast.makeText(this,"Preguntas del 1 al 6 obligatorias",Toast.LENGTH_SHORT);
+            View view = toast.getView();
+            TextView text = view.findViewById(android.R.id.message);
+            text.setTextColor(Color.WHITE);
+            view.getBackground().setColorFilter(Color.parseColor("#B71C1C"), PorterDuff.Mode.SRC_IN);
+            toast.show();
         }
 
         else if (p3.equals("0")) {
-            Toast.makeText(getApplicationContext(), "Preguntas del 1 al 6 obligatorias", Toast.LENGTH_SHORT).show();
+            Toast toast = Toast.makeText(this,"Preguntas del 1 al 6 obligatorias",Toast.LENGTH_SHORT);
+            View view = toast.getView();
+            TextView text = view.findViewById(android.R.id.message);
+            text.setTextColor(Color.WHITE);
+            view.getBackground().setColorFilter(Color.parseColor("#B71C1C"), PorterDuff.Mode.SRC_IN);
+            toast.show();
         }
 
         else if (p4.equals("0")) {
-            Toast.makeText(getApplicationContext(), "Preguntas del 1 al 6 obligatorias", Toast.LENGTH_SHORT).show();
+            Toast toast = Toast.makeText(this,"Preguntas del 1 al 6 obligatorias",Toast.LENGTH_SHORT);
+            View view = toast.getView();
+            TextView text = view.findViewById(android.R.id.message);
+            text.setTextColor(Color.WHITE);
+            view.getBackground().setColorFilter(Color.parseColor("#B71C1C"), PorterDuff.Mode.SRC_IN);
+            toast.show();
         }
 
         else if (p5.equals("0")) {
-            Toast.makeText(getApplicationContext(), "Preguntas del 1 al 6 obligatorias", Toast.LENGTH_SHORT).show();
+            Toast toast = Toast.makeText(this,"Preguntas del 1 al 6 obligatorias",Toast.LENGTH_SHORT);
+            View view = toast.getView();
+            TextView text = view.findViewById(android.R.id.message);
+            text.setTextColor(Color.WHITE);
+            view.getBackground().setColorFilter(Color.parseColor("#B71C1C"), PorterDuff.Mode.SRC_IN);
+            toast.show();
         }
 
         else if (p6.equals("0")) {
-            Toast.makeText(getApplicationContext(), "Preguntas del 1 al 6 obligatorias", Toast.LENGTH_SHORT).show();
+            Toast toast = Toast.makeText(this,"Preguntas del 1 al 6 obligatorias",Toast.LENGTH_SHORT);
+            View view = toast.getView();
+            TextView text = view.findViewById(android.R.id.message);
+            text.setTextColor(Color.WHITE);
+            view.getBackground().setColorFilter(Color.parseColor("#B71C1C"), PorterDuff.Mode.SRC_IN);
+            toast.show();
         }
 
 
         else {
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, response -> {
-                Toast.makeText(getApplicationContext(), "Procesando Respuestas", Toast.LENGTH_SHORT).show();
+
+                Toast toast = Toast.makeText(this,"Procesando Respuestas.",Toast.LENGTH_SHORT);
+                View view = toast.getView();
+                TextView text = view.findViewById(android.R.id.message);
+                text.setTextColor(Color.WHITE);
+                view.getBackground().setColorFilter(Color.parseColor("#669933"), PorterDuff.Mode.SRC_IN);
+                toast.show();
+
                 Intent intent = new Intent(MainActivity.this, Mensaje.class);
                 startActivity(intent);
                 finish();
 
-            }, error -> Toast.makeText(getApplicationContext(), "Error al Enviar los Datos", Toast.LENGTH_SHORT).show()){
+            }, error -> {Toast toast = Toast.makeText(this,"Error al Enviar las Respuestas.",Toast.LENGTH_SHORT);
+                View view = toast.getView();
+                TextView text = view.findViewById(android.R.id.message);
+                text.setTextColor(Color.WHITE);
+                view.getBackground().setColorFilter(Color.parseColor("#B71C1C"), PorterDuff.Mode.SRC_IN);
+                toast.show();}){
                 
                 @Override
                 protected Map<String, String> getParams() {
@@ -287,7 +329,7 @@ public class MainActivity extends AppCompatActivity implements Connectable, Disc
 
     @Override
     public void onConnect() {
-        Toast toast = Toast.makeText(this,"En Linea ✓",Toast.LENGTH_SHORT);
+        Toast toast = Toast.makeText(this,"Conexión a Internet ✓",Toast.LENGTH_SHORT);
         View view = toast.getView();
         TextView text = view.findViewById(android.R.id.message);
         text.setTextColor(Color.WHITE);
@@ -298,7 +340,7 @@ public class MainActivity extends AppCompatActivity implements Connectable, Disc
     @Override
     public void onDisconnect() {
         runOnUiThread(() -> {
-            Toast toast = Toast.makeText(this,"Fuera de Linea",Toast.LENGTH_SHORT);
+            Toast toast = Toast.makeText(this,"Sin Conexión a Internet X",Toast.LENGTH_SHORT);
             View view = toast.getView();
             TextView text = view.findViewById(android.R.id.message);
             text.setTextColor(Color.WHITE);
