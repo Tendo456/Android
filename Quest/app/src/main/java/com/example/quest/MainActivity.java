@@ -187,8 +187,8 @@ public class MainActivity extends AppCompatActivity implements Connectable, Disc
         if (p1.equals("0")) {
             Toast toast = Toast.makeText(this,"Preguntas del 1 al 6 obligatorias",Toast.LENGTH_SHORT);
             View view = toast.getView();
-            TextView text = view.findViewById(android.R.id.message);
-            text.setTextColor(Color.WHITE);
+            TextView text1 = view.findViewById(android.R.id.message);
+            text1.setTextColor(Color.WHITE);
             view.getBackground().setColorFilter(Color.parseColor("#B71C1C"), PorterDuff.Mode.SRC_IN);
             toast.show();
         }
@@ -196,8 +196,8 @@ public class MainActivity extends AppCompatActivity implements Connectable, Disc
         else if (p2.equals("0")) {
             Toast toast = Toast.makeText(this,"Preguntas del 1 al 6 obligatorias",Toast.LENGTH_SHORT);
             View view = toast.getView();
-            TextView text = view.findViewById(android.R.id.message);
-            text.setTextColor(Color.WHITE);
+            TextView text2 = view.findViewById(android.R.id.message);
+            text2.setTextColor(Color.WHITE);
             view.getBackground().setColorFilter(Color.parseColor("#B71C1C"), PorterDuff.Mode.SRC_IN);
             toast.show();
         }
@@ -205,8 +205,8 @@ public class MainActivity extends AppCompatActivity implements Connectable, Disc
         else if (p3.equals("0")) {
             Toast toast = Toast.makeText(this,"Preguntas del 1 al 6 obligatorias",Toast.LENGTH_SHORT);
             View view = toast.getView();
-            TextView text = view.findViewById(android.R.id.message);
-            text.setTextColor(Color.WHITE);
+            TextView text3 = view.findViewById(android.R.id.message);
+            text3.setTextColor(Color.WHITE);
             view.getBackground().setColorFilter(Color.parseColor("#B71C1C"), PorterDuff.Mode.SRC_IN);
             toast.show();
         }
@@ -214,8 +214,8 @@ public class MainActivity extends AppCompatActivity implements Connectable, Disc
         else if (p4.equals("0")) {
             Toast toast = Toast.makeText(this,"Preguntas del 1 al 6 obligatorias",Toast.LENGTH_SHORT);
             View view = toast.getView();
-            TextView text = view.findViewById(android.R.id.message);
-            text.setTextColor(Color.WHITE);
+            TextView text4 = view.findViewById(android.R.id.message);
+            text4.setTextColor(Color.WHITE);
             view.getBackground().setColorFilter(Color.parseColor("#B71C1C"), PorterDuff.Mode.SRC_IN);
             toast.show();
         }
@@ -223,8 +223,8 @@ public class MainActivity extends AppCompatActivity implements Connectable, Disc
         else if (p5.equals("0")) {
             Toast toast = Toast.makeText(this,"Preguntas del 1 al 6 obligatorias",Toast.LENGTH_SHORT);
             View view = toast.getView();
-            TextView text = view.findViewById(android.R.id.message);
-            text.setTextColor(Color.WHITE);
+            TextView text5 = view.findViewById(android.R.id.message);
+            text5.setTextColor(Color.WHITE);
             view.getBackground().setColorFilter(Color.parseColor("#B71C1C"), PorterDuff.Mode.SRC_IN);
             toast.show();
         }
@@ -232,8 +232,8 @@ public class MainActivity extends AppCompatActivity implements Connectable, Disc
         else if (p6.equals("0")) {
             Toast toast = Toast.makeText(this,"Preguntas del 1 al 6 obligatorias",Toast.LENGTH_SHORT);
             View view = toast.getView();
-            TextView text = view.findViewById(android.R.id.message);
-            text.setTextColor(Color.WHITE);
+            TextView text6 = view.findViewById(android.R.id.message);
+            text6.setTextColor(Color.WHITE);
             view.getBackground().setColorFilter(Color.parseColor("#B71C1C"), PorterDuff.Mode.SRC_IN);
             toast.show();
         }
@@ -245,8 +245,8 @@ public class MainActivity extends AppCompatActivity implements Connectable, Disc
 
                 Toast toast = Toast.makeText(this,"Procesando Respuestas.",Toast.LENGTH_SHORT);
                 View view = toast.getView();
-                TextView text = view.findViewById(android.R.id.message);
-                text.setTextColor(Color.WHITE);
+                TextView text7 = view.findViewById(android.R.id.message);
+                text7.setTextColor(Color.WHITE);
                 view.getBackground().setColorFilter(Color.parseColor("#669933"), PorterDuff.Mode.SRC_IN);
                 toast.show();
 
@@ -290,7 +290,6 @@ public class MainActivity extends AppCompatActivity implements Connectable, Disc
         mes= calendar.get(Calendar.MONTH);
         year = calendar.get(Calendar.YEAR);
         @SuppressLint("SimpleDateFormat") Format formatter = new SimpleDateFormat("yyyy-MM-dd");
-        //Format formatter = new SimpleDateFormat("yyyy-MM-dd");
         String s = formatter.format(calendar.getTime());
 
         fecha.setText(s);
@@ -298,7 +297,6 @@ public class MainActivity extends AppCompatActivity implements Connectable, Disc
 
     public void hora (){
         Date date = new Date();
-        //@SuppressLint("SimpleDateFormat") Format h = new SimpleDateFormat("hh:mm:ss");
         @SuppressLint("SimpleDateFormat") Format h = new SimpleDateFormat("HH:mm:ss");
         String ho = h.format(date);
         hora.setText(ho);
@@ -331,8 +329,8 @@ public class MainActivity extends AppCompatActivity implements Connectable, Disc
     public void onConnect() {
         Toast toast = Toast.makeText(this,"Conexión a Internet ✓",Toast.LENGTH_SHORT);
         View view = toast.getView();
-        TextView text = view.findViewById(android.R.id.message);
-        text.setTextColor(Color.WHITE);
+        TextView texts = view.findViewById(android.R.id.message);
+        texts.setTextColor(Color.WHITE);
         view.getBackground().setColorFilter(Color.parseColor("#669933"), PorterDuff.Mode.SRC_IN);
         toast.show();
     }
@@ -342,8 +340,8 @@ public class MainActivity extends AppCompatActivity implements Connectable, Disc
         runOnUiThread(() -> {
             Toast toast = Toast.makeText(this,"Sin Conexión a Internet X",Toast.LENGTH_SHORT);
             View view = toast.getView();
-            TextView text = view.findViewById(android.R.id.message);
-            text.setTextColor(Color.WHITE);
+            TextView texto = view.findViewById(android.R.id.message);
+            texto.setTextColor(Color.WHITE);
             view.getBackground().setColorFilter(Color.parseColor("#B71C1C"), PorterDuff.Mode.SRC_IN);
             toast.show();
         });
