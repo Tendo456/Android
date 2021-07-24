@@ -12,7 +12,7 @@
         <activity android:name=".Actividades.resultados"></activity>
         <activity android:name=".Actividades.RecepcionDetails" />
         <activity android:name=".Actividades.recepcion" />
-        <activity android:name=".Actividades.PlacaDetails" />
+        <activity android:name=".Actividades.PlacasDetails" />
         <activity android:name=".Actividades.nueva_placa" />
         <activity android:name=".Actividades.Formularios" />
         <activity android:name=".Actividades.extraccion" />

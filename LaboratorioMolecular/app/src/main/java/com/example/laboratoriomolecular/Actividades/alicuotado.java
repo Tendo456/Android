@@ -34,7 +34,6 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
-import org.json.JSONObject;
 
 import java.text.DateFormat;
 import java.text.Format;

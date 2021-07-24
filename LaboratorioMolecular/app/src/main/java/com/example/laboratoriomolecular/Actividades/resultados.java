@@ -252,8 +252,6 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
 
     }
 
-
-
     public void IniciarRes (){
         AlertDialog.Builder opcion = new AlertDialog.Builder(this);
         opcion.setMessage("Iniciar Resultados?");
