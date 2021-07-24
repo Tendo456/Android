@@ -2,9 +2,9 @@ package com.example.laboratorio.Modelos;
 
 import java.io.Serializable;
 
-public class AreaResponse implements Serializable {
+public class ExtraccionResponse implements Serializable {
 
-    private String id_area_limpia;
+    private String id_extraccion;
     private String q_muestras;
     private String f_inicio;
     private String h_inicio;
@@ -13,18 +13,18 @@ public class AreaResponse implements Serializable {
     private String promedio;
     private String operador;
     private String dni;
-    private String estadoAr;
+    private String estadoEx;
     private String id_placa;
     private String N_placa;
     private String N_corrida;
     private String mensaje;
 
-    public String getId_area_limpia() {
-        return id_area_limpia;
+    public String getId_extraccion() {
+        return id_extraccion;
     }
 
-    public void setId_area_limpia(String id_area_limpia) {
-        this.id_area_limpia = id_area_limpia;
+    public void setId_extraccion(String id_extraccion) {
+        this.id_extraccion = id_extraccion;
     }
 
     public String getQ_muestras() {
@@ -91,12 +91,12 @@ public class AreaResponse implements Serializable {
         this.dni = dni;
     }
 
-    public String getEstadoAr() {
-        return estadoAr;
+    public String getEstadoEx() {
+        return estadoEx;
     }
 
-    public void setEstadoAr(String estadoAr) {
-        this.estadoAr = estadoAr;
+    public void setEstadoEx(String estadoEx) {
+        this.estadoEx = estadoEx;
     }
 
     public String getId_placa() {
@@ -129,8 +129,8 @@ public class AreaResponse implements Serializable {
 
     @Override
     public String toString() {
-        return "AreaResponse{" +
-                "id_area_limpia='" + id_area_limpia + '\'' +
+        return "ExtraccionResponse{" +
+                "id_extraccion='" + id_extraccion + '\'' +
                 ", q_muestras='" + q_muestras + '\'' +
                 ", f_inicio='" + f_inicio + '\'' +
                 ", h_inicio='" + h_inicio + '\'' +
@@ -139,7 +139,7 @@ public class AreaResponse implements Serializable {
                 ", promedio='" + promedio + '\'' +
                 ", operador='" + operador + '\'' +
                 ", dni='" + dni + '\'' +
-                ", estadoAr='" + estadoAr + '\'' +
+                ", estadoEx='" + estadoEx + '\'' +
                 ", id_placa='" + id_placa + '\'' +
                 ", N_placa='" + N_placa + '\'' +
                 ", N_corrida='" + N_corrida + '\'' +
