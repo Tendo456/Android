@@ -8,7 +8,10 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -282,73 +285,36 @@ public class MainActivity extends AppCompatActivity implements Connectable, Disc
         hora();
 
         if (p1.equals("0")) {
-            Toast toast = Toast.makeText(this,obligatorio,Toast.LENGTH_SHORT);
-            View view = toast.getView();
-            TextView text = view.findViewById(android.R.id.message);
-            text.setTextColor(Color.WHITE);
-            view.getBackground().setColorFilter(Color.parseColor("#B71C1C"), PorterDuff.Mode.SRC_IN);
-            toast.show();
+            Toast.makeText(this,obligatorio,Toast.LENGTH_SHORT).show();
         }
 
         else if (p2.equals("0")) {
-            Toast toast = Toast.makeText(this,obligatorio,Toast.LENGTH_SHORT);
-            View view = toast.getView();
-            TextView text = view.findViewById(android.R.id.message);
-            text.setTextColor(Color.WHITE);
-            view.getBackground().setColorFilter(Color.parseColor("#B71C1C"), PorterDuff.Mode.SRC_IN);
-            toast.show();
+            Toast.makeText(this,obligatorio,Toast.LENGTH_SHORT).show();
         }
 
         else if (p3.equals("0")) {
-            Toast toast = Toast.makeText(this,obligatorio,Toast.LENGTH_SHORT);
-            View view = toast.getView();
-            TextView text = view.findViewById(android.R.id.message);
-            text.setTextColor(Color.WHITE);
-            view.getBackground().setColorFilter(Color.parseColor("#B71C1C"), PorterDuff.Mode.SRC_IN);
-            toast.show();
+            Toast.makeText(this,obligatorio,Toast.LENGTH_SHORT).show();
         }
 
         else if (p4.equals("0")) {
-            Toast toast = Toast.makeText(this,obligatorio,Toast.LENGTH_SHORT);
-            View view = toast.getView();
-            TextView text = view.findViewById(android.R.id.message);
-            text.setTextColor(Color.WHITE);
-            view.getBackground().setColorFilter(Color.parseColor("#B71C1C"), PorterDuff.Mode.SRC_IN);
-            toast.show();
+            Toast.makeText(this,obligatorio,Toast.LENGTH_SHORT).show();
         }
 
         else if (p5.equals("0")) {
-            Toast toast = Toast.makeText(this,obligatorio,Toast.LENGTH_SHORT);
-            View view = toast.getView();
-            TextView text = view.findViewById(android.R.id.message);
-            text.setTextColor(Color.WHITE);
-            view.getBackground().setColorFilter(Color.parseColor("#B71C1C"), PorterDuff.Mode.SRC_IN);
-            toast.show();
+            Toast.makeText(this,obligatorio,Toast.LENGTH_SHORT).show();
         }
 
 
         else {
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, response -> {
-
-                Toast toast = Toast.makeText(this,mensaje1,Toast.LENGTH_SHORT);
-                View view = toast.getView();
-                TextView text = view.findViewById(android.R.id.message);
-                text.setTextColor(Color.WHITE);
-                view.getBackground().setColorFilter(Color.parseColor("#669933"), PorterDuff.Mode.SRC_IN);
-                toast.show();
-
+                Toast.makeText(this,mensaje1,Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this, Mensaje.class);
                 intent.putExtra("place",lugares);
                 startActivity(intent);
                 finish();
 
-            }, error -> {Toast toast = Toast.makeText(this,mensaje2,Toast.LENGTH_SHORT);
-                View view = toast.getView();
-                TextView text = view.findViewById(android.R.id.message);
-                text.setTextColor(Color.WHITE);
-                view.getBackground().setColorFilter(Color.parseColor("#B71C1C"), PorterDuff.Mode.SRC_IN);
-                toast.show();} ){
+            }, error -> Toast.makeText(this,mensaje2,Toast.LENGTH_SHORT).show() ){
 
                 @Override
                 protected Map<String, String> getParams() {
@@ -417,23 +383,13 @@ public class MainActivity extends AppCompatActivity implements Connectable, Disc
 
     @Override
     public void onConnect() {
-        Toast toast = Toast.makeText(this,"Conexión a Internet ✓",Toast.LENGTH_SHORT);
-        View view = toast.getView();
-        TextView text = view.findViewById(android.R.id.message);
-        text.setTextColor(Color.WHITE);
-        view.getBackground().setColorFilter(Color.parseColor("#669933"), PorterDuff.Mode.SRC_IN);
-        toast.show();
+        Toast.makeText(this,"Conectado a Internet ✓",Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onDisconnect() {
         runOnUiThread(() -> {
-            Toast toast = Toast.makeText(this,"Sin Conexión a Internet X",Toast.LENGTH_SHORT);
-            View view = toast.getView();
-            TextView text = view.findViewById(android.R.id.message);
-            text.setTextColor(Color.WHITE);
-            view.getBackground().setColorFilter(Color.parseColor("#B71C1C"), PorterDuff.Mode.SRC_IN);
-            toast.show();
+            Toast.makeText(this,"SIN ACCSESO A INTERNET X",Toast.LENGTH_SHORT).show();
         });
     }
 }
