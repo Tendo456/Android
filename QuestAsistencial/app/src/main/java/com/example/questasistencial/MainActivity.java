@@ -285,36 +285,117 @@ public class MainActivity extends AppCompatActivity implements Connectable, Disc
         hora();
 
         if (p1.equals("0")) {
-            Toast.makeText(this,obligatorio,Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this,obligatorio,Toast.LENGTH_SHORT).show();
+            LayoutInflater inflater = getLayoutInflater();
+            View layout = inflater.inflate(R.layout.mensaje_toast2, (ViewGroup) findViewById(R.id.layoutToastEr));
+
+            TextView textEr = (TextView) layout.findViewById(R.id.textEr);
+            textEr.setText(obligatorio);
+
+            Toast toast = new Toast(getApplicationContext());
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+            toast.setDuration(Toast.LENGTH_LONG);
+            toast.setView(layout);
+            toast.show();
         }
 
         else if (p2.equals("0")) {
-            Toast.makeText(this,obligatorio,Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this,obligatorio,Toast.LENGTH_SHORT).show();
+            LayoutInflater inflater = getLayoutInflater();
+            View layout = inflater.inflate(R.layout.mensaje_toast2, (ViewGroup) findViewById(R.id.layoutToastEr));
+
+            TextView textEr = (TextView) layout.findViewById(R.id.textEr);
+            textEr.setText(obligatorio);
+
+            Toast toast = new Toast(getApplicationContext());
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+            toast.setDuration(Toast.LENGTH_LONG);
+            toast.setView(layout);
+            toast.show();
         }
 
         else if (p3.equals("0")) {
-            Toast.makeText(this,obligatorio,Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this,obligatorio,Toast.LENGTH_SHORT).show();
+            LayoutInflater inflater = getLayoutInflater();
+            View layout = inflater.inflate(R.layout.mensaje_toast2, (ViewGroup) findViewById(R.id.layoutToastEr));
+
+            TextView textEr = (TextView) layout.findViewById(R.id.textEr);
+            textEr.setText(obligatorio);
+
+            Toast toast = new Toast(getApplicationContext());
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+            toast.setDuration(Toast.LENGTH_LONG);
+            toast.setView(layout);
+            toast.show();
         }
 
         else if (p4.equals("0")) {
-            Toast.makeText(this,obligatorio,Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this,obligatorio,Toast.LENGTH_SHORT).show();
+            LayoutInflater inflater = getLayoutInflater();
+            View layout = inflater.inflate(R.layout.mensaje_toast2, (ViewGroup) findViewById(R.id.layoutToastEr));
+
+            TextView textEr = (TextView) layout.findViewById(R.id.textEr);
+            textEr.setText(obligatorio);
+
+            Toast toast = new Toast(getApplicationContext());
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+            toast.setDuration(Toast.LENGTH_LONG);
+            toast.setView(layout);
+            toast.show();
         }
 
         else if (p5.equals("0")) {
-            Toast.makeText(this,obligatorio,Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this,obligatorio,Toast.LENGTH_SHORT).show();
+            LayoutInflater inflater = getLayoutInflater();
+            View layout = inflater.inflate(R.layout.mensaje_toast2, (ViewGroup) findViewById(R.id.layoutToastEr));
+
+            TextView textEr = (TextView) layout.findViewById(R.id.textEr);
+            textEr.setText(obligatorio);
+
+            Toast toast = new Toast(getApplicationContext());
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+            toast.setDuration(Toast.LENGTH_LONG);
+            toast.setView(layout);
+            toast.show();
         }
 
 
         else {
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, response -> {
-                Toast.makeText(this,mensaje1,Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this,mensaje1,Toast.LENGTH_SHORT).show();
+                LayoutInflater inflater = getLayoutInflater();
+                View layout = inflater.inflate(R.layout.mensaje_toast, (ViewGroup) findViewById(R.id.layoutToast));
+
+                TextView text = (TextView) layout.findViewById(R.id.text);
+                text.setText(mensaje1);
+
+                Toast toast = new Toast(getApplicationContext());
+                toast.setGravity(Gravity.CENTER_VERTICAL, 0, 100);
+                toast.setDuration(Toast.LENGTH_LONG);
+                toast.setView(layout);
+                toast.show();
+
                 Intent intent = new Intent(MainActivity.this, Mensaje.class);
                 intent.putExtra("place",lugares);
                 startActivity(intent);
                 finish();
 
-            }, error -> Toast.makeText(this,mensaje2,Toast.LENGTH_SHORT).show() ){
+            }, error -> {/*Toast.makeText(this,mensaje2,Toast.LENGTH_SHORT).show();*/
+
+                LayoutInflater inflater = getLayoutInflater();
+                View layout = inflater.inflate(R.layout.mensaje_toast2, (ViewGroup) findViewById(R.id.layoutToastEr));
+
+                TextView textEr = (TextView) layout.findViewById(R.id.textEr);
+                textEr.setText(mensaje2);
+
+                Toast toast = new Toast(getApplicationContext());
+                toast.setGravity(Gravity.CENTER_VERTICAL, 0, 100);
+                toast.setDuration(Toast.LENGTH_LONG);
+                toast.setView(layout);
+                toast.show();
+
+            } ){
 
                 @Override
                 protected Map<String, String> getParams() {
@@ -383,13 +464,36 @@ public class MainActivity extends AppCompatActivity implements Connectable, Disc
 
     @Override
     public void onConnect() {
-        Toast.makeText(this,"Conectado a Internet ✓",Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,"Conectado a Internet ✓",Toast.LENGTH_SHORT).show();
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.mensaje_toast, (ViewGroup) findViewById(R.id.layoutToast));
+
+        TextView text = (TextView) layout.findViewById(R.id.text);
+        text.setText("Conectado a Internet ✓");
+
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
+        toast.show();
+
     }
 
     @Override
     public void onDisconnect() {
         runOnUiThread(() -> {
-            Toast.makeText(this,"SIN ACCSESO A INTERNET X",Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this,"SIN ACCSESO A INTERNET X",Toast.LENGTH_SHORT).show();
+            LayoutInflater inflater = getLayoutInflater();
+            View layout = inflater.inflate(R.layout.mensaje_toast2, (ViewGroup) findViewById(R.id.layoutToastEr));
+
+            TextView textEr = (TextView) layout.findViewById(R.id.textEr);
+            textEr.setText("Sin Acceso a Internet X");
+
+            Toast toast = new Toast(getApplicationContext());
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+            toast.setDuration(Toast.LENGTH_LONG);
+            toast.setView(layout);
+            toast.show();
         });
     }
 }
