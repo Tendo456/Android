@@ -17,4 +17,6 @@
     </string-array>
 
     <string name="hello">El personal responsable de atenderlo(a) cumplió con sus expectativas, demostró dominio del tema consultado y lo(a) trató con respeto y amabilidad. <br /> <small>En caso no haya sido así, indicarlo en la pregunta N° 8.</small></string>
+
+    <string name="mensaje_ini">La satisfacción de nuestros clientes es muy importante para nosotros, por lo que le pedimos se pueda tomar unos minutos para calificar nuestro servicio.</string>
 </resources>
