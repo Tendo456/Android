@@ -40,7 +40,7 @@
 
     <string name="title">CUSTOMER SATISFACTION SURVEY</string>
     <string name="header1">Rate the following characteristics from 1 to 5*.</string>
-    <string name="header2">Score():</string>
+    <string name="header2">Score( ):</string>
     <string name="header3">In addition, answer the following questions</string>
 
 
