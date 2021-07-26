@@ -5,7 +5,10 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -185,56 +188,86 @@ public class MainActivity extends AppCompatActivity implements Connectable, Disc
         hora();
 
         if (p1.equals("0")) {
-            Toast toast = Toast.makeText(this,"Preguntas del 1 al 6 obligatorias",Toast.LENGTH_SHORT);
-            View view = toast.getView();
-            TextView text1 = view.findViewById(android.R.id.message);
-            text1.setTextColor(Color.WHITE);
-            view.getBackground().setColorFilter(Color.parseColor("#B71C1C"), PorterDuff.Mode.SRC_IN);
+            LayoutInflater inflater = getLayoutInflater();
+            View layout = inflater.inflate(R.layout.mensaje_toast2, (ViewGroup) findViewById(R.id.layoutToastEr));
+
+            TextView textEr = (TextView) layout.findViewById(R.id.textEr);
+            textEr.setText("Preguntas del 1 al 6 obligatorias");
+
+            Toast toast = new Toast(getApplicationContext());
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+            toast.setDuration(Toast.LENGTH_LONG);
+            toast.setView(layout);
             toast.show();
         }
 
         else if (p2.equals("0")) {
-            Toast toast = Toast.makeText(this,"Preguntas del 1 al 6 obligatorias",Toast.LENGTH_SHORT);
-            View view = toast.getView();
-            TextView text2 = view.findViewById(android.R.id.message);
-            text2.setTextColor(Color.WHITE);
-            view.getBackground().setColorFilter(Color.parseColor("#B71C1C"), PorterDuff.Mode.SRC_IN);
+            LayoutInflater inflater = getLayoutInflater();
+            View layout = inflater.inflate(R.layout.mensaje_toast2, (ViewGroup) findViewById(R.id.layoutToastEr));
+
+            TextView textEr = (TextView) layout.findViewById(R.id.textEr);
+            textEr.setText("Preguntas del 1 al 6 obligatorias");
+
+            Toast toast = new Toast(getApplicationContext());
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+            toast.setDuration(Toast.LENGTH_LONG);
+            toast.setView(layout);
             toast.show();
         }
 
         else if (p3.equals("0")) {
-            Toast toast = Toast.makeText(this,"Preguntas del 1 al 6 obligatorias",Toast.LENGTH_SHORT);
-            View view = toast.getView();
-            TextView text3 = view.findViewById(android.R.id.message);
-            text3.setTextColor(Color.WHITE);
-            view.getBackground().setColorFilter(Color.parseColor("#B71C1C"), PorterDuff.Mode.SRC_IN);
+            LayoutInflater inflater = getLayoutInflater();
+            View layout = inflater.inflate(R.layout.mensaje_toast2, (ViewGroup) findViewById(R.id.layoutToastEr));
+
+            TextView textEr = (TextView) layout.findViewById(R.id.textEr);
+            textEr.setText("Preguntas del 1 al 6 obligatorias");
+
+            Toast toast = new Toast(getApplicationContext());
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+            toast.setDuration(Toast.LENGTH_LONG);
+            toast.setView(layout);
             toast.show();
         }
 
         else if (p4.equals("0")) {
-            Toast toast = Toast.makeText(this,"Preguntas del 1 al 6 obligatorias",Toast.LENGTH_SHORT);
-            View view = toast.getView();
-            TextView text4 = view.findViewById(android.R.id.message);
-            text4.setTextColor(Color.WHITE);
-            view.getBackground().setColorFilter(Color.parseColor("#B71C1C"), PorterDuff.Mode.SRC_IN);
+            LayoutInflater inflater = getLayoutInflater();
+            View layout = inflater.inflate(R.layout.mensaje_toast2, (ViewGroup) findViewById(R.id.layoutToastEr));
+
+            TextView textEr = (TextView) layout.findViewById(R.id.textEr);
+            textEr.setText("Preguntas del 1 al 6 obligatorias");
+
+            Toast toast = new Toast(getApplicationContext());
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+            toast.setDuration(Toast.LENGTH_LONG);
+            toast.setView(layout);
             toast.show();
         }
 
         else if (p5.equals("0")) {
-            Toast toast = Toast.makeText(this,"Preguntas del 1 al 6 obligatorias",Toast.LENGTH_SHORT);
-            View view = toast.getView();
-            TextView text5 = view.findViewById(android.R.id.message);
-            text5.setTextColor(Color.WHITE);
-            view.getBackground().setColorFilter(Color.parseColor("#B71C1C"), PorterDuff.Mode.SRC_IN);
+            LayoutInflater inflater = getLayoutInflater();
+            View layout = inflater.inflate(R.layout.mensaje_toast2, (ViewGroup) findViewById(R.id.layoutToastEr));
+
+            TextView textEr = (TextView) layout.findViewById(R.id.textEr);
+            textEr.setText("Preguntas del 1 al 6 obligatorias");
+
+            Toast toast = new Toast(getApplicationContext());
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+            toast.setDuration(Toast.LENGTH_LONG);
+            toast.setView(layout);
             toast.show();
         }
 
         else if (p6.equals("0")) {
-            Toast toast = Toast.makeText(this,"Preguntas del 1 al 6 obligatorias",Toast.LENGTH_SHORT);
-            View view = toast.getView();
-            TextView text6 = view.findViewById(android.R.id.message);
-            text6.setTextColor(Color.WHITE);
-            view.getBackground().setColorFilter(Color.parseColor("#B71C1C"), PorterDuff.Mode.SRC_IN);
+            LayoutInflater inflater = getLayoutInflater();
+            View layout = inflater.inflate(R.layout.mensaje_toast2, (ViewGroup) findViewById(R.id.layoutToastEr));
+
+            TextView textEr = (TextView) layout.findViewById(R.id.textEr);
+            textEr.setText("Preguntas del 1 al 6 obligatorias");
+
+            Toast toast = new Toast(getApplicationContext());
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+            toast.setDuration(Toast.LENGTH_LONG);
+            toast.setView(layout);
             toast.show();
         }
 
@@ -243,22 +276,32 @@ public class MainActivity extends AppCompatActivity implements Connectable, Disc
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, response -> {
 
-                Toast toast = Toast.makeText(this,"Procesando Respuestas.",Toast.LENGTH_SHORT);
-                View view = toast.getView();
-                TextView text7 = view.findViewById(android.R.id.message);
-                text7.setTextColor(Color.WHITE);
-                view.getBackground().setColorFilter(Color.parseColor("#669933"), PorterDuff.Mode.SRC_IN);
+                LayoutInflater inflater = getLayoutInflater();
+                View layout = inflater.inflate(R.layout.mensaje_toast, (ViewGroup) findViewById(R.id.layoutToast));
+
+                TextView text = (TextView) layout.findViewById(R.id.text);
+                text.setText("Procesando Respuestas");
+
+                Toast toast = new Toast(getApplicationContext());
+                toast.setGravity(Gravity.CENTER_VERTICAL, 0, 100);
+                toast.setDuration(Toast.LENGTH_LONG);
+                toast.setView(layout);
                 toast.show();
 
                 Intent intent = new Intent(MainActivity.this, Mensaje.class);
                 startActivity(intent);
                 finish();
 
-            }, error -> {Toast toast = Toast.makeText(this,"Error al Enviar las Respuestas.",Toast.LENGTH_SHORT);
-                View view = toast.getView();
-                TextView text = view.findViewById(android.R.id.message);
-                text.setTextColor(Color.WHITE);
-                view.getBackground().setColorFilter(Color.parseColor("#B71C1C"), PorterDuff.Mode.SRC_IN);
+            }, error -> {LayoutInflater inflater = getLayoutInflater();
+                View layout = inflater.inflate(R.layout.mensaje_toast2, (ViewGroup) findViewById(R.id.layoutToastEr));
+
+                TextView textEr = (TextView) layout.findViewById(R.id.textEr);
+                textEr.setText("Error al Enviar las Respuestas");
+
+                Toast toast = new Toast(getApplicationContext());
+                toast.setGravity(Gravity.CENTER_VERTICAL, 0, 100);
+                toast.setDuration(Toast.LENGTH_LONG);
+                toast.setView(layout);
                 toast.show();}){
                 
                 @Override
@@ -327,22 +370,32 @@ public class MainActivity extends AppCompatActivity implements Connectable, Disc
 
     @Override
     public void onConnect() {
-        Toast toast = Toast.makeText(this,"Conexión a Internet ✓",Toast.LENGTH_SHORT);
-        View view = toast.getView();
-        TextView texts = view.findViewById(android.R.id.message);
-        texts.setTextColor(Color.WHITE);
-        view.getBackground().setColorFilter(Color.parseColor("#669933"), PorterDuff.Mode.SRC_IN);
+        LayoutInflater inflater = getLayoutInflater();
+        View layout = inflater.inflate(R.layout.mensaje_toast, (ViewGroup) findViewById(R.id.layoutToast));
+
+        TextView text = (TextView) layout.findViewById(R.id.text);
+        text.setText("Conectado a Internet ✓");
+
+        Toast toast = new Toast(getApplicationContext());
+        toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(layout);
         toast.show();
     }
 
     @Override
     public void onDisconnect() {
         runOnUiThread(() -> {
-            Toast toast = Toast.makeText(this,"Sin Conexión a Internet X",Toast.LENGTH_SHORT);
-            View view = toast.getView();
-            TextView texto = view.findViewById(android.R.id.message);
-            texto.setTextColor(Color.WHITE);
-            view.getBackground().setColorFilter(Color.parseColor("#B71C1C"), PorterDuff.Mode.SRC_IN);
+            LayoutInflater inflater = getLayoutInflater();
+            View layout = inflater.inflate(R.layout.mensaje_toast2, (ViewGroup) findViewById(R.id.layoutToastEr));
+
+            TextView textEr = (TextView) layout.findViewById(R.id.textEr);
+            textEr.setText("Sin Acceso a Internet X");
+
+            Toast toast = new Toast(getApplicationContext());
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+            toast.setDuration(Toast.LENGTH_LONG);
+            toast.setView(layout);
             toast.show();
         });
     }
