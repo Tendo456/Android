@@ -31,12 +31,13 @@
     <string name="numero3">El personal responsable de atenderlo(a) cumplió con sus expectativas, demostró dominio del tema consultado y lo(a) trató con respeto y amabilidad. <br/> <small>En caso no haya sido así, indicarlo en la pregunta N° 8.</small></string>
     <string name="numero4">La experiencia durante su visita resultó satisfactoria.</string>
     <string name="numero5">El personal fue abierto a responder sus preguntas y preocupaciones.</string>
-    <string name="numero6">¿Resolvimos su problema o motivo de consulta? \n \n</string>
+    <string name="numero6">¿Resolvimos su problema o motivo de consulta? \n \n \n</string>
     <string name="numero7">Indiquenos el/los nombres de las personas que excedieron sus espectavivas de servicio.</string>
     <string name="numero8">Indiquenos si tiene alguna observación o sugerencia adicional.</string>
     <string name="mensaje1">Procesando Respuestas.</string>
     <string name="mensaje2">Error al Enviar las Respuestas.</string>
     <string name="obligatorio">Preguntas del 1 al 6 obligatorias.</string>
+    <string name="descripcion">Imagen Fondo</string>
 
     <string name="title">CUSTOMER SATISFACTION SURVEY</string>
     <string name="header1">Rate the following characteristics from 1 to 5*.</string>

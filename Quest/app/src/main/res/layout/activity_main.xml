@@ -17,7 +17,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/scrollView2"
         app:layout_constraintTop_toTopOf="@+id/scrollView2"
-        app:srcCompat="@drawable/logo_transparente" />
+        app:srcCompat="@drawable/logo_transparente"
+        android:contentDescription="@string/descrpcion" />
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -503,7 +504,8 @@
                 <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/drawable_cell_shape">
+                    android:background="@drawable/drawable_cell_shape"
+                    android:gravity="center_vertical">
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
@@ -522,8 +524,8 @@
                             android:gravity="start|top"
                             android:hint="Respuesta"
                             android:inputType="textMultiLine|textPersonName"
-                            android:textColor="@color/black"
-                            android:maxLength="100" />
+                            android:maxLength="100"
+                            android:textColor="@color/black" />
 
                     </com.google.android.material.textfield.TextInputLayout>
                 </TableRow>
