@@ -35,7 +35,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
@@ -197,7 +197,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/drawable_cell_shape"
                         android:padding="5dp"
-                        android:text="Limpieza y comodidad de las instalaciones"
+                        android:text="@string/numero1"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
