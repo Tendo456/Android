@@ -173,8 +173,9 @@
                         android:layout_span="2"
                         android:layout_weight="1"
                         android:background="@drawable/spinner"
+                        android:contentDescription="@string/description"
                         android:gravity="center"
-                        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+                        tools:ignore="TouchTargetSizeCheck" />
 
                 </TableRow>
 

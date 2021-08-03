@@ -53,7 +53,8 @@
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/spinner"
-                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                        android:contentDescription="@string/description"
+                        tools:ignore="TouchTargetSizeCheck" />
 
                 </TableRow>
 
@@ -234,7 +235,8 @@
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/spinner"
-                        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+                        android:contentDescription="@string/description"
+                        tools:ignore="TouchTargetSizeCheck" />
 
                 </TableRow>
 

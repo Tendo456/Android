@@ -36,4 +36,6 @@
         <item>5</item>
     </string-array>
 
+    <string name="description">Valor Web</string>
+
 </resources>
