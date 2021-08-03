@@ -52,7 +52,8 @@
                         android:layout_height="40dp"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:background="@drawable/spinner" />
+                        android:background="@drawable/spinner"
+                        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
                 </TableRow>
 
@@ -111,7 +112,8 @@
                         android:hint="Cantidad Muestras"
                         android:inputType="number"
                         android:maxLength="4"
-                        android:textCursorDrawable="@null" />
+                        android:textCursorDrawable="@null"
+                        tools:ignore="TouchTargetSizeCheck" />
                 </TableRow>
 
                 <TableRow
@@ -241,7 +243,8 @@
                             android:hint="Valido"
                             android:inputType="number"
                             android:maxLength="4"
-                            android:textSize="18sp" />
+                            android:textSize="18sp"
+                            tools:ignore="TouchTargetSizeCheck" />
 
                         <EditText
                             android:id="@+id/AmM_invalido"
@@ -254,7 +257,8 @@
                             android:hint="Invalido"
                             android:inputType="number"
                             android:maxLength="4"
-                            android:textSize="18sp" />
+                            android:textSize="18sp"
+                            tools:ignore="TouchTargetSizeCheck" />
                     </LinearLayout>
 
                 </TableRow>
@@ -292,7 +296,8 @@
                             android:hint="Valido"
                             android:inputType="number"
                             android:maxLength="4"
-                            android:textSize="18sp" />
+                            android:textSize="18sp"
+                            tools:ignore="TouchTargetSizeCheck" />
 
                         <EditText
                             android:id="@+id/AmCi_invalido"
@@ -305,7 +310,8 @@
                             android:hint="Invalido"
                             android:inputType="number"
                             android:maxLength="4"
-                            android:textSize="18sp" />
+                            android:textSize="18sp"
+                            tools:ignore="TouchTargetSizeCheck" />
                     </LinearLayout>
 
                 </TableRow>
@@ -333,7 +339,8 @@
                         android:layout_height="40dp"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:background="@drawable/spinner" />
+                        android:background="@drawable/spinner"
+                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
                 </TableRow>
 

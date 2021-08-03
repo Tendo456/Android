@@ -55,7 +55,8 @@
                         android:background="@drawable/drawable_blue"
                         android:gravity="center"
                         android:hint="Codigo Placa"
-                        android:inputType="textCapCharacters" />
+                        android:inputType="textCapCharacters"
+                        tools:ignore="TouchTargetSizeCheck" />
                 </TableRow>
 
                 <TableRow
@@ -109,7 +110,8 @@
                         android:layout_height="40dp"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:background="@drawable/spinner" />
+                        android:background="@drawable/spinner"
+                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
                 </TableRow>
 
                 <TableRow
@@ -134,7 +136,8 @@
                         android:layout_height="40dp"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:background="@drawable/spinner" />
+                        android:background="@drawable/spinner"
+                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
                 </TableRow>
             </TableLayout>
 

@@ -52,7 +52,8 @@
                         android:layout_height="40dp"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:background="@drawable/spinner" />
+                        android:background="@drawable/spinner"
+                        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
                 </TableRow>
 
@@ -112,7 +113,8 @@
                         android:hint="Cantidad de Muestras"
                         android:inputType="number"
                         android:maxLength="4"
-                        android:textCursorDrawable="@null" />
+                        android:textCursorDrawable="@null"
+                        tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
                 </TableRow>
 
                 <TableRow
@@ -230,7 +232,8 @@
                         android:layout_height="40dp"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:background="@drawable/spinner" />
+                        android:background="@drawable/spinner"
+                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck,TouchTargetSizeCheck" />
 
                 </TableRow>
 

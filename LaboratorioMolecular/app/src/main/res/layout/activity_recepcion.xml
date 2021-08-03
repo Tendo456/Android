@@ -110,7 +110,8 @@
                         android:hint="Numero de Envío"
                         android:inputType="number"
                         android:maxLength="2"
-                        android:textCursorDrawable="@null" />
+                        android:textCursorDrawable="@null"
+                        tools:ignore="TouchTargetSizeCheck" />
                 </TableRow>
 
                 <TableRow
@@ -143,7 +144,8 @@
                         android:hint="Cantidad de Muestras"
                         android:inputType="number"
                         android:maxLength="4"
-                        android:textCursorDrawable="@null" />
+                        android:textCursorDrawable="@null"
+                        tools:ignore="TouchTargetSizeCheck" />
                 </TableRow>
 
                 <TableRow
@@ -171,7 +173,8 @@
                         android:layout_span="2"
                         android:layout_weight="1"
                         android:background="@drawable/spinner"
-                        android:gravity="center" />
+                        android:gravity="center"
+                        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
                 </TableRow>
 
