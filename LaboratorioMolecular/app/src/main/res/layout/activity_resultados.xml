@@ -83,7 +83,7 @@
                         <TextView
                             android:id="@+id/Resf_inicio"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
+                            android:layout_height="40dp"
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/drawable_blue"
@@ -94,7 +94,7 @@
                         <TextView
                             android:id="@+id/Resh_inicio"
                             android:layout_width="match_parent"
-                            android:layout_height="45dp"
+                            android:layout_height="40dp"
                             android:layout_margin="5dp"
                             android:layout_weight="1"
                             android:background="@drawable/drawable_blue"
