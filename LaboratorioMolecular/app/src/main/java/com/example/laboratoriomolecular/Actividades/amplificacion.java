@@ -161,6 +161,7 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
 
     private void llenarspinnerAm(){
         String url = "http://190.119.144.250:83/laboratorio/Placas/spPlacaAm.php?fechaP="+dayerAm;
+        //String url = "http://192.168.1.25/laboratorio/Placas/spPlacaAm.php?fechaP="+dayerAm;
         placasAmp.post(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -219,6 +220,7 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
     private void llsOpeAmp (){
 
         String urlOpeA = "http://190.119.144.250:83/laboratorio/Operador/SpOperador.php";
+        //String urlOpeA = "http://192.168.1.25/laboratorio/Operador/SpOperador.php";
         operadorAmp.post(urlOpeA, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {

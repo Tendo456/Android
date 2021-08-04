@@ -104,6 +104,7 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
     private void llenarspinerO (){
 
         String url = "http://190.119.144.250:83/laboratorio/Operador/SpOperador.php";
+        //String url = "http://192.168.1.25/laboratorio/Operador/SpOperador.php";
         operador.post(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {

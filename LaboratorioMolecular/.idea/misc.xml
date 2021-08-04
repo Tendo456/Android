@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Tendo/AndroidStudioProjects/LaboratorioMolecular/app/src/main/res/layout/activity_placas_details.xml" value="0.27445652173913043" />
         <entry key="..\:/Users/richard.gamero/AndroidStudioProjects/Android/LaboratorioMolecular/app/src/main/res/layout/activity_alicuotado.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/richard.gamero/AndroidStudioProjects/Android/LaboratorioMolecular/app/src/main/res/layout/activity_amplificacion.xml" value="0.26358695652173914" />
         <entry key="..\:/Users/richard.gamero/AndroidStudioProjects/Android/LaboratorioMolecular/app/src/main/res/layout/activity_area_limpia.xml" value="0.26358695652173914" />
@@ -19,7 +20,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
