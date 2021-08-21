@@ -72,7 +72,9 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.96"
         app:tint="@color/white"
-        app:maxImageSize="40dp"/>
+        app:maxImageSize="40dp"
+        android:focusable="true"
+        android:contentDescription="Boton Flotante" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
