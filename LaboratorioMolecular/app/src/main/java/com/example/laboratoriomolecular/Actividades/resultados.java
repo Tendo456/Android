@@ -291,8 +291,12 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
         });
     }
 
-    public void SaveResultados(){
-        Call<ResultadosResponse> finRes = ApiClient.getUserService().IniciarResultado(CPlacasRes.getText().toString(),Resf_inicio.getText().toString(),Resh_inicio.getText().toString(),Resoperador.getText().toString(),Resdni.getText().toString(),"1");
+    public void SaveResultados() {
+        if (Resdni.getText().toString().equals("0")) {
+            Resdni.setError("Seleccione un Operador");
+        } else {
+
+        Call<ResultadosResponse> finRes = ApiClient.getUserService().IniciarResultado(CPlacasRes.getText().toString(), Resf_inicio.getText().toString(), Resh_inicio.getText().toString(), Resoperador.getText().toString(), Resdni.getText().toString(), "1");
         finRes.enqueue(new Callback<ResultadosResponse>() {
             @Override
             public void onResponse(@NotNull Call<ResultadosResponse> call, @NotNull Response<ResultadosResponse> response) {
@@ -312,6 +316,7 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
                 Toast.makeText(resultados.this, "Error " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
     }
 
     public void finResultados(){

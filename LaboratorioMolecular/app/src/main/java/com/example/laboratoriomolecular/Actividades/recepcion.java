@@ -206,6 +206,8 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
             Rqmuestras.setError("Complete los campos");
         }else if (Rdni.getText().toString().isEmpty()){
             Rdni.setError("Seleccione un Operador");
+        }else if (Rdni.getText().toString().equals("0")){
+            Rdni.setError("Seleccione un Operador");
         } else {
 
             Call<RecepcionResponse> call = ApiClient.getUserService().InsertarRecepcion(Rfecha.getText().toString(), Rhora.getText().toString(), Rnenvio.getText().toString(), Rqmuestras.getText().toString(), Roperador.getText().toString(), Rdni.getText().toString(), "2");
