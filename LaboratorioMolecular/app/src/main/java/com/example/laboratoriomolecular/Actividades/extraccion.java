@@ -367,8 +367,8 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
         if(Exq_muestras.getText().toString().isEmpty()){
             Exq_muestras.setError("Ingrese Cantidad de Muestras");
         }else if (Exdni.getText().toString().equals("0")){
-            Exdni.setError("Seleccione un Operador");}
-        else {
+            Exdni.setError("Seleccione un Operador");
+        }else {
         Call<ExtraccionResponse> callEx = ApiClient.getUserService().InsertarExtraccion(Exq_muestras.getText().toString(),Exf_inicio.getText().toString(),Exh_inicio.getText().toString(),Exoperador.getText().toString(),Exdni.getText().toString(),"1",Exid_placaSp.getText().toString());
         callEx.enqueue(new Callback<ExtraccionResponse>() {
             @Override

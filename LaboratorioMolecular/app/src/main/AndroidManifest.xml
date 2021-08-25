@@ -13,41 +13,29 @@
         android:theme="@style/Theme.LaboratorioMolecular"
         android:usesCleartextTraffic="true">
         <activity android:name=".Actividades.PlacasDetails"
-            android:label="@string/Nueva_placaD_title"
-            android:screenOrientation="portrait"/>
+            android:label="@string/Nueva_placaD_title" />
         <activity android:name=".Actividades.nueva_placa"
-            android:label="@string/Nueva_placa_title"
-            android:screenOrientation="portrait"/>
+            android:label="@string/Nueva_placa_title" />
         <activity android:name=".Actividades.RecepcionDetails"
-            android:label="@string/RecepcionD_title"
-            android:screenOrientation="portrait"/>
+            android:label="@string/RecepcionD_title" />
         <activity android:name=".Actividades.resultados"
-            android:label="@string/Resultados_title"
-            android:screenOrientation="portrait"/>
+            android:label="@string/Resultados_title" />
         <activity android:name=".Actividades.amplificacion"
-            android:label="@string/Amplificacion_title"
-            android:screenOrientation="portrait"/>
+            android:label="@string/Amplificacion_title" />
         <activity android:name=".Actividades.area_limpia"
-            android:label="@string/Area_title"
-            android:screenOrientation="portrait"/>
+            android:label="@string/Area_title" />
         <activity android:name=".Actividades.extraccion"
-            android:label="@string/Extraccion_title"
-            android:screenOrientation="portrait"/>
+            android:label="@string/Extraccion_title" />
         <activity android:name=".Actividades.alicuotado"
-            android:label="@string/Alicuotado_title"
-            android:screenOrientation="portrait"/>
+            android:label="@string/Alicuotado_title" />
         <activity android:name=".Actividades.recepcion"
-            android:label="@string/Recepcion_title"
-            android:screenOrientation="portrait"/>
+            android:label="@string/Recepcion_title" />
         <activity android:name=".Actividades.Formularios"
-            android:label="@string/Formularios_title"
-            android:screenOrientation="portrait"/>
+            android:label="@string/Formularios_title" />
         <activity android:name=".Actividades.MainActivity"
-            android:screenOrientation="portrait"
             android:theme="@style/Theme.LaboratorioMolecularUno">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

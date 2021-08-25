@@ -374,8 +374,8 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
         if (Arq_muestras.getText().toString().isEmpty()){
             Arq_muestras.setError("Ingrese Cantidad de Muestras");
         }else if (Ardni.getText().toString().equals("0")){
-            Ardni.setError("Seleccione un Operador");}
-        else {
+            Ardni.setError("Seleccione un Operador");
+        }else {
         Call<AreaResponse> callAli = ApiClient.getUserService().InsertarArea(Arq_muestras.getText().toString(),Arf_inicio.getText().toString(),Arh_inicio.getText().toString(),Aroperador.getText().toString(),Ardni.getText().toString(),"1",Arid_placaSp.getText().toString());
         callAli.enqueue(new Callback<AreaResponse>() {
             @Override

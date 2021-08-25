@@ -422,8 +422,8 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
             if (Aq_muestras.getText().toString().isEmpty()){
                 Aq_muestras.setError("Ingrese Cantidad de Muestras");
             }else if (Adni.getText().toString().equals("0")){
-                Adni.setError("Seleccione un Operador");}
-            else {
+                Adni.setError("Seleccione un Operador");
+            } else {
             Call<AlicuotadoResponse> callAli = ApiClient.getUserService().InsertarAlicuotado(Aq_muestras.getText().toString(),Af_inicio.getText().toString(),Ah_inicio.getText().toString(),Aoperador.getText().toString(),Adni.getText().toString(),"1",Aid_placaSp.getText().toString(),AN_corrida.getText().toString());
             callAli.enqueue(new Callback<AlicuotadoResponse>() {
                 @Override

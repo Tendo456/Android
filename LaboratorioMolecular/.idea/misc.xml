@@ -3,7 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Tendo/AndroidStudioProjects/LaboratorioMolecular/app/src/main/res/layout/activity_alicuotado.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Tendo/AndroidStudioProjects/LaboratorioMolecular/app/src/main/res/layout/activity_amplificacion.xml" value="0.2708333333333333" />
+        <entry key="..\:/Users/Tendo/AndroidStudioProjects/LaboratorioMolecular/app/src/main/res/layout/activity_area_limpia.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Tendo/AndroidStudioProjects/LaboratorioMolecular/app/src/main/res/layout/activity_extraccion.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Tendo/AndroidStudioProjects/LaboratorioMolecular/app/src/main/res/layout/activity_formularios.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Tendo/AndroidStudioProjects/LaboratorioMolecular/app/src/main/res/layout/activity_main.xml" value="0.2708333333333333" />
+        <entry key="..\:/Users/Tendo/AndroidStudioProjects/LaboratorioMolecular/app/src/main/res/layout/activity_nueva_placa.xml" value="0.33" />
         <entry key="..\:/Users/Tendo/AndroidStudioProjects/LaboratorioMolecular/app/src/main/res/layout/activity_placas_details.xml" value="0.27445652173913043" />
+        <entry key="..\:/Users/Tendo/AndroidStudioProjects/LaboratorioMolecular/app/src/main/res/layout/activity_recepcion.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Tendo/AndroidStudioProjects/LaboratorioMolecular/app/src/main/res/layout/activity_recepcion_details.xml" value="0.2708333333333333" />
+        <entry key="..\:/Users/Tendo/AndroidStudioProjects/LaboratorioMolecular/app/src/main/res/layout/activity_resultados.xml" value="0.2708333333333333" />
+        <entry key="..\:/Users/Tendo/AndroidStudioProjects/LaboratorioMolecular/app/src/main/res/layout/dialogo_ali.xml" value="0.2708333333333333" />
+        <entry key="..\:/Users/Tendo/AndroidStudioProjects/LaboratorioMolecular/app/src/main/res/layout/dialogo_amp.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Tendo/AndroidStudioProjects/LaboratorioMolecular/app/src/main/res/layout/dialogo_ar.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Tendo/AndroidStudioProjects/LaboratorioMolecular/app/src/main/res/layout/dialogo_res.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Tendo/AndroidStudioProjects/LaboratorioMolecular/app/src/main/res/layout/dialogoex.xml" value="0.2708333333333333" />
         <entry key="..\:/Users/richard.gamero/AndroidStudioProjects/Android/LaboratorioMolecular/app/src/main/res/layout/activity_alicuotado.xml" value="0.2" />
         <entry key="..\:/Users/richard.gamero/AndroidStudioProjects/Android/LaboratorioMolecular/app/src/main/res/layout/activity_amplificacion.xml" value="0.26358695652173914" />
         <entry key="..\:/Users/richard.gamero/AndroidStudioProjects/Android/LaboratorioMolecular/app/src/main/res/layout/activity_area_limpia.xml" value="0.26358695652173914" />

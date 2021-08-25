@@ -316,7 +316,7 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
                 Toast.makeText(resultados.this, "Error " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-    }
+        }
     }
 
     public void finResultados(){

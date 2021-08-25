@@ -393,8 +393,8 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
         if (Amq_muestras.getText().toString().isEmpty()){
             Amq_muestras.setError("Ingrese Cantidad de Muestras");
         }else if (Amdni.getText().toString().equals("0")){
-            Amdni.setError("Seleccione un Operador");}
-        else {
+            Amdni.setError("Seleccione un Operador");
+        }else {
         Call<AmplificacionResponse> callAli = ApiClient.getUserService().InsertarAmplificacion(Amq_muestras.getText().toString(),Amf_inicio.getText().toString(),Amh_inicio.getText().toString(),Amoperador.getText().toString(),Amdni.getText().toString(),"1",Amid_placaSp.getText().toString());
         callAli.enqueue(new Callback<AmplificacionResponse>() {
             @Override
