@@ -152,7 +152,7 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
         Date ayer = calendar.getTime();
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         dayerAm = dateFormat.format(ayer);
-        //Toast.makeText(alicuotado.this,"ayer "+ dayer,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(amplificacion.this,"ayer "+ dayerAm,Toast.LENGTH_SHORT).show();
     }
 
     public void Ahilo(){
