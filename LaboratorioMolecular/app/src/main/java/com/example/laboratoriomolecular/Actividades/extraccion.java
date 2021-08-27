@@ -27,6 +27,7 @@ import com.example.laboratoriomolecular.Modelos.OperadorResponse;
 import com.example.laboratoriomolecular.Modelos.PlacaSpinner;
 import com.example.laboratoriomolecular.R;
 import com.example.laboratoriomolecular.Retrofit_Data.ApiClient;
+import com.google.android.material.textfield.TextInputEditText;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
@@ -57,12 +58,13 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
     TextView diExN_placa,diExq_muestras,diExf_inicio,diExh_inicio,diExf_final,diExh_final,diExpromedio,diExoperador,diExdni,diExestado;
     Button Exiniciar,Exfinalizar;
     RecyclerView ListaExtraccion;
-    String idEx, placaEx, q_muestrasEx, f_inicioEx, h_inicioEx, f_finalEx, h_finalEx, promedioEx ,operadorEx, dniEx,id_placaEx, estadoEx, N_corridaEx;
+    String idEx, placaEx, q_muestrasEx, f_inicioEx, h_inicioEx, f_finalEx, h_finalEx, promedioEx ,operadorEx, dniEx, observacioEx, id_placaEx, estadoEx, N_corridaEx;
     String ExF,ExH,ExN_placa,ExN_placaF,dayerEx;
     String CEx_fhi, CEx_fhf;
     ExtraccionAdapter extraccionAdapter;
     SwipeRefreshLayout Exrefresh;
     CheckBox chExAyer;
+    TextInputEditText Exobservacion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +89,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
         ListaExtraccion = findViewById(R.id.ListExtraccion);
         chExAyer = findViewById(R.id.chExAyer);
         ExN_corrida = findViewById(R.id.ExN_corrida);
+        Exobservacion = findViewById(R.id.Exobservacion);
 
         Exfinalizar.setEnabled(false);
 
@@ -104,6 +107,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
         Exrefresh.setOnRefreshListener(()->{
             Exfecha();
             conseguirEx();
+            limpiarEx();
             Exrefresh.setRefreshing(false);
         });
     }
@@ -294,6 +298,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
         operadorEx = extraccionResponse.getOperador();
         dniEx = extraccionResponse.getDni();
         estadoEx = extraccionResponse.getEstadoEx();
+        observacioEx = extraccionResponse.getObservacion();
 
         Exid_placa.setText(id_placaEx);
         ExN_placaF=placaEx;
@@ -305,6 +310,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
         if(h_inicioEx == null){Exh_inicio.setText(ExH);} else {Exh_inicio.setText(h_inicioEx);}
         if(f_finalEx == null){Exf_final.setText(ExF); Exfinalizar.setEnabled(true); } else {Exf_final.setText(f_finalEx); Exfinalizar.setEnabled(false);}
         if(h_finalEx == null){Exh_final.setText(ExH);} else {Exh_final.setText(h_finalEx);}
+        if(observacioEx == null){Exobservacion.setText("Vacío");}else {Exobservacion.setText(observacioEx);}
 
         dialogoEx();
     }
@@ -364,12 +370,15 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
     }
 
     public void saveExtraccion (){
+
+        if (Exobservacion.getText().toString().isEmpty()){
+            Exobservacion.setText("Vacío"); }
         if(Exq_muestras.getText().toString().isEmpty()){
             Exq_muestras.setError("Ingrese Cantidad de Muestras");
         }else if (Exdni.getText().toString().equals("0")){
             Exdni.setError("Seleccione un Operador");
         }else {
-        Call<ExtraccionResponse> callEx = ApiClient.getUserService().InsertarExtraccion(Exq_muestras.getText().toString(),Exf_inicio.getText().toString(),Exh_inicio.getText().toString(),Exoperador.getText().toString(),Exdni.getText().toString(),"1",Exid_placaSp.getText().toString());
+        Call<ExtraccionResponse> callEx = ApiClient.getUserService().InsertarExtraccion(Exq_muestras.getText().toString(),Exf_inicio.getText().toString(),Exh_inicio.getText().toString(),Exoperador.getText().toString(),Exdni.getText().toString(),Exobservacion.getText().toString(),"1",Exid_placaSp.getText().toString());
         callEx.enqueue(new Callback<ExtraccionResponse>() {
             @Override
             public void onResponse(@NotNull Call<ExtraccionResponse> call, @NotNull Response<ExtraccionResponse> response) {
@@ -378,6 +387,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
                     Toast.makeText(extraccion.this, ""+mensaje.getMensaje()+" "+response.code(), Toast.LENGTH_SHORT).show();
                     conseguirEx();
                     Exfecha();
+                    limpiarEx();
 
                 }
                 else {
@@ -398,7 +408,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
             Toast.makeText(this, "Seleccione La Placa a Finalizar en la Lista", Toast.LENGTH_LONG).show();
         } else {
 
-            Call<ExtraccionResponse> upEx = ApiClient.getUserService().upExtraccion(Exid_placa.getText().toString(), Exf_final.getText().toString(), Exh_final.getText().toString(), Expromedio.getText().toString(), "2");
+            Call<ExtraccionResponse> upEx = ApiClient.getUserService().upExtraccion(Exid_placa.getText().toString(), Exf_final.getText().toString(), Exh_final.getText().toString(),Exobservacion.getText().toString(), Expromedio.getText().toString(), "2");
             upEx.enqueue(new Callback<ExtraccionResponse>() {
                 @Override
                 public void onResponse(@NotNull Call<ExtraccionResponse> call, @NotNull Response<ExtraccionResponse> response) {
@@ -407,6 +417,7 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
                         Toast.makeText(extraccion.this, "" + mensaje.getMensaje() + " " + response.code(), Toast.LENGTH_SHORT).show();
                         conseguirEx();
                         Exfinalizar.setEnabled(false);
+                        limpiarEx();
 
                     } else {
                         Toast.makeText(extraccion.this, "Error al Guardar los Datos " + response.code(), Toast.LENGTH_SHORT).show();
@@ -438,5 +449,9 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
 
             new Handler(Looper.getMainLooper()).postDelayed(this::upDateExtraccion, 2000);
         }
+    }
+
+    public void limpiarEx(){
+        Exobservacion.getText().clear();
     }
 }

@@ -29,6 +29,7 @@ import com.example.laboratoriomolecular.Modelos.OperadorResponse;
 import com.example.laboratoriomolecular.Modelos.RecepcionResponse;
 import com.example.laboratoriomolecular.R;
 import com.example.laboratoriomolecular.Retrofit_Data.ApiClient;
+import com.google.android.material.textfield.TextInputEditText;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
@@ -60,6 +61,7 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
     SwipeRefreshLayout Recrefresh;
     CheckBox chRecAyer;
     String Frec,dayerRec;
+    TextInputEditText Robservacion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +80,7 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
         Fechapiker = findViewById(R.id.Fechapiker);
         Recrefresh = findViewById(R.id.Recrefresh);
         chRecAyer = findViewById(R.id.chRecAyer);
+        Robservacion = findViewById(R.id.Robservacion);
 
         ListRecepcion.setLayoutManager(new LinearLayoutManager(this));
         ListRecepcion.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
@@ -200,6 +203,8 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
 
     private void saveRecepcion (){
 
+        if(Robservacion.getText().toString().isEmpty()){
+            Robservacion.setText("Vacio"); }
         if (Rnenvio.getText().toString().isEmpty()){
             Rnenvio.setError("Complete los campos");
         }else if (Rqmuestras.getText().toString().isEmpty()){
@@ -210,7 +215,7 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
             Rdni.setError("Seleccione un Operador");
         } else {
 
-            Call<RecepcionResponse> call = ApiClient.getUserService().InsertarRecepcion(Rfecha.getText().toString(), Rhora.getText().toString(), Rnenvio.getText().toString(), Rqmuestras.getText().toString(), Roperador.getText().toString(), Rdni.getText().toString(), "2");
+            Call<RecepcionResponse> call = ApiClient.getUserService().InsertarRecepcion(Rfecha.getText().toString(), Rhora.getText().toString(), Rnenvio.getText().toString(), Rqmuestras.getText().toString(), Roperador.getText().toString(), Rdni.getText().toString(),Robservacion.getText().toString(), "2");
             call.enqueue(new Callback<RecepcionResponse>() {
                 @Override
                 public void onResponse(@NotNull Call<RecepcionResponse> call, @NotNull Response<RecepcionResponse> response) {
@@ -285,6 +290,7 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
     public void limpiar (){
         Rnenvio.getText().clear();
         Rqmuestras.getText().clear();
+        Robservacion.getText().clear();
     }
 
 

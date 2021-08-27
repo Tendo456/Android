@@ -37,5 +37,7 @@
     </string-array>
 
     <string name="description">Valor Web</string>
+    <string name="Comment">Observación</string>
+    <string name="Content">Vacío</string>
 
 </resources>

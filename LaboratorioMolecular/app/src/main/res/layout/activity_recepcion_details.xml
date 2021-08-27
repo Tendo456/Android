@@ -197,6 +197,18 @@
                 </TableRow>
             </TableLayout>
 
+            <TextView
+                android:id="@+id/RDobservacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/drawable_blue"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="Observación"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
         </LinearLayout>
     </ScrollView>
 

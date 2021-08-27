@@ -11,6 +11,7 @@ public class RecepcionResponse implements Serializable {
     private String q_muestras;
     private String operador;
     private String dni;
+    private String observacion;
     private String estadoRe;
     private String mensaje;
 
@@ -70,6 +71,14 @@ public class RecepcionResponse implements Serializable {
         this.dni = dni;
     }
 
+    public String getObservacion() {
+        return observacion;
+    }
+
+    public void setObservacion(String observacion) {
+        this.observacion = observacion;
+    }
+
     public String getEstadoRe() {
         return estadoRe;
     }
@@ -92,6 +101,7 @@ public class RecepcionResponse implements Serializable {
                 ", q_muestras='" + q_muestras + '\'' +
                 ", operador='" + operador + '\'' +
                 ", dni='" + dni + '\'' +
+                ", observacion='" + observacion + '\'' +
                 ", estadoRe='" + estadoRe + '\'' +
                 '}';
     }

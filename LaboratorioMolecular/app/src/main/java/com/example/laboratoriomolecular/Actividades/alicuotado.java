@@ -29,6 +29,7 @@ import com.example.laboratoriomolecular.Modelos.OperadorResponse;
 import com.example.laboratoriomolecular.Modelos.PlacaSpinner;
 import com.example.laboratoriomolecular.R;
 import com.example.laboratoriomolecular.Retrofit_Data.ApiClient;
+import com.google.android.material.textfield.TextInputEditText;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
@@ -61,12 +62,13 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
     private AsyncHttpClient placaA;
     AlicuotadoAdapter alicuotadoAdapter;
     RecyclerView ListAlicuotado;
-    String idAl, placaAl, muestrasAl, f_inicioAl, h_inicioAl, f_finalAl, h_finalAl, promedioAl ,operadorAl, dniAl,id_placaAl, estadoAl,N_corridaAl;
+    String idAl, placaAl, muestrasAl, f_inicioAl, h_inicioAl, f_finalAl, h_finalAl, promedioAl ,operadorAl, dniAl,obsevacionAl,id_placaAl, estadoAl,N_corridaAl;
     String F, H, AN_placaF,AN_placaI;
     String CAl_fhi, CAl_fhf;
     Button Ainiciar,Afinalizar;
     String dayer;
     CheckBox chAyer,Salto;
+    TextInputEditText Aobservacion;
 
 
     @Override
@@ -93,6 +95,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
         ListAlicuotado = findViewById(R.id.ListAlicuotado);
         AN_corrida = findViewById(R.id.AN_corrida);
         Salto = findViewById(R.id.Salto);
+        Aobservacion = findViewById(R.id.Aobservacion);
 
 
         Afinalizar.setEnabled(false);
@@ -319,6 +322,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
         promedioAl = alicuotadoResponse.getPromedio();
         operadorAl = alicuotadoResponse.getOperador();
         dniAl = alicuotadoResponse.getDni();
+        obsevacionAl = alicuotadoResponse.getObservacion();
         estadoAl = alicuotadoResponse.getEstadoAl();
 
         Aid_placa.setText(id_placaAl);
@@ -331,6 +335,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
         if(h_inicioAl == null){Ah_inicio.setText(H);} else {Ah_inicio.setText(h_inicioAl);}
         if(f_finalAl == null){Af_final.setText(F); Afinalizar.setEnabled(true);} else {Af_final.setText(f_finalAl); Afinalizar.setEnabled(false);}
         if(h_finalAl == null){Ah_final.setText(H);} else {Ah_final.setText(h_finalAl);}
+        if(obsevacionAl == null){Aobservacion.setText("Vacio");}else {Aobservacion.setText(obsevacionAl);}
 
         dialogoAl();
 
@@ -424,7 +429,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
             }else if (Adni.getText().toString().equals("0")){
                 Adni.setError("Seleccione un Operador");
             } else {
-            Call<AlicuotadoResponse> callAli = ApiClient.getUserService().InsertarAlicuotado(Aq_muestras.getText().toString(),Af_inicio.getText().toString(),Ah_inicio.getText().toString(),Aoperador.getText().toString(),Adni.getText().toString(),"1",Aid_placaSp.getText().toString(),AN_corrida.getText().toString());
+            Call<AlicuotadoResponse> callAli = ApiClient.getUserService().InsertarAlicuotado(Aq_muestras.getText().toString(),Af_inicio.getText().toString(),Ah_inicio.getText().toString(),Aoperador.getText().toString(),Adni.getText().toString(),Aobservacion.getText().toString(),"1",Aid_placaSp.getText().toString(),AN_corrida.getText().toString());
             callAli.enqueue(new Callback<AlicuotadoResponse>() {
                 @Override
                 public void onResponse(@NotNull Call<AlicuotadoResponse> call, @NotNull Response<AlicuotadoResponse> response) {
@@ -454,7 +459,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
             Toast.makeText(this, "Seleccione La Placa a Finalizar en la Lista", Toast.LENGTH_LONG).show();
         } else {
 
-            Call<AlicuotadoResponse> upAlic = ApiClient.getUserService().upAlicuotado(Aid_placa.getText().toString(), Af_final.getText().toString(), Ah_final.getText().toString(), Apromedio.getText().toString(), "2");
+            Call<AlicuotadoResponse> upAlic = ApiClient.getUserService().upAlicuotado(Aid_placa.getText().toString(), Af_final.getText().toString(), Ah_final.getText().toString(),Aobservacion.getText().toString(), Apromedio.getText().toString(), "2");
             upAlic.enqueue(new Callback<AlicuotadoResponse>() {
                 @Override
                 public void onResponse(@NotNull Call<AlicuotadoResponse> call, @NotNull Response<AlicuotadoResponse> response) {
@@ -480,7 +485,8 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
 
     public void limpiarAlicuotado(){
 
-        Aq_muestras.setText(null);
+        Aq_muestras.getText().clear();
+        Aobservacion.getText().clear();
     }
 
     public void calcularPromedio () {

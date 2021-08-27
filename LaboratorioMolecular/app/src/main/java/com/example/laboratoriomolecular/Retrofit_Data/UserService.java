@@ -28,6 +28,7 @@ public interface UserService {
                                                @Field("q_muestras") String q_muestras,
                                                @Field("operador") String operador,
                                                @Field("dni") String dni,
+                                               @Field("observacion") String observacion,
                                                @Field("estadoRe") String estadoRe);
 
     @GET("Recepcion/ListarRecepcion.php")
@@ -70,6 +71,7 @@ public interface UserService {
                                                @Field("h_inicio") String h_inicio,
                                                @Field("operador") String operador,
                                                @Field("dni") String dni,
+                                               @Field("observacion") String observacion,
                                                @Field("estadoAl") String estadoAl,
                                                 @Field("id_placa") String id_placa,
                                                  @Field("N_corrida") String N_corrida);
@@ -86,6 +88,7 @@ public interface UserService {
     Call<AlicuotadoResponse> upAlicuotado (@Field("id_placa") String id_placa,
                                            @Field("f_final") String f_final,
                                            @Field("h_final") String h_final,
+                                           @Field("observacion") String observacion,
                                            @Field("promedio") String promedio,
                                            @Field("estadoAl") String estadoAl);
 
@@ -99,6 +102,7 @@ public interface UserService {
                                                  @Field("h_inicio") String h_inicio,
                                                  @Field("operador") String operador,
                                                  @Field("dni") String dni,
+                                                 @Field("observacion") String observacion,
                                                  @Field("estadoEx") String estadoEx,
                                                  @Field("id_placa") String id_placa);
 
@@ -107,6 +111,7 @@ public interface UserService {
     Call<ExtraccionResponse> upExtraccion (@Field("id_placa") String id_placa,
                                            @Field("f_final") String f_final,
                                            @Field("h_final") String h_final,
+                                           @Field("observacion") String observacion,
                                            @Field("promedio") String promedio,
                                            @Field("estadoEx") String estadoEx);
 

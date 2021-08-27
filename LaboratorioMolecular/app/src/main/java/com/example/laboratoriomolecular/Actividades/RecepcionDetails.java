@@ -11,7 +11,7 @@ import com.example.laboratoriomolecular.R;
 
 public class RecepcionDetails extends AppCompatActivity {
 
-    TextView RDfecha,RDhora,RDn_envio,RDq_muestras,RDoperador,RDdni;
+    TextView RDfecha,RDhora,RDn_envio,RDq_muestras,RDoperador,RDdni,RDobservacion;
     RecepcionResponse recepcionResponse;
 
     @Override
@@ -25,6 +25,7 @@ public class RecepcionDetails extends AppCompatActivity {
         RDq_muestras = findViewById(R.id.RDq_muestras);
         RDoperador = findViewById(R.id.RDoperador);
         RDdni = findViewById(R.id.RDdni);
+        RDobservacion = findViewById(R.id.RDobservacion);
 
         Intent intent = getIntent();
         if(intent.getExtras() !=null){
@@ -36,6 +37,7 @@ public class RecepcionDetails extends AppCompatActivity {
             String RDq_muestras1 = recepcionResponse.getQ_muestras();
             String RDoperador1 = recepcionResponse.getOperador();
             String RDdni1 = recepcionResponse.getDni();
+            String RDobservacion1 = recepcionResponse.getObservacion();
 
             RDfecha.setText(RDfecha1);
             RDhora.setText(RDhora1);
@@ -43,6 +45,7 @@ public class RecepcionDetails extends AppCompatActivity {
             RDq_muestras.setText(RDq_muestras1);
             RDoperador.setText(RDoperador1);
             RDdni.setText(RDdni1);
+            RDobservacion.setText(RDobservacion1);
         }
     }
 }

@@ -14,6 +14,7 @@ public class AlicuotadoResponse implements Serializable {
     private String promedio;
     private String operador;
     private String dni;
+    private String observacion;
     private String estadoAl;
     private String id_placa;
     private String N_placa;
@@ -92,6 +93,14 @@ public class AlicuotadoResponse implements Serializable {
         this.dni = dni;
     }
 
+    public String getObservacion() {
+        return observacion;
+    }
+
+    public void setObservacion(String observacion) {
+        this.observacion = observacion;
+    }
+
     public String getEstadoAl() {
         return estadoAl;
     }
@@ -140,6 +149,7 @@ public class AlicuotadoResponse implements Serializable {
                 ", promedio='" + promedio + '\'' +
                 ", operador='" + operador + '\'' +
                 ", dni='" + dni + '\'' +
+                ", observacion='" + observacion + '\'' +
                 ", estadoAl='" + estadoAl + '\'' +
                 ", id_placa='" + id_placa + '\'' +
                 ", N_placa='" + N_placa + '\'' +
