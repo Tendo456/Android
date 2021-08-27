@@ -16,6 +16,8 @@
         <item>Mina</item>
     </string-array>
 
+    <string name="Imagen">Img</string>
+
     <string name="mensaje_ini">La satisfacción de nuestros clientes es muy importante para nosotros, por lo que le pedimos se pueda tomar unos minutos para calificar nuestro servicio.</string>
     <string name="encabezado1">Por favor califique las siguientes características</string>
     <string name="encabezado2">Adicionalmente, responda las siguientes preguntas</string>

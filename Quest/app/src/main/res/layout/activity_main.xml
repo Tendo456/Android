@@ -101,35 +101,40 @@
                     android:layout_width="68dp"
                     android:layout_height="68dp"
                     android:layout_margin="4dp"
-                    app:srcCompat="@drawable/muy_malo" />
+                    app:srcCompat="@drawable/muy_malo"
+                    android:contentDescription="@string/Imagen" />
 
                 <ImageView
                     android:id="@+id/imageView3"
                     android:layout_width="68dp"
                     android:layout_height="68dp"
                     android:layout_margin="4dp"
-                    app:srcCompat="@drawable/malo" />
+                    app:srcCompat="@drawable/malo"
+                    android:contentDescription="@string/Imagen"/>
 
                 <ImageView
                     android:id="@+id/imageView4"
                     android:layout_width="68dp"
                     android:layout_height="68dp"
                     android:layout_margin="4dp"
-                    app:srcCompat="@drawable/regular" />
+                    app:srcCompat="@drawable/regular"
+                    android:contentDescription="@string/Imagen"/>
 
                 <ImageView
                     android:id="@+id/imageView5"
                     android:layout_width="68dp"
                     android:layout_height="68dp"
                     android:layout_margin="4dp"
-                    app:srcCompat="@drawable/bueno" />
+                    app:srcCompat="@drawable/bueno"
+                    android:contentDescription="@string/Imagen"/>
 
                 <ImageView
                     android:id="@+id/imageView6"
                     android:layout_width="68dp"
                     android:layout_height="68dp"
                     android:layout_margin="4dp"
-                    app:srcCompat="@drawable/muy_bueno" />
+                    app:srcCompat="@drawable/muy_bueno"
+                    android:contentDescription="@string/Imagen"/>
 
             </LinearLayout>
 
@@ -398,7 +403,8 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="2dp"
                         android:background="@drawable/drawable_spinner"
-                        android:padding="2dp" />
+                        android:padding="2dp"
+                        tools:ignore="SpeakableTextPresentCheck"/>
 
                 </TableRow>
 
