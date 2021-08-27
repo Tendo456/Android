@@ -269,6 +269,8 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
     }
 
     public void ConfirmarAmplificacion (){
+        Amf_inicio.setText(AmF);
+        Amh_inicio.setText(AmH);
         AlertDialog.Builder opcion = new AlertDialog.Builder(this);
         opcion.setMessage("Iniciar Alicuotado para "+ AmN_placaI+"?");
         opcion.setPositiveButton("Crear", (dialog, which) -> saveAmplificacion());
