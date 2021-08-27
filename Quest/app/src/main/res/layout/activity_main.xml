@@ -477,7 +477,8 @@
                             android:hint="Respuesta"
                             android:inputType="textMultiLine|textPersonName"
                             android:textColor="@color/black"
-                            android:maxLength="100" />
+                            android:maxLength="100"
+                            tools:ignore="SpeakableTextPresentCheck"/>
 
                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -536,7 +537,8 @@
                             android:hint="Respuesta"
                             android:inputType="textMultiLine|textPersonName"
                             android:maxLength="100"
-                            android:textColor="@color/black" />
+                            android:textColor="@color/black"
+                            tools:ignore="SpeakableTextPresentCheck" />
 
                     </com.google.android.material.textfield.TextInputLayout>
                 </TableRow>
