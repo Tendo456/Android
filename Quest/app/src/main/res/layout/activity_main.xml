@@ -404,7 +404,7 @@
                         android:layout_margin="2dp"
                         android:background="@drawable/drawable_spinner"
                         android:padding="2dp"
-                        tools:ignore="SpeakableTextPresentCheck"/>
+                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
                 </TableRow>
 
