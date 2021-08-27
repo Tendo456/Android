@@ -322,7 +322,8 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="2dp"
                         android:background="@drawable/drawable_spinner"
-                        android:padding="2dp" />
+                        android:padding="2dp"
+                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
                 </TableRow>
 
@@ -359,7 +360,8 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="2dp"
                         android:background="@drawable/drawable_spinner"
-                        android:padding="2dp" />
+                        android:padding="2dp"
+                        tools:ignore="SpeakableTextPresentCheck" />
 
                 </TableRow>
 
