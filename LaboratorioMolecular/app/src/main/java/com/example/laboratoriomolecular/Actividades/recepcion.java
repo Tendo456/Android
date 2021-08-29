@@ -204,7 +204,7 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
     private void saveRecepcion (){
 
         if(Robservacion.getText().toString().isEmpty()){
-            Robservacion.setText("Vacio"); }
+            Robservacion.setText("Vacío"); }
         if (Rnenvio.getText().toString().isEmpty()){
             Rnenvio.setError("Complete los campos");
         }else if (Rqmuestras.getText().toString().isEmpty()){

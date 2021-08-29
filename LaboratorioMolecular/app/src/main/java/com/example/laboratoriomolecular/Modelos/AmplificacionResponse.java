@@ -17,6 +17,7 @@ public class AmplificacionResponse implements Serializable {
     private String Ci_invalido;
     private String operador;
     private String dni;
+    private String observacion;
     private String estadoAm;
     private String id_placa;
     private String N_placa;
@@ -128,6 +129,14 @@ public class AmplificacionResponse implements Serializable {
         this.dni = dni;
     }
 
+    public String getObservacion() {
+        return observacion;
+    }
+
+    public void setObservacion(String observacion) {
+        this.observacion = observacion;
+    }
+
     public String getEstadoAm() {
         return estadoAm;
     }
@@ -188,6 +197,7 @@ public class AmplificacionResponse implements Serializable {
                 ", Ci_invalido='" + Ci_invalido + '\'' +
                 ", operador='" + operador + '\'' +
                 ", dni='" + dni + '\'' +
+                ", observacion='" + observacion + '\'' +
                 ", estadoAm='" + estadoAm + '\'' +
                 ", id_placa='" + id_placa + '\'' +
                 ", N_placa='" + N_placa + '\'' +

@@ -13,6 +13,7 @@ public class ResultadosResponse implements Serializable {
     private String promedio;
     private String operador;
     private String dni;
+    private String observacion;
     private String estadoRes;
     private String mensaje;
 
@@ -88,6 +89,14 @@ public class ResultadosResponse implements Serializable {
         this.dni = dni;
     }
 
+    public String getObservacion() {
+        return observacion;
+    }
+
+    public void setObservacion(String observacion) {
+        this.observacion = observacion;
+    }
+
     public String getEstadoRes() {
         return estadoRes;
     }
@@ -112,6 +121,7 @@ public class ResultadosResponse implements Serializable {
                 ", promedio='" + promedio + '\'' +
                 ", operador='" + operador + '\'' +
                 ", dni='" + dni + '\'' +
+                ", observacion='" + observacion + '\'' +
                 ", estadoRes='" + estadoRes + '\'' +
                 '}';
     }

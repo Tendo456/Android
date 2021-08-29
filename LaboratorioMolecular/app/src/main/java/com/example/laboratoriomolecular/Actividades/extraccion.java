@@ -264,6 +264,8 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
     }
 
     public void ConfirmarExtraccion (){
+        Exf_inicio.setText(ExF);
+        Exh_inicio.setText(ExH);
         AlertDialog.Builder opcion = new AlertDialog.Builder(this);
         opcion.setMessage("Iniciar Extraccion para "+ ExN_placa+"?");
         opcion.setPositiveButton("Crear", (dialog, which) -> saveExtraccion());
@@ -274,6 +276,8 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
     }
 
     public void FinalizarExtraccion (){
+        Exf_final.setText(ExF);
+        Exh_final.setText(ExH);
         AlertDialog.Builder opcion = new AlertDialog.Builder(this);
         opcion.setMessage("Finalizar Extraccion para "+ ExN_placaF+"?");
         opcion.setPositiveButton("Finalizar", (dialog, which) -> calcularPromedioEx());
@@ -404,6 +408,8 @@ public class extraccion extends AppCompatActivity implements ExtraccionAdapter.C
     }
 
     public void upDateExtraccion (){
+        if (Exobservacion.getText().toString().isEmpty()){
+            Exobservacion.setText("Vacío"); }
         if (placaEx == null) {
             Toast.makeText(this, "Seleccione La Placa a Finalizar en la Lista", Toast.LENGTH_LONG).show();
         } else {

@@ -13,6 +13,7 @@ public class AreaResponse implements Serializable {
     private String promedio;
     private String operador;
     private String dni;
+    private String observacion;
     private String estadoAr;
     private String id_placa;
     private String N_placa;
@@ -91,6 +92,14 @@ public class AreaResponse implements Serializable {
         this.dni = dni;
     }
 
+    public String getObservacion() {
+        return observacion;
+    }
+
+    public void setObservacion(String observacion) {
+        this.observacion = observacion;
+    }
+
     public String getEstadoAr() {
         return estadoAr;
     }
@@ -139,6 +148,7 @@ public class AreaResponse implements Serializable {
                 ", promedio='" + promedio + '\'' +
                 ", operador='" + operador + '\'' +
                 ", dni='" + dni + '\'' +
+                ", observacion='" + observacion + '\'' +
                 ", estadoAr='" + estadoAr + '\'' +
                 ", id_placa='" + id_placa + '\'' +
                 ", N_placa='" + N_placa + '\'' +

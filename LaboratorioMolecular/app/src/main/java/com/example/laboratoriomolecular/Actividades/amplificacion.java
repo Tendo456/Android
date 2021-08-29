@@ -29,6 +29,7 @@ import com.example.laboratoriomolecular.Modelos.OperadorResponse;
 import com.example.laboratoriomolecular.Modelos.PlacaSpinner;
 import com.example.laboratoriomolecular.R;
 import com.example.laboratoriomolecular.Retrofit_Data.ApiClient;
+import com.google.android.material.textfield.TextInputEditText;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
@@ -61,11 +62,12 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
     private AsyncHttpClient placasAmp;
     AmplificacionAdapter amplificacionAdapter;
     RecyclerView ListAmplificacion;
-    String idAm, placaAm, muestrasAm, f_inicioAm, h_inicioAm, f_finalAm, h_finalAm, promedioAm, M_validoAm, M_invalidoAm, Ci_validoAm, Ci_ivalidoAm ,operadorAm, dniAm,id_placaAm, estadoAm, N_corridaAm;
+    String idAm, placaAm, muestrasAm, f_inicioAm, h_inicioAm, f_finalAm, h_finalAm, promedioAm, M_validoAm, M_invalidoAm, Ci_validoAm, Ci_ivalidoAm ,operadorAm, dniAm, observacionAm,id_placaAm, estadoAm, N_corridaAm;
     String AmF, AmH, AmN_placaF,AmN_placaI,dayerAm;
     String CAm_fhi, CAm_fhf;
     Button Aminiciar,Amfinalizar;
     CheckBox chAmAyer;
+    TextInputEditText Amobservacion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +96,7 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
         ListAmplificacion = findViewById(R.id.ListAmplificacion);
         chAmAyer = findViewById(R.id.chAmAyer);
         AmN_corrida = findViewById(R.id.AmN_corrida);
+        Amobservacion = findViewById(R.id.Amobservacion);
 
         Amfinalizar.setEnabled(false);
 
@@ -281,6 +284,8 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
     }
 
     public void FinalizarAmplificacion (){
+        Amf_final.setText(AmF);
+        Amh_final.setText(AmH);
         AlertDialog.Builder opcion = new AlertDialog.Builder(this);
         opcion.setMessage("Finalizar Alicuotado para "+ AmN_placaF+"?");
         opcion.setPositiveButton("Finalizar", (dialog, which) -> calcularPromedioAm());
@@ -310,6 +315,7 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
         operadorAm = amplificacionResponse.getOperador();
         dniAm = amplificacionResponse.getDni();
         estadoAm = amplificacionResponse.getEstadoAm();
+        observacionAm = amplificacionResponse.getObservacion();
 
         Amid_placa.setText(id_placaAm);
         AmN_placaF = placaAm;
@@ -321,6 +327,8 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
         if(h_inicioAm == null){Amh_inicio.setText(AmH);} else {Amh_inicio.setText(h_inicioAm);}
         if(f_finalAm == null){Amf_final.setText(AmF); Amfinalizar.setEnabled(true);} else {Amf_final.setText(f_finalAm); Amfinalizar.setEnabled(false);}
         if(h_finalAm == null){Amh_final.setText(AmH);} else {Amh_final.setText(h_finalAm);}
+        if(observacionAm == null){Amobservacion.setText("Vacio");}else {Amobservacion.setText(observacionAm);}
+
 
         dialogoAm();
 
@@ -392,12 +400,16 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
     }
 
     private void saveAmplificacion(){
+
+        if(Amobservacion.getText().toString().isEmpty()){
+            Amobservacion.setText("Vacío"); }
+
         if (Amq_muestras.getText().toString().isEmpty()){
             Amq_muestras.setError("Ingrese Cantidad de Muestras");
         }else if (Amdni.getText().toString().equals("0")){
             Amdni.setError("Seleccione un Operador");
         }else {
-        Call<AmplificacionResponse> callAli = ApiClient.getUserService().InsertarAmplificacion(Amq_muestras.getText().toString(),Amf_inicio.getText().toString(),Amh_inicio.getText().toString(),Amoperador.getText().toString(),Amdni.getText().toString(),"1",Amid_placaSp.getText().toString());
+        Call<AmplificacionResponse> callAli = ApiClient.getUserService().InsertarAmplificacion(Amq_muestras.getText().toString(),Amf_inicio.getText().toString(),Amh_inicio.getText().toString(),Amoperador.getText().toString(),Amdni.getText().toString(),Amobservacion.getText().toString(),"1",Amid_placaSp.getText().toString());
         callAli.enqueue(new Callback<AmplificacionResponse>() {
             @Override
             public void onResponse(@NotNull Call<AmplificacionResponse> call, @NotNull Response<AmplificacionResponse> response) {
@@ -422,6 +434,8 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
 
     private void upDateAmplificacion() {
 
+        if(Amobservacion.getText().toString().isEmpty()){
+            Amobservacion.setText("Vacío"); }
         if (AmM_valido.getText().toString().isEmpty()){
             AmM_valido.setError("Ingrese Cantidad de Muestras");
         }else if (AmM_invalido.getText().toString().isEmpty()){
@@ -432,7 +446,7 @@ public class amplificacion extends AppCompatActivity implements AmplificacionAda
             AmCi_invalido.setError("Ingrese Cantidad de Muestras");
         } else {
 
-            Call<AmplificacionResponse> upAlic = ApiClient.getUserService().upAmplificacion(Amid_placa.getText().toString(), Amf_final.getText().toString(), Amh_final.getText().toString(), Ampromedio.getText().toString(), AmM_valido.getText().toString(),AmM_invalido.getText().toString(),AmCi_valido.getText().toString(),AmCi_invalido.getText().toString(), "2");
+            Call<AmplificacionResponse> upAlic = ApiClient.getUserService().upAmplificacion(Amid_placa.getText().toString(), Amf_final.getText().toString(), Amh_final.getText().toString(),Amobservacion.getText().toString(), Ampromedio.getText().toString(), AmM_valido.getText().toString(),AmM_invalido.getText().toString(),AmCi_valido.getText().toString(),AmCi_invalido.getText().toString(), "2");
             upAlic.enqueue(new Callback<AmplificacionResponse>() {
                 @Override
                 public void onResponse(@NotNull Call<AmplificacionResponse> call, @NotNull Response<AmplificacionResponse> response) {

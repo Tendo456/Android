@@ -62,7 +62,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
     private AsyncHttpClient placaA;
     AlicuotadoAdapter alicuotadoAdapter;
     RecyclerView ListAlicuotado;
-    String idAl, placaAl, muestrasAl, f_inicioAl, h_inicioAl, f_finalAl, h_finalAl, promedioAl ,operadorAl, dniAl,obsevacionAl,id_placaAl, estadoAl,N_corridaAl;
+    String idAl, placaAl, muestrasAl, f_inicioAl, h_inicioAl, f_finalAl, h_finalAl, promedioAl ,operadorAl, dniAl,observacionAl,id_placaAl, estadoAl,N_corridaAl;
     String F, H, AN_placaF,AN_placaI;
     String CAl_fhi, CAl_fhf;
     Button Ainiciar,Afinalizar;
@@ -288,6 +288,8 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
     }
 
     public void ConfirmarAlicuotado (){
+        Af_inicio.setText(F);
+        Ah_inicio.setText(H);
         AlertDialog.Builder opcion = new AlertDialog.Builder(this);
         opcion.setMessage("Iniciar Alicuotado para "+ AN_placaI+"?");
         opcion.setPositiveButton("Crear", (dialog, which) -> saveAlicuotado());
@@ -298,6 +300,8 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
     }
 
     public void FinalizarAlicuotado (){
+        Af_final.setText(F);
+        Ah_final.setText(H);
         AlertDialog.Builder opcion = new AlertDialog.Builder(this);
         opcion.setMessage("Finalizar Alicuotado para "+ AN_placaF+"?");
         opcion.setPositiveButton("Finalizar", (dialog, which) -> calcularPromedio());
@@ -322,7 +326,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
         promedioAl = alicuotadoResponse.getPromedio();
         operadorAl = alicuotadoResponse.getOperador();
         dniAl = alicuotadoResponse.getDni();
-        obsevacionAl = alicuotadoResponse.getObservacion();
+        observacionAl = alicuotadoResponse.getObservacion();
         estadoAl = alicuotadoResponse.getEstadoAl();
 
         Aid_placa.setText(id_placaAl);
@@ -335,7 +339,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
         if(h_inicioAl == null){Ah_inicio.setText(H);} else {Ah_inicio.setText(h_inicioAl);}
         if(f_finalAl == null){Af_final.setText(F); Afinalizar.setEnabled(true);} else {Af_final.setText(f_finalAl); Afinalizar.setEnabled(false);}
         if(h_finalAl == null){Ah_final.setText(H);} else {Ah_final.setText(h_finalAl);}
-        if(obsevacionAl == null){Aobservacion.setText("Vacio");}else {Aobservacion.setText(obsevacionAl);}
+        if(observacionAl == null){Aobservacion.setText("Vacio");}else {Aobservacion.setText(observacionAl);}
 
         dialogoAl();
 
@@ -399,8 +403,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
 
     private void salto(){
         if (Aq_muestras.getText().toString().isEmpty()){
-            Aq_muestras.setError("Ingrese Cantidad de Muestras");
-        }
+            Aq_muestras.setError("Ingrese Cantidad de Muestras"); }
         Call<AlicuotadoResponse> salto = ApiClient.getUserService().Salto(Aq_muestras.getText().toString(),Af_inicio.getText().toString(),Aid_placaSp.getText().toString(),AN_corrida.getText().toString());
         salto.enqueue(new Callback<AlicuotadoResponse>() {
             @Override
@@ -424,6 +427,8 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
     }
 
     private void saveAlicuotado(){
+        if(Aobservacion.getText().toString().isEmpty()){
+            Aobservacion.setText("Vacío"); }
             if (Aq_muestras.getText().toString().isEmpty()){
                 Aq_muestras.setError("Ingrese Cantidad de Muestras");
             }else if (Adni.getText().toString().equals("0")){
@@ -454,6 +459,9 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
     }
 
     private void upDateAlicuotado() {
+
+        if(Aobservacion.getText().toString().isEmpty()){
+            Aobservacion.setText("Vacío"); }
 
         if (placaAl == null) {
             Toast.makeText(this, "Seleccione La Placa a Finalizar en la Lista", Toast.LENGTH_LONG).show();

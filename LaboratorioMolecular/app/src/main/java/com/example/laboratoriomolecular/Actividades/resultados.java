@@ -33,6 +33,7 @@ import com.example.laboratoriomolecular.Modelos.PlacaSpinnerRes;
 import com.example.laboratoriomolecular.Modelos.ResultadosResponse;
 import com.example.laboratoriomolecular.R;
 import com.example.laboratoriomolecular.Retrofit_Data.ApiClient;
+import com.google.android.material.textfield.TextInputEditText;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
@@ -57,7 +58,7 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
 
     TextView  Resf_inicio, Resh_inicio, Resf_final, Resh_final, Respromedio, Resoperador ,Resdni,Resid_resultados;
     TextView diResN_placa,diResf_inicio,diResh_inicio,diResf_final,diResh_final,diRespromedio,diResoperador,diResdni,diResestado,CPlacasRes;
-    String idRes, placaRes, f_inicioRes, h_inicioRes, f_finalRes, h_finalRes, promedioRes ,operadorResu, dniRes, estadoRes;
+    String idRes, placaRes, f_inicioRes, h_inicioRes, f_finalRes, h_finalRes, promedioRes ,operadorResu, dniRes, observacionRes, estadoRes;
     Spinner spOperadorRes,spCorridaRes;
     Button Resiniciar,Resfinalizar;
     CheckBox chResAyer;
@@ -69,6 +70,7 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
     private AsyncHttpClient placasResul;
     SwipeRefreshLayout Resrefresh;
     ResultadosAdapter resultadosAdapter;
+    TextInputEditText Resobservacion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +93,7 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
         ListResultados = findViewById(R.id.ListResultados);
         Resrefresh = findViewById(R.id.Resrefresh);
         Resid_resultados = findViewById(R.id.Resid_resultados);
+        Resobservacion = findViewById(R.id.Resobservacion);
 
         ListResultados.setLayoutManager(new LinearLayoutManager(this));
         ListResultados.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
@@ -107,6 +110,7 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
         Resrefresh.setOnRefreshListener(()->{
             Resfecha();
             ConseguirResul();
+            Resobservacion.getText().clear();
             Resrefresh.setRefreshing(false);
         });
 
@@ -253,6 +257,8 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
     }
 
     public void IniciarRes (){
+        Resf_inicio.setText(ResF);
+        Resh_inicio.setText(ResH);
         AlertDialog.Builder opcion = new AlertDialog.Builder(this);
         opcion.setMessage("Iniciar Resultados?");
         opcion.setPositiveButton("Iniciar Resultados?", (dialog, which) -> SaveResultados());
@@ -263,6 +269,8 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
     }
 
     public void FinalizarRes (){
+        Resf_final.setText(ResF);
+        Resh_final.setText(ResH);
         AlertDialog.Builder opcion = new AlertDialog.Builder(this);
         opcion.setMessage("Finalizar Resultados?");
         opcion.setPositiveButton("Finalizar", (dialog, which) -> PromedioRes());
@@ -292,11 +300,15 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
     }
 
     public void SaveResultados() {
+
+        if(Resobservacion.getText().toString().isEmpty()){
+            Resobservacion.setText("Vacío"); }
+
         if (Resdni.getText().toString().equals("0")) {
             Resdni.setError("Seleccione un Operador");
         } else {
 
-        Call<ResultadosResponse> finRes = ApiClient.getUserService().IniciarResultado(CPlacasRes.getText().toString(), Resf_inicio.getText().toString(), Resh_inicio.getText().toString(), Resoperador.getText().toString(), Resdni.getText().toString(), "1");
+        Call<ResultadosResponse> finRes = ApiClient.getUserService().IniciarResultado(CPlacasRes.getText().toString(), Resf_inicio.getText().toString(), Resh_inicio.getText().toString(), Resoperador.getText().toString(), Resdni.getText().toString(), Resobservacion.getText().toString(), "1");
         finRes.enqueue(new Callback<ResultadosResponse>() {
             @Override
             public void onResponse(@NotNull Call<ResultadosResponse> call, @NotNull Response<ResultadosResponse> response) {
@@ -306,6 +318,7 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
                     ConseguirResul();
                     Resfecha();
                     Resfinalizar.setEnabled(false);
+                    Resobservacion.getText().clear();
                 } else {
                     Toast.makeText(resultados.this, "Error al Guardar los Datos", Toast.LENGTH_SHORT).show();
                 }
@@ -320,7 +333,11 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
     }
 
     public void finResultados(){
-        Call<ResultadosResponse> iniRes = ApiClient.getUserService().FinalizarResultado(Resid_resultados.getText().toString(),CPlacasRes.getText().toString(),Resf_inicio.getText().toString(),Resf_final.getText().toString(),Resh_final.getText().toString(),Respromedio.getText().toString(),"2");
+
+        if(Resobservacion.getText().toString().isEmpty()){
+            Resobservacion.setText("Vacío"); }
+
+        Call<ResultadosResponse> iniRes = ApiClient.getUserService().FinalizarResultado(Resid_resultados.getText().toString(),CPlacasRes.getText().toString(),Resf_inicio.getText().toString(),Resf_final.getText().toString(),Resh_final.getText().toString(),Resobservacion.getText().toString(),Respromedio.getText().toString(),"2");
         iniRes.enqueue(new Callback<ResultadosResponse>() {
             @Override
             public void onResponse(@NotNull Call<ResultadosResponse> call, @NotNull Response<ResultadosResponse> response) {
@@ -330,6 +347,7 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
                     Toast.makeText(resultados.this, "" + mensaje.getMensaje(), Toast.LENGTH_SHORT).show();
                     ConseguirResul();
                     Resfinalizar.setEnabled(false);
+                    Resobservacion.getText().clear();
                 } else {
                     Toast.makeText(resultados.this, "Error al Guardar los Datos", Toast.LENGTH_SHORT).show();
                 }
@@ -373,13 +391,17 @@ public class resultados extends AppCompatActivity implements ResultadosAdapter.C
         operadorResu = resultadosResponse.getOperador();
         dniRes = resultadosResponse.getDni();
         estadoRes = resultadosResponse.getEstadoRes();
+        observacionRes = resultadosResponse.getObservacion();
 
         Resid_resultados.setText(idRes);
         CPlacasRes.setText(placaRes);
         CRes_fhi = resultadosResponse.getF_inicio()+" "+resultadosResponse.getH_inicio();
 
+        if(f_inicioRes == null){ Resf_inicio.setText(ResF); }else { Resf_inicio.setText(f_inicioRes); }
+        if(h_inicioRes == null){Resh_inicio.setText(ResH);} else {Resh_inicio.setText(h_inicioRes);}
         if(f_finalRes == null){Resf_final.setText(ResF); Resfinalizar.setEnabled(true);} else {Resf_final.setText(f_finalRes); Resfinalizar.setEnabled(false);}
         if(h_finalRes == null){Resh_final.setText(ResH);} else {Resh_final.setText(h_finalRes);}
+        if(observacionRes == null){Resobservacion.setText("Vacio");}else {Resobservacion.setText(observacionRes);}
 
         dialogoRes();
     }

@@ -29,6 +29,7 @@ import com.example.laboratoriomolecular.Modelos.OperadorResponse;
 import com.example.laboratoriomolecular.Modelos.PlacaSpinner;
 import com.example.laboratoriomolecular.R;
 import com.example.laboratoriomolecular.Retrofit_Data.ApiClient;
+import com.google.android.material.textfield.TextInputEditText;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
@@ -61,11 +62,12 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
     private AsyncHttpClient placaAre;
     AreaAdapter areaAdapter;
     RecyclerView ListArea;
-    String idAr, placaAr, muestrasAr, f_inicioAr, h_inicioAr, f_finalAr, h_finalAr, promedioAr ,operadorAr, dniAr,id_placaAr, estadoAr, N_corridaAr;
+    String idAr, placaAr, muestrasAr, f_inicioAr, h_inicioAr, f_finalAr, h_finalAr, promedioAr ,operadorAr, dniAr, observacionAr,id_placaAr, estadoAr, N_corridaAr;
     String ArF, ArH, ArN_placaF,ArN_placaI, dayerAr;
     String CAr_fhi, CAr_fhf;
     Button Ariniciar,Arfinalizar;
     CheckBox chArAyer;
+    TextInputEditText Arobservacion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +92,7 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
         ListArea = findViewById(R.id.ListArea);
         chArAyer = findViewById(R.id.chArAyer);
         ArN_corrida = findViewById(R.id.ArN_corrida);
+        Arobservacion = findViewById(R.id.Arobservacion);
 
         Arfinalizar.setEnabled(false);
 
@@ -105,7 +108,7 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
 
         Arrefresh.setOnRefreshListener(()->{
             Arefecha();
-            limpiarAlicuotado();
+            limpiarArea();
             conseguirAr();
             Arrefresh.setRefreshing(false);
         });
@@ -265,6 +268,8 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
     }
 
     public void ConfirmarArea (){
+        Arf_inicio.setText(ArF);
+        Arh_inicio.setText(ArH);
         AlertDialog.Builder opcion = new AlertDialog.Builder(this);
         opcion.setMessage("Iniciar Alicuotado para "+ ArN_placaI+"?");
         opcion.setPositiveButton("Crear", (dialog, which) -> saveArea());
@@ -275,6 +280,8 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
     }
 
     public void FinalizarArea (){
+        Arf_final.setText(ArF);
+        Arh_final.setText(ArH);
         AlertDialog.Builder opcion = new AlertDialog.Builder(this);
         opcion.setMessage("Finalizar Alicuotado para "+ ArN_placaF+"?");
         opcion.setPositiveButton("Finalizar", (dialog, which) -> calcularPromedioAr());
@@ -299,6 +306,7 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
         operadorAr = areaResponse.getOperador();
         dniAr = areaResponse.getDni();
         estadoAr = areaResponse.getEstadoAr();
+        observacionAr = areaResponse.getObservacion();
 
         Arid_placa.setText(id_placaAr);
         ArN_placaF = placaAr;
@@ -310,6 +318,7 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
         if(h_inicioAr == null){Arh_inicio.setText(ArH);} else {Arh_inicio.setText(h_inicioAr);}
         if(f_finalAr == null){Arf_final.setText(ArF); Arfinalizar.setEnabled(true);} else {Arf_final.setText(f_finalAr); Arfinalizar.setEnabled(false);}
         if(h_finalAr == null){Arh_final.setText(ArH);} else {Arh_final.setText(h_finalAr);}
+        if(observacionAr == null){Arobservacion.setText("Vacio");}else {Arobservacion.setText(observacionAr);}
 
         dialogoAr();
     }
@@ -371,12 +380,14 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
     }
 
     private void saveArea(){
+        if(Arobservacion.getText().toString().isEmpty()){
+            Arobservacion.setText("Vacío"); }
         if (Arq_muestras.getText().toString().isEmpty()){
             Arq_muestras.setError("Ingrese Cantidad de Muestras");
         }else if (Ardni.getText().toString().equals("0")){
             Ardni.setError("Seleccione un Operador");
         }else {
-        Call<AreaResponse> callAli = ApiClient.getUserService().InsertarArea(Arq_muestras.getText().toString(),Arf_inicio.getText().toString(),Arh_inicio.getText().toString(),Aroperador.getText().toString(),Ardni.getText().toString(),"1",Arid_placaSp.getText().toString());
+        Call<AreaResponse> callAli = ApiClient.getUserService().InsertarArea(Arq_muestras.getText().toString(),Arf_inicio.getText().toString(),Arh_inicio.getText().toString(),Aroperador.getText().toString(),Ardni.getText().toString(),Arobservacion.getText().toString(),"1",Arid_placaSp.getText().toString());
         callAli.enqueue(new Callback<AreaResponse>() {
             @Override
             public void onResponse(@NotNull Call<AreaResponse> call, @NotNull Response<AreaResponse> response) {
@@ -384,7 +395,7 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
                     AreaResponse mensaje = response.body();
                     Toast.makeText(area_limpia.this, ""+mensaje.getMensaje()+" "+response.code(), Toast.LENGTH_SHORT).show();
                     conseguirAr();
-                    limpiarAlicuotado();
+                    limpiarArea();
                     Arefecha();
                 } else {
                     Toast.makeText(area_limpia.this, "Error al Guardar los Datos "+response.code(), Toast.LENGTH_SHORT).show();
@@ -401,11 +412,14 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
 
     private void upDateArea() {
 
+        if(Arobservacion.getText().toString().isEmpty()){
+            Arobservacion.setText("Vacío"); }
+
         if (placaAr == null) {
             Toast.makeText(this, "Seleccione La Placa a Finalizar en la Lista", Toast.LENGTH_LONG).show();
         } else {
 
-            Call<AreaResponse> upAlic = ApiClient.getUserService().upArea(Arid_placa.getText().toString(), Arf_final.getText().toString(), Arh_final.getText().toString(), Arpromedio.getText().toString(), "2");
+            Call<AreaResponse> upAlic = ApiClient.getUserService().upArea(Arid_placa.getText().toString(), Arf_final.getText().toString(), Arh_final.getText().toString(),Arobservacion.getText().toString(), Arpromedio.getText().toString(), "2");
             upAlic.enqueue(new Callback<AreaResponse>() {
                 @Override
                 public void onResponse(@NotNull Call<AreaResponse> call, @NotNull Response<AreaResponse> response) {
@@ -413,7 +427,7 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
                         AreaResponse mensaje = response.body();
                         Toast.makeText(area_limpia.this, "" + mensaje.getMensaje(), Toast.LENGTH_SHORT).show();
                         conseguirAr();
-                        limpiarAlicuotado();
+                        limpiarArea();
                         Arfinalizar.setEnabled(false);
                     } else {
                         Toast.makeText(area_limpia.this, "Error al Guardar los Datos", Toast.LENGTH_SHORT).show();
@@ -429,9 +443,10 @@ public class area_limpia extends AppCompatActivity implements AreaAdapter.Clicke
 
     }
 
-    public void limpiarAlicuotado(){
+    public void limpiarArea(){
 
-        Arq_muestras.setText(null);
+        Arq_muestras.getText().clear();
+        Arobservacion.getText().clear();
     }
 
     public void calcularPromedioAr () {
