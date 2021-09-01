@@ -15,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -268,7 +269,7 @@ public class nueva_placa extends AppCompatActivity implements PlacaAdapter.Click
         Call<PlacaResponse> upPlaca = ApiClient.getUserService().updatePlaca(CodPlaca.getText().toString(), N_corrida.getText().toString(),fechaPl.getText().toString(),id_recepcion.getText().toString());
         upPlaca.enqueue(new Callback<PlacaResponse>() {
             @Override
-            public void onResponse(Call<PlacaResponse> call, Response<PlacaResponse> response) {
+            public void onResponse(@NonNull Call<PlacaResponse> call, @NonNull Response<PlacaResponse> response) {
                 if (response.isSuccessful()) {
 
                     PlacaResponse mensaje = response.body();
@@ -282,7 +283,7 @@ public class nueva_placa extends AppCompatActivity implements PlacaAdapter.Click
             }
 
             @Override
-            public void onFailure(Call<PlacaResponse> call, Throwable t) {
+            public void onFailure(@NonNull Call<PlacaResponse> call, @NonNull Throwable t) {
                 Toast.makeText(nueva_placa.this, "Error Codigo: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
