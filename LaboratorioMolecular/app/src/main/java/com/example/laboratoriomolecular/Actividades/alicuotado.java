@@ -70,7 +70,6 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
     CheckBox chAyer,Salto;
     TextInputEditText Aobservacion;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
