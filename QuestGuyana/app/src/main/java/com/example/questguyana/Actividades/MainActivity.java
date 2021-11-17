@@ -1,8 +1,10 @@
-package com.example.questguyana;
+package com.example.questguyana.Actividades;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.questguyana.R;
 
 public class MainActivity extends AppCompatActivity {
 
