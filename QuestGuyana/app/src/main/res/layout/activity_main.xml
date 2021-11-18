@@ -45,14 +45,14 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="0dp"
                 android:layout_weight="1"
-                android:gravity="center_horizontal"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:orientation="vertical">
@@ -73,6 +73,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_margin="5dp"
+                        android:background="@drawable/drawable_cell_shape"
+                        android:padding="3dp"
                         android:text="@string/Sub_Title"
                         android:textColor="@color/black"
                         android:textSize="15sp" />
@@ -82,13 +84,24 @@
 
                 <ImageView
                     android:id="@+id/imageLogo"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
                     android:layout_margin="4dp"
                     android:contentDescription="@string/Imagen"
-                    app:srcCompat="@drawable/logo_color" />
+                    app:srcCompat="@drawable/ic_logo" />
 
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/textVie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/drawable_cell_shape"
+                android:gravity="center"
+                android:padding="5dp"
+                android:layout_margin="5dp"
+                android:text="@string/Sub_Title_2"
+                android:textSize="15sp" />
 
             <TableLayout
                 android:layout_width="match_parent"

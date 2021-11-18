@@ -20,7 +20,9 @@
 
     <string name="Title">PATIENT FEEDBACK SURVEY</string>
 
-    <string name="Sub_Title">Costumer satisfaction is vital in our service delivery. <br/> We ask you to take a few minutes to rate us on the aspects of our service si that we can serve you better. <br/>We value your opinion.</string>
+    <string name="Sub_Title">"Costumer satisfaction is vital in our service delivery.\nWe ask you to take a few minutes to rate us on the aspects of our service si that we can serve you better.\nWe value your opinion."</string>
+
+    <string name="Sub_Title_2">Please rate the below characteristics between 1 and 10 (1 being poor and 10 being excellent)</string>
 
     <string name="mensaje_ini">La satisfacción de nuestros clientes es muy importante para nosotros, por lo que le pedimos se pueda tomar unos minutos para calificar nuestro servicio.</string>
     <string name="encabezado1">Por favor califique las siguientes características</string>
