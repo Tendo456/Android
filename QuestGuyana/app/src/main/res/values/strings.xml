@@ -1,3 +1,38 @@
 <resources>
     <string name="app_name">Quest Guyana</string>
+
+    <string-array name="numeros">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
+    <string-array name="lugares">
+        <item>Clinica EMOS</item>
+        <item>Expats</item>
+        <item>Mina</item>
+    </string-array>
+
+    <string name="Imagen">Img</string>
+
+    <string name="Title">PATIENT FEEDBACK SURVEY</string>
+
+    <string name="Sub_Title">Costumer satisfaction is vital in our service delivery. <br/> We ask you to take a few minutes to rate us on the aspects of our service si that we can serve you better. <br/>We value your opinion.</string>
+
+    <string name="mensaje_ini">La satisfacción de nuestros clientes es muy importante para nosotros, por lo que le pedimos se pueda tomar unos minutos para calificar nuestro servicio.</string>
+    <string name="encabezado1">Por favor califique las siguientes características</string>
+    <string name="encabezado2">Adicionalmente, responda las siguientes preguntas</string>
+
+    <string name="numero1">Limpieza y comodidad de las instalaciones</string>
+    <string name="numero2">Existen medidas para la protección de la salud: el personal utiliza mascarilla y/o guantes así como adecuada y constante higiene de manos, alcohol-gel en todas las áreas, se toma la temperatura a la entrada de las instalaciones, se respeta la distancia social entre pacientes.</string>
+    <string name="numero3">El personal responsable de atenderlo(a) cumplió con sus expectativas, demostró dominio del tema consultado y lo(a) trató con respeto y amabilidad. <br /> <small>En caso no haya sido así, indicarlo en la pregunta N° 8.</small></string>
+    <string name="numero4">La experiencia durante su visita resultó satisfactoria.</string>
+    <string name="numero5">El tiempo de duración del Examen Médico Ocupacional fue el correcto.</string>
+    <string name="numero6">El personal fue abierto a responder sus preguntas y preocupaciones.</string>
+    <string name="numero7">Indiquenos el/los nombres de las personas que excedieron sus espectavivas de servicio</string>
+    <string name="numero8">Indiquenos si tiene alguna observación o sugerencia adicional</string>
+    <string name="descrpcion">Imagen Fondo</string>
 </resources>
