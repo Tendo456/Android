@@ -25,16 +25,21 @@
     <string name="Sub_Title_2">Please rate the below characteristics between 1 and 10 (1 being poor and 10 being excellent)</string>
 
     <string name="mensaje_ini">La satisfacción de nuestros clientes es muy importante para nosotros, por lo que le pedimos se pueda tomar unos minutos para calificar nuestro servicio.</string>
-    <string name="encabezado1">Por favor califique las siguientes características</string>
-    <string name="encabezado2">Adicionalmente, responda las siguientes preguntas</string>
+    <string name="encabezado1">Characteristics</string>
+    <string name="encabezado2">Thank you for taking the time to complete this survey</string>
 
-    <string name="numero1">Limpieza y comodidad de las instalaciones</string>
-    <string name="numero2">Existen medidas para la protección de la salud: el personal utiliza mascarilla y/o guantes así como adecuada y constante higiene de manos, alcohol-gel en todas las áreas, se toma la temperatura a la entrada de las instalaciones, se respeta la distancia social entre pacientes.</string>
-    <string name="numero3">El personal responsable de atenderlo(a) cumplió con sus expectativas, demostró dominio del tema consultado y lo(a) trató con respeto y amabilidad. <br /> <small>En caso no haya sido así, indicarlo en la pregunta N° 8.</small></string>
-    <string name="numero4">La experiencia durante su visita resultó satisfactoria.</string>
-    <string name="numero5">El tiempo de duración del Examen Médico Ocupacional fue el correcto.</string>
-    <string name="numero6">El personal fue abierto a responder sus preguntas y preocupaciones.</string>
-    <string name="numero7">Indiquenos el/los nombres de las personas que excedieron sus espectavivas de servicio</string>
-    <string name="numero8">Indiquenos si tiene alguna observación o sugerencia adicional</string>
-    <string name="descrpcion">Imagen Fondo</string>
+    <string name="numero1">Would you recommend our service to you friends and colleagues?</string>
+    <string name="numero2">Ease of registration (if applicable)</string>
+    <string name="numero3">Politaness of recaption staff (if applicable)</string>
+    <string name="numero4">Cleanliness and comfort of waiting area (if applicable)</string>
+    <string name="numero5">Cleanliness of the examination treatment room</string>
+    <string name="numero6">Availabillity of the medical personal</string>
+    <string name="numero7">helpfulness of the medical personal</string>
+    <string name="numero8">Explanation on tests, procedures and treatment by medical personal</string>
+    <string name="numero9">Explanation on after care and the end of the visit by medical personal</string>
+    <string name="numero10">Proessionalism of the medical personal (neal in appearance, clean uniform, friendly and respectful)</string>
+    <string name="numero11">The overall service</string>
+    <string name="numero12">Please name employee(s) who has/have exceed your service expectations (if applicable)</string>
+    <string name="numero13">Describe areas where we can do better (if applicable)</string>
+    <string name="descrpcion">Background Image</string>
 </resources>

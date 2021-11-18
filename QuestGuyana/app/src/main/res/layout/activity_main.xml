@@ -61,7 +61,7 @@
                         android:id="@+id/textView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="5dp"
+                        android:layout_marginVertical="5dp"
                         android:background="@color/indigo_700"
                         android:gravity="center_horizontal"
                         android:text="@string/Title"
@@ -72,7 +72,7 @@
                         android:id="@+id/fecha"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_margin="5dp"
+                        android:layout_marginVertical="5dp"
                         android:background="@drawable/drawable_cell_shape"
                         android:padding="3dp"
                         android:text="@string/Sub_Title"
@@ -88,7 +88,7 @@
                     android:layout_height="90dp"
                     android:layout_margin="4dp"
                     android:contentDescription="@string/Imagen"
-                    app:srcCompat="@drawable/ic_logo" />
+                    app:srcCompat="@drawable/logopeque" />
 
             </LinearLayout>
 
@@ -96,11 +96,12 @@
                 android:id="@+id/textVie"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
                 android:background="@drawable/drawable_cell_shape"
                 android:gravity="center"
                 android:padding="5dp"
-                android:layout_margin="5dp"
                 android:text="@string/Sub_Title_2"
+                android:textColor="@color/black"
                 android:textSize="15sp" />
 
             <TableLayout
@@ -140,7 +141,7 @@
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:padding="5dp"
-                        android:text="Puntaje"
+                        android:text="Raiting"
                         android:textColor="@color/white"
                         android:textSize="20sp" />
                 </TableRow>
@@ -373,23 +374,195 @@
 
                 </TableRow>
 
-                <LinearLayout
+                <TableRow
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:background="@drawable/drawable_cell_shape"
+                    android:gravity="center_vertical">
 
                     <TextView
-                        android:id="@+id/enuciado"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="30dp"
-                        android:background="@color/indigo_700"
+                        android:id="@+id/textView32"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal"
                         android:padding="5dp"
-                        android:text="@string/encabezado2"
-                        android:textColor="@color/white"
+                        android:text="7."
+                        android:textColor="@color/black"
                         android:textSize="20sp" />
 
-                </LinearLayout>
+                    <TextView
+                        android:id="@+id/textView33"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/drawable_cell_shape"
+                        android:padding="5dp"
+                        android:text="@string/numero7"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <Spinner
+                        android:id="@+id/puntaje_7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="2dp"
+                        android:background="@drawable/drawable_spinner"
+                        android:padding="2dp"
+                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/drawable_cell_shape"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/textView34"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="8."
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/textView35"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/drawable_cell_shape"
+                        android:padding="5dp"
+                        android:text="@string/numero8"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <Spinner
+                        android:id="@+id/puntaje_8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="2dp"
+                        android:background="@drawable/drawable_spinner"
+                        android:padding="2dp"
+                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/drawable_cell_shape"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/textView36"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="9."
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/textView37"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/drawable_cell_shape"
+                        android:padding="5dp"
+                        android:text="@string/numero9"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <Spinner
+                        android:id="@+id/puntaje_9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="2dp"
+                        android:background="@drawable/drawable_spinner"
+                        android:padding="2dp"
+                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/drawable_cell_shape"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/textView38"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="10."
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/textView39"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/drawable_cell_shape"
+                        android:padding="5dp"
+                        android:text="@string/numero10"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <Spinner
+                        android:id="@+id/puntaje_10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="2dp"
+                        android:background="@drawable/drawable_spinner"
+                        android:padding="2dp"
+                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/drawable_cell_shape"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/textView40"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal"
+                        android:padding="5dp"
+                        android:text="11."
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/textView41"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/drawable_cell_shape"
+                        android:padding="5dp"
+                        android:text="@string/numero11"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <Spinner
+                        android:id="@+id/puntaje_11"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="2dp"
+                        android:background="@drawable/drawable_spinner"
+                        android:padding="2dp"
+                        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+                </TableRow>
 
                 <TableRow
                     android:layout_width="match_parent"
@@ -403,7 +576,7 @@
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal"
                         android:padding="5dp"
-                        android:text="7."
+                        android:text="12."
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -414,7 +587,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/drawable_cell_shape"
                         android:padding="5dp"
-                        android:text="@string/numero7"
+                        android:text="@string/numero12"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -460,7 +633,7 @@
                         android:layout_height="match_parent"
                         android:gravity="center_horizontal"
                         android:padding="5dp"
-                        android:text="8."
+                        android:text="13."
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -471,7 +644,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/drawable_cell_shape"
                         android:padding="5dp"
-                        android:text="@string/numero8"
+                        android:text="@string/numero13"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -507,8 +680,19 @@
                     </com.google.android.material.textfield.TextInputLayout>
                 </TableRow>
 
-
             </TableLayout>
+
+            <TextView
+                android:id="@+id/textVi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="5dp"
+                android:background="@drawable/drawable_cell_shape"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="@string/encabezado2"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
 
             <Button
                 android:id="@+id/Enviar"
