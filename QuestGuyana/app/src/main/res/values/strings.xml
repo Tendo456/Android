@@ -8,12 +8,15 @@
         <item>3</item>
         <item>4</item>
         <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
     </string-array>
 
-    <string-array name="lugares">
-        <item>Clinica EMOS</item>
-        <item>Expats</item>
-        <item>Mina</item>
+    <string-array name="location">
+        <item>Guyana</item>
     </string-array>
 
     <string name="Imagen">Img</string>
@@ -24,7 +27,7 @@
 
     <string name="Sub_Title_2">Please rate the below characteristics between 1 and 10 (1 being poor and 10 being excellent)</string>
 
-    <string name="mensaje_ini">La satisfacción de nuestros clientes es muy importante para nosotros, por lo que le pedimos se pueda tomar unos minutos para calificar nuestro servicio.</string>
+    <string name="mensaje_ini">"WORLDWIDE REACH.\nHUMAN TOUCH."</string>
     <string name="encabezado1">Characteristics</string>
     <string name="encabezado2">Thank you for taking the time to complete this survey</string>
 
