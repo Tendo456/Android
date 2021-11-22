@@ -13,6 +13,9 @@
         android:theme="@style/Theme.QuestGuyana"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Actividades.reebot"
+            android:exported="false" />
+        <activity
             android:name=".Actividades.Quest"
             android:exported="false" />
         <activity

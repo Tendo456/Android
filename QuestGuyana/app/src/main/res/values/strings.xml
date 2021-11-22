@@ -45,4 +45,6 @@
     <string name="numero12">Please name employee(s) who has/have exceed your service expectations (if applicable)</string>
     <string name="numero13">Describe areas where we can do better (if applicable)</string>
     <string name="descrpcion">Background Image</string>
+    <string name="Toast">Questions 1 to 6 are required</string>
+
 </resources>

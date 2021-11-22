@@ -69,9 +69,9 @@
                         android:textSize="20sp" />
 
                     <TextView
-                        android:id="@+id/fecha"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:id="@+id/segundo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginVertical="5dp"
                         android:background="@drawable/drawable_cell_shape"
                         android:padding="3dp"
@@ -94,7 +94,7 @@
 
             <TextView
                 android:id="@+id/textVie"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="5dp"
                 android:background="@drawable/drawable_cell_shape"

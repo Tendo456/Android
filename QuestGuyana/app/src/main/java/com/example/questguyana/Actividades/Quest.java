@@ -3,6 +3,8 @@ package com.example.questguyana.Actividades;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -27,6 +29,11 @@ import com.novoda.merlin.NetworkStatus;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -38,7 +45,9 @@ public class Quest extends AppCompatActivity implements Connectable, Disconnecta
     EditText respuesta_12, respuesta_13;
     Button send;
     String p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11;
+    Integer shoot;
     TextView date,time,location;
+    int dia,mes,year;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -224,8 +233,7 @@ public class Quest extends AppCompatActivity implements Connectable, Disconnecta
     public void Confirm (){
         AlertDialog.Builder opcion = new AlertDialog.Builder(this);
         opcion.setMessage("Enviar los Datos?");
-        opcion.setPositiveButton("Enviar", (dialog, which) ->
-                SendAnswer());
+        opcion.setPositiveButton("Enviar", (dialog, which) -> SendAnswer());
         opcion.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
 
         AlertDialog dialog = opcion.create();
@@ -234,12 +242,15 @@ public class Quest extends AppCompatActivity implements Connectable, Disconnecta
 
     private void SendAnswer (){
 
+        fecha();
+        hora();
+
         if (p1.equals("0")) {
             LayoutInflater inflater = getLayoutInflater();
-            View layout = inflater.inflate(R.layout.mensaje_toast2, (ViewGroup) findViewById(R.id.layoutToastEr));
+            View layout = inflater.inflate(R.layout.mensaje_toast2, findViewById(R.id.layoutToastEr));
 
-            TextView textEr = (TextView) layout.findViewById(R.id.textEr);
-            textEr.setText("Preguntas del 1 al 6 obligatorias");
+            TextView textEr = layout.findViewById(R.id.textEr);
+            textEr.setText("Questions 1 to 11 are required");
 
             Toast toast = new Toast(getApplicationContext());
             toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
@@ -250,10 +261,10 @@ public class Quest extends AppCompatActivity implements Connectable, Disconnecta
 
         else if (p2.equals("0")) {
             LayoutInflater inflater = getLayoutInflater();
-            View layout = inflater.inflate(R.layout.mensaje_toast2, (ViewGroup) findViewById(R.id.layoutToastEr));
+            View layout = inflater.inflate(R.layout.mensaje_toast2, findViewById(R.id.layoutToastEr));
 
-            TextView textEr = (TextView) layout.findViewById(R.id.textEr);
-            textEr.setText("Preguntas del 1 al 6 obligatorias");
+            TextView textEr = layout.findViewById(R.id.textEr);
+            textEr.setText("Questions 1 to 11 are required");
 
             Toast toast = new Toast(getApplicationContext());
             toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
@@ -264,10 +275,10 @@ public class Quest extends AppCompatActivity implements Connectable, Disconnecta
 
         else if (p3.equals("0")) {
             LayoutInflater inflater = getLayoutInflater();
-            View layout = inflater.inflate(R.layout.mensaje_toast2, (ViewGroup) findViewById(R.id.layoutToastEr));
+            View layout = inflater.inflate(R.layout.mensaje_toast2, findViewById(R.id.layoutToastEr));
 
-            TextView textEr = (TextView) layout.findViewById(R.id.textEr);
-            textEr.setText("Preguntas del 1 al 6 obligatorias");
+            TextView textEr = layout.findViewById(R.id.textEr);
+            textEr.setText("Questions 1 to 11 are required");
 
             Toast toast = new Toast(getApplicationContext());
             toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
@@ -278,10 +289,10 @@ public class Quest extends AppCompatActivity implements Connectable, Disconnecta
 
         else if (p4.equals("0")) {
             LayoutInflater inflater = getLayoutInflater();
-            View layout = inflater.inflate(R.layout.mensaje_toast2, (ViewGroup) findViewById(R.id.layoutToastEr));
+            View layout = inflater.inflate(R.layout.mensaje_toast2, findViewById(R.id.layoutToastEr));
 
-            TextView textEr = (TextView) layout.findViewById(R.id.textEr);
-            textEr.setText("Preguntas del 1 al 6 obligatorias");
+            TextView textEr = layout.findViewById(R.id.textEr);
+            textEr.setText("Questions 1 to 11 are required");
 
             Toast toast = new Toast(getApplicationContext());
             toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
@@ -292,10 +303,10 @@ public class Quest extends AppCompatActivity implements Connectable, Disconnecta
 
         else if (p5.equals("0")) {
             LayoutInflater inflater = getLayoutInflater();
-            View layout = inflater.inflate(R.layout.mensaje_toast2, (ViewGroup) findViewById(R.id.layoutToastEr));
+            View layout = inflater.inflate(R.layout.mensaje_toast2, findViewById(R.id.layoutToastEr));
 
-            TextView textEr = (TextView) layout.findViewById(R.id.textEr);
-            textEr.setText("Preguntas del 1 al 6 obligatorias");
+            TextView textEr = layout.findViewById(R.id.textEr);
+            textEr.setText("Questions 1 to 11 are required");
 
             Toast toast = new Toast(getApplicationContext());
             toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
@@ -306,17 +317,87 @@ public class Quest extends AppCompatActivity implements Connectable, Disconnecta
 
         else if (p6.equals("0")) {
             LayoutInflater inflater = getLayoutInflater();
-            View layout = inflater.inflate(R.layout.mensaje_toast2, (ViewGroup) findViewById(R.id.layoutToastEr));
+            View layout = inflater.inflate(R.layout.mensaje_toast2, findViewById(R.id.layoutToastEr));
 
-            TextView textEr = (TextView) layout.findViewById(R.id.textEr);
-            textEr.setText("Preguntas del 1 al 6 obligatorias");
+            TextView textEr = layout.findViewById(R.id.textEr);
+            textEr.setText("Questions 1 to 11 are required");
 
             Toast toast = new Toast(getApplicationContext());
             toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
             toast.setDuration(Toast.LENGTH_LONG);
             toast.setView(layout);
             toast.show();
-        } else {
+        }
+
+        else if (p7.equals("0")) {
+            LayoutInflater inflater = getLayoutInflater();
+            View layout = inflater.inflate(R.layout.mensaje_toast2, findViewById(R.id.layoutToastEr));
+
+            TextView textEr = layout.findViewById(R.id.textEr);
+            textEr.setText("Questions 1 to 11 are required");
+
+            Toast toast = new Toast(getApplicationContext());
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+            toast.setDuration(Toast.LENGTH_LONG);
+            toast.setView(layout);
+            toast.show();
+        }
+
+        else if (p8.equals("0")) {
+            LayoutInflater inflater = getLayoutInflater();
+            View layout = inflater.inflate(R.layout.mensaje_toast2, findViewById(R.id.layoutToastEr));
+
+            TextView textEr = layout.findViewById(R.id.textEr);
+            textEr.setText("Questions 1 to 11 are required");
+
+            Toast toast = new Toast(getApplicationContext());
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+            toast.setDuration(Toast.LENGTH_LONG);
+            toast.setView(layout);
+            toast.show();
+        }
+
+        else if (p9.equals("0")) {
+            LayoutInflater inflater = getLayoutInflater();
+            View layout = inflater.inflate(R.layout.mensaje_toast2, findViewById(R.id.layoutToastEr));
+
+            TextView textEr = layout.findViewById(R.id.textEr);
+            textEr.setText("Questions 1 to 11 are required");
+
+            Toast toast = new Toast(getApplicationContext());
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+            toast.setDuration(Toast.LENGTH_LONG);
+            toast.setView(layout);
+            toast.show();
+        }
+
+        else if (p10.equals("0")) {
+            LayoutInflater inflater = getLayoutInflater();
+            View layout = inflater.inflate(R.layout.mensaje_toast2, findViewById(R.id.layoutToastEr));
+
+            TextView textEr = layout.findViewById(R.id.textEr);
+            textEr.setText("Questions 1 to 11 are required");
+
+            Toast toast = new Toast(getApplicationContext());
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+            toast.setDuration(Toast.LENGTH_LONG);
+            toast.setView(layout);
+            toast.show();
+        }
+
+        else if (p11.equals("0")) {
+            LayoutInflater inflater = getLayoutInflater();
+            View layout = inflater.inflate(R.layout.mensaje_toast2, findViewById(R.id.layoutToastEr));
+
+            TextView textEr = layout.findViewById(R.id.textEr);
+            textEr.setText("Questions 1 to 11 are required");
+
+            Toast toast = new Toast(getApplicationContext());
+            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+            toast.setDuration(Toast.LENGTH_LONG);
+            toast.setView(layout);
+            toast.show();
+        }else {
 
             Call<QuestResponse> call = ApiClient.getUserService().SendAnswers(date.getText().toString(), time.getText().toString(), location.getText().toString(), p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,respuesta_12.getText().toString(),respuesta_13.getText().toString());
             call.enqueue(new Callback<QuestResponse>() {
@@ -324,10 +405,30 @@ public class Quest extends AppCompatActivity implements Connectable, Disconnecta
                 public void onResponse(@NotNull Call<QuestResponse> call, @NotNull Response<QuestResponse> response) {
                     if (response.isSuccessful()) {
                         QuestResponse mensage = response.body();
+                        assert mensage != null;
                         Toast.makeText(Quest.this, ""+mensage.getMensage()+" "+response.code(), Toast.LENGTH_SHORT).show();
+                        shoot = response.code();
+                        if (shoot == 200){
+                            LayoutInflater inflater = getLayoutInflater();
+                            View layout = inflater.inflate(R.layout.mensaje_toast, findViewById(R.id.layoutToast));
 
+                            TextView text = layout.findViewById(R.id.text);
+                            text.setText("Procesando Respuestas");
+
+                            Toast toast = new Toast(getApplicationContext());
+                            toast.setGravity(Gravity.CENTER_VERTICAL, 0, 300);
+                            toast.setDuration(Toast.LENGTH_LONG);
+                            toast.setView(layout);
+                            toast.show();
+
+                            Intent intent = new Intent(Quest.this, reebot.class);
+                            startActivity(intent);
+                            finish();
+                        }
                     } else {
-                        Toast.makeText(Quest.this, "Error al Guardar los Datos " +response.code(), Toast.LENGTH_SHORT).show();
+                        QuestResponse mensage = response.body();
+                        assert mensage != null;
+                        Toast.makeText(Quest.this, ""+mensage.getMensage()+" " +response.code(), Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -337,6 +438,24 @@ public class Quest extends AppCompatActivity implements Connectable, Disconnecta
                 }
             });
         }
+    }
+
+    public void fecha (){
+        final Calendar calendar = Calendar.getInstance();
+        dia =calendar.get(Calendar.DAY_OF_MONTH);
+        mes= calendar.get(Calendar.MONTH);
+        year = calendar.get(Calendar.YEAR);
+        @SuppressLint("SimpleDateFormat") Format formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String s = formatter.format(calendar.getTime());
+
+        date.setText(s);
+    }
+
+    public void hora (){
+        Date date = new Date();
+        @SuppressLint("SimpleDateFormat") Format h = new SimpleDateFormat("HH:mm:ss");
+        String ho = h.format(date);
+        time.setText(ho);
     }
 
     @Override
