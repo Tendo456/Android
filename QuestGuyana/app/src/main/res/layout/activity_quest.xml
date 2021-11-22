@@ -703,19 +703,22 @@
                     android:id="@+id/textDate"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Date"/>
+                    android:text="Date"
+                    android:visibility="invisible" />
 
                 <TextView
                     android:id="@+id/textTime"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Time"/>
+                    android:text="Time"
+                    android:visibility="invisible" />
 
                 <TextView
                     android:id="@+id/textLocation"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Guyana"/>
+                    android:text="Guyana"
+                    android:visibility="invisible" />
 
             </LinearLayout>
 
