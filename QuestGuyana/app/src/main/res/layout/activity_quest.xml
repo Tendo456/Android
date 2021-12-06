@@ -580,46 +580,48 @@
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
-                    <TextView
-                        android:id="@+id/textView19"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@drawable/drawable_cell_shape"
-                        android:padding="5dp"
-                        android:text="@string/numero12"
-                        android:textColor="@color/black"
-                        android:textSize="20sp" />
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView19"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/drawable_cell_shape"
+                            android:padding="5dp"
+                            android:text="@string/numero12"
+                            android:textColor="@color/black"
+                            android:textSize="20sp" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="132dp"
+                            app:counterEnabled="true"
+                            app:counterMaxLength="100"
+                            app:counterTextColor="@color/black">
+
+                            <EditText
+                                android:id="@+id/respuesta_12"
+                                android:layout_width="match_parent"
+                                android:layout_height="110dp"
+                                android:background="@drawable/drawable_cell_shape"
+                                android:gravity="start|top"
+                                android:hint="Respuesta"
+                                android:inputType="textMultiLine|textPersonName"
+                                android:maxLength="100"
+                                android:textColor="@color/black"
+                                tools:ignore="SpeakableTextPresentCheck" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
 
                 </TableRow>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="132dp"
-                        app:counterEnabled="true"
-                        app:counterMaxLength="100"
-                        app:counterTextColor="@color/black">
-
-                        <EditText
-                            android:id="@+id/respuesta_12"
-                            android:layout_width="match_parent"
-                            android:layout_height="110dp"
-                            android:background="@drawable/drawable_cell_shape"
-                            android:gravity="start|top"
-                            android:hint="Respuesta"
-                            android:inputType="textMultiLine|textPersonName"
-                            android:maxLength="100"
-                            android:textColor="@color/black"
-                            tools:ignore="SpeakableTextPresentCheck"/>
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                </LinearLayout>
 
                 <TableRow
                     android:layout_width="match_parent"
