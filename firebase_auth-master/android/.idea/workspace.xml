@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="256988f4-bebb-4777-9b7d-153b947b37c7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../ScreeningBreaks/app/src/main/java/com/example/screeningbreaks/ingreso.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ScreeningBreaks/app/src/main/res/drawable/logopeque.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../ScreeningBreaks/app/src/main/res/layout/activity_ingreso.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../CHANGELOG.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/4.10.2/fileChanges/last-build.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/4.10.2/fileContent/fileContent.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/4.10.2/fileHashes/fileHashes.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/4.10.2/fileHashes/fileHashes.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/4.10.2/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/4.10.2/gc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/4.10.2/javaCompile/javaCompile.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/4.10.2/taskHistory/taskHistory.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/4.10.2/taskHistory/taskHistory.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gradle/vcs-1/gc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/caches/gradle_models.ser" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_core_common_1_0_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_common_1_0_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__android_arch_lifecycle_runtime_1_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__androidx_annotation_annotation_1_0_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_annotations_26_1_0_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_compat_26_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_ui_26_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_core_utils_26_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_fragment_26_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_media_compat_26_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_android_support_support_v4_26_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_base_16_0_1_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_basement_16_1_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_flags_16_0_1_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_android_gms_play_services_tasks_16_0_1_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_auto_value_auto_value_annotations_1_6_3_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_code_gson_gson_2_8_5_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_auth_17_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_auth_interop_17_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_firebase_firebase_common_17_0_0_aar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/firebase_auth.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/flutter/plugins/firebaseauth/FirebaseAuthPlugin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/io/flutter/plugins/firebaseauth/FlutterFirebaseAppRegistrar.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/user-agent.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ios/Assets/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ios/Classes/FirebaseAuthPlugin.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ios/Classes/FirebaseAuthPlugin.m" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ios/firebase_auth.podspec" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/firebase_auth.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/src/additional_user_info.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/src/auth_credential.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/src/auth_exception.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/src/auth_provider/email_auth_provider.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/src/auth_provider/facebook_auth_provider.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/src/auth_provider/github_auth_provider.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/src/auth_provider/google_auth_provider.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/src/auth_provider/phone_auth_provider.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/src/auth_provider/twitter_auth_provider.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/src/auth_result.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/src/firebase_auth.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/src/firebase_user.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/src/id_token_result.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/src/user_info.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/src/user_metadata.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../lib/src/user_update_info.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../pubspec.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../test/firebase_auth_test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Hoja/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Hoja/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Hoja/app/src/main/java/com/example/hoja/Activity/ISOS.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Hoja/app/src/main/java/com/example/hoja/Activity/ISOS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Hoja/app/src/main/res/layout/activity_i_s_o_s.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Hoja/app/src/main/res/layout/activity_i_s_o_s.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ScreeningBreaks/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ScreeningBreaks/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ScreeningBreaks/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ScreeningBreaks/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ScreeningBreaks/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ScreeningBreaks/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/AppCreationScripts/apps.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/AppCreationScripts/apps.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/proguard-rules.pro" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/proguard-rules.pro" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/java/com/azuresamples/msalandroidapp/B2CConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/java/com/azuresamples/msalandroidapp/B2CConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/java/com/azuresamples/msalandroidapp/B2CModeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/java/com/azuresamples/msalandroidapp/B2CModeFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/java/com/azuresamples/msalandroidapp/B2CUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/java/com/azuresamples/msalandroidapp/B2CUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/java/com/azuresamples/msalandroidapp/MSGraphRequestWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/java/com/azuresamples/msalandroidapp/MSGraphRequestWrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/java/com/azuresamples/msalandroidapp/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/java/com/azuresamples/msalandroidapp/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/java/com/azuresamples/msalandroidapp/MultipleAccountModeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/java/com/azuresamples/msalandroidapp/MultipleAccountModeFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/java/com/azuresamples/msalandroidapp/OnFragmentInteractionListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/java/com/azuresamples/msalandroidapp/OnFragmentInteractionListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/java/com/azuresamples/msalandroidapp/SingleAccountModeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/java/com/azuresamples/msalandroidapp/SingleAccountModeFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/drawable/ic_launcher_foreground.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/drawable/ic_launcher_foreground.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/drawable/ic_multiple_account_24dp.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/drawable/ic_multiple_account_24dp.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/drawable/ic_single_account_24dp.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/drawable/ic_single_account_24dp.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/drawable/side_nav_bar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/drawable/side_nav_bar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/layout/app_bar_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/layout/app_bar_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/layout/content_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/layout/content_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/layout/fragment_b2c_mode.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/layout/fragment_b2c_mode.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/layout/fragment_multiple_account_mode.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/layout/fragment_multiple_account_mode.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/layout/fragment_single_account_mode.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/layout/fragment_single_account_mode.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/layout/nav_header_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/layout/nav_header_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/menu/activity_main_drawer.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/menu/activity_main_drawer.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/raw/auth_config_b2c.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/raw/auth_config_b2c.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/raw/auth_config_multiple_account.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/raw/auth_config_multiple_account.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/raw/auth_config_single_account.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/raw/auth_config_single_account.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/values-v21/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/values-v21/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/values/dimens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/values/dimens.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/values/drawables.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/values/drawables.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/gradle/versions.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/gradle/versions.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ms-identity-android-java-master/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../../ms-identity-android-java-master/settings.gradle" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view />
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/local.properties" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/src/main/java/io/flutter/plugins/firebaseauth/FirebaseAuthPlugin.java" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="1920" />
+    <option name="width" value="1920" />
+    <option name="height" value="1080" />
+  </component>
+  <component name="ProjectId" id="220b1YNZkH6bLSDtBXYlAV423Jo" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView">
+        <subPane>
+          <expand>
+            <path>
+              <item name="firebase_auth" type="1abcf292:AndroidViewProjectNode" />
+              <item name="firebase_auth" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="firebase_auth" type="1abcf292:AndroidViewProjectNode" />
+              <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="android.sdk.path" value="$USER_HOME$/Android/Sdk" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="256988f4-bebb-4777-9b7d-153b947b37c7" name="Default Changelist" comment="" />
+      <created>1570703703335</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1570703703335</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1920" y="-37" width="1920" height="1117" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.20704375" />
+      <window_info id="Structure" order="2" side_tool="true" />
+      <window_info id="Build Variants" order="3" side_tool="true" />
+      <window_info id="Image Layers" order="4" />
+      <window_info id="Designer" order="5" />
+      <window_info id="Resources Explorer" order="6" />
+      <window_info id="Capture Tool" order="7" />
+      <window_info id="Favorites" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Run" order="0" />
+      <window_info anchor="bottom" id="Logcat" order="1" />
+      <window_info anchor="bottom" id="TODO" order="2" />
+      <window_info anchor="bottom" id="Android Profiler" order="3" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Debug" order="4" />
+      <window_info anchor="bottom" id="Terminal" order="5" />
+      <window_info anchor="bottom" id="Event Log" order="6" side_tool="true" />
+      <window_info anchor="bottom" id="Flutter Performance" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Build" order="9" visible="true" weight="0.3294979" />
+      <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
+      <window_info anchor="right" id="Capture Analysis" order="1" />
+      <window_info anchor="right" id="Gradle" order="2" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info anchor="right" id="Flutter Inspector" order="4" />
+      <window_info anchor="right" id="Flutter Outline" order="5" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/user-agent.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/local.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/flutter/plugins/firebaseauth/FirebaseAuthPlugin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="181" column="17" selection-start-line="181" selection-start-column="17" selection-end-line="181" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#30549#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#25525#25526#0" expanded="true" />
+            <element signature="e#25559#25560#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

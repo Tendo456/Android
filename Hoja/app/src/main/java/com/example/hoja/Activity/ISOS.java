@@ -3,7 +3,6 @@ package com.example.hoja.Activity;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -68,7 +67,7 @@ public class ISOS extends AppCompatActivity {
         getSupportActionBar().setIcon(R.mipmap.logo);
 
         this.window = getWindow();
-        color(primaryDark,primary,background);
+        color(primaryDark,primary);
 
         initializeUI();
 
@@ -148,22 +147,6 @@ public class ISOS extends AppCompatActivity {
                 }
             });
         });
-
-        /*Interactive
-        callGraphApiInteractiveButton.setOnClickListener(v -> {
-            if (mSingleAccountApp == null) {
-                return;
-            }
-            mSingleAccountApp.acquireToken(MainActivity.this, SCOPES, getAuthInteractiveCallback());
-        });
-
-        //Silent
-        callGraphApiSilentButton.setOnClickListener(v -> {
-            if (mSingleAccountApp == null){
-                return;
-            }
-            mSingleAccountApp.acquireTokenSilentAsync(SCOPES, AUTHORITY, getAuthSilentCallback());
-        });*/
 
         next.setOnClickListener(v ->{
             Intent intent = new Intent(ISOS.this, MainActivity.class);
@@ -303,7 +286,7 @@ public class ISOS extends AppCompatActivity {
         super.onBackPressed();
     }
 
-    public void color (String primaryDark, String primary, String background){
+    public void color(String primaryDark, String primary){
 
         window.setStatusBarColor(Color.parseColor(primaryDark));
 

@@ -99,7 +99,7 @@
             android:layout_height="50dp"
             android:text="Output goes here..."
             android:textSize="8sp"
-            android:visibility="invisible" />
+            android:visibility="visible" />
 
     </LinearLayout>
 
