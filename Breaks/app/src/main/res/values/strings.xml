@@ -2,4 +2,19 @@
     <string name="app_name">Breaks</string>
 
     <string name="mensaje_ini">"WORLDWIDE REACH.\nHUMAN TOUCH."</string>
+    <string name="marcas">MARCAS</string>
+    <string name="addmarcas">AGREGAR MARCAS</string>
+    <string name="fecha">FECHA</string>
+    <string name="buscar">BUSCAR</string>
+    <string name="inactivas">Inactivas</string>
+    <string name="description">icono base</string>
+    <string name="marca">MARCA</string>
+    <string name="stock">STOCK</string>
+    <string name="tipo">TIPO</string>
+    <string name="estado">ESTADO</string>
+    <string name="galleta">Galleta</string>
+    <string name="bebida">Bebida</string>
+    <string name="activo">Activo</string>
+    <string name="inactivo">Inactivo</string>
+    <string name="guardar">Guardar</string>
 </resources>

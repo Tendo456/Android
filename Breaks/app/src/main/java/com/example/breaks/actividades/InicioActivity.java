@@ -1,16 +1,14 @@
 package com.example.breaks.actividades;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.res.ColorStateList;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -22,7 +20,6 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 
 public class InicioActivity extends AppCompatActivity {
 
@@ -124,7 +121,7 @@ public class InicioActivity extends AppCompatActivity {
     }
 
     public void continuar (){
-        Intent intent = new Intent(InicioActivity.this, MainActivity.class);
+        Intent intent = new Intent(InicioActivity.this, Marcas.class);
         intent.putExtra("DisplayUser",nombre.getText().toString());
         intent.putExtra("EmailUser",email.getText().toString());
         startActivity(intent);
@@ -137,12 +134,4 @@ public class InicioActivity extends AppCompatActivity {
         super.onBackPressed();
     }
 
-    public void color (String primaryDark, String primary, String background){
-
-        window.setStatusBarColor(Color.parseColor(primaryDark));
-        Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(Color.parseColor(primary)));
-        //window.setBackgroundDrawable(new ColorDrawable(Color.parseColor(background)));
-        window.setNavigationBarColor(Color.parseColor(primary));
-
-    }
 }
