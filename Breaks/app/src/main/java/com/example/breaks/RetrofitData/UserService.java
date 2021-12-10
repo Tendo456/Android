@@ -10,8 +10,8 @@ import retrofit2.http.POST;
 public interface UserService {
 
     @FormUrlEncoded
-    @POST("Recepcion/InsertarRecepcion.php")
-    Call<MarcasResponse> InsertarRecepcion (@Field("marca") String marca,
+    @POST("Marcas/InsertarMarca.php")
+    Call<MarcasResponse> InsertarMarca (@Field("marca") String marca,
                                             @Field("stock") String stock,
                                             @Field("fecha") String fecha,
                                             @Field("tipo") String tipo,

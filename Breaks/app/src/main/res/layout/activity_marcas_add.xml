@@ -84,7 +84,7 @@
                     android:textSize="20sp" />
 
                 <EditText
-                    android:id="@+id/SendStock"
+                    android:id="@+id/sendStock"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
                     android:layout_margin="5dp"
@@ -121,7 +121,7 @@
                     android:background="@drawable/drawable_blue"
                     android:ems="10"
                     android:gravity="center"
-                    android:text="@string/fecha" />
+                    android:text="2021-12-10" />
             </TableRow>
 
             <TableRow
