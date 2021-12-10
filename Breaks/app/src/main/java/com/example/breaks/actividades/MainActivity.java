@@ -1,4 +1,4 @@
-package com.example.breaks;
+package com.example.breaks.actividades;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.breaks.R;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -13,10 +13,13 @@
         android:theme="@style/Theme.Breaks"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".InicioActivity"
+            android:name=".actividades.Marcas"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".actividades.InicioActivity"
+            android:exported="false" />
+        <activity
+            android:name=".actividades.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
