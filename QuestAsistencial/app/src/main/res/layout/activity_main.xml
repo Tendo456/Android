@@ -83,7 +83,8 @@
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:background="@drawable/drawable_spinner"
-                    android:gravity="center" />
+                    android:gravity="center"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
             </LinearLayout>
 
@@ -205,7 +206,8 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="2dp"
                         android:background="@drawable/drawable_spinner"
-                        android:padding="2dp" />
+                        android:padding="2dp"
+                        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
                 </TableRow>
 
@@ -242,7 +244,8 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="2dp"
                         android:background="@drawable/drawable_spinner"
-                        android:padding="2dp" />
+                        android:padding="2dp"
+                        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
                 </TableRow>
 
@@ -279,7 +282,8 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="2dp"
                         android:background="@drawable/drawable_spinner"
-                        android:padding="2dp" />
+                        android:padding="2dp"
+                        tools:ignore="SpeakableTextPresentCheck" />
 
                 </TableRow>
 

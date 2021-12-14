@@ -48,7 +48,7 @@ public class Marcas_add extends AppCompatActivity {
 
     public void ConfirmarMarca (){
         AlertDialog.Builder opcion = new AlertDialog.Builder(this);
-        opcion.setMessage("Enviar los Datos?");
+        opcion.setMessage("Agregar Marca?");
         opcion.setPositiveButton("Enviar", (dialog, which) -> saveMarca());
         opcion.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
 

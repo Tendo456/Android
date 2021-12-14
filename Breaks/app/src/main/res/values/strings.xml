@@ -2,6 +2,7 @@
     <string name="app_name">Breaks</string>
 
     <string name="mensaje_ini">"WORLDWIDE REACH.\nHUMAN TOUCH."</string>
+    <string name="idmarcas">ID</string>
     <string name="marcas">MARCAS</string>
     <string name="addmarcas">AGREGAR MARCAS</string>
     <string name="updatemarcas">ACTUALIZAR MARCAS</string>
@@ -18,4 +19,7 @@
     <string name="activo">Activo</string>
     <string name="inactivo">Inactivo</string>
     <string name="guardar">Guardar</string>
+    <string name="actualizar">Actualizar</string>
+    <string name="activar">Activar Todas?</string>
+    <string name="upStock">Agregar Stock?</string>
 </resources>

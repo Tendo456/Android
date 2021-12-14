@@ -26,7 +26,7 @@
             android:id="@+id/textViewME"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dp"
+            android:layout_marginBottom="5dp"
             android:background="@color/indigo_500"
             android:gravity="center"
             android:text="@string/updatemarcas"
@@ -35,8 +35,37 @@
 
         <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp">
+            android:layout_height="wrap_content">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/drawable_blue">
+
+                <TextView
+                    android:id="@+id/textViewME11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/blue_white"
+                    android:gravity="center"
+                    android:text="@string/idmarcas"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/UDIdMarca"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/drawable_blue"
+                    android:ems="10"
+                    android:enabled="false"
+                    android:gravity="center"
+                    android:hint="@string/idmarcas"
+                    android:inputType="textPersonName" />
+            </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
@@ -62,6 +91,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/drawable_blue"
                     android:ems="10"
+                    android:enabled="false"
                     android:gravity="center"
                     android:hint="@string/marca"
                     android:inputType="textPersonName" />
@@ -91,8 +121,10 @@
                     android:layout_weight="1"
                     android:background="@drawable/drawable_blue"
                     android:ems="10"
+                    android:enabled="false"
                     android:gravity="center"
-                    android:hint="@string/stock" />
+                    android:hint="@string/stock"
+                    android:inputType="number" />
             </TableRow>
 
             <TableRow
@@ -154,7 +186,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:checked="true"
+                        android:enabled="false"
                         android:text="@string/galleta" />
 
                     <RadioButton
@@ -163,6 +195,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
+                        android:enabled="false"
                         android:text="@string/bebida" />
 
                 </RadioGroup>
@@ -199,7 +232,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:checked="true"
+                        android:enabled="false"
                         android:text="@string/activo" />
 
                     <RadioButton
@@ -208,18 +241,33 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
+                        android:enabled="false"
                         android:text="@string/inactivo" />
 
                 </RadioGroup>
             </TableRow>
         </TableLayout>
 
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/activarMS"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:onClick="activarStock"
+            android:text="@string/upStock" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/activarM"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:onClick="activarCampos"
+            android:text="@string/activar" />
+
         <Button
             android:id="@+id/ActMarca"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="@string/guardar" />
+            android:text="@string/actualizar" />
 
     </LinearLayout>
 

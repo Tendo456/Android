@@ -23,4 +23,14 @@ public interface UserService {
 
     @GET("Marcas/GetMarcas.php")
     Call<List<MarcasResponse>> getMarcas(@Query("estado") String estado);
+
+    @FormUrlEncoded
+    @POST("Marcas/ActualizarMarca.php")
+    Call<MarcasResponse> UDMarca (
+            @Field("id_marcas") String marca_id,
+            @Field("marca") String marca,
+                                        @Field("stock") String stock,
+                                        @Field("fecha") String fecha,
+                                        @Field("tipo") String tipo,
+                                        @Field("estado") String estado);
 }

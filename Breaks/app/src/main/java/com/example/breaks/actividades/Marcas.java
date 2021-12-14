@@ -94,5 +94,6 @@ public class Marcas extends AppCompatActivity implements MarcasAdapter.ClickedIt
     @Override
     public void ClickedMarca(MarcasResponse marcasResponse) {
         startActivity(new Intent(this,MarcasDetails.class).putExtra("data",marcasResponse));
+        finish();
     }
 }
