@@ -1,5 +1,15 @@
 package com.example.breaks.actividades;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,18 +18,6 @@ import androidx.appcompat.widget.SwitchCompat;
 import com.example.breaks.Modelos.MarcasResponse;
 import com.example.breaks.R;
 import com.example.breaks.RetrofitData.ApiClient;
-
-import android.annotation.SuppressLint;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.Switch;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.text.Format;
 import java.text.SimpleDateFormat;
@@ -31,7 +29,7 @@ import retrofit2.Response;
 
 public class MarcasDetails extends AppCompatActivity {
 
-    EditText UDIdMarca, UDMarca, UDStock;
+    EditText UDIdMarca, UDMarca;
     TextView UDFecha;
     RadioButton UDGalleta, UDBebida;
     RadioButton UDActivo, UDInactivo;
