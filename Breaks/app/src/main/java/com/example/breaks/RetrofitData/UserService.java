@@ -16,7 +16,6 @@ public interface UserService {
     @FormUrlEncoded
     @POST("Marcas/InsertarMarca.php")
     Call<MarcasResponse> InsertarMarca (@Field("marca") String marca,
-                                            @Field("stock") String stock,
                                             @Field("fecha") String fecha,
                                             @Field("tipo") String tipo,
                                             @Field("estado") String estado);
@@ -29,7 +28,6 @@ public interface UserService {
     Call<MarcasResponse> UDMarca (
             @Field("id_marcas") String marca_id,
             @Field("marca") String marca,
-                                        @Field("stock") String stock,
                                         @Field("fecha") String fecha,
                                         @Field("tipo") String tipo,
                                         @Field("estado") String estado);

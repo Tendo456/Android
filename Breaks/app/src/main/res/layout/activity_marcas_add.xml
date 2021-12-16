@@ -69,35 +69,6 @@
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/drawable_blue">
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/blue_white"
-                    android:gravity="center"
-                    android:text="@string/stock"
-                    android:textColor="@color/white"
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/sendStock"
-                    android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/drawable_blue"
-                    android:ems="10"
-                    android:gravity="center"
-                    android:hint="@string/stock"
-                    android:inputType="textShortMessage|number|textPersonName" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
                 android:layout_height="67dp"
                 android:background="@drawable/drawable_blue">
 
@@ -121,7 +92,7 @@
                     android:background="@drawable/drawable_blue"
                     android:ems="10"
                     android:gravity="center"
-                    android:text="2021-12-10" />
+                    android:text="@string/fecha" />
             </TableRow>
 
             <TableRow

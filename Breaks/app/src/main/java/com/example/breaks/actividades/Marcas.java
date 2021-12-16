@@ -59,10 +59,10 @@ public class Marcas extends AppCompatActivity implements MarcasAdapter.ClickedIt
 
         if(MarcasEstado.isChecked()){
             est = "2";
-            Toast.makeText(Marcas.this, "Bienvenido "+ est, Toast.LENGTH_SHORT).show();
+            Toast.makeText(Marcas.this, "Marcas Inactivas "+ est, Toast.LENGTH_SHORT).show();
         }else {
             est="1";
-            Toast.makeText(Marcas.this, "Bienvenido "+ est, Toast.LENGTH_SHORT).show();
+            Toast.makeText(Marcas.this, "Marcas Activas "+ est, Toast.LENGTH_SHORT).show();
         }
 
         Call<List<MarcasResponse>> marcalist = ApiClient.getUserService().getMarcas(est);

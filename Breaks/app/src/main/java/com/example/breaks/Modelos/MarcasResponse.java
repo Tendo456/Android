@@ -7,7 +7,6 @@ public class MarcasResponse implements Serializable {
 
     private String id_marcas;
     private String marca;
-    private String stock;
     private String fecha;
     private String tipo;
     private String estado;
@@ -27,14 +26,6 @@ public class MarcasResponse implements Serializable {
 
     public void setMarca(String marca) {
         this.marca = marca;
-    }
-
-    public String getStock() {
-        return stock;
-    }
-
-    public void setStock(String stock) {
-        this.stock = stock;
     }
 
     public String getFecha() {
@@ -70,7 +61,6 @@ public class MarcasResponse implements Serializable {
         return "MarcasResponse{" +
                 "id_marcas='" + id_marcas + '\'' +
                 ", marca='" + marca + '\'' +
-                ", stock='" + stock + '\'' +
                 ", fecha='" + fecha + '\'' +
                 ", tipo='" + tipo + '\'' +
                 ", estado='" + estado + '\'' +

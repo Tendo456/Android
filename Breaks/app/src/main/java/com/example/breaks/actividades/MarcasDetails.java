@@ -36,9 +36,9 @@ public class MarcasDetails extends AppCompatActivity {
     RadioButton UDGalleta, UDBebida;
     RadioButton UDActivo, UDInactivo;
     Button AtcMarca;
-    String idMarc,UDMarcaSt,UDStockSt,UDFechaSt,UDTipo,UDEstado;
+    String idMarc,UDMarcaSt,UDFechaSt,UDTipo,UDEstado;
     MarcasResponse marcasResponse;
-    SwitchCompat activarM, activarMS;
+    SwitchCompat activarM;
 
 
     @Override
@@ -48,7 +48,6 @@ public class MarcasDetails extends AppCompatActivity {
 
         UDIdMarca = findViewById(R.id.UDIdMarca);
         UDMarca = findViewById(R.id.UDMarca);
-        UDStock = findViewById(R.id.UDStock);
         UDFecha = findViewById(R.id.UDFecha);
         UDGalleta = findViewById(R.id.UDGalleta);
         UDBebida = findViewById(R.id.UDBebida);
@@ -56,7 +55,6 @@ public class MarcasDetails extends AppCompatActivity {
         UDInactivo = findViewById(R.id.UDInactivo);
         AtcMarca = findViewById(R.id.ActMarca);
         activarM = findViewById(R.id.activarM);
-        activarMS = findViewById(R.id.activarMS);
 
         Intent intent = getIntent();
         if(intent.getExtras() !=null){
@@ -64,7 +62,6 @@ public class MarcasDetails extends AppCompatActivity {
 
             String idMarca = marcasResponse.getId_marcas();
             String Marca = marcasResponse.getMarca();
-            String Stock = marcasResponse.getStock();
             String Fecha = marcasResponse.getFecha();
             String Tipo = marcasResponse.getTipo();
             String Estado = marcasResponse.getEstado();
@@ -72,7 +69,6 @@ public class MarcasDetails extends AppCompatActivity {
 
             UDIdMarca.setText(idMarca);
             UDMarca.setText(Marca);
-            UDStock.setText(Stock);
             UDFecha.setText(Fecha);
 
             if(Tipo.equals("1")){
@@ -108,7 +104,7 @@ public class MarcasDetails extends AppCompatActivity {
         final Calendar calendar = Calendar.getInstance();
         @SuppressLint("SimpleDateFormat") Format formatter = new SimpleDateFormat("yyyy-MM-dd");
         UDFechaSt = formatter.format(calendar.getTime());
-        Toast.makeText(MarcasDetails.this, ""+UDFechaSt, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(MarcasDetails.this, ""+UDFechaSt, Toast.LENGTH_SHORT).show();
     }
 
     public void activarCampos(View view){
@@ -128,15 +124,6 @@ public class MarcasDetails extends AppCompatActivity {
         }
     }
 
-    public void activarStock(View view){
-        if(activarMS.isChecked()){
-            UDStock.setEnabled(true);
-
-
-        }else {
-            UDStock.setEnabled(false);
-        }
-    }
 
     public void ConfirmarAtcMarca (){
         AlertDialog.Builder opcion = new AlertDialog.Builder(this);
@@ -154,7 +141,6 @@ public class MarcasDetails extends AppCompatActivity {
 
         idMarc = UDIdMarca.getText().toString();
         UDMarcaSt = UDMarca.getText().toString();
-        UDStockSt = UDStock.getText().toString();
         //UDFechaSt = UDFecha.getText().toString();
 
         if(UDGalleta.isChecked()){
@@ -171,14 +157,12 @@ public class MarcasDetails extends AppCompatActivity {
 
         if(UDMarca.getText().toString().isEmpty()){
             UDMarca.setText("Vacío"); }
-        if (UDStock.getText().toString().isEmpty()){
-            UDStock.setError("Complete los campos");
-        }else if (UDFecha.getText().toString().isEmpty()){
+        else if (UDFecha.getText().toString().isEmpty()){
             UDFecha.setError("Complete los campos");
 
         } else {
 
-            Call<MarcasResponse> UPDateMarcas = ApiClient.getUserService().UDMarca(idMarc, UDMarcaSt, UDStockSt, UDFechaSt, UDTipo, UDEstado);
+            Call<MarcasResponse> UPDateMarcas = ApiClient.getUserService().UDMarca(idMarc, UDMarcaSt, UDFechaSt, UDTipo, UDEstado);
             UPDateMarcas.enqueue(new Callback<MarcasResponse>() {
                 @Override
                 public void onResponse(@NonNull Call<MarcasResponse> call, @NonNull Response<MarcasResponse> response) {

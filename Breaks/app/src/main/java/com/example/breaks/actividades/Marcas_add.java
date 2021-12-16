@@ -7,6 +7,7 @@ import com.example.breaks.Modelos.MarcasResponse;
 import com.example.breaks.R;
 import com.example.breaks.RetrofitData.ApiClient;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,18 +17,23 @@ import android.widget.Toast;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Marcas_add extends AppCompatActivity {
 
-    EditText sendMarca,sendStock;
+    EditText sendMarca;
     TextView sendFecha;
     RadioButton sendGalleta, sendBebida;
     RadioButton sendActivo, sendInactivo;
     Button GuardarMarca;
-    String sendMarcaSt,sendStockSt,sendFechaSt,sendTipo,sendEstado;
+    String sendMarcaSt,sendFechaSt,sendTipo,sendEstado;
+    String fechaT;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +41,6 @@ public class Marcas_add extends AppCompatActivity {
         setContentView(R.layout.activity_marcas_add);
 
         sendMarca = findViewById(R.id.sendMarca);
-        sendStock = findViewById(R.id.sendStock);
         sendFecha = findViewById(R.id.sendFecha);
         sendGalleta = findViewById(R.id.sendGalleta);
         sendBebida = findViewById(R.id.sendBebida);
@@ -43,7 +48,17 @@ public class Marcas_add extends AppCompatActivity {
         sendInactivo = findViewById(R.id.sendInactivo);
         GuardarMarca = findViewById(R.id.GuardarMarca);
 
+        fechaADDM();
+
         GuardarMarca.setOnClickListener(v -> ConfirmarMarca());
+    }
+
+    public void fechaADDM (){
+        final Calendar calendar = Calendar.getInstance();
+        @SuppressLint("SimpleDateFormat") Format formatter = new SimpleDateFormat("yyyy-MM-dd");
+        fechaT = formatter.format(calendar.getTime());
+        sendFecha.setText(fechaT);
+
     }
 
     public void ConfirmarMarca (){
@@ -57,9 +72,9 @@ public class Marcas_add extends AppCompatActivity {
     }
 
     private void saveMarca (){
+        fechaADDM();
 
         sendMarcaSt = sendMarca.getText().toString();
-        sendStockSt = sendStock.getText().toString();
         sendFechaSt = sendFecha.getText().toString();
 
         if(sendGalleta.isChecked()){
@@ -76,14 +91,12 @@ public class Marcas_add extends AppCompatActivity {
 
         if(sendMarca.getText().toString().isEmpty()){
             sendMarca.setText("Vacío"); }
-        if (sendStock.getText().toString().isEmpty()){
-            sendStock.setError("Complete los campos");
-        }else if (sendFecha.getText().toString().isEmpty()){
+        else if (sendFecha.getText().toString().isEmpty()){
             sendFecha.setError("Complete los campos");
 
         } else {
 
-            Call<MarcasResponse> call = ApiClient.getUserService().InsertarMarca(sendMarcaSt,sendStockSt,sendFechaSt,sendTipo,sendEstado);
+            Call<MarcasResponse> call = ApiClient.getUserService().InsertarMarca(sendMarcaSt,sendFechaSt,sendTipo,sendEstado);
             call.enqueue(new Callback<MarcasResponse>() {
                 @Override
                 public void onResponse(@NotNull Call<MarcasResponse> call, @NotNull Response<MarcasResponse> response) {
