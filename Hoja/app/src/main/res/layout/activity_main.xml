@@ -40,7 +40,8 @@
             android:layout_weight="1"
             android:background="@drawable/azul"
             android:onClick="hoja"
-            app:srcCompat="@drawable/puntuacion" />
+            app:srcCompat="@drawable/puntuacion"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <TextView
             android:id="@+id/textView26"

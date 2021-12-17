@@ -30,9 +30,6 @@ public class InicioActivity extends AppCompatActivity {
     FloatingActionButton continuar,cerrar;
     String urlIMG = "http://190.119.144.250:83/hoja_evaluacion/img/user.png";
     private Window window;
-    String primaryDark = "#3F51B5";
-    String primary = "#3F51B5";
-    String background = "#303F9F";
     public static final int REQUEST_CODE = 4567;
 
     @Override
@@ -41,7 +38,6 @@ public class InicioActivity extends AppCompatActivity {
         setContentView(R.layout.inicio);
 
         this.window = getWindow();
-        //color(primaryDark,primary,background);
 
         foto = findViewById(R.id.foto);
         imgUser = findViewById(R.id.imgUser);
@@ -121,7 +117,7 @@ public class InicioActivity extends AppCompatActivity {
     }
 
     public void continuar (){
-        Intent intent = new Intent(InicioActivity.this, Marcas.class);
+        Intent intent = new Intent(InicioActivity.this, Menu.class);
         intent.putExtra("DisplayUser",nombre.getText().toString());
         intent.putExtra("EmailUser",email.getText().toString());
         startActivity(intent);

@@ -22,4 +22,5 @@
     <string name="actualizar">Actualizar</string>
     <string name="activar">Activar Todas?</string>
     <string name="upStock">Agregar Stock?</string>
+    <string name="Stock">STOCK</string>
 </resources>
