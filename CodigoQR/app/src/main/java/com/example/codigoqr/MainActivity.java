@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         integrador.setPrompt("Lector - CDP");
         integrador.setCameraId(0);
         integrador.setOrientationLocked(false);
+        integrador.setCaptureActivity(orientation.class);
         integrador.setBeepEnabled(true);
         integrador.setBarcodeImageEnabled(true);
         integrador.initiateScan();

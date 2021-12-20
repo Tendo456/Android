@@ -37,7 +37,7 @@
         <TextView
             android:id="@+id/txtLink"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="48dp"
             android:onClick="urls"
             android:text="Link"
             android:textSize="24sp" />
