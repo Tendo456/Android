@@ -72,7 +72,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 
-
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode,resultCode,data);
 
         if(result != null){
