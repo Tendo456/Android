@@ -6,6 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".actividades.Stock">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addstock"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:backgroundTint="@color/indigo_500"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.958"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.992"
+        app:maxImageSize="30dp"
+        app:srcCompat="@drawable/ic_add"
+        app:tint="@color/white"
+        tools:ignore="SpeakableTextPresentCheck"
+        android:contentDescription="@string/description" />
+
+
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -32,6 +54,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/drawable_blue"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -44,10 +68,16 @@
 
                 <TextView
                     android:id="@+id/fechaSTK"
-                    android:layout_width="100dp"
-                    android:layout_height="35dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/azul"
                     android:gravity="center"
-                    android:text="@string/fecha" />
+                    android:onClick="SelectFecha"
+                    android:padding="5dp"
+                    android:text="@string/fecha"
+                    android:textSize="24sp"
+                    tools:ignore="TouchTargetSizeCheck" />
             </LinearLayout>
 
             <LinearLayout
@@ -60,7 +90,8 @@
                 <Button
                     android:id="@+id/buscarSTK"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="48dp"
+                    android:layout_margin="5dp"
                     android:text="@string/buscar" />
             </LinearLayout>
 
@@ -70,7 +101,8 @@
             android:id="@+id/listaSTK"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="5dp" />
+            android:layout_margin="5dp"
+            android:background="@drawable/azul" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

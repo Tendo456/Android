@@ -1,6 +1,7 @@
 package com.example.breaks.RetrofitData;
 
 import com.example.breaks.Modelos.MarcasResponse;
+import com.example.breaks.Modelos.StockResponse;
 
 import java.util.List;
 
@@ -31,4 +32,8 @@ public interface UserService {
                                         @Field("fecha") String fecha,
                                         @Field("tipo") String tipo,
                                         @Field("estado") String estado);
+
+
+    @GET("Stock/GetStock.php")
+    Call<List<StockResponse>> getStock(@Query("fecha_s") String fecha_s);
 }

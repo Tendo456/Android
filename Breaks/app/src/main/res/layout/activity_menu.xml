@@ -89,7 +89,9 @@
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/azul"
-                        app:srcCompat="@drawable/stock" />
+                        android:onClick="menu2"
+                        app:srcCompat="@drawable/stock"
+                        tools:ignore="SpeakableTextPresentCheck" />
 
                     <TextView
                         android:id="@+id/textView8w"
