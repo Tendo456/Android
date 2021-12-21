@@ -13,4 +13,5 @@ public class Stock extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stock);
     }
+
 }

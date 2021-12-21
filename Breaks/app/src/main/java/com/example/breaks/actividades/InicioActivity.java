@@ -118,7 +118,6 @@ public class InicioActivity extends AppCompatActivity {
 
     public void continuar (){
         Intent intent = new Intent(InicioActivity.this, Menu.class);
-        intent.putExtra("DisplayUser",nombre.getText().toString());
         intent.putExtra("EmailUser",email.getText().toString());
         startActivity(intent);
 
