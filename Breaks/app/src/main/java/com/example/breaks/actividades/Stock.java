@@ -2,7 +2,6 @@ package com.example.breaks.actividades;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,9 +12,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.breaks.Adaptador.MarcasAdapter;
 import com.example.breaks.Adaptador.StockAdapter;
-import com.example.breaks.Modelos.MarcasResponse;
 import com.example.breaks.Modelos.StockResponse;
 import com.example.breaks.R;
 import com.example.breaks.RetrofitData.ApiClient;
