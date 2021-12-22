@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".actividades.StockDetails">
+    tools:context=".actividades.Stock_add">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -23,19 +23,20 @@
         app:layout_constraintVertical_bias="1.0">
 
         <TextView
-            android:id="@+id/textViewME"
+            android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
+            android:layout_margin="5dp"
             android:background="@color/indigo_500"
             android:gravity="center"
-            android:text="@string/updatestock"
+            android:text="@string/addstock"
             android:textColor="@color/white"
             android:textSize="30sp" />
 
         <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -43,37 +44,7 @@
                 android:background="@drawable/drawable_blue">
 
                 <TextView
-                    android:id="@+id/textViewME11"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:background="@drawable/blue_white"
-                    android:gravity="center"
-                    android:text="@string/idmarcas"
-                    android:textColor="@color/white"
-                    android:textSize="20sp" />
-
-                <EditText
-                    android:id="@+id/STID"
-                    android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/drawable_blue"
-                    android:ems="10"
-                    android:enabled="false"
-                    android:gravity="center"
-                    android:hint="@string/idmarcas"
-                    android:inputType="textPersonName" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/drawable_blue">
-
-                <TextView
-                    android:id="@+id/textViewME1"
+                    android:id="@+id/textView7"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -83,18 +54,15 @@
                     android:textColor="@color/white"
                     android:textSize="20sp" />
 
-                <EditText
-                    android:id="@+id/STMarcaD"
-                    android:layout_width="wrap_content"
+                <Spinner
+                    android:id="@+id/sendMarcaST"
+                    android:layout_width="match_parent"
                     android:layout_height="48dp"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:background="@drawable/drawable_blue"
-                    android:ems="10"
-                    android:enabled="false"
+                    android:background="@drawable/drawable_spinner"
                     android:gravity="center"
-                    android:hint="@string/marca"
-                    android:inputType="textPersonName" />
+                    tools:ignore="SpeakableTextPresentCheck" />
             </TableRow>
 
             <TableRow
@@ -103,7 +71,7 @@
                 android:background="@drawable/drawable_blue">
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/textView42"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -114,26 +82,26 @@
                     android:textSize="20sp" />
 
                 <EditText
-                    android:id="@+id/UDStock"
+                    android:id="@+id/sendST"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/drawable_blue"
                     android:ems="10"
-                    android:enabled="false"
                     android:gravity="center"
                     android:hint="@string/stock"
                     android:inputType="number" />
+
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="67dp"
                 android:background="@drawable/drawable_blue">
 
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/textView44"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -144,7 +112,7 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/STFechaD"
+                    android:id="@+id/sendFechast"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
                     android:layout_margin="5dp"
@@ -153,25 +121,17 @@
                     android:ems="10"
                     android:gravity="center"
                     android:text="@string/fecha" />
-
-
             </TableRow>
+
 
         </TableLayout>
 
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/ActiST"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:onClick="ActivarStock"
-            android:text="@string/upStock" />
-
         <Button
-            android:id="@+id/ActuST"
+            android:id="@+id/GuardarMarca"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="@string/actualizar" />
+            android:text="@string/guardar" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

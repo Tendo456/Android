@@ -12,6 +12,8 @@
     <string name="description">icono base</string>
     <string name="marca">MARCA</string>
     <string name="stock">STOCK</string>
+    <string name="addstock">AGREGAR STOCK</string>
+    <string name="updatestock">ACTUALIZAR STOCK</string>
     <string name="tipo">TIPO</string>
     <string name="estado">ESTADO</string>
     <string name="galleta">Galleta</string>

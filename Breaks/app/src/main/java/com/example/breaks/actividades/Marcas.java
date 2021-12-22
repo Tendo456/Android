@@ -1,16 +1,15 @@
 package com.example.breaks.actividades;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.Switch;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.widget.Button;
-import android.widget.Switch;
-import android.widget.Toast;
 
 import com.example.breaks.Adaptador.MarcasAdapter;
 import com.example.breaks.Modelos.MarcasResponse;
