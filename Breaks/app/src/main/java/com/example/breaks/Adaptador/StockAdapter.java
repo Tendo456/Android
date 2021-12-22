@@ -42,7 +42,7 @@ public class StockAdapter extends RecyclerView.Adapter<StockAdapter.StockAdapter
     public void onBindViewHolder(@NonNull StockAdapterVH holder, int position) {
         StockResponse stockResponse = stockResponseList.get(position);
 
-        String date = stockResponse.getStock();
+        String date = stockResponse.getMarca();
         String prefix = stockResponse.getId_stock();
 
         holder.prefix.setText(prefix);

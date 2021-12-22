@@ -2,10 +2,13 @@ package com.example.breaks.actividades;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -88,7 +91,7 @@ public class Stock extends AppCompatActivity implements StockAdapter.ClickedItem
 
         fSTK2 = fechaSTK.getText().toString();
 
-        Call<List<StockResponse>> stockList = ApiClient.getUserService().getStock(fSTK);
+        Call<List<StockResponse>> stockList = ApiClient.getUserService().getStock(fSTK2);
         stockList.enqueue(new Callback<List<StockResponse>>() {
             @Override
             public void onResponse(Call<List<StockResponse>> call, Response<List<StockResponse>> response) {
@@ -101,7 +104,7 @@ public class Stock extends AppCompatActivity implements StockAdapter.ClickedItem
 
             @Override
             public void onFailure(Call<List<StockResponse>> call, Throwable t) {
-
+                Toast.makeText(Stock.this, "Error " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -109,6 +112,7 @@ public class Stock extends AppCompatActivity implements StockAdapter.ClickedItem
 
     @Override
     public void ClickedStock(StockResponse stockResponse) {
-
+        startActivity(new Intent(this,StockDetails.class).putExtra("datoStock",stockResponse));
+        finish();
     }
 }

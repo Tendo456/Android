@@ -154,7 +154,7 @@ public class MarcasDetails extends AppCompatActivity {
         }
 
         if(UDMarca.getText().toString().isEmpty()){
-            UDMarca.setText("Vacío"); }
+            UDMarca.setError("Complete los campos"); }
         else if (UDFecha.getText().toString().isEmpty()){
             UDFecha.setError("Complete los campos");
 

@@ -27,7 +27,7 @@ public interface UserService {
     @FormUrlEncoded
     @POST("Marcas/ActualizarMarca.php")
     Call<MarcasResponse> UDMarca (
-            @Field("id_marcas") String marca_id,
+            @Field("id_marcas") String id_marcas,
             @Field("marca") String marca,
                                         @Field("fecha") String fecha,
                                         @Field("tipo") String tipo,
@@ -36,4 +36,11 @@ public interface UserService {
 
     @GET("Stock/GetStock.php")
     Call<List<StockResponse>> getStock(@Query("fecha_s") String fecha_s);
+
+    @FormUrlEncoded
+    @POST("Stock/ActualizarStock.php")
+    Call<StockResponse> UDStock (
+            @Field("id_stock") String id_stock,
+            @Field("stock") String stock,
+            @Field("fecha_s") String fecha_s);
 }

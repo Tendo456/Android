@@ -5,9 +5,10 @@ import java.io.Serializable;
 public class StockResponse implements Serializable {
 
     private String id_stock;
-    private String id_marca;
+    private String id_marcas;
     private String stock;
     private String fecha_s;
+    private String marca;
     private String mensaje;
 
     public String getId_stock() {
@@ -18,12 +19,12 @@ public class StockResponse implements Serializable {
         this.id_stock = id_stock;
     }
 
-    public String getId_marca() {
-        return id_marca;
+    public String getId_marcas() {
+        return id_marcas;
     }
 
-    public void setId_marca(String id_marca) {
-        this.id_marca = id_marca;
+    public void setId_marcas(String id_marcas) {
+        this.id_marcas = id_marcas;
     }
 
     public String getStock() {
@@ -42,6 +43,14 @@ public class StockResponse implements Serializable {
         this.fecha_s = fecha_s;
     }
 
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
     public String getMensaje() {
         return mensaje;
     }
@@ -50,9 +59,10 @@ public class StockResponse implements Serializable {
     public String toString() {
         return "StockResponse{" +
                 "id_stock='" + id_stock + '\'' +
-                ", id_marca='" + id_marca + '\'' +
+                ", id_marcas='" + id_marcas + '\'' +
                 ", stock='" + stock + '\'' +
                 ", fecha_s='" + fecha_s + '\'' +
+                ", marca='" + marca + '\'' +
                 '}';
     }
 }
