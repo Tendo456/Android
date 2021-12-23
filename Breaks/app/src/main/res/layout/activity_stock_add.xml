@@ -112,7 +112,7 @@
                     android:textSize="20sp" />
 
                 <TextView
-                    android:id="@+id/sendFechast"
+                    android:id="@+id/sendFechaST"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
                     android:layout_margin="5dp"
@@ -125,6 +125,18 @@
 
 
         </TableLayout>
+
+        <TextView
+            android:id="@+id/confIDMarca"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/idmarcas" />
+
+        <TextView
+            android:id="@+id/confMarca"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/marca" />
 
         <Button
             android:id="@+id/GuardarMarca"

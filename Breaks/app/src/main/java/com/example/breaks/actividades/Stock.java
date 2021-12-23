@@ -19,6 +19,7 @@ import com.example.breaks.Adaptador.StockAdapter;
 import com.example.breaks.Modelos.StockResponse;
 import com.example.breaks.R;
 import com.example.breaks.RetrofitData.ApiClient;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.DateFormat;
 import java.text.Format;
@@ -38,6 +39,7 @@ public class Stock extends AppCompatActivity implements StockAdapter.ClickedItem
     Button buscarSTK;
     RecyclerView listaSTK;
     StockAdapter stockAdapter;
+    FloatingActionButton addstock;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,10 +49,13 @@ public class Stock extends AppCompatActivity implements StockAdapter.ClickedItem
         fechaSTK = findViewById(R.id.fechaSTK);
         buscarSTK = findViewById(R.id.buscarSTK);
         listaSTK = findViewById(R.id.listaSTK);
+        addstock = findViewById(R.id.addstock);
 
         listaSTK.setLayoutManager(new LinearLayoutManager(this));
         listaSTK.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
         stockAdapter = new StockAdapter(this::ClickedStock);
+
+        addstock.setOnClickListener(view -> StockAdd());
 
         fechaHoy();
 
@@ -114,5 +119,12 @@ public class Stock extends AppCompatActivity implements StockAdapter.ClickedItem
     public void ClickedStock(StockResponse stockResponse) {
         startActivity(new Intent(this,StockDetails.class).putExtra("datoStock",stockResponse));
         finish();
+    }
+
+    public void StockAdd(){
+        Intent intent = new Intent(Stock.this, Stock_add.class);
+        //intent.putExtra("DisplayUser",nombre.getText().toString());
+        //intent.putExtra("EmailUser",email.getText().toString());
+        startActivity(intent);
     }
 }
