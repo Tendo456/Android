@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Breaks"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".actividades.Programacion"
+            android:exported="false" />
+        <activity
             android:name=".actividades.Stock_add"
             android:exported="false" />
         <activity

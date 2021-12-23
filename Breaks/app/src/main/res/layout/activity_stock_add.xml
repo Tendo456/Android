@@ -6,6 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".actividades.Stock_add">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo_transparente" />
+
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -139,7 +153,7 @@
             android:text="@string/marca" />
 
         <Button
-            android:id="@+id/GuardarMarca"
+            android:id="@+id/GuardarStock"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"

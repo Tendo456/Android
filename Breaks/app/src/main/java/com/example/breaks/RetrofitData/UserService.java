@@ -34,6 +34,13 @@ public interface UserService {
                                         @Field("estado") String estado);
 
 
+    @FormUrlEncoded
+    @POST("Stock/InsertarStock.php")
+    Call<StockResponse> ADDStock (
+            @Field("id_marcas") String id_marcas,
+            @Field("stock") String stock,
+            @Field("fecha_s") String fecha_s);
+
     @GET("Stock/GetStock.php")
     Call<List<StockResponse>> getStock(@Query("fecha_s") String fecha_s);
 

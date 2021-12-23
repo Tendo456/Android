@@ -1,25 +1,38 @@
 package com.example.breaks.actividades;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.breaks.Modelos.MarcasResponseSP;
+import com.example.breaks.Modelos.StockResponse;
 import com.example.breaks.R;
+import com.example.breaks.RetrofitData.ApiClient;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import cz.msebera.android.httpclient.Header;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Stock_add extends AppCompatActivity {
 
@@ -27,6 +40,8 @@ public class Stock_add extends AppCompatActivity {
     EditText sendST;
     TextView sendFechaST,confIDMarca, confMarca;
     private AsyncHttpClient MarcasAct;
+    String sdIDM,sdSTK,fecha_s;
+    Button GuardarStock;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +53,21 @@ public class Stock_add extends AppCompatActivity {
         sendFechaST = findViewById(R.id.sendFechaST);
         confIDMarca = findViewById(R.id.confIDMarca);
         confMarca = findViewById(R.id.confMarca);
+        GuardarStock = findViewById(R.id.GuardarStock);
 
         MarcasAct = new AsyncHttpClient();
         llenarspinerM();
+        fechaADDST();
+
+        GuardarStock.setOnClickListener(view -> ConfirmarStock());
+
+    }
+
+    public void fechaADDST (){
+        final Calendar calendar = Calendar.getInstance();
+        @SuppressLint("SimpleDateFormat") Format formatter = new SimpleDateFormat("yyyy-MM-dd");
+        fecha_s = formatter.format(calendar.getTime());
+        sendFechaST.setText(fecha_s);
 
     }
 
@@ -95,5 +122,48 @@ public class Stock_add extends AppCompatActivity {
             e.printStackTrace();
         }
 
+    }
+
+    public void ConfirmarStock (){
+        AlertDialog.Builder opcion = new AlertDialog.Builder(this);
+        opcion.setMessage("Agregar Stock?");
+        opcion.setPositiveButton("Enviar", (dialog, which) -> saveStock());
+        opcion.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
+
+        AlertDialog dialog = opcion.create();
+        dialog.show();
+    }
+
+    public void saveStock (){
+        fechaADDST();
+
+        sdIDM = confIDMarca.getText().toString();
+        sdSTK = sendST.getText().toString();
+
+        if (sendST.getText().toString().isEmpty()){
+            sendST.setError("Agregar Stock");
+        }else{
+            Call<StockResponse> svST = ApiClient.getUserService().ADDStock(sdIDM,sdSTK,fecha_s);
+            svST.enqueue(new Callback<StockResponse>() {
+                @Override
+                public void onResponse(@NonNull Call<StockResponse> call, @NonNull Response<StockResponse> response) {
+
+                    if (response.isSuccessful()) {
+                        StockResponse mensaje = response.body();
+                        assert mensaje != null;
+                        Toast.makeText(Stock_add.this, ""+mensaje.getMensaje()+" "+response.code(), Toast.LENGTH_SHORT).show();
+
+                    } else {
+                        Toast.makeText(Stock_add.this, "Error al Guardar los Datos " +response.code(), Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+
+                @Override
+                public void onFailure(@NonNull Call<StockResponse> call, @NonNull Throwable t) {
+                    Toast.makeText(Stock_add.this, "Error " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 }
