@@ -139,7 +139,9 @@
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/azul"
-                        app:srcCompat="@drawable/calendar" />
+                        android:onClick="menu3"
+                        app:srcCompat="@drawable/calendar"
+                        tools:ignore="SpeakableTextPresentCheck" />
 
                     <TextView
                         android:id="@+id/textVie"

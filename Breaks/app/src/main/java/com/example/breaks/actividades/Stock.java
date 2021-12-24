@@ -52,7 +52,7 @@ public class Stock extends AppCompatActivity implements StockAdapter.ClickedItem
 
         listaSTK.setLayoutManager(new LinearLayoutManager(this));
         listaSTK.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
-        stockAdapter = new StockAdapter(this::ClickedStock);
+        stockAdapter = new StockAdapter(this);
 
         addstock.setOnClickListener(view -> StockAdd());
 

@@ -10,7 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.breaks.Modelos.MarcasResponse;
 import com.example.breaks.Modelos.StockResponse;
 import com.example.breaks.R;
 
@@ -23,7 +22,7 @@ public class StockAdapter extends RecyclerView.Adapter<StockAdapter.StockAdapter
     private ClickedItemS clickedItemS;
 
     public StockAdapter(ClickedItemS clickedItemS) {
-        this. clickedItemS = clickedItemS;
+        this.clickedItemS = clickedItemS;
     }
 
     public void setData(List<StockResponse> stockResponseList){

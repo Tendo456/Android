@@ -33,4 +33,11 @@ public class Menu extends AppCompatActivity {
         intent.putExtra("EmailUser",emailuserME);
         startActivity(intent);
     }
+
+    public void menu3 (View view){
+        Intent intent = new Intent(Menu.this, Programacion.class);
+        //intent.putExtra("DisplayUser",nombre.getText().toString());
+        intent.putExtra("EmailUser",emailuserME);
+        startActivity(intent);
+    }
 }
