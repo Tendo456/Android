@@ -53,6 +53,20 @@ public interface UserService {
             @Field("fecha_s") String fecha_s);
 
 
+    @FormUrlEncoded
+    @POST("Programacion/InsertarProgramacion.php")
+    Call<ProgramacionResponse> ADDProg (
+            @Field("id_stock") String id_stock,
+            @Field("cantidad_marc") String cantidad_marc,
+            @Field("fecha_prog") String fecha_prog);
+
     @GET("Programacion/GetProgramacion.php")
     Call<List<ProgramacionResponse>> getProg(@Query("fecha_prog") String fecha_prog);
+
+    @FormUrlEncoded
+    @POST("Programacion/ActualizarProgramacion.php")
+    Call<ProgramacionResponse> UDProg (
+            @Field("id_programacion") String id_programacion,
+            @Field("cantidad_marc") String cantidad_marc,
+            @Field("fecha_prog") String fecha_prog);
 }

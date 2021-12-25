@@ -25,7 +25,9 @@
     <string name="activar">Activar Todas?</string>
     <string name="upStock">Agregar Stock?</string>
     <string name="programacion">PROGRAMACIÓN</string>
-    <string name="updateprog">ACTUALIZAR PROGRAMACION</string>
+    <string name="addprog">AGREGAR PROGRAMACIÓN</string>
+    <string name="updateprog">ACTUALIZAR PROGRAMACIÓN</string>
+    <string name="upProg">Agregar Cantidad?</string>
     <string name="cantidad">CANTIDAD</string>
     <string name="personal">PERSONAL</string>
     <string name="breaks">BREAKS</string>

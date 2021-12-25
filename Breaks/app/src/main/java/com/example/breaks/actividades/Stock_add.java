@@ -154,7 +154,9 @@ public class Stock_add extends AppCompatActivity {
                         Toast.makeText(Stock_add.this, ""+mensaje.getMensaje()+" "+response.code(), Toast.LENGTH_SHORT).show();
 
                     } else {
-                        Toast.makeText(Stock_add.this, "Error al Guardar los Datos " +response.code(), Toast.LENGTH_SHORT).show();
+                        StockResponse mensaje = response.body();
+                        assert mensaje != null;
+                        Toast.makeText(Stock_add.this, ""+mensaje.getMensaje()+" "+response.code(), Toast.LENGTH_SHORT).show();
                     }
 
                 }

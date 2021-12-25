@@ -177,7 +177,8 @@
             android:id="@+id/ActiPROG"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
-            android:text="@string/upStock" />
+            android:onClick="ActivarProg"
+            android:text="@string/upProg" />
 
         <Button
             android:id="@+id/ActuPROG"

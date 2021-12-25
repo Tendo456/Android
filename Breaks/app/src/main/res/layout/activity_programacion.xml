@@ -87,6 +87,7 @@
                     android:layout_margin="5dp"
                     android:background="@drawable/azul"
                     android:gravity="center"
+                    android:onClick="SelectFechaPG"
                     android:padding="5dp"
                     android:text="@string/fecha"
                     android:textSize="24sp"

@@ -66,7 +66,6 @@ public class Stock extends AppCompatActivity implements StockAdapter.ClickedItem
         @SuppressLint("SimpleDateFormat") Format formatter = new SimpleDateFormat("yyyy-MM-dd");
         fSTK = formatter.format(calendar.getTime());
         fechaSTK.setText(fSTK);
-
     }
 
     public void SelectFecha (View view){
@@ -95,22 +94,27 @@ public class Stock extends AppCompatActivity implements StockAdapter.ClickedItem
 
         fSTK2 = fechaSTK.getText().toString();
 
-        Call<List<StockResponse>> stockList = ApiClient.getUserService().getStock(fSTK2);
-        stockList.enqueue(new Callback<List<StockResponse>>() {
-            @Override
-            public void onResponse(Call<List<StockResponse>> call, Response<List<StockResponse>> response) {
-                if(response.isSuccessful()){
-                    List<StockResponse> stockResponses = response.body();
-                    stockAdapter.setData(stockResponses);
-                    listaSTK.setAdapter(stockAdapter);
-                }
-            }
+        if (fechaSTK.getText().toString().isEmpty()){
+            Toast.makeText(Stock.this, "Insertar Fecha" , Toast.LENGTH_SHORT).show();
+        }else {
 
-            @Override
-            public void onFailure(Call<List<StockResponse>> call, Throwable t) {
-                Toast.makeText(Stock.this, "Error " + t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+            Call<List<StockResponse>> stockList = ApiClient.getUserService().getStock(fSTK2);
+            stockList.enqueue(new Callback<List<StockResponse>>() {
+                @Override
+                public void onResponse(Call<List<StockResponse>> call, Response<List<StockResponse>> response) {
+                    if (response.isSuccessful()) {
+                        List<StockResponse> stockResponses = response.body();
+                        stockAdapter.setData(stockResponses);
+                        listaSTK.setAdapter(stockAdapter);
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<List<StockResponse>> call, Throwable t) {
+                    Toast.makeText(Stock.this, "Error " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
 
     }
 
