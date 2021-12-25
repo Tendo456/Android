@@ -120,7 +120,7 @@ public class Programacion extends AppCompatActivity implements ProgramacionAdapt
     @Override
     public void ClickedProg(ProgramacionResponse programacionResponse) {
         startActivity(new Intent(this,ProgramacionDetails.class).putExtra("datoProg",programacionResponse));
-        finish();
+        //finish();
     }
 
     public void ProgAdd(){

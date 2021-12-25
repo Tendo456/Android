@@ -30,6 +30,15 @@
     <string name="upProg">Agregar Cantidad?</string>
     <string name="cantidad">CANTIDAD</string>
     <string name="personal">PERSONAL</string>
+    <string name="upPers">ACTUALIZAR PERSONAL</string>
+    <string name="nombre">NOMBRE</string>
+    <string name="paterno">1° APELLIDO</string>
+    <string name="materno">2° APELLIDO</string>
+    <string name="dni">DNI</string>
+    <string name="correo">CORREO</string>
+    <string name="rol">ROL</string>
+    <string name="rol1">Admin</string>
+    <string name="rol2">User</string>
     <string name="breaks">BREAKS</string>
     <string name="llaves">LLAVES</string>
 </resources>

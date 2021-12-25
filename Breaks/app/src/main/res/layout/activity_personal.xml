@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".actividades.Marcas">
+    tools:context=".actividades.Personal">
 
     <ImageView
         android:id="@+id/imageView"
@@ -21,7 +21,7 @@
         app:srcCompat="@drawable/logo_transparente" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/addmarca"
+        android:id="@+id/addPersonal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
@@ -61,38 +61,25 @@
             android:layout_margin="5dp"
             android:background="@drawable/blue_white"
             android:gravity="center"
-            android:text="@string/marcas"
+            android:text="@string/personal"
             android:textColor="@color/white"
             android:textSize="30sp" />
 
-        <LinearLayout
+
+        <SearchView
+            android:id="@+id/BuscarPer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <Switch
-                android:id="@+id/MarcasEstado"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:text="@string/inactivas"
-                tools:ignore="UseSwitchCompatOrMaterialXml" />
-
-            <Button
-                android:id="@+id/MarcasSearch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="@string/buscar" />
-        </LinearLayout>
+            android:background="@drawable/azul" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/MarcasList"
+            android:id="@+id/PersonalList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
             android:background="@drawable/azul" />
 
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package com.example.breaks.RetrofitData;
 
 import com.example.breaks.Modelos.MarcasResponse;
+import com.example.breaks.Modelos.PersonalResponse;
 import com.example.breaks.Modelos.ProgramacionResponse;
 import com.example.breaks.Modelos.StockResponse;
 
@@ -69,4 +70,8 @@ public interface UserService {
             @Field("id_programacion") String id_programacion,
             @Field("cantidad_marc") String cantidad_marc,
             @Field("fecha_prog") String fecha_prog);
+
+
+    @GET("Personal/GetPersonal.php")
+    Call<List<PersonalResponse>> getPersonal(@Query("estado") String estado);
 }

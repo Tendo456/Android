@@ -167,7 +167,9 @@
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/azul"
-                        app:srcCompat="@drawable/medical" />
+                        android:onClick="menu4"
+                        app:srcCompat="@drawable/medical"
+                        tools:ignore="SpeakableTextPresentCheck" />
 
                     <TextView
                         android:id="@+id/textViw8w"
