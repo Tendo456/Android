@@ -47,7 +47,7 @@ public class Personal_add extends AppCompatActivity {
 
     public void ConfirmarPers (){
         AlertDialog.Builder opcion = new AlertDialog.Builder(this);
-        opcion.setMessage("Agregar Programación?");
+        opcion.setMessage("Agregar Personal?");
         opcion.setPositiveButton("Enviar", (dialog, which) -> savePers());
         opcion.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
 
@@ -97,7 +97,7 @@ public class Personal_add extends AppCompatActivity {
                         PersonalResponse mensaje = response.body();
                         assert mensaje != null;
                         Toast.makeText(Personal_add.this, ""+mensaje.getMensaje()+" "+response.code(), Toast.LENGTH_SHORT).show();
-
+                        finish();
                     } else {
                         PersonalResponse mensaje = response.body();
                         assert mensaje != null;

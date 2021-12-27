@@ -79,7 +79,7 @@
                         android:ems="10"
                         android:gravity="center"
                         android:hint="@string/nombre"
-                        android:inputType="textPersonName" />
+                        android:inputType="textCapSentences" />
                 </TableRow>
 
                 <TableRow
@@ -300,7 +300,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:text="@string/actualizar" />
+                android:text="@string/guardar" />
 
         </LinearLayout>
 

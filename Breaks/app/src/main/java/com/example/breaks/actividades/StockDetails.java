@@ -71,8 +71,7 @@ public class StockDetails extends AppCompatActivity {
     public void onBackPressed() {
         Intent intent = new Intent(StockDetails.this, Stock.class);
         startActivity(intent);
-
-        finish();
+        //finish();
     }
 
     public void fechaSD (){
