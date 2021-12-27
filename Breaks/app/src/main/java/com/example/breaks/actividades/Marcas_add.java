@@ -102,11 +102,13 @@ public class Marcas_add extends AppCompatActivity {
                 public void onResponse(@NotNull Call<MarcasResponse> call, @NotNull Response<MarcasResponse> response) {
                     if (response.isSuccessful()) {
                         MarcasResponse mensaje = response.body();
+                        assert mensaje != null;
                         Toast.makeText(Marcas_add.this, ""+mensaje.getMensaje()+" "+response.code(), Toast.LENGTH_SHORT).show();
-                        //limpiar();
-                        //getAllRecepcion();
+
                     } else {
-                        Toast.makeText(Marcas_add.this, "Error al Guardar los Datos " +response.code(), Toast.LENGTH_SHORT).show();
+                        MarcasResponse mensaje = response.body();
+                        assert mensaje != null;
+                        Toast.makeText(Marcas_add.this, ""+mensaje.getMensaje()+" "+response.code(), Toast.LENGTH_SHORT).show();
                     }
                 }
 

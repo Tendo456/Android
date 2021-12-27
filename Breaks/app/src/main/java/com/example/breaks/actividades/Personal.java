@@ -45,6 +45,7 @@ public class Personal extends AppCompatActivity implements PersonalAdapter.Click
         personalAdapter = new PersonalAdapter(this);
 
         getPersonal();
+        addPersonal.setOnClickListener(view -> addPErs());
 
     }
 
@@ -73,6 +74,13 @@ public class Personal extends AppCompatActivity implements PersonalAdapter.Click
     @Override
     public void ClickedPer(PersonalResponse personalResponse) {
         startActivity(new Intent(this,PersonalDetails.class).putExtra("datoPers",personalResponse));
-        finish();
+        //finish();
+    }
+
+    public void addPErs(){
+        Intent intent = new Intent(Personal.this, Personal_add.class);
+        //intent.putExtra("DisplayUser",nombre.getText().toString());
+        //intent.putExtra("EmailUser",email.getText().toString());
+        startActivity(intent);
     }
 }

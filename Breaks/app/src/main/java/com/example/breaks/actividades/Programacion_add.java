@@ -150,7 +150,7 @@ public class Programacion_add extends AppCompatActivity {
                         ProgramacionResponse mensaje = response.body();
                         assert mensaje != null;
                         Toast.makeText(Programacion_add.this, ""+mensaje.getMensaje()+" "+response.code(), Toast.LENGTH_SHORT).show();
-
+                        finish();
                     } else {
                         ProgramacionResponse mensaje = response.body();
                         assert mensaje != null;

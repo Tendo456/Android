@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".actividades.PersonalDetails">
+    tools:context=".actividades.Personal_add">
 
     <ImageView
         android:id="@+id/imageView"
@@ -59,34 +59,6 @@
                     android:background="@drawable/drawable_blue">
 
                     <TextView
-                        android:id="@+id/textViewME11"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@drawable/blue_white"
-                        android:gravity="center"
-                        android:text="@string/idmarcas"
-                        android:textColor="@color/white"
-                        android:textSize="20sp" />
-
-                    <TextView
-                        android:id="@+id/IDPE"
-                        android:layout_width="wrap_content"
-                        android:layout_height="48dp"
-                        android:layout_margin="5dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/drawable_blue"
-                        android:gravity="center"
-                        android:text="@string/idmarcas"
-                        android:textSize="18sp" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/drawable_blue">
-
-                    <TextView
                         android:id="@+id/textViewME1"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
@@ -98,14 +70,13 @@
                         android:textSize="20sp" />
 
                     <EditText
-                        android:id="@+id/NombrePE"
+                        android:id="@+id/AddNombrePE"
                         android:layout_width="wrap_content"
                         android:layout_height="48dp"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/drawable_blue"
                         android:ems="10"
-                        android:enabled="false"
                         android:gravity="center"
                         android:hint="@string/nombre"
                         android:inputType="textPersonName" />
@@ -128,14 +99,13 @@
                         android:textSize="20sp" />
 
                     <EditText
-                        android:id="@+id/Paterno"
+                        android:id="@+id/AddPaterno"
                         android:layout_width="wrap_content"
                         android:layout_height="48dp"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/drawable_blue"
                         android:ems="10"
-                        android:enabled="false"
                         android:gravity="center"
                         android:hint="@string/paterno"
                         android:inputType="textPersonName" />
@@ -158,14 +128,13 @@
                         android:textSize="20sp" />
 
                     <EditText
-                        android:id="@+id/Materno"
+                        android:id="@+id/AddMaterno"
                         android:layout_width="wrap_content"
                         android:layout_height="48dp"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/drawable_blue"
                         android:ems="10"
-                        android:enabled="false"
                         android:gravity="center"
                         android:hint="@string/materno"
                         android:inputType="textPersonName" />
@@ -190,14 +159,13 @@
                         android:textSize="20sp" />
 
                     <EditText
-                        android:id="@+id/DNI"
+                        android:id="@+id/AddDNI"
                         android:layout_width="wrap_content"
                         android:layout_height="48dp"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/drawable_blue"
                         android:ems="10"
-                        android:enabled="false"
                         android:gravity="center"
                         android:hint="@string/dni"
                         android:inputType="number"
@@ -221,14 +189,13 @@
                         android:textSize="20sp" />
 
                     <EditText
-                        android:id="@+id/Correo"
+                        android:id="@+id/AddCorreo"
                         android:layout_width="wrap_content"
                         android:layout_height="48dp"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/drawable_blue"
                         android:ems="10"
-                        android:enabled="false"
                         android:gravity="center"
                         android:hint="@string/correo"
                         android:inputType="textPersonName" />
@@ -260,21 +227,20 @@
                         android:orientation="horizontal">
 
                         <RadioButton
-                            android:id="@+id/Rol1"
+                            android:id="@+id/AddRol1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
-                            android:enabled="false"
                             android:text="@string/rol1" />
 
                         <RadioButton
-                            android:id="@+id/Rol2"
+                            android:id="@+id/AddRol2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
-                            android:enabled="false"
+                            android:checked="true"
                             android:text="@string/rol2" />
 
                     </RadioGroup>
@@ -306,21 +272,20 @@
                         android:orientation="horizontal">
 
                         <RadioButton
-                            android:id="@+id/ActivoPE"
+                            android:id="@+id/AddActivoPE"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
-                            android:enabled="false"
+                            android:checked="true"
                             android:text="@string/activo" />
 
                         <RadioButton
-                            android:id="@+id/InactivoPE"
+                            android:id="@+id/AddInactivoPE"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
-                            android:enabled="false"
                             android:text="@string/inactivo" />
 
                     </RadioGroup>
@@ -330,25 +295,15 @@
 
             </TableLayout>
 
-            <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/ActiPer"
-                android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:onClick="ActiPers"
-                android:text="@string/activar" />
-
             <Button
-                android:id="@+id/ActuPer"
+                android:id="@+id/AddSavePer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:enabled="false"
                 android:text="@string/actualizar" />
 
         </LinearLayout>
 
     </ScrollView>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

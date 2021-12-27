@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Breaks"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".actividades.Personal_add"
+            android:exported="false" />
+        <activity
             android:name=".actividades.PersonalDetails"
             android:exported="false" />
         <activity

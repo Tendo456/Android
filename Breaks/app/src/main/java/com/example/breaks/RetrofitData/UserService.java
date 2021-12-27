@@ -72,6 +72,18 @@ public interface UserService {
             @Field("fecha_prog") String fecha_prog);
 
 
+    @FormUrlEncoded
+    @POST("Personal/InsertarPersonal.php")
+    Call<PersonalResponse> ADDPers (
+            //@Field("id_personal") String id_personal,
+            @Field("nombres") String nombres,
+            @Field("apelli_paterno") String apelli_paterno,
+            @Field("apelli_materno") String apelli_materno,
+            @Field("DNI") String DNI,
+            @Field("correo") String correo,
+            @Field("rol") String rol,
+            @Field("estado") String estado);
+
     @GET("Personal/GetPersonal.php")
     Call<List<PersonalResponse>> getPersonal(@Query("estado") String estado);
 }
