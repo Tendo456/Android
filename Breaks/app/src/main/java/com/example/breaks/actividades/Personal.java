@@ -22,7 +22,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Personal extends AppCompatActivity implements PersonalAdapter.ClickedItemPE{
+public class Personal extends AppCompatActivity implements PersonalAdapter.ClickedItemPE, SearchView.OnQueryTextListener{
 
     SearchView BuscarPer;
     RecyclerView PersonalList;
@@ -46,6 +46,8 @@ public class Personal extends AppCompatActivity implements PersonalAdapter.Click
 
         getPersonal();
         addPersonal.setOnClickListener(view -> addPErs());
+
+        BuscarPer.setOnQueryTextListener(this);
 
     }
 
@@ -82,5 +84,16 @@ public class Personal extends AppCompatActivity implements PersonalAdapter.Click
         //intent.putExtra("DisplayUser",nombre.getText().toString());
         //intent.putExtra("EmailUser",email.getText().toString());
         startActivity(intent);
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String s) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String s) {
+        personalAdapter.filter(s);
+        return false;
     }
 }
