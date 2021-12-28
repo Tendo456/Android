@@ -1,10 +1,12 @@
 package com.example.breaks.actividades;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 
 import com.example.breaks.Modelos.PersonalResponse;
 import com.example.breaks.R;
+import com.example.breaks.RetrofitData.ApiClient;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +16,11 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class PersonalDetails extends AppCompatActivity {
 
@@ -23,6 +30,7 @@ public class PersonalDetails extends AppCompatActivity {
     SwitchCompat ActiPer;
     Button ActuPer;
     PersonalResponse personalResponse;
+    String IDper, NomPer, Patr, Matr, Doc, Email, PerRol, PerEst;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +92,8 @@ public class PersonalDetails extends AppCompatActivity {
 
         }
 
+        ActuPer.setOnClickListener(view -> ConfirmarPersonal());
+
     }
 
     public void ActiPers(View view){
@@ -110,5 +120,74 @@ public class PersonalDetails extends AppCompatActivity {
             InactivoPE.setEnabled(false);
             ActuPer.setEnabled(false);
         }
+    }
+
+    public void ConfirmarPersonal(){
+        AlertDialog.Builder opcion = new AlertDialog.Builder(this);
+        opcion.setMessage("Actualizar Datos del Personal?");
+        opcion.setPositiveButton("Enviar", (dialog, which) -> UDPers());
+        opcion.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
+
+        AlertDialog dialog = opcion.create();
+        dialog.show();
+    }
+
+    public void UDPers() {
+        if(Rol1.isChecked()){
+            PerRol = "1";
+        }else if (Rol2.isChecked()) {
+            PerRol = "2";
+        }
+        if(ActivoPE.isChecked()){
+            PerEst = "1";
+        } else if(InactivoPE.isChecked()){
+            PerEst = "2";
+        }
+
+        if(IDPE.getText().toString().isEmpty()){
+            IDPE.setError("Ingrese Datos");
+        }else if(NombrePE.getText().toString().isEmpty()){
+            NombrePE.setError("Ingrese Datos");
+        }else if(Paterno.getText().toString().isEmpty()){
+            Paterno.setError("Ingrese Datos");
+        }else if(Materno.getText().toString().isEmpty()){
+            Materno.setError("Ingrese Datos");
+        }else if(DNI.getText().toString().isEmpty()){
+            DNI.setError("Ingrese Datos");
+        }else if(Correo.getText().toString().isEmpty()){
+            Correo.setError("Ingrese Datos");
+        }else {
+
+            IDper = IDPE.getText().toString();
+            NomPer = NombrePE.getText().toString();
+            Patr =Paterno.getText().toString();
+            Matr = Materno.getText().toString();
+            Doc = DNI.getText().toString();
+            Email = Correo.getText().toString();
+
+            Call<PersonalResponse> udPEr = ApiClient.getUserService().UDPers(IDper,NomPer,Patr,Matr,Doc,Email,PerRol,PerEst);
+            udPEr.enqueue(new Callback<PersonalResponse>() {
+                @Override
+                public void onResponse(Call<PersonalResponse> call, Response<PersonalResponse> response) {
+                    if (response.isSuccessful()) {
+                        PersonalResponse mensaje = response.body();
+                        assert mensaje != null;
+                        Toast.makeText(PersonalDetails.this, ""+mensaje.getMensaje()+" "+response.code(), Toast.LENGTH_SHORT).show();
+                        finish();
+                    } else {
+                        PersonalResponse mensaje = response.body();
+                        assert mensaje != null;
+                        Toast.makeText(PersonalDetails.this, ""+mensaje.getMensaje()+" "+response.code(), Toast.LENGTH_SHORT).show();
+
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<PersonalResponse> call, Throwable t) {
+                    Toast.makeText(PersonalDetails.this, "Error " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
+
     }
 }

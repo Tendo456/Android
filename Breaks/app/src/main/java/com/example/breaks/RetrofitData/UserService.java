@@ -88,7 +88,7 @@ public interface UserService {
     Call<List<PersonalResponse>> getPersonal(@Query("estado") String estado);
 
     @FormUrlEncoded
-    @POST("Personal/InsertarPersonal.php")
+    @POST("Personal/ActualizarPersonal.php")
     Call<PersonalResponse> UDPers (
             @Field("id_personal") String id_personal,
             @Field("nombres") String nombres,

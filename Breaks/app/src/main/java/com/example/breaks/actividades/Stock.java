@@ -121,7 +121,7 @@ public class Stock extends AppCompatActivity implements StockAdapter.ClickedItem
     @Override
     public void ClickedStock(StockResponse stockResponse) {
         startActivity(new Intent(this,StockDetails.class).putExtra("datoStock",stockResponse));
-        finish();
+        //finish();
     }
 
     public void StockAdd(){

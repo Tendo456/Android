@@ -67,13 +67,6 @@ public class StockDetails extends AppCompatActivity {
         ActuST.setOnClickListener(view -> ConfirmarST());
     }
 
-    @Override
-    public void onBackPressed() {
-        Intent intent = new Intent(StockDetails.this, Stock.class);
-        startActivity(intent);
-        //finish();
-    }
-
     public void fechaSD (){
         final Calendar calendar = Calendar.getInstance();
         @SuppressLint("SimpleDateFormat") Format formatter = new SimpleDateFormat("yyyy-MM-dd");

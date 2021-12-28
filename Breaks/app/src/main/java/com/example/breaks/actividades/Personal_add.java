@@ -58,8 +58,6 @@ public class Personal_add extends AppCompatActivity {
 
     public void savePers(){
 
-
-
         if(AddRol1.isChecked()){
             rolPE = "1";
         }else if (AddRol2.isChecked()) {
