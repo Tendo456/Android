@@ -202,7 +202,9 @@
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/azul"
-                        app:srcCompat="@drawable/eating" />
+                        android:onClick="menu5"
+                        app:srcCompat="@drawable/eating"
+                        tools:ignore="SpeakableTextPresentCheck" />
 
                     <TextView
                         android:id="@+id/tex8"
