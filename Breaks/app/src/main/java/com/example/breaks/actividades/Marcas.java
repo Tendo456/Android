@@ -45,7 +45,7 @@ public class Marcas extends AppCompatActivity implements MarcasAdapter.ClickedIt
 
         MarcasList.setLayoutManager(new LinearLayoutManager(this));
         MarcasList.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
-        marcasAdapter = new MarcasAdapter(this::ClickedMarca);
+        marcasAdapter = new MarcasAdapter(this);
 
 
 

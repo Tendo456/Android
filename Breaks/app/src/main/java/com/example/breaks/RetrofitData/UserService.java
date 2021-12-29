@@ -1,5 +1,6 @@
 package com.example.breaks.RetrofitData;
 
+import com.example.breaks.Modelos.BreaksResponse;
 import com.example.breaks.Modelos.MarcasResponse;
 import com.example.breaks.Modelos.PersonalResponse;
 import com.example.breaks.Modelos.ProgramacionResponse;
@@ -98,4 +99,7 @@ public interface UserService {
             @Field("correo") String correo,
             @Field("rol") String rol,
             @Field("estado") String estado);
+
+    @GET("Breaks/GetBreaks.php")
+    Call<List<BreaksResponse>> getBreak(@Query("fecha_break") String fecha_break);
 }
