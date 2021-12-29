@@ -35,7 +35,7 @@ public class BreaksAdapter extends RecyclerView.Adapter<BreaksAdapter.BreaksAdap
     @Override
     public BreaksAdapter.BreaksAdapterVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         contextB = parent.getContext();
-        return new BreaksAdapter.BreaksAdapterVH(LayoutInflater.from(contextB).inflate(R.layout.row_users,parent,false));
+        return new BreaksAdapter.BreaksAdapterVH(LayoutInflater.from(contextB).inflate(R.layout.row_breaks,parent,false));
 
     }
 
@@ -43,12 +43,15 @@ public class BreaksAdapter extends RecyclerView.Adapter<BreaksAdapter.BreaksAdap
     public void onBindViewHolder(@NonNull BreaksAdapter.BreaksAdapterVH holder, int position) {
         BreaksResponse breaksResponse = breaksResponseList.get(position);
 
-        String date = breaksResponse.getNombres();
+        String nom = breaksResponse.getNombres();
         String prefix = breaksResponse.getId_breaks();
+        String time = breaksResponse.getHora_break();
+        String cant = breaksResponse.getCantidad();
 
         holder.prefix.setText(prefix);
-        holder.dateAm.setText(date);
-        //holder.imagemore.setOnClickListener(v -> clickedItemM.ClickedMarca(marcasResponse));
+        holder.Names.setText(nom);
+        holder.hora.setText(time);
+        holder.Cantidad.setText(cant);
 
     }
 
@@ -59,16 +62,20 @@ public class BreaksAdapter extends RecyclerView.Adapter<BreaksAdapter.BreaksAdap
 
     public class BreaksAdapterVH extends RecyclerView.ViewHolder {
 
-        TextView dateAm;
+        TextView Names;
         TextView prefix;
-        ImageView imagemore;
+        TextView hora;
+        TextView Cantidad;
+
+
 
         public BreaksAdapterVH(@NonNull View itemView) {
             super(itemView);
 
-            dateAm = itemView.findViewById(R.id.date);
+            Names = itemView.findViewById(R.id.Names);
             prefix = itemView.findViewById(R.id.prefix);
-            imagemore = itemView.findViewById(R.id.imageMore);
+            hora = itemView.findViewById(R.id.hora);
+            Cantidad = itemView.findViewById(R.id.Cantidad);
         }
     }
 }
