@@ -47,11 +47,19 @@ public class BreaksAdapter extends RecyclerView.Adapter<BreaksAdapter.BreaksAdap
         String prefix = breaksResponse.getId_breaks();
         String time = breaksResponse.getHora_break();
         String cant = breaksResponse.getCantidad();
+        String apell1 = breaksResponse.getApelli_paterno();
+        String apell2 = breaksResponse.getApelli_materno();
+        String v = "";
 
-        holder.prefix.setText(prefix);
-        holder.Names.setText(nom);
+        /*for(int i=0; i<= breaksResponseList.size();i++){
+            //v = String.valueOf(i);
+        }*/
+        v = String.valueOf(position+1);
+
+        holder.prefix.setText(v);
+        holder.Names.setText(nom+" "+apell1+" "+apell2);
         holder.hora.setText(time);
-        holder.Cantidad.setText(cant);
+        holder.Cantidad.setText("Breaks: "+cant);
 
     }
 

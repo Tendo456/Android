@@ -88,8 +88,8 @@ public class nueva_placa extends AppCompatActivity implements PlacaAdapter.Click
         fechaPlaca();
         ListarPlaca();
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.numeros, R.layout.support_simple_spinner_dropdown_item);
-        adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.numeros, R.layout.spinner_dropdown_text);
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_text);
         spCorrida.setAdapter(adapter);
         spCorrida.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -176,7 +176,7 @@ public class nueva_placa extends AppCompatActivity implements PlacaAdapter.Click
                 Pls.add(spP);
             }
             ArrayAdapter<RecepcionSpinner> Pa = new ArrayAdapter<>(this, android.R.layout.simple_dropdown_item_1line, Pls);
-            Pa.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
+            Pa.setDropDownViewResource(R.layout.spinner_dropdown_text);
             spRecepcion.setAdapter(Pa);
             spRecepcion.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override

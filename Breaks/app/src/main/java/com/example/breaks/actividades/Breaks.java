@@ -1,5 +1,6 @@
 package com.example.breaks.actividades;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,6 +14,9 @@ import com.google.android.gms.common.api.Api;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -86,5 +90,19 @@ public class Breaks extends AppCompatActivity {
                 Toast.makeText(Breaks.this, "Error " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void dialogoAl (){
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(Breaks.this);
+        LayoutInflater inflater = getLayoutInflater();
+        View view = inflater.inflate(R.layout.dialogo_break,null);
+        builder.setView(view);
+
+        final AlertDialog dialog = builder.create();
+        dialog.show();
+
+        Button diAl_ok = view.findViewById(R.id.dialog);
+        diAl_ok.setOnClickListener(v -> dialog.dismiss());
     }
 }
