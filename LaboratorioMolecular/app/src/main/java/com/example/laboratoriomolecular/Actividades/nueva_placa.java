@@ -88,7 +88,7 @@ public class nueva_placa extends AppCompatActivity implements PlacaAdapter.Click
         fechaPlaca();
         ListarPlaca();
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.numeros, R.layout.spinner_dropdown_text);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.numeros, R.layout.support_simple_spinner_dropdown_item);
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_text);
         spCorrida.setAdapter(adapter);
         spCorrida.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
