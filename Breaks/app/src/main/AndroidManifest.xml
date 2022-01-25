@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.breaks">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -15,6 +18,10 @@
         <activity
             android:name=".actividades.Breaks"
             android:exported="false" />
+        <activity
+            android:name=".actividades.orientation"
+            android:screenOrientation="fullSensor"
+            tools:replace="screenOrientation" />
         <activity
             android:name=".actividades.Personal_add"
             android:exported="false" />

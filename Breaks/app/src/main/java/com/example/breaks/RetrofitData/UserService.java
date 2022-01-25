@@ -88,6 +88,9 @@ public interface UserService {
     @GET("Personal/GetPersonal.php")
     Call<List<PersonalResponse>> getPersonal(@Query("estado") String estado);
 
+    @GET("Personal/GetPersonalB.php")
+    Call<List<PersonalResponse>> getPerB(@Query("DNI") String DNI);
+
     @FormUrlEncoded
     @POST("Personal/ActualizarPersonal.php")
     Call<PersonalResponse> UDPers (
@@ -102,4 +105,5 @@ public interface UserService {
 
     @GET("Breaks/GetBreaks.php")
     Call<List<BreaksResponse>> getBreak(@Query("fecha_break") String fecha_break);
+
 }

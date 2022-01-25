@@ -50,7 +50,7 @@ public class BreaksAdapter extends RecyclerView.Adapter<BreaksAdapter.BreaksAdap
         String apell1 = breaksResponse.getApelli_paterno();
         String apell2 = breaksResponse.getApelli_materno();
         String v = "";
-        
+
         v = String.valueOf(position+1);
 
         holder.prefix.setText(v);

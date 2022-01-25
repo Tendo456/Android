@@ -1,5 +1,6 @@
 package com.example.breaks.actividades;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
@@ -105,7 +106,7 @@ public class ProgramacionDetails extends AppCompatActivity {
             Call<ProgramacionResponse> udPG = ApiClient.getUserService().UDProg(ProgIDD,ProgCantD,ProgFechaD);
             udPG.enqueue(new Callback<ProgramacionResponse>() {
                 @Override
-                public void onResponse(Call<ProgramacionResponse> call, Response<ProgramacionResponse> response) {
+                public void onResponse(@NonNull Call<ProgramacionResponse> call, @NonNull Response<ProgramacionResponse> response) {
                     if (response.isSuccessful()) {
                         ProgramacionResponse mensaje = response.body();
                         assert mensaje != null;
@@ -119,7 +120,7 @@ public class ProgramacionDetails extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<ProgramacionResponse> call, Throwable t) {
+                public void onFailure(@NonNull Call<ProgramacionResponse> call, @NonNull Throwable t) {
                     Toast.makeText(ProgramacionDetails.this, "Error " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
