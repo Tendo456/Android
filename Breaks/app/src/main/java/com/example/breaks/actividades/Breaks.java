@@ -1,5 +1,6 @@
 package com.example.breaks.actividades;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +23,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.text.Editable;
@@ -144,7 +147,7 @@ public class Breaks extends AppCompatActivity {
                 if(editable.toString().length()>=8){
                     contador = DNIBus.getText().toString();
                     Toast.makeText(Breaks.this, "siuuuuuu", Toast.LENGTH_SHORT).show();
-                    search();
+                    hilo();
                 }
             }
         });
@@ -186,17 +189,22 @@ public class Breaks extends AppCompatActivity {
         }
     }
 
+    public void hilo(){
+        new Handler(Looper.getMainLooper()).postDelayed(this::search,3000);
+    }
+
     public void search(){
 
         Call<List<PersonalResponse>> PersB = ApiClient.getUserService().getPerB(contador);
         PersB.enqueue(new Callback<List<PersonalResponse>>() {
             @Override
-            public void onResponse(Call<List<PersonalResponse>> call, Response<List<PersonalResponse>> response) {
+            public void onResponse(@NonNull Call<List<PersonalResponse>> call, @NonNull Response<List<PersonalResponse>> response) {
                 if(!response.isSuccessful()){
                     NombreBus.setText(response.code());
                     return;
                 }
                 List<PersonalResponse> personalResponses = response.body();
+                assert personalResponses != null;
                 for (PersonalResponse personalResponse: personalResponses){
                     String nam ="";
                     nam=personalResponse.getNombres()+" "+personalResponse.getApelli_paterno()+" "+personalResponse.getApelli_materno();
@@ -206,10 +214,12 @@ public class Breaks extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<PersonalResponse>> call, Throwable t) {
-                Toast.makeText(Breaks.this, "Error " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            public void onFailure(@NonNull Call<List<PersonalResponse>> call, @NonNull Throwable t) {
+                Toast.makeText(Breaks.this, "Errores " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
     }
+
+
 }
