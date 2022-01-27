@@ -43,6 +43,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 import cz.msebera.android.httpclient.Header;
@@ -459,7 +460,7 @@ public class alicuotado extends AppCompatActivity implements AlicuotadoAdapter.C
 
     private void upDateAlicuotado() {
 
-        if(Aobservacion.getText().toString().isEmpty()){
+        if(Objects.requireNonNull(Aobservacion.getText()).toString().isEmpty()){
             Aobservacion.setText("Vacío"); }
 
         if (placaAl == null) {

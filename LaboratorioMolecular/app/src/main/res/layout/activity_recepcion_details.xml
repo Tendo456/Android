@@ -30,11 +30,11 @@
                 android:background="@color/indigo_500">
 
                 <TextView
-                    android:id="@+id/RDfecha"
+                    android:id="@+id/RDID"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Fecha"
+                    android:text="@string/codigo"
                     android:textColor="@color/white"
                     android:textSize="24sp" />
             </androidx.appcompat.widget.Toolbar>
@@ -50,13 +50,43 @@
                     android:background="@drawable/drawable_blue">
 
                     <TextView
+                        android:id="@+id/textView88"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/blue_white"
+                        android:gravity="center"
+                        android:text="@string/fecha"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/RDfecha"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_margin="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/drawable_blue"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="@string/fecha"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/drawable_blue">
+
+                    <TextView
                         android:id="@+id/textView8"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/blue_white"
                         android:gravity="center"
-                        android:text="Hora"
+                        android:text="@string/hora"
                         android:textColor="@color/white"
                         android:textSize="18sp" />
 
@@ -69,7 +99,7 @@
                         android:background="@drawable/drawable_blue"
                         android:gravity="center"
                         android:padding="10dp"
-                        android:text="Hora"
+                        android:text="@string/hora"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
                 </TableRow>
@@ -86,20 +116,20 @@
                         android:layout_weight="1"
                         android:background="@drawable/blue_white"
                         android:gravity="center"
-                        android:text="Numero de Envio"
+                        android:text="@string/Nenvio"
                         android:textColor="@color/white"
                         android:textSize="18sp" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/RDn_envio"
                         android:layout_width="match_parent"
-                        android:layout_height="45dp"
+                        android:layout_height="48dp"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/drawable_blue"
                         android:gravity="center"
                         android:padding="10dp"
-                        android:text="Número de Envío"
+                        android:hint="@string/Nenvio"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
                 </TableRow>
@@ -116,20 +146,20 @@
                         android:layout_weight="1"
                         android:background="@drawable/blue_white"
                         android:gravity="center"
-                        android:text="Muestras"
+                        android:text="@string/muestras"
                         android:textColor="@color/white"
                         android:textSize="18sp" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/RDq_muestras"
                         android:layout_width="match_parent"
-                        android:layout_height="45dp"
+                        android:layout_height="48dp"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/drawable_blue"
                         android:gravity="center"
                         android:padding="10dp"
-                        android:text="Muestras"
+                        android:hint="@string/muestras"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
                 </TableRow>
@@ -146,7 +176,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/blue_white"
                         android:gravity="center"
-                        android:text="Operador"
+                        android:text="@string/operador"
                         android:textColor="@color/white"
                         android:textSize="18sp" />
 
@@ -159,7 +189,7 @@
                         android:background="@drawable/drawable_blue"
                         android:gravity="center"
                         android:padding="10dp"
-                        android:text="Operador"
+                        android:text="@string/operador"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
 
@@ -177,7 +207,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/blue_white"
                         android:gravity="center"
-                        android:text="DNI"
+                        android:text="@string/dni"
                         android:textColor="@color/white"
                         android:textSize="18sp" />
 
@@ -190,7 +220,7 @@
                         android:background="@drawable/drawable_blue"
                         android:gravity="center"
                         android:padding="10dp"
-                        android:text="DNI"
+                        android:text="@string/dni"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
 
@@ -205,7 +235,7 @@
                 android:background="@drawable/drawable_blue"
                 android:gravity="center"
                 android:padding="10dp"
-                android:text="Observación"
+                android:text="@string/observacion"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
 

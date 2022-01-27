@@ -39,5 +39,14 @@
     <string name="description">Valor Web</string>
     <string name="Comment">Observación</string>
     <string name="Content">Vacío</string>
+    <string name="fecha">Fecha</string>
+    <string name="hora">Hora</string>
+    <string name="Nenvio">Numero de Envio</string>
+    <string name="muestras">Muestras</string>
+    <string name="operador">Operador</string>
+    <string name="dni">DNI</string>
+    <string name="observacion">Observación</string>
+    <string name="codigo">Código</string>
+
 
 </resources>

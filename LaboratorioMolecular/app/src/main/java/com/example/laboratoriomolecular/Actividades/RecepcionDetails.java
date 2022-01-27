@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.laboratoriomolecular.Modelos.RecepcionResponse;
@@ -11,7 +12,8 @@ import com.example.laboratoriomolecular.R;
 
 public class RecepcionDetails extends AppCompatActivity {
 
-    TextView RDfecha,RDhora,RDn_envio,RDq_muestras,RDoperador,RDdni,RDobservacion;
+    TextView RDfecha,RDhora,RDoperador,RDdni,RDobservacion,RDID;
+    EditText RDn_envio,RDq_muestras;
     RecepcionResponse recepcionResponse;
 
     @Override
@@ -19,6 +21,7 @@ public class RecepcionDetails extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recepcion_details);
 
+        RDID = findViewById(R.id.RDID);
         RDfecha = findViewById(R.id.RDfecha);
         RDhora = findViewById(R.id.RDhora);
         RDn_envio = findViewById(R.id.RDn_envio);
@@ -31,6 +34,7 @@ public class RecepcionDetails extends AppCompatActivity {
         if(intent.getExtras() !=null){
             recepcionResponse = (RecepcionResponse) intent.getSerializableExtra("data");
 
+            String RDID1 = recepcionResponse.getId_recepcion();
             String RDfecha1 = recepcionResponse.getFecha();
             String RDhora1 = recepcionResponse.getHora();
             String RDn_envio1 = recepcionResponse.getN_envio();
@@ -39,6 +43,7 @@ public class RecepcionDetails extends AppCompatActivity {
             String RDdni1 = recepcionResponse.getDni();
             String RDobservacion1 = recepcionResponse.getObservacion();
 
+            RDID.setText("Codigo: "+RDID1);
             RDfecha.setText(RDfecha1);
             RDhora.setText(RDhora1);
             RDn_envio.setText(RDn_envio1);
