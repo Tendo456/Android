@@ -4,6 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/richard.gamero/AndroidStudioProjects/Android/ingreso/app/src/main/res/drawable/azul.xml" value="0.2203125" />
+        <entry key="..\:/Users/richard.gamero/AndroidStudioProjects/Android/ingreso/app/src/main/res/layout/activity_conductor.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/richard.gamero/AndroidStudioProjects/Android/ingreso/app/src/main/res/layout/activity_control_usuarios.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/richard.gamero/AndroidStudioProjects/Android/ingreso/app/src/main/res/layout/activity_detalle_temp.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/richard.gamero/AndroidStudioProjects/Android/ingreso/app/src/main/res/layout/activity_detalles.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/richard.gamero/AndroidStudioProjects/Android/ingreso/app/src/main/res/layout/activity_edit_temp.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/richard.gamero/AndroidStudioProjects/Android/ingreso/app/src/main/res/layout/activity_editar.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>
@@ -12,7 +18,7 @@
     <option name="myDefaultNotNull" value="android.annotation.NonNull" />
     <option name="myNullables">
       <value>
-        <list size="12">
+        <list size="13">
           <item index="0" class="java.lang.String" itemvalue="org.jetbrains.annotations.Nullable" />
           <item index="1" class="java.lang.String" itemvalue="javax.annotation.Nullable" />
           <item index="2" class="java.lang.String" itemvalue="javax.annotation.CheckForNull" />
@@ -25,12 +31,13 @@
           <item index="9" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NullableDecl" />
           <item index="10" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NullableType" />
           <item index="11" class="java.lang.String" itemvalue="com.android.annotations.Nullable" />
+          <item index="12" class="java.lang.String" itemvalue="org.eclipse.jdt.annotation.Nullable" />
         </list>
       </value>
     </option>
     <option name="myNotNulls">
       <value>
-        <list size="11">
+        <list size="12">
           <item index="0" class="java.lang.String" itemvalue="org.jetbrains.annotations.NotNull" />
           <item index="1" class="java.lang.String" itemvalue="javax.annotation.Nonnull" />
           <item index="2" class="java.lang.String" itemvalue="edu.umd.cs.findbugs.annotations.NonNull" />
@@ -42,6 +49,7 @@
           <item index="8" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NonNullDecl" />
           <item index="9" class="java.lang.String" itemvalue="org.checkerframework.checker.nullness.compatqual.NonNullType" />
           <item index="10" class="java.lang.String" itemvalue="com.android.annotations.NonNull" />
+          <item index="11" class="java.lang.String" itemvalue="org.eclipse.jdt.annotation.NonNull" />
         </list>
       </value>
     </option>

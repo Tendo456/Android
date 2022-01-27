@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:focusableInTouchMode="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Actividades.RecepcionDetails">
@@ -27,6 +28,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:background="@color/indigo_500">
 
                 <TextView
@@ -42,7 +44,7 @@
             <TableLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp">
+                android:layout_margin="5dp">
 
                 <TableRow
                     android:layout_width="match_parent"
@@ -63,11 +65,12 @@
                     <TextView
                         android:id="@+id/RDfecha"
                         android:layout_width="match_parent"
-                        android:layout_height="45dp"
+                        android:layout_height="48dp"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/drawable_blue"
                         android:gravity="center"
+                        android:onClick="SelectFecha"
                         android:padding="10dp"
                         android:text="@string/fecha"
                         android:textColor="@color/black"
@@ -93,11 +96,12 @@
                     <TextView
                         android:id="@+id/RDhora"
                         android:layout_width="match_parent"
-                        android:layout_height="45dp"
+                        android:layout_height="48dp"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/drawable_blue"
                         android:gravity="center"
+                        android:onClick="SelectHora"
                         android:padding="10dp"
                         android:text="@string/hora"
                         android:textColor="@color/black"
@@ -128,8 +132,8 @@
                         android:layout_weight="1"
                         android:background="@drawable/drawable_blue"
                         android:gravity="center"
-                        android:padding="10dp"
                         android:hint="@string/Nenvio"
+                        android:padding="10dp"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
                 </TableRow>
@@ -158,10 +162,40 @@
                         android:layout_weight="1"
                         android:background="@drawable/drawable_blue"
                         android:gravity="center"
-                        android:padding="10dp"
                         android:hint="@string/muestras"
+                        android:padding="10dp"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/drawable_blue">
+
+                    <TextView
+                        android:id="@+id/textView53"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@drawable/blue_white"
+                        android:gravity="center"
+                        android:text="@string/selectOP"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                    <Spinner
+                        android:id="@+id/spOperadorRD"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_margin="5dp"
+                        android:layout_span="2"
+                        android:layout_weight="1"
+                        android:background="@drawable/spinner"
+                        android:contentDescription="@string/description"
+                        android:gravity="center"
+                        tools:ignore="TouchTargetSizeCheck" />
+
                 </TableRow>
 
                 <TableRow
@@ -227,17 +261,29 @@
                 </TableRow>
             </TableLayout>
 
-            <TextView
-                android:id="@+id/RDobservacion"
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:background="@drawable/drawable_blue"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="@string/observacion"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:layout_height="120dp"
+                android:layout_margin="5dp"
+                android:layout_span="2"
+                android:layout_weight="1"
+                app:counterEnabled="true"
+                app:counterMaxLength="100"
+                app:counterTextColor="@color/black">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/RDobservacion"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:background="@drawable/drawable_blue"
+                    android:gravity="start|top"
+                    android:hint="@string/Comment"
+                    android:inputType="textMultiLine|textPersonName"
+                    android:maxLength="100"
+                    android:textColor="@color/black"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
     </ScrollView>

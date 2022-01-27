@@ -44,6 +44,7 @@
     <string name="Nenvio">Numero de Envio</string>
     <string name="muestras">Muestras</string>
     <string name="operador">Operador</string>
+    <string name="selectOP">Select. OP</string>
     <string name="dni">DNI</string>
     <string name="observacion">Observación</string>
     <string name="codigo">Código</string>

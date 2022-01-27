@@ -35,10 +35,21 @@ public interface UserService {
     Call<List<RecepcionResponse>> getRecepcion();
 
     @GET("Recepcion/ListarRecepcion.php")
-    Call<List<OperadorResponse>> getOperador();
+    Call<List<OperadorResponse>> getOperador1();
 
     @GET("Recepcion/ListarRecepcionFecha.php")
     Call<List<RecepcionResponse>> getRecepcionF(@Query("fecha") String fecha);
+
+    @FormUrlEncoded
+    @POST("Recepcion/EditarRecepcion.php")
+    Call<RecepcionResponse> EditarRecepcion (@Field("id_recepcion") String id_recepcion,
+                                             @Field("fecha") String fecha,
+                                               @Field("hora") String hora,
+                                               @Field("n_envio") String n_envio,
+                                               @Field("q_muestras") String q_muestras,
+                                               @Field("operador") String operador,
+                                               @Field("dni") String dni,
+                                               @Field("observacion") String observacion);
 
     @FormUrlEncoded
     @POST("Placas/InsertarPlaca.php")
