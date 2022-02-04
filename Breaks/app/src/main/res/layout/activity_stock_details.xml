@@ -128,7 +128,7 @@
                     android:textSize="20sp" />
 
                 <EditText
-                    android:id="@+id/UDStock"
+                    android:id="@+id/UDStock_ini"
                     android:layout_width="wrap_content"
                     android:layout_height="48dp"
                     android:layout_margin="5dp"
@@ -138,6 +138,36 @@
                     android:enabled="false"
                     android:gravity="center"
                     android:hint="@string/stock"
+                    android:inputType="number" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="67dp"
+                android:background="@drawable/drawable_blue">
+
+                <TextView
+                    android:id="@+id/textView42"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/blue_white"
+                    android:gravity="center"
+                    android:text="@string/resto"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/UDStock_cant"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/drawable_blue"
+                    android:ems="10"
+                    android:enabled="false"
+                    android:gravity="center"
+                    android:hint="@string/resto"
                     android:inputType="number" />
             </TableRow>
 
@@ -169,6 +199,53 @@
                     android:text="@string/fecha" />
 
 
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/drawable_blue">
+
+                <TextView
+                    android:id="@+id/textView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/blue_white"
+                    android:gravity="center"
+                    android:text="@string/estado"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+                <RadioGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/drawable_blue"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/UDActivoSK"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:checked="true"
+                        android:enabled="false"
+                        android:text="@string/activo" />
+
+                    <RadioButton
+                        android:id="@+id/UDInactivoSK"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:enabled="false"
+                        android:text="@string/inactivo" />
+
+                </RadioGroup>
             </TableRow>
 
         </TableLayout>

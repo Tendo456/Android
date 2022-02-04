@@ -5,7 +5,6 @@ public class MarcasResponseSP {
     private String id_marcas;
     private String marca;
 
-
     public MarcasResponseSP(){ }
 
     public MarcasResponseSP(String id_marcas, String marca){

@@ -111,7 +111,7 @@ public class Stock extends AppCompatActivity implements StockAdapter.ClickedItem
 
                 @Override
                 public void onFailure(Call<List<StockResponse>> call, Throwable t) {
-                    Toast.makeText(Stock.this, "Error " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Stock.this, "Error Code: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
         }

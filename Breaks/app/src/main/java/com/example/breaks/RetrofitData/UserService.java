@@ -41,8 +41,10 @@ public interface UserService {
     @POST("Stock/InsertarStock.php")
     Call<StockResponse> ADDStock (
             @Field("id_marcas") String id_marcas,
-            @Field("stock") String stock,
-            @Field("fecha_s") String fecha_s);
+            @Field("stock_cant") String stock_cant,
+            @Field("stock_ini") String stock_ini,
+            @Field("fecha_s") String fecha_s,
+    @Field("estadoSK") String estadoSK);
 
     @GET("Stock/GetStock.php")
     Call<List<StockResponse>> getStock(@Query("fecha_s") String fecha_s);
@@ -51,8 +53,10 @@ public interface UserService {
     @POST("Stock/ActualizarStock.php")
     Call<StockResponse> UDStock (
             @Field("id_stock") String id_stock,
-            @Field("stock") String stock,
-            @Field("fecha_s") String fecha_s);
+            @Field("stock_ini") String stock_ini,
+            @Field("stock_cant") String stock_cant,
+            @Field("fecha_s") String fecha_s,
+            @Field("estadoSK") String estadoSK);
 
 
     @FormUrlEncoded

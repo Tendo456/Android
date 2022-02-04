@@ -72,7 +72,7 @@ public class Stock_add extends AppCompatActivity {
     }
 
     public void llenarspinerM (){
-        String url = "http://192.168.1.107/ScreeningApp/Marcas/MarcasSP.php";
+        String url = "http://192.168.1.25/ScreeningApp/Marcas/MarcasSP.php";
         MarcasAct.post(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -143,7 +143,7 @@ public class Stock_add extends AppCompatActivity {
         if (sendST.getText().toString().isEmpty()){
             sendST.setError("Agregar Stock");
         }else{
-            Call<StockResponse> svST = ApiClient.getUserService().ADDStock(sdIDM,sdSTK,fecha_s);
+            Call<StockResponse> svST = ApiClient.getUserService().ADDStock(sdIDM,sdSTK,sdSTK,fecha_s,"1");
             svST.enqueue(new Callback<StockResponse>() {
                 @Override
                 public void onResponse(@NonNull Call<StockResponse> call, @NonNull Response<StockResponse> response) {

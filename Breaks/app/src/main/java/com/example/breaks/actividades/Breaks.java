@@ -55,6 +55,7 @@ public class Breaks extends AppCompatActivity {
     FloatingActionButton addBreak;
     EditText DNIBus;
     String contador;
+    //String nam;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,7 +112,7 @@ public class Breaks extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<BreaksResponse>> call, Throwable t) {
-                Toast.makeText(Breaks.this, "Error " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(Breaks.this, "Error Code: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -146,7 +147,7 @@ public class Breaks extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {
                 if(editable.toString().length()>=8){
                     contador = DNIBus.getText().toString();
-                    Toast.makeText(Breaks.this, "siuuuuuu", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Breaks.this, "Buscando: "+contador, Toast.LENGTH_SHORT).show();
                     hilo();
                 }
             }
@@ -160,7 +161,7 @@ public class Breaks extends AppCompatActivity {
     public void Scan (){
         IntentIntegrator integrador = new IntentIntegrator(Breaks.this);
         integrador.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
-        integrador.setPrompt("Lector - CDP");
+        integrador.setPrompt("Lector - QR");
         integrador.setCameraId(0);
         integrador.setOrientationLocked(false);
         integrador.setCaptureActivity(orientation.class);
@@ -181,7 +182,7 @@ public class Breaks extends AppCompatActivity {
             }else {
                 Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                 if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){v.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));}
-                Toast.makeText(this,result.getContents(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"Buscando: "+result.getContents(), Toast.LENGTH_SHORT).show();
                 DNIBus.setText(result.getContents());
             }
         }else{
@@ -194,28 +195,39 @@ public class Breaks extends AppCompatActivity {
     }
 
     public void search(){
-
         Call<List<PersonalResponse>> PersB = ApiClient.getUserService().getPerB(contador);
         PersB.enqueue(new Callback<List<PersonalResponse>>() {
             @Override
             public void onResponse(@NonNull Call<List<PersonalResponse>> call, @NonNull Response<List<PersonalResponse>> response) {
-                if(!response.isSuccessful()){
-                    NombreBus.setText(response.code());
-                    return;
+                
+                if(response.isSuccessful()){
+                    String nam;
+                    String name = null;
+                    String idName = null;
+                    List<PersonalResponse> personalResponses = response.body();
+                    assert personalResponses != null;
+                    for (PersonalResponse personalResponse: personalResponses){
+                        idName = personalResponse.getId_personal();
+                        nam=personalResponse.getNombres()+" "+personalResponse.getApelli_paterno()+" "+personalResponse.getApelli_materno();
+                        name = nam;
                 }
-                List<PersonalResponse> personalResponses = response.body();
-                assert personalResponses != null;
-                for (PersonalResponse personalResponse: personalResponses){
-                    String nam ="";
-                    nam=personalResponse.getNombres()+" "+personalResponse.getApelli_paterno()+" "+personalResponse.getApelli_materno();
-                    NombreBus.append(nam);
+                    if(name == null){
+                        Toast.makeText(Breaks.this, "No Encontrado", Toast.LENGTH_SHORT).show();
+                    }else{
+                        NombreBus.append(name);
+                        Toast.makeText(Breaks.this,""+idName , Toast.LENGTH_SHORT).show();
+                    }
+                    
+                }else {
+                    Toast.makeText(Breaks.this, "No Encontrado", Toast.LENGTH_SHORT).show();
+                    NombreBus.setText(response.code());
                 }
 
             }
 
             @Override
             public void onFailure(@NonNull Call<List<PersonalResponse>> call, @NonNull Throwable t) {
-                Toast.makeText(Breaks.this, "Errores " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(Breaks.this, "Error Code: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -77,7 +77,7 @@ public class Marcas extends AppCompatActivity implements MarcasAdapter.ClickedIt
 
             @Override
             public void onFailure(Call<List<MarcasResponse>> call, Throwable t) {
-                Toast.makeText(Marcas.this, "Error " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(Marcas.this, "Error Code: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

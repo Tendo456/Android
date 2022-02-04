@@ -1,7 +1,5 @@
 package com.example.laboratoriomolecular.Actividades;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
@@ -9,11 +7,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.DatePicker;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.TimePicker;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.laboratoriomolecular.Modelos.OperadorResponse;
 import com.example.laboratoriomolecular.Modelos.RecepcionResponse;
@@ -30,6 +32,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Objects;
 
 import cz.msebera.android.httpclient.Header;
 import retrofit2.Call;
@@ -47,7 +50,7 @@ public class RecepcionDetails extends AppCompatActivity {
     private AsyncHttpClient operadorRD;
     Spinner spOperadorRD;
     private boolean isFirstTime = true;
-    private final boolean isFirstTime1 = true;
+    Button RDguardar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +66,7 @@ public class RecepcionDetails extends AppCompatActivity {
         RDdni = findViewById(R.id.RDdni);
         RDobservacion = findViewById(R.id.RDobservacion);
         spOperadorRD = findViewById(R.id.spOperadorRD);
+        RDguardar = findViewById(R.id.RDguardar);
 
         operadorRD = new AsyncHttpClient();
         llenarspinerORD();
@@ -90,6 +94,8 @@ public class RecepcionDetails extends AppCompatActivity {
             RDobservacion.setText(RDobservacion1);
 
         }
+
+        RDguardar.setOnClickListener(v -> ConfirmarEdicionRD());
     }
 
     private void llenarspinerORD (){
@@ -182,26 +188,55 @@ public class RecepcionDetails extends AppCompatActivity {
         timePickerDialog.show();
     }
 
+    public void ConfirmarEdicionRD (){
+        AlertDialog.Builder opcion = new AlertDialog.Builder(this);
+        opcion.setMessage("Guardar Edición?");
+        opcion.setPositiveButton("Guardar", (dialog, which) ->
+                editarRD());
+        opcion.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
+
+        AlertDialog dialog = opcion.create();
+        dialog.show();
+    }
+
     public void editarRD(){
-        RDID1B = RDID.getText().toString();
-        RDfecha1B = RDfecha.getText().toString();
-        RDhora1B = RDhora.getText().toString();
-        RDn_envio1B = RDn_envio.getText().toString();
-        RDq_muestras1B = RDq_muestras.getText().toString();
-        RDoperador1B = RDoperador.getText().toString();
-        RDdni1B = RDdni.getText().toString();
-        RDobservacion1B = RDobservacion.getText().toString();
-        Call<RecepcionResponse> EDRD = ApiClient.getUserService().EditarRecepcion(RDID1B,RDfecha1B, RDhora1B, RDn_envio1B, RDq_muestras1B, RDoperador1B, RDdni1B, RDobservacion1B);
-        EDRD.enqueue(new Callback<RecepcionResponse>() {
-            @Override
-            public void onResponse(Call<RecepcionResponse> call, Response<RecepcionResponse> response) {
 
-            }
+        if(RDn_envio.getText().toString().isEmpty()){
+            RDn_envio.setError("Complete los campos");
+        }else if (RDq_muestras.getText().toString().isEmpty()){
+            RDq_muestras.setError("Complete los campos");
+        }else if (RDdni.getText().toString().equals("0")){
+            RDdni.setError("Complete los campos");
+        }else {
+            RDID1B = RDID.getText().toString();
+            RDfecha1B = RDfecha.getText().toString();
+            RDhora1B = RDhora.getText().toString();
+            RDn_envio1B = RDn_envio.getText().toString();
+            RDq_muestras1B = RDq_muestras.getText().toString();
+            RDoperador1B = RDoperador.getText().toString();
+            RDdni1B = RDdni.getText().toString();
+            RDobservacion1B = Objects.requireNonNull(RDobservacion.getText()).toString();
+            Call<RecepcionResponse> EDRD = ApiClient.getUserService().EditarRecepcion(RDID1B, RDfecha1B, RDhora1B, RDn_envio1B, RDq_muestras1B, RDoperador1B, RDdni1B, RDobservacion1B);
+            EDRD.enqueue(new Callback<RecepcionResponse>() {
+                @Override
+                public void onResponse(@NonNull Call<RecepcionResponse> call, @NonNull Response<RecepcionResponse> response) {
+                    if (response.isSuccessful()) {
+                        RecepcionResponse mensaje = response.body();
+                        assert mensaje != null;
+                        Toast.makeText(RecepcionDetails.this, "" + mensaje.getMensaje() + " " + response.code(), Toast.LENGTH_SHORT).show();
 
-            @Override
-            public void onFailure(Call<RecepcionResponse> call, Throwable t) {
+                    } else {
+                        RecepcionResponse mensaje = response.body();
+                        assert mensaje != null;
+                        Toast.makeText(RecepcionDetails.this, "" + mensaje.getMensaje() + " " + response.code(), Toast.LENGTH_SHORT).show();
+                    }
+                }
 
-            }
-        });
+                @Override
+                public void onFailure(@NonNull Call<RecepcionResponse> call, @NonNull Throwable t) {
+                    Toast.makeText(RecepcionDetails.this, "Error Code: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 }

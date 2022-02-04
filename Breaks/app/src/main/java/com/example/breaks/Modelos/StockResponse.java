@@ -6,8 +6,10 @@ public class StockResponse implements Serializable {
 
     private String id_stock;
     private String id_marcas;
-    private String stock;
+    private String stock_ini;
+    private String stock_cant;
     private String fecha_s;
+    private String estadoSK;
     private String marca;
     private String mensaje;
 
@@ -27,12 +29,20 @@ public class StockResponse implements Serializable {
         this.id_marcas = id_marcas;
     }
 
-    public String getStock() {
-        return stock;
+    public String getStock_ini() {
+        return stock_ini;
     }
 
-    public void setStock(String stock) {
-        this.stock = stock;
+    public void setStock_ini(String stock_ini) {
+        this.stock_ini = stock_ini;
+    }
+
+    public String getStock_cant() {
+        return stock_cant;
+    }
+
+    public void setStock_cant(String stock_cant) {
+        this.stock_cant = stock_cant;
     }
 
     public String getFecha_s() {
@@ -41,6 +51,14 @@ public class StockResponse implements Serializable {
 
     public void setFecha_s(String fecha_s) {
         this.fecha_s = fecha_s;
+    }
+
+    public String getEstadoSK() {
+        return estadoSK;
+    }
+
+    public void setEstadoSK(String estadoSK) {
+        this.estadoSK = estadoSK;
     }
 
     public String getMarca() {
@@ -60,8 +78,10 @@ public class StockResponse implements Serializable {
         return "StockResponse{" +
                 "id_stock='" + id_stock + '\'' +
                 ", id_marcas='" + id_marcas + '\'' +
-                ", stock='" + stock + '\'' +
+                ", stock_ini='" + stock_ini + '\'' +
+                ", stock_cant='" + stock_cant + '\'' +
                 ", fecha_s='" + fecha_s + '\'' +
+                ", estadoSk='" + estadoSK + '\'' +
                 ", marca='" + marca + '\'' +
                 '}';
     }

@@ -9,6 +9,7 @@ public class ProgramacionResponse implements Serializable {
     private String fecha_prog;
     private String cantidad_marc;
     private String marca;
+    private String stock_cant;
     private String mensaje;
 
     public String getId_programacion() {
@@ -51,6 +52,14 @@ public class ProgramacionResponse implements Serializable {
         this.marca = marca;
     }
 
+    public String getStock_cant() {
+        return stock_cant;
+    }
+
+    public void setStock_cant(String stock_cant) {
+        this.stock_cant = stock_cant;
+    }
+
     public String getMensaje() {
         return mensaje;
     }
@@ -63,6 +72,7 @@ public class ProgramacionResponse implements Serializable {
                 ", fecha_prog='" + fecha_prog + '\'' +
                 ", cantidad_marc='" + cantidad_marc + '\'' +
                 ", marca='" + marca + '\'' +
+                ", stock_cant='" + stock_cant + '\'' +
                 '}';
     }
 }

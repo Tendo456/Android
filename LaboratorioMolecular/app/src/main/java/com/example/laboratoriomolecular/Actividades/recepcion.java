@@ -220,17 +220,20 @@ public class recepcion extends AppCompatActivity implements RecepcionAdapter.Cli
                 public void onResponse(@NotNull Call<RecepcionResponse> call, @NotNull Response<RecepcionResponse> response) {
                     if (response.isSuccessful()) {
                         RecepcionResponse mensaje = response.body();
+                        assert mensaje != null;
                         Toast.makeText(recepcion.this, ""+mensaje.getMensaje()+" "+response.code(), Toast.LENGTH_SHORT).show();
                         limpiar();
                         getAllRecepcion();
                     } else {
-                        Toast.makeText(recepcion.this, "Error al Guardar los Datos " +response.code(), Toast.LENGTH_SHORT).show();
+                        RecepcionResponse mensaje = response.body();
+                        assert mensaje != null;
+                        Toast.makeText(recepcion.this, ""+mensaje.getMensaje()+" "+response.code(), Toast.LENGTH_SHORT).show();
                     }
                 }
 
                 @Override
                 public void onFailure(@NotNull Call<RecepcionResponse> call, @NotNull Throwable t) {
-                    Toast.makeText(recepcion.this, "Error " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(recepcion.this, "Error Code: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
         }

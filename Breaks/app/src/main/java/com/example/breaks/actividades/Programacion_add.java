@@ -71,7 +71,7 @@ public class Programacion_add extends AppCompatActivity {
 
 
     public void llenarspinerPG (){
-        String url = "http://192.168.1.107/ScreeningApp/Programacion/ProgramacionSP.php";
+        String url = "http://192.168.1.25/ScreeningApp/Programacion/ProgramacionSP.php";
         MarcasActPG.post(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {

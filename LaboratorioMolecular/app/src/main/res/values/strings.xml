@@ -48,6 +48,7 @@
     <string name="dni">DNI</string>
     <string name="observacion">Observación</string>
     <string name="codigo">Código</string>
+    <string name="guardar">Guardar</string>
 
 
 </resources>
