@@ -64,7 +64,8 @@ public interface UserService {
     Call<ProgramacionResponse> ADDProg (
             @Field("id_stock") String id_stock,
             @Field("cantidad_marc") String cantidad_marc,
-            @Field("fecha_prog") String fecha_prog);
+            @Field("fecha_prog") String fecha_prog,
+            @Field("stock_cant") String stock_cant);
 
     @GET("Programacion/GetProgramacion.php")
     Call<List<ProgramacionResponse>> getProg(@Query("fecha_prog") String fecha_prog);

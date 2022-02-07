@@ -12,6 +12,8 @@ import com.loopj.android.http.AsyncHttpResponseHandler;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -37,10 +39,11 @@ public class Programacion_add extends AppCompatActivity {
 
     Spinner sendMarcaPROG;
     EditText sendCant;
-    TextView sendFechaPROG, confIDStockPG, confMarcaPROG;
+    TextView sendFechaPROG, confIDStockPG, confMarcaPROG,totalSTK;
     Button GuardarPROG;
     private AsyncHttpClient MarcasActPG;
     String fechaPG,cantPG,IDstockPG;
+    String result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,12 +56,45 @@ public class Programacion_add extends AppCompatActivity {
         confIDStockPG = findViewById(R.id.confIDStockPG);
         confMarcaPROG = findViewById(R.id.confMarcaPROG);
         GuardarPROG = findViewById(R.id.GuardarPROG);
+        totalSTK = findViewById(R.id.totalSTK);
 
         MarcasActPG = new AsyncHttpClient();
         llenarspinerPG();
         fechaADDPG();
 
         GuardarPROG.setOnClickListener(view -> ConfirmarProg());
+
+        sendCant.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                String valor1 = totalSTK.getText().toString();
+                String valor2 = sendCant.getText().toString();
+                if(valor2.isEmpty()){
+                    Toast.makeText(Programacion_add.this, "Ingresa Cantidad", Toast.LENGTH_SHORT).show();
+                }else {
+                    int v1 = Integer.parseInt(valor1);
+                    int v2 = Integer.parseInt(valor2);
+                    int r = v1-v2;
+                    if(r<0){
+                        sendCant.setError("Reducir Valor");
+                    }else {
+                        result= String.valueOf(r);
+                        Toast.makeText(Programacion_add.this, result, Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+            }
+        });
 
     }
 
@@ -71,7 +107,7 @@ public class Programacion_add extends AppCompatActivity {
 
 
     public void llenarspinerPG (){
-        String url = "http://192.168.1.25/ScreeningApp/Programacion/ProgramacionSP.php";
+        String url = "http://192.168.1.135/ScreeningApp/Programacion/ProgramacionSP.php";
         MarcasActPG.post(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
@@ -97,6 +133,7 @@ public class Programacion_add extends AppCompatActivity {
                 ProgramacionResponseSP spPG = new ProgramacionResponseSP();
                 spPG.setId_stock(jsonArreglo.getJSONObject(i).getString("id_stock"));
                 spPG.setMarca(jsonArreglo.getJSONObject(i).getString("marca"));
+                spPG.setStock_cant(jsonArreglo.getJSONObject(i).getString("stock_cant"));
                 listaMarcasPG.add(spPG);
             }
             ArrayAdapter<ProgramacionResponseSP> pg = new ArrayAdapter<>(this, R.layout.spinner_text, listaMarcasPG);
@@ -110,6 +147,7 @@ public class Programacion_add extends AppCompatActivity {
                     confMarcaPROG.setText(parent.getItemAtPosition(position).toString());
                     confIDStockPG.setText(listaMarcasPG.get(position).getId_stock());
                     IDstockPG = confIDStockPG.getText().toString();
+                    totalSTK.setText((listaMarcasPG.get(position).getStock_cant()));
 
                 }
 
@@ -142,7 +180,7 @@ public class Programacion_add extends AppCompatActivity {
         }else{
             cantPG = sendCant.getText().toString();
 
-            Call<ProgramacionResponse> svPG = ApiClient.getUserService().ADDProg(IDstockPG,cantPG,fechaPG);
+            Call<ProgramacionResponse> svPG = ApiClient.getUserService().ADDProg(IDstockPG,cantPG,fechaPG,result);
             svPG.enqueue(new Callback<ProgramacionResponse>() {
                 @Override
                 public void onResponse(Call<ProgramacionResponse> call, Response<ProgramacionResponse> response) {

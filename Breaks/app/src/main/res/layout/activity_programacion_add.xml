@@ -103,6 +103,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/drawable_blue"
                     android:ems="10"
+                    android:enabled="false"
                     android:gravity="center"
                     android:hint="@string/stock"
                     android:inputType="number" />
