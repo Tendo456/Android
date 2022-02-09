@@ -13,6 +13,8 @@ import com.example.breaks.RetrofitData.ApiClient;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,7 +36,7 @@ public class ProgramacionDetails extends AppCompatActivity {
     SwitchCompat ActiPROG;
     Button ActuPROG;
     ProgramacionResponse programacionResponse;
-    String ProgIDD, ProgCantD, ProgFechaD;
+    String ProgIDD, ProgCantD, ProgFechaD, cant1,STcant, res,ProgIDSTD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +50,6 @@ public class ProgramacionDetails extends AppCompatActivity {
         ActuPROG = findViewById(R.id.ActuPROG);
         ActiPROG = findViewById(R.id.ActiPROG);
 
-
         Intent intent = getIntent();
         if(intent.getExtras() !=null){
             programacionResponse = (ProgramacionResponse) intent.getSerializableExtra("datoProg");
@@ -56,7 +57,10 @@ public class ProgramacionDetails extends AppCompatActivity {
             String id_prog = programacionResponse.getId_programacion();
             String marcaPROG = programacionResponse.getMarca();
             String cant = programacionResponse.getCantidad_marc();
+            cant1 = cant;
             String fecha_prog = programacionResponse.getFecha_prog();
+            STcant = programacionResponse.getStock_cant();
+            ProgIDSTD = programacionResponse.getId_stock();
 
 
             PROGID.setText(id_prog);
@@ -64,6 +68,42 @@ public class ProgramacionDetails extends AppCompatActivity {
             PROGCantD.setText(cant);
             PROGFechaD.setText(fecha_prog);
         }
+
+        PROGCantD.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                String ope = PROGCantD.getText().toString();
+
+                if(ope.isEmpty()){
+                    PROGCantD.setError("Ingresa Valor");
+                }else {
+                    int st = Integer.parseInt(STcant);
+                    int O = Integer.parseInt(ope);
+                    int cantO = Integer.parseInt(cant1);
+                    int re;
+
+                    if(cantO < O){
+                        re =  O-cantO;
+                        res = String.valueOf(st-re);
+                    }else if(cantO > O){
+                        re = cantO-O;
+                        res = String.valueOf(re+st);
+                    }else{
+                        Toast.makeText(ProgramacionDetails.this, "Sin Cambios", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
         fechaPGD();
         ActuPROG.setOnClickListener(view -> ConfirmarPG());
@@ -103,7 +143,7 @@ public class ProgramacionDetails extends AppCompatActivity {
         if (PROGCantD.getText().toString().isEmpty()){
             PROGCantD.setError("Ingrese una Cantidad");
         }else {
-            Call<ProgramacionResponse> udPG = ApiClient.getUserService().UDProg(ProgIDD,ProgCantD,ProgFechaD);
+            Call<ProgramacionResponse> udPG = ApiClient.getUserService().UDProg(ProgIDD,ProgCantD,ProgFechaD,ProgIDSTD,res);
             udPG.enqueue(new Callback<ProgramacionResponse>() {
                 @Override
                 public void onResponse(@NonNull Call<ProgramacionResponse> call, @NonNull Response<ProgramacionResponse> response) {

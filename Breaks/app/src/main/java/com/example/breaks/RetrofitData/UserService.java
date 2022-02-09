@@ -75,7 +75,9 @@ public interface UserService {
     Call<ProgramacionResponse> UDProg (
             @Field("id_programacion") String id_programacion,
             @Field("cantidad_marc") String cantidad_marc,
-            @Field("fecha_prog") String fecha_prog);
+            @Field("fecha_prog") String fecha_prog,
+            @Field("id_stock") String id_stock,
+            @Field("stock_cant") String stock_cant);
 
 
     @FormUrlEncoded
