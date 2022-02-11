@@ -49,12 +49,13 @@ import retrofit2.Response;
 public class Breaks extends AppCompatActivity {
 
     TextView BTiempo,BProg,NombreBus;
-    String Bdate, Btime;
+    String Bdate, Btime, Buser;
     RecyclerView BreaksList;
     BreaksAdapter breaksAdapter;
     FloatingActionButton addBreak;
     EditText DNIBus;
     String contador;
+    String idName = null;
     //String nam;
 
     @Override
@@ -66,6 +67,7 @@ public class Breaks extends AppCompatActivity {
         BProg = findViewById(R.id.BProg);
         BreaksList = findViewById(R.id.BreaksList);
         addBreak = findViewById(R.id.addBreak);
+        Buser = getIntent().getStringExtra("EmailUser");
 
 
 
@@ -146,6 +148,7 @@ public class Breaks extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 if(editable.toString().length()>=8){
+                    GuardarBus.setEnabled(true);
                     contador = DNIBus.getText().toString();
                     Toast.makeText(Breaks.this, "Buscando: "+contador, Toast.LENGTH_SHORT).show();
                     hilo();
@@ -203,7 +206,7 @@ public class Breaks extends AppCompatActivity {
                 if(response.isSuccessful()){
                     String nam;
                     String name = null;
-                    String idName = null;
+
                     List<PersonalResponse> personalResponses = response.body();
                     assert personalResponses != null;
                     for (PersonalResponse personalResponse: personalResponses){
@@ -231,6 +234,21 @@ public class Breaks extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void SaveBreak(){
+        Call<BreaksResponse> InsertBK = ApiClient.getUserService().ADDBreaks(idName,Bdate,Btime,Buser);
+        InsertBK.enqueue(new Callback<BreaksResponse>() {
+            @Override
+            public void onResponse(Call<BreaksResponse> call, Response<BreaksResponse> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<BreaksResponse> call, Throwable t) {
+
+            }
+        });
     }
 
 
