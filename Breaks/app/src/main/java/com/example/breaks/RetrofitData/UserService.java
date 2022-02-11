@@ -113,4 +113,12 @@ public interface UserService {
     @GET("Breaks/GetBreaks.php")
     Call<List<BreaksResponse>> getBreak(@Query("fecha_break") String fecha_break);
 
+    @FormUrlEncoded
+    @POST("Personal/InsertarPersonal.php")
+    Call<BreaksResponse> ADDBreaks (
+            @Field("id_personal") String id_personal,
+            @Field("fecha_break") String fecha_break,
+            @Field("hora_break") String hora_break,
+            @Field("encargado") String encargado);
+
 }

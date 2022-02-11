@@ -6,7 +6,6 @@ public class BreaksResponse implements Serializable {
 
     private String id_breaks;
     private String id_personal;
-    private String id_programacion;
     private String fecha_break;
     private String hora_break;
     private String cantidad;
@@ -30,14 +29,6 @@ public class BreaksResponse implements Serializable {
 
     public void setId_personal(String id_personal) {
         this.id_personal = id_personal;
-    }
-
-    public String getId_programacion() {
-        return id_programacion;
-    }
-
-    public void setId_programacion(String id_programacion) {
-        this.id_programacion = id_programacion;
     }
 
     public String getFecha_break() {
@@ -102,10 +93,9 @@ public class BreaksResponse implements Serializable {
 
     @Override
     public String toString() {
-        return "BraksResponse{" +
+        return "BreaksResponse{" +
                 "id_breaks='" + id_breaks + '\'' +
                 ", id_personal='" + id_personal + '\'' +
-                ", id_programacion='" + id_programacion + '\'' +
                 ", fecha_break='" + fecha_break + '\'' +
                 ", hora_break='" + hora_break + '\'' +
                 ", cantidad='" + cantidad + '\'' +
