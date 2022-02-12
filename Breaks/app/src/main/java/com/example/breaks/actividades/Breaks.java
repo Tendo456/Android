@@ -100,8 +100,13 @@ public class Breaks extends AppCompatActivity {
         @SuppressLint("SimpleDateFormat") Format h = new SimpleDateFormat("HH:mm:ss");
         Btime = h.format(date);
         //time.setText(ho);
+        segundos();
 
         BTiempo.setText(Bdate+" "+Btime);
+    }
+
+    public void segundos(){
+        new Handler(Looper.getMainLooper()).postDelayed(this::Bhora,60000);
     }
 
     public void getBreaks(){
