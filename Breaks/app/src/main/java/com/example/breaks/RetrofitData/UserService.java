@@ -114,7 +114,7 @@ public interface UserService {
     Call<List<BreaksResponse>> getBreak(@Query("fecha_break") String fecha_break);
 
     @FormUrlEncoded
-    @POST("Personal/InsertarBreaks.php")
+    @POST("Breaks/InsertarBreaks.php")
     Call<BreaksResponse> ADDBreaks (
             @Field("id_personal") String id_personal,
             @Field("fecha_break") String fecha_break,

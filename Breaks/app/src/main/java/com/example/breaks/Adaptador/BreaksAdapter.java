@@ -56,7 +56,7 @@ public class BreaksAdapter extends RecyclerView.Adapter<BreaksAdapter.BreaksAdap
         holder.prefix.setText(v);
         holder.Names.setText(nom+" "+apell1+" "+apell2);
         holder.hora.setText(time);
-        holder.Cantidad.setText("Breaks: "+cant);
+        holder.Cantidad.setText(cant);
 
     }
 

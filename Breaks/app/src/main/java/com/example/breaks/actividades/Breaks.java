@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.breaks.Adaptador.BreaksAdapter;
 import com.example.breaks.Modelos.BreaksResponse;
 import com.example.breaks.Modelos.PersonalResponse;
+import com.example.breaks.Modelos.StockResponse;
 import com.example.breaks.R;
 import com.example.breaks.RetrofitData.ApiClient;
 import com.google.android.gms.common.api.Api;
@@ -19,6 +20,7 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -48,7 +50,8 @@ import retrofit2.Response;
 
 public class Breaks extends AppCompatActivity {
 
-    TextView BTiempo,BProg,NombreBus;
+    TextView BTiempo,BProg;
+    EditText NombreBus;
     String Bdate, Btime, Buser;
     RecyclerView BreaksList;
     BreaksAdapter breaksAdapter;
@@ -56,6 +59,7 @@ public class Breaks extends AppCompatActivity {
     EditText DNIBus;
     String contador;
     String idName = null;
+    Button GuardarBus;
     //String nam;
 
     @Override
@@ -125,13 +129,18 @@ public class Breaks extends AppCompatActivity {
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.break_dialog,null);
         builder.setView(view);
+        AlertDialog dialog = builder.create();
+        dialog.show();
 
-        Button GuardarBus = view.findViewById(R.id.GuardarBus);
+        GuardarBus = view.findViewById(R.id.GuardarBus);
         Button ScanBus = view.findViewById(R.id.ScanBus);
         DNIBus = view.findViewById(R.id.DNIBus);
         NombreBus = view.findViewById(R.id.NombreBus);
 
-        GuardarBus.setOnClickListener(view1 -> Toast.makeText(Breaks.this, "guardar", Toast.LENGTH_SHORT).show());
+        GuardarBus.setOnClickListener(view12 -> {
+            ConfirmarBreak();
+            dialog.dismiss();
+        });
         ScanBus.setOnClickListener(view1 -> Scan());
 
         DNIBus.addTextChangedListener(new TextWatcher() {
@@ -148,7 +157,7 @@ public class Breaks extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 if(editable.toString().length()>=8){
-                    GuardarBus.setEnabled(true);
+                    NombreBus.getText().clear();
                     contador = DNIBus.getText().toString();
                     Toast.makeText(Breaks.this, "Buscando: "+contador, Toast.LENGTH_SHORT).show();
                     hilo();
@@ -156,8 +165,7 @@ public class Breaks extends AppCompatActivity {
             }
         });
 
-        final AlertDialog dialog = builder.create();
-        dialog.show();
+
 
     }
 
@@ -216,9 +224,11 @@ public class Breaks extends AppCompatActivity {
                 }
                     if(name == null){
                         Toast.makeText(Breaks.this, "No Encontrado", Toast.LENGTH_SHORT).show();
+                        GuardarBus.setEnabled(false);
                     }else{
                         NombreBus.append(name);
                         Toast.makeText(Breaks.this,""+idName , Toast.LENGTH_SHORT).show();
+                        GuardarBus.setEnabled(true);
                     }
                     
                 }else {
@@ -236,17 +246,36 @@ public class Breaks extends AppCompatActivity {
 
     }
 
+    public void ConfirmarBreak (){
+        AlertDialog.Builder opcion = new AlertDialog.Builder(this);
+        opcion.setMessage("Agregar Break?");
+        opcion.setPositiveButton("Agregar", (dialog, which) -> SaveBreak());
+        opcion.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
+
+        AlertDialog dialog = opcion.create();
+        dialog.show();
+    }
+
     public void SaveBreak(){
         Call<BreaksResponse> InsertBK = ApiClient.getUserService().ADDBreaks(idName,Bdate,Btime,Buser);
         InsertBK.enqueue(new Callback<BreaksResponse>() {
             @Override
-            public void onResponse(Call<BreaksResponse> call, Response<BreaksResponse> response) {
-
+            public void onResponse(@NonNull Call<BreaksResponse> call, @NonNull Response<BreaksResponse> response) {
+                if (response.isSuccessful()) {
+                    BreaksResponse mensaje = response.body();
+                    assert mensaje != null;
+                    Toast.makeText(Breaks.this, mensaje.getMensaje()+" "+response.code(), Toast.LENGTH_SHORT).show();
+                    getBreaks();
+                } else {
+                    BreaksResponse mensaje = response.body();
+                    assert mensaje != null;
+                    Toast.makeText(Breaks.this, ""+mensaje.getMensaje()+" "+response.code(), Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
-            public void onFailure(Call<BreaksResponse> call, Throwable t) {
-
+            public void onFailure(@NonNull Call<BreaksResponse> call, @NonNull Throwable t) {
+                Toast.makeText(Breaks.this, "Error Code: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

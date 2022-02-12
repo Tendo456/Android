@@ -24,6 +24,7 @@
         android:ems="10"
         android:gravity="center"
         android:enabled="false"
+        android:textColor="@color/black"
         android:hint="@string/nombre" />
 
     <LinearLayout
