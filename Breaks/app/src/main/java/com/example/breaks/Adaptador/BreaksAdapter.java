@@ -1,6 +1,7 @@
 package com.example.breaks.Adaptador;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,14 +50,26 @@ public class BreaksAdapter extends RecyclerView.Adapter<BreaksAdapter.BreaksAdap
         String cant = breaksResponse.getCantidad();
         String apell1 = breaksResponse.getApelli_paterno();
         String apell2 = breaksResponse.getApelli_materno();
-        String v = "";
+        String v;
+        String pre = "Breaks: ";
 
         v = String.valueOf(position+1);
 
         holder.prefix.setText(v);
         holder.Names.setText(nom+" "+apell1+" "+apell2);
         holder.hora.setText(time);
-        holder.Cantidad.setText(cant);
+        holder.Cantidad.setText(pre+cant);
+        if(cant.equals("2")){
+            holder.Cantidad.setBackgroundResource(R.drawable.rectangulo_purple);
+        }else if(cant.equals("3")){
+            holder.Cantidad.setBackgroundResource(R.drawable.rectangulo_orange);
+        }else if(cant.equals("4")){
+            holder.Cantidad.setBackgroundResource(R.drawable.rectangulo_blue);
+        }else if(cant.equals("5")){
+            holder.Cantidad.setBackgroundResource(R.drawable.rectangulo_brown);
+        }else {
+            holder.Cantidad.setBackgroundResource(R.drawable.rectangulo_verde);
+        }
 
     }
 

@@ -81,9 +81,9 @@ public class InicioActivity extends AppCompatActivity {
 
             } else {
                 continuar.setEnabled(false);
-                continuar.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.gray)));
+                continuar.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.gray_500)));
                 cerrar.setEnabled(false);
-                cerrar.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.gray)));
+                cerrar.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.gray_500)));
                 startActivityForResult(AuthUI.getInstance()
                         .createSignInIntentBuilder()
                         .setAvailableProviders(provider)
