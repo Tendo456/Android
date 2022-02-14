@@ -98,7 +98,7 @@ public class Stock extends AppCompatActivity implements StockAdapter.ClickedItem
             Toast.makeText(Stock.this, "Insertar Fecha" , Toast.LENGTH_SHORT).show();
         }else {
 
-            Call<List<StockResponse>> stockList = ApiClient.getUserService().getStock(fSTK2);
+            Call<List<StockResponse>> stockList = ApiClient.getUserService().getStock("1");
             stockList.enqueue(new Callback<List<StockResponse>>() {
                 @Override
                 public void onResponse(Call<List<StockResponse>> call, Response<List<StockResponse>> response) {

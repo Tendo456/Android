@@ -72,7 +72,7 @@ public class Stock_add extends AppCompatActivity {
     }
 
     public void llenarspinerM (){
-        String url = "http://192.168.1.135/ScreeningApp/Marcas/MarcasSP.php";
+        String url = "http://192.168.1.139/ScreeningApp/Marcas/MarcasSP.php";
         MarcasAct.post(url, new AsyncHttpResponseHandler() {
             @Override
             public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {

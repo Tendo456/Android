@@ -47,7 +47,7 @@ public interface UserService {
     @Field("estadoSK") String estadoSK);
 
     @GET("Stock/GetStock.php")
-    Call<List<StockResponse>> getStock(@Query("fecha_s") String fecha_s);
+    Call<List<StockResponse>> getStock(@Query("estadoSK") String fecha_s);
 
     @FormUrlEncoded
     @POST("Stock/ActualizarStock.php")
