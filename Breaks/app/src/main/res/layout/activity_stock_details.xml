@@ -138,7 +138,8 @@
                     android:enabled="false"
                     android:gravity="center"
                     android:hint="@string/stock"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:maxLength="11" />
             </TableRow>
 
             <TableRow
@@ -160,7 +161,7 @@
                 <EditText
                     android:id="@+id/UDStock_cant"
                     android:layout_width="wrap_content"
-                    android:layout_height="48dp"
+                    android:layout_height="41dp"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:background="@drawable/drawable_blue"
@@ -168,7 +169,8 @@
                     android:enabled="false"
                     android:gravity="center"
                     android:hint="@string/resto"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    tools:ignore="TouchTargetSizeCheck" />
             </TableRow>
 
             <TableRow

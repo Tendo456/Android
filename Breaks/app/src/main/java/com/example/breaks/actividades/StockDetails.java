@@ -92,12 +92,10 @@ public class StockDetails extends AppCompatActivity {
     public void ActivarStock (View view){
         if(ActiST.isChecked()){
             UDStock_ini.setEnabled(true);
-            UDStock_cant.setEnabled(true);
             UDActivoSK.setEnabled(true);
             UDInactivoSK.setEnabled(true);
         }else {
             UDStock_ini.setEnabled(false);
-            UDStock_cant.setEnabled(false);
             UDActivoSK.setEnabled(true);
             UDInactivoSK.setEnabled(true);
         }
@@ -141,11 +139,8 @@ public class StockDetails extends AppCompatActivity {
                         StockResponse mensaje = response.body();
                         assert mensaje != null;
                         Toast.makeText(StockDetails.this, "" + mensaje.getMensaje() + " " + response.code(), Toast.LENGTH_SHORT).show();
-
-                        Intent intent = new Intent(StockDetails.this, Stock.class);
-                        startActivity(intent);
-
                         finish();
+
                     } else {
                         StockResponse mensaje = response.body();
                         assert mensaje != null;

@@ -33,9 +33,7 @@ import retrofit2.Response;
 
 public class Stock extends AppCompatActivity implements StockAdapter.ClickedItemS {
 
-    TextView fechaSTK;
     String fSTK,fSTK2;
-    Button buscarSTK;
     RecyclerView listaSTK;
     StockAdapter stockAdapter;
     FloatingActionButton addstock;
@@ -45,8 +43,8 @@ public class Stock extends AppCompatActivity implements StockAdapter.ClickedItem
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stock);
 
-        fechaSTK = findViewById(R.id.fechaSTK);
-        buscarSTK = findViewById(R.id.buscarSTK);
+
+
         listaSTK = findViewById(R.id.listaSTK);
         addstock = findViewById(R.id.addstock);
 
@@ -55,48 +53,12 @@ public class Stock extends AppCompatActivity implements StockAdapter.ClickedItem
         stockAdapter = new StockAdapter(this);
 
         addstock.setOnClickListener(view -> StockAdd());
+        getStock();
 
-        fechaHoy();
-
-        buscarSTK.setOnClickListener(view -> getStock());
     }
 
-    public void fechaHoy (){
-        final Calendar calendar = Calendar.getInstance();
-        @SuppressLint("SimpleDateFormat") Format formatter = new SimpleDateFormat("yyyy-MM-dd");
-        fSTK = formatter.format(calendar.getTime());
-        fechaSTK.setText(fSTK);
-    }
-
-    public void SelectFecha (View view){
-        final Calendar c = Calendar.getInstance();
-
-        int dia = c.get(Calendar.DAY_OF_MONTH);
-        int mes = c.get(Calendar.MONTH);
-        int an = c.get(Calendar.YEAR);
-
-        DatePickerDialog datePickerDialog = new DatePickerDialog(this,R.style.DialogTheme, (view1, year, month, dayOfMonth) -> {
-
-            Calendar cal = Calendar.getInstance();
-            cal.setTimeInMillis(0);
-            cal.set(year, month, dayOfMonth, 0, 0, 0);
-            Date chosenDate = cal.getTime();
-
-            DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-            String s = formatter.format(chosenDate);
-            fechaSTK.setText(s);
-
-        },an,mes,dia);
-        datePickerDialog.show();
-    }
 
     public void getStock () {
-
-        fSTK2 = fechaSTK.getText().toString();
-
-        if (fechaSTK.getText().toString().isEmpty()){
-            Toast.makeText(Stock.this, "Insertar Fecha" , Toast.LENGTH_SHORT).show();
-        }else {
 
             Call<List<StockResponse>> stockList = ApiClient.getUserService().getStock("1");
             stockList.enqueue(new Callback<List<StockResponse>>() {
@@ -114,7 +76,7 @@ public class Stock extends AppCompatActivity implements StockAdapter.ClickedItem
                     Toast.makeText(Stock.this, "Error Code: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
-        }
+
 
     }
 
