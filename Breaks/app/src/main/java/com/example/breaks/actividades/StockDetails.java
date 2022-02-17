@@ -3,6 +3,8 @@ package com.example.breaks.actividades;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -35,6 +37,7 @@ public class StockDetails extends AppCompatActivity {
     StockResponse stockResponse;
     String StkID, Stk_ini,Stk_cant, StkFecha,StkEst;
     RadioButton UDActivoSK, UDInactivoSK;
+    String STin,STfin,STcant, reST;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +61,9 @@ public class StockDetails extends AppCompatActivity {
             String id_stock = stockResponse.getId_stock();
             String marcaST = stockResponse.getMarca();
             String stock_ini = stockResponse.getStock_ini();
+            STin = stock_ini;
             String stock_cant = stockResponse.getStock_cant();
+            STcant = stock_cant;
             String fecha_s = stockResponse.getFecha_s();
             String estadoSK = stockResponse.getEstadoSK();
 
@@ -80,6 +85,42 @@ public class StockDetails extends AppCompatActivity {
         fechaSD();
 
         ActuST.setOnClickListener(view -> ConfirmarST());
+
+        UDStock_cant.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                String va = UDStock_cant.getText().toString();
+
+                if(va.isEmpty()){
+                    UDStock_cant.setError("Ingresa Valor");
+                }else {
+                    int vaI = Integer.parseInt(STcant);
+                    int vaO = Integer.parseInt(va);
+                    int vaF = Integer.parseInt(STin);
+                    int resI;
+
+                    if(vaO > vaI){
+                        resI = vaO-vaI;
+                        reST = String.valueOf(resI+vaF);
+                        Stk_ini = reST;
+                        Toast.makeText(StockDetails.this, reST, Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(StockDetails.this, "Ingrese un valor Mayor", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
     }
 
     public void fechaSD (){
@@ -91,11 +132,11 @@ public class StockDetails extends AppCompatActivity {
 
     public void ActivarStock (View view){
         if(ActiST.isChecked()){
-            UDStock_ini.setEnabled(true);
+            UDStock_cant.setEnabled(true);
             UDActivoSK.setEnabled(true);
             UDInactivoSK.setEnabled(true);
         }else {
-            UDStock_ini.setEnabled(false);
+            UDStock_cant.setEnabled(false);
             UDActivoSK.setEnabled(true);
             UDInactivoSK.setEnabled(true);
         }
@@ -116,7 +157,7 @@ public class StockDetails extends AppCompatActivity {
         fechaSD();
 
         StkID = STID.getText().toString();
-        Stk_ini = UDStock_ini.getText().toString();
+        //Stk_ini = UDStock_ini.getText().toString();
         Stk_cant = UDStock_cant.getText().toString();
 
         if(UDActivoSK.isChecked()){
@@ -131,7 +172,7 @@ public class StockDetails extends AppCompatActivity {
             UDStock_cant.setError("Complete los campos");
         } else {
 
-            Call<StockResponse> UDTStock = ApiClient.getUserService().UDStock(StkID, Stk_ini,Stk_cant, StkFecha,StkEst);
+            Call<StockResponse> UDTStock = ApiClient.getUserService().UDStock(StkID, Stk_ini,Stk_cant,StkFecha,StkEst);
             UDTStock.enqueue(new Callback<StockResponse>() {
                 @Override
                 public void onResponse(Call<StockResponse> call, Response<StockResponse> response) {

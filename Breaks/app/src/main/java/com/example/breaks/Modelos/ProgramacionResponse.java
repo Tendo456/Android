@@ -10,6 +10,7 @@ public class ProgramacionResponse implements Serializable {
     private String cantidad_marc;
     private String marca;
     private String stock_cant;
+    private String total;
     private String mensaje;
 
     public String getId_programacion() {
@@ -60,6 +61,14 @@ public class ProgramacionResponse implements Serializable {
         this.stock_cant = stock_cant;
     }
 
+    public String getTotal() {
+        return total;
+    }
+
+    public void setTotal(String total) {
+        this.total = total;
+    }
+
     public String getMensaje() {
         return mensaje;
     }
@@ -73,6 +82,7 @@ public class ProgramacionResponse implements Serializable {
                 ", cantidad_marc='" + cantidad_marc + '\'' +
                 ", marca='" + marca + '\'' +
                 ", stock_cant='" + stock_cant + '\'' +
+                ", total='" + total + '\'' +
                 '}';
     }
 }

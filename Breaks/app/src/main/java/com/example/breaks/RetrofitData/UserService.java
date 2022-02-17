@@ -121,4 +121,7 @@ public interface UserService {
             @Field("hora_break") String hora_break,
             @Field("encargado") String encargado);
 
+    @GET("Programacion/Raciones.php")
+    Call<List<ProgramacionResponse>> getRacion(@Query("fecha_break") String fecha_break);
+
 }

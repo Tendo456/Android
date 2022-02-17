@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.breaks.Adaptador.BreaksAdapter;
 import com.example.breaks.Modelos.BreaksResponse;
 import com.example.breaks.Modelos.PersonalResponse;
+import com.example.breaks.Modelos.ProgramacionResponse;
 import com.example.breaks.Modelos.StockResponse;
 import com.example.breaks.R;
 import com.example.breaks.RetrofitData.ApiClient;
@@ -85,6 +86,7 @@ public class Breaks extends AppCompatActivity {
 
 
         addBreak.setOnClickListener(view -> dialogoBre() );
+        raciones();
     }
 
     public void Bfecha (){
@@ -232,7 +234,7 @@ public class Breaks extends AppCompatActivity {
                         GuardarBus.setEnabled(false);
                     }else{
                         NombreBus.append(name);
-                        Toast.makeText(Breaks.this,""+idName , Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Breaks.this,idName , Toast.LENGTH_SHORT).show();
                         GuardarBus.setEnabled(true);
                     }
                     
@@ -283,6 +285,38 @@ public class Breaks extends AppCompatActivity {
                 Toast.makeText(Breaks.this, "Error Code: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void raciones (){
+        Call<List<ProgramacionResponse>> ras = ApiClient.getUserService().getRacion(Bdate);
+        ras.enqueue(new Callback<List<ProgramacionResponse>>() {
+            @Override
+            public void onResponse(@NonNull Call<List<ProgramacionResponse>> call, @NonNull Response<List<ProgramacionResponse>> response) {
+                if(response.isSuccessful()){
+                    String rac;
+                    String raci = null;
+                    List<ProgramacionResponse> programacionResponses = response.body();
+                    assert programacionResponses != null;
+                    for(ProgramacionResponse programacionResponse: programacionResponses){
+                        rac = programacionResponse.getTotal();
+                        raci = rac;
+                    }
+                    if (raci == null){
+                        BProg.setText("Vacío");
+                    }else {
+                        BProg.setText(raci);
+                    }
+                }else {
+                    Toast.makeText(Breaks.this, "Sin Programación", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<List<ProgramacionResponse>> call, @NonNull Throwable t) {
+                Toast.makeText(Breaks.this, "Error Code: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
 
