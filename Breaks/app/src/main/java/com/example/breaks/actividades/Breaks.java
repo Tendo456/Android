@@ -168,6 +168,8 @@ public class Breaks extends AppCompatActivity {
                     contador = DNIBus.getText().toString();
                     Toast.makeText(Breaks.this, "Buscando: "+contador, Toast.LENGTH_SHORT).show();
                     hilo();
+                }else {
+                    GuardarBus.setEnabled(false);
                 }
             }
         });
@@ -295,6 +297,7 @@ public class Breaks extends AppCompatActivity {
                 if(response.isSuccessful()){
                     String rac;
                     String raci = null;
+                    String text = "Raciones: ";
                     List<ProgramacionResponse> programacionResponses = response.body();
                     assert programacionResponses != null;
                     for(ProgramacionResponse programacionResponse: programacionResponses){
@@ -304,7 +307,7 @@ public class Breaks extends AppCompatActivity {
                     if (raci == null){
                         BProg.setText("Vacío");
                     }else {
-                        BProg.setText(raci);
+                        BProg.setText(text+raci);
                     }
                 }else {
                     Toast.makeText(Breaks.this, "Sin Programación", Toast.LENGTH_SHORT).show();

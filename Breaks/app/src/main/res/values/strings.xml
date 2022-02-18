@@ -43,4 +43,5 @@
     <string name="llaves">LLAVES</string>
     <string name="scan">Scan</string>
     <string name="resto">RESTO</string>
+    <string name="hora">HORA</string>
 </resources>

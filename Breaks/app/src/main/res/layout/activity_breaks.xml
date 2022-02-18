@@ -76,9 +76,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:background="@drawable/azul"
+                android:background="@drawable/rectangulo_indigo"
                 android:gravity="center"
-                android:text="@string/fecha" />
+                android:text="@string/fecha"
+                android:textColor="@color/white"/>
 
             <TextView
                 android:id="@+id/BProg"
@@ -86,9 +87,10 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:layout_weight="1"
-                android:background="@drawable/azul"
+                android:background="@drawable/rectangulo_indigo"
                 android:gravity="center"
-                android:text="@string/programacion" />
+                android:text="@string/programacion"
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
