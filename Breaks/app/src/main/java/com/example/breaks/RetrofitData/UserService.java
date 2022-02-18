@@ -98,6 +98,9 @@ public interface UserService {
     @GET("Personal/GetPersonalB.php")
     Call<List<PersonalResponse>> getPerB(@Query("DNI") String DNI);
 
+    @GET("Personal/GetPersonalC.php")
+    Call<List<PersonalResponse>> getPerC(@Query("correo") String correo);
+
     @FormUrlEncoded
     @POST("Personal/ActualizarPersonal.php")
     Call<PersonalResponse> UDPers (
