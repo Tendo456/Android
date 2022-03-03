@@ -6,6 +6,7 @@ import android.widget.Button;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -58,16 +59,16 @@ public class Marcas extends AppCompatActivity implements MarcasAdapter.ClickedIt
 
         if(MarcasEstado.isChecked()){
             est = "2";
-            Toast.makeText(Marcas.this, "Marcas Inactivas "+ est, Toast.LENGTH_SHORT).show();
+            Toast.makeText(Marcas.this, "Marcas Inactivas ", Toast.LENGTH_SHORT).show();
         }else {
             est="1";
-            Toast.makeText(Marcas.this, "Marcas Activas "+ est, Toast.LENGTH_SHORT).show();
+            Toast.makeText(Marcas.this, "Marcas Activas ", Toast.LENGTH_SHORT).show();
         }
 
         Call<List<MarcasResponse>> marcalist = ApiClient.getUserService().getMarcas(est);
         marcalist.enqueue(new Callback<List<MarcasResponse>>() {
             @Override
-            public void onResponse(Call<List<MarcasResponse>> call, Response<List<MarcasResponse>> response) {
+            public void onResponse(@NonNull Call<List<MarcasResponse>> call, @NonNull Response<List<MarcasResponse>> response) {
                 if(response.isSuccessful()){
                     List<MarcasResponse> marcasResponses = response.body();
                     marcasAdapter.setData(marcasResponses);
@@ -76,7 +77,7 @@ public class Marcas extends AppCompatActivity implements MarcasAdapter.ClickedIt
             }
 
             @Override
-            public void onFailure(Call<List<MarcasResponse>> call, Throwable t) {
+            public void onFailure(@NonNull Call<List<MarcasResponse>> call, @NonNull Throwable t) {
                 Toast.makeText(Marcas.this, "Error Code: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
