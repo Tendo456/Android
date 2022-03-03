@@ -75,7 +75,6 @@
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/azul"
-                        android:onClick="menu1"
                         app:srcCompat="@drawable/soda"
                         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -103,7 +102,6 @@
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/azul"
-                        android:onClick="menu2"
                         app:srcCompat="@drawable/stock"
                         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -139,7 +137,6 @@
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/azul"
-                        android:onClick="menu3"
                         app:srcCompat="@drawable/calendar"
                         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -167,7 +164,6 @@
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/azul"
-                        android:onClick="menu4"
                         app:srcCompat="@drawable/medical"
                         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -202,7 +198,6 @@
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/azul"
-                        android:onClick="menu5"
                         app:srcCompat="@drawable/eating"
                         tools:ignore="SpeakableTextPresentCheck" />
 
