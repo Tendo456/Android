@@ -79,7 +79,7 @@
                         android:ems="10"
                         android:gravity="center"
                         android:hint="@string/nombre"
-                        android:inputType="textCapSentences" />
+                        android:inputType="textCapCharacters" />
                 </TableRow>
 
                 <TableRow
@@ -108,7 +108,7 @@
                         android:ems="10"
                         android:gravity="center"
                         android:hint="@string/paterno"
-                        android:inputType="textPersonName" />
+                        android:inputType="textCapCharacters" />
                 </TableRow>
 
                 <TableRow
@@ -137,7 +137,7 @@
                         android:ems="10"
                         android:gravity="center"
                         android:hint="@string/materno"
-                        android:inputType="textPersonName" />
+                        android:inputType="textCapCharacters" />
 
 
                 </TableRow>
@@ -198,7 +198,7 @@
                         android:ems="10"
                         android:gravity="center"
                         android:hint="@string/correo"
-                        android:inputType="textPersonName" />
+                        android:inputType="textEmailAddress" />
                 </TableRow>
 
                 <TableRow
