@@ -104,7 +104,7 @@ public class Marcas_add extends AppCompatActivity {
                         MarcasResponse mensaje = response.body();
                         assert mensaje != null;
                         Toast.makeText(Marcas_add.this, ""+mensaje.getMensaje()+" "+response.code(), Toast.LENGTH_SHORT).show();
-
+                        finish();
                     } else {
                         MarcasResponse mensaje = response.body();
                         assert mensaje != null;

@@ -144,13 +144,15 @@
             android:id="@+id/confIDMarca"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/idmarcas" />
+            android:text="@string/idmarcas"
+            android:visibility="invisible" />
 
         <TextView
             android:id="@+id/confMarca"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/marca" />
+            android:text="@string/marca"
+            android:visibility="invisible" />
 
         <Button
             android:id="@+id/GuardarStock"

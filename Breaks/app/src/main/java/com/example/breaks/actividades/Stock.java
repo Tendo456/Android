@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.breaks.Adaptador.StockAdapter;
 import com.example.breaks.Modelos.StockResponse;
@@ -37,16 +38,16 @@ public class Stock extends AppCompatActivity implements StockAdapter.ClickedItem
     RecyclerView listaSTK;
     StockAdapter stockAdapter;
     FloatingActionButton addstock;
+    SwipeRefreshLayout refreshST;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_stock);
 
-
-
         listaSTK = findViewById(R.id.listaSTK);
         addstock = findViewById(R.id.addstock);
+        refreshST = findViewById(R.id.refreshST);
 
         listaSTK.setLayoutManager(new LinearLayoutManager(this));
         listaSTK.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
@@ -54,6 +55,11 @@ public class Stock extends AppCompatActivity implements StockAdapter.ClickedItem
 
         addstock.setOnClickListener(view -> StockAdd());
         getStock();
+
+        refreshST.setOnRefreshListener(()->{
+            getStock();
+            refreshST.setRefreshing(false);
+        });
 
     }
 

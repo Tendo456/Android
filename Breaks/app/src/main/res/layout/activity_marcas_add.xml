@@ -78,7 +78,7 @@
                     android:ems="10"
                     android:gravity="center"
                     android:hint="@string/marca"
-                    android:inputType="textPersonName" />
+                    android:inputType="textCapCharacters" />
             </TableRow>
 
             <TableRow

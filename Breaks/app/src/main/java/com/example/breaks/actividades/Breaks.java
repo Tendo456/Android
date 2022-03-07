@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.breaks.Adaptador.BreaksAdapter;
 import com.example.breaks.Modelos.BreaksResponse;
@@ -61,6 +62,7 @@ public class Breaks extends AppCompatActivity {
     String contador;
     String idName = null;
     Button GuardarBus;
+    SwipeRefreshLayout refreshBK;
     //String nam;
 
     @Override
@@ -68,6 +70,7 @@ public class Breaks extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_breaks);
 
+        refreshBK = findViewById(R.id.refreshBK);
         BTiempo = findViewById(R.id.BTiempo);
         BProg = findViewById(R.id.BProg);
         BreaksList = findViewById(R.id.BreaksList);
@@ -75,18 +78,20 @@ public class Breaks extends AppCompatActivity {
         Buser = getIntent().getStringExtra("EmailUser");
 
 
-
         BreaksList.setLayoutManager(new LinearLayoutManager(this));
         BreaksList.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
         breaksAdapter = new BreaksAdapter();
 
-
         Bfecha();
         Bhora();
 
-
         addBreak.setOnClickListener(view -> dialogoBre() );
         raciones();
+
+        refreshBK.setOnRefreshListener(()->{
+            getBreaks();
+            refreshBK.setRefreshing(false);
+        });
     }
 
     public void Bfecha (){

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.breaks.Adaptador.PersonalAdapter;
 import com.example.breaks.Modelos.PersonalResponse;
@@ -29,6 +30,7 @@ public class Personal extends AppCompatActivity implements PersonalAdapter.Click
     FloatingActionButton addPersonal;
     PersonalAdapter personalAdapter;
     String est = "1";
+    SwipeRefreshLayout refreshPS;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,7 @@ public class Personal extends AppCompatActivity implements PersonalAdapter.Click
         BuscarPer = findViewById(R.id.BuscarPer);
         PersonalList = findViewById(R.id.PersonalList);
         addPersonal = findViewById(R.id.addPersonal);
+        refreshPS = findViewById(R.id.refreshPS);
 
 
         PersonalList.setLayoutManager(new LinearLayoutManager(this));
@@ -48,6 +51,11 @@ public class Personal extends AppCompatActivity implements PersonalAdapter.Click
         addPersonal.setOnClickListener(view -> addPErs());
 
         BuscarPer.setOnQueryTextListener(this);
+
+        refreshPS.setOnRefreshListener(()->{
+            getPersonal();
+            refreshPS.setRefreshing(false);
+        });
 
     }
 

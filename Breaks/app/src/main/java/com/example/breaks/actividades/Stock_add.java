@@ -152,7 +152,7 @@ public class Stock_add extends AppCompatActivity {
                         StockResponse mensaje = response.body();
                         assert mensaje != null;
                         Toast.makeText(Stock_add.this, ""+mensaje.getMensaje()+" "+response.code(), Toast.LENGTH_SHORT).show();
-
+                        finish();
                     } else {
                         StockResponse mensaje = response.body();
                         assert mensaje != null;
