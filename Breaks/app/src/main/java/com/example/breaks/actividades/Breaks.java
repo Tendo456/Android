@@ -37,6 +37,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,7 +51,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Breaks extends AppCompatActivity {
+public class Breaks extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
     TextView BTiempo,BProg;
     EditText NombreBus;
@@ -63,6 +64,7 @@ public class Breaks extends AppCompatActivity {
     String idName = null;
     Button GuardarBus;
     SwipeRefreshLayout refreshBK;
+    SearchView buscarBK;
     //String nam;
 
     @Override
@@ -76,6 +78,7 @@ public class Breaks extends AppCompatActivity {
         BreaksList = findViewById(R.id.BreaksList);
         addBreak = findViewById(R.id.addBreak);
         Buser = getIntent().getStringExtra("EmailUser");
+        buscarBK = findViewById(R.id.buscarBK);
 
 
         BreaksList.setLayoutManager(new LinearLayoutManager(this));
@@ -92,6 +95,8 @@ public class Breaks extends AppCompatActivity {
             getBreaks();
             refreshBK.setRefreshing(false);
         });
+
+        buscarBK.setOnQueryTextListener(this);
     }
 
     public void Bfecha (){
@@ -328,4 +333,14 @@ public class Breaks extends AppCompatActivity {
     }
 
 
+    @Override
+    public boolean onQueryTextSubmit(String s) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String s) {
+        breaksAdapter.filtrar(s);
+        return false;
+    }
 }

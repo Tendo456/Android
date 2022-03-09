@@ -14,13 +14,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.breaks.Modelos.BreaksResponse;
 import com.example.breaks.R;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class BreaksAdapter extends RecyclerView.Adapter<BreaksAdapter.BreaksAdapterVH> {
 
     private List<BreaksResponse> breaksResponseList;
     private Context contextB;
     //private ClickedItemB clickedItemB;
+    ArrayList<BreaksResponse> buscarBKS;
 
     public BreaksAdapter() {
 
@@ -28,6 +31,9 @@ public class BreaksAdapter extends RecyclerView.Adapter<BreaksAdapter.BreaksAdap
 
     public void setData(List<BreaksResponse> breaksResponseList){
         this.breaksResponseList = breaksResponseList;
+
+        buscarBKS = new ArrayList<>();
+        buscarBKS.addAll(breaksResponseList);
         notifyDataSetChanged();
     }
 
@@ -71,6 +77,21 @@ public class BreaksAdapter extends RecyclerView.Adapter<BreaksAdapter.BreaksAdap
             holder.Cantidad.setBackgroundResource(R.drawable.rectangulo_verde);
         }
 
+    }
+
+    public void filtrar (String searchBKS){
+        int large = searchBKS.length();
+        if(large == 0){
+            breaksResponseList.clear();
+            breaksResponseList.addAll(buscarBKS);
+        }else{
+            List<BreaksResponse> collector = breaksResponseList.stream()
+                    .filter(i -> i.getApelli_paterno().toLowerCase().contains(searchBKS.toLowerCase()))
+                    .collect(Collectors.toList());
+            breaksResponseList.clear();
+            breaksResponseList.addAll(collector);
+        }
+        notifyDataSetChanged();
     }
 
     @Override
