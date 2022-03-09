@@ -231,6 +231,7 @@ public class Breaks extends AppCompatActivity implements SearchView.OnQueryTextL
             public void onResponse(@NonNull Call<List<PersonalResponse>> call, @NonNull Response<List<PersonalResponse>> response) {
                 
                 if(response.isSuccessful()){
+                    NombreBus.getText().clear();
                     String nam;
                     String name = null;
 
@@ -253,6 +254,7 @@ public class Breaks extends AppCompatActivity implements SearchView.OnQueryTextL
                 }else {
                     Toast.makeText(Breaks.this, "No Encontrado", Toast.LENGTH_SHORT).show();
                     NombreBus.setText(response.code());
+
                 }
 
             }
