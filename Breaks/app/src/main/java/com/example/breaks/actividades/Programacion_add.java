@@ -84,7 +84,15 @@ public class Programacion_add extends AppCompatActivity {
                         sendCant.setError("Reducir Valor");
                     }else {
                         result= String.valueOf(r);
-                        Toast.makeText(Programacion_add.this, result, Toast.LENGTH_SHORT).show();
+                        if (result.equals("0")){
+                            result="00";
+                            Toast.makeText(Programacion_add.this, result, Toast.LENGTH_SHORT).show();
+                        }else {
+                            result= String.valueOf(r);
+                            Toast.makeText(Programacion_add.this, result, Toast.LENGTH_SHORT).show();
+                        }
+
+
                     }
 
                 }
