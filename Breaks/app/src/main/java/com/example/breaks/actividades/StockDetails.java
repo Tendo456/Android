@@ -159,6 +159,9 @@ public class StockDetails extends AppCompatActivity {
         StkID = STID.getText().toString();
         //Stk_ini = UDStock_ini.getText().toString();
         Stk_cant = UDStock_cant.getText().toString();
+        if(Stk_cant.equals("0")){
+            Stk_cant = "00";
+        }
 
         if(UDActivoSK.isChecked()){
             StkEst = "1";
@@ -166,11 +169,16 @@ public class StockDetails extends AppCompatActivity {
             StkEst ="2";
         }
 
-        if (UDStock_ini.getText().toString().isEmpty()){
-            UDStock_ini.setError("Complete los campos");
-        }else if (UDStock_cant.getText().toString().isEmpty()){
+        if (Stk_ini == null){
+            Stk_ini = UDStock_ini.getText().toString();
+        }else if(Stk_ini.isEmpty()){
+            Stk_ini = UDStock_ini.getText().toString();
+        }
+
+            if (UDStock_cant.getText().toString().isEmpty()){
             UDStock_cant.setError("Complete los campos");
-        } else {
+        }
+            else{
 
             Call<StockResponse> UDTStock = ApiClient.getUserService().UDStock(StkID, Stk_ini,Stk_cant,StkFecha,StkEst);
             UDTStock.enqueue(new Callback<StockResponse>() {
