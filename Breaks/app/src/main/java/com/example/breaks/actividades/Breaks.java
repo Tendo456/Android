@@ -35,8 +35,11 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -65,6 +68,8 @@ public class Breaks extends AppCompatActivity implements SearchView.OnQueryTextL
     Button GuardarBus;
     SwipeRefreshLayout refreshBK;
     SearchView buscarBK;
+    Animation transpBK;
+    ImageView fondoBK;
     //String nam;
 
     @Override
@@ -72,6 +77,7 @@ public class Breaks extends AppCompatActivity implements SearchView.OnQueryTextL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_breaks);
 
+        transpBK = AnimationUtils.loadAnimation(this, R.anim.transparencia);
         refreshBK = findViewById(R.id.refreshBK);
         BTiempo = findViewById(R.id.BTiempo);
         BProg = findViewById(R.id.BProg);
@@ -79,6 +85,7 @@ public class Breaks extends AppCompatActivity implements SearchView.OnQueryTextL
         addBreak = findViewById(R.id.addBreak);
         Buser = getIntent().getStringExtra("EmailUser");
         buscarBK = findViewById(R.id.buscarBK);
+        fondoBK = findViewById(R.id.fondoBK);
 
         BreaksList.setLayoutManager(new LinearLayoutManager(this));
         BreaksList.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
@@ -96,6 +103,7 @@ public class Breaks extends AppCompatActivity implements SearchView.OnQueryTextL
         });
 
         buscarBK.setOnQueryTextListener(this);
+        fondoBK.setAnimation(transpBK);
     }
 
     public void Bfecha (){
