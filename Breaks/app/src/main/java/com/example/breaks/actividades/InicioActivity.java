@@ -123,10 +123,4 @@ public class InicioActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public void onBackPressed() {
-        cerrarsesion();
-        super.onBackPressed();
-    }
-
 }

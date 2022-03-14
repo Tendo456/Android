@@ -10,7 +10,8 @@ public class ProgramacionResponse implements Serializable {
     private String cantidad_marc;
     private String marca;
     private String stock_cant;
-    private String total;
+    private String bebidas;
+    private String galletas;
     private String mensaje;
 
     public String getId_programacion() {
@@ -61,12 +62,20 @@ public class ProgramacionResponse implements Serializable {
         this.stock_cant = stock_cant;
     }
 
-    public String getTotal() {
-        return total;
+    public String getBebidas() {
+        return bebidas;
     }
 
-    public void setTotal(String total) {
-        this.total = total;
+    public void setBebidas(String bebidas) {
+        this.bebidas = bebidas;
+    }
+
+    public String getGalletas() {
+        return galletas;
+    }
+
+    public void setGalletas(String galletas) {
+        this.galletas = galletas;
     }
 
     public String getMensaje() {
@@ -82,7 +91,8 @@ public class ProgramacionResponse implements Serializable {
                 ", cantidad_marc='" + cantidad_marc + '\'' +
                 ", marca='" + marca + '\'' +
                 ", stock_cant='" + stock_cant + '\'' +
-                ", total='" + total + '\'' +
+                ", bebidas='" + bebidas + '\'' +
+                ", galletas='" + galletas + '\'' +
                 '}';
     }
 }

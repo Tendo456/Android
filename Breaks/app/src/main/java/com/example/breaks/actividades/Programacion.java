@@ -1,9 +1,11 @@
 package com.example.breaks.actividades;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.breaks.Adaptador.ProgramacionAdapter;
 import com.example.breaks.Modelos.ProgramacionResponse;
@@ -16,7 +18,11 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,23 +39,34 @@ import retrofit2.Response;
 
 public class Programacion extends AppCompatActivity implements ProgramacionAdapter.ClickedItemP{
 
-    TextView fechaProg;
+    TextView fechaProg, bebidacount, galletaconut;
     Button buscarProg;
     RecyclerView listaProg;
     FloatingActionButton addProg;
     ProgramacionAdapter programacionAdapter;
     String fecha_prog;
+    Animation transparencia;
+    ImageView fondoPG;
+    String fech;
+    SwipeRefreshLayout refreshPRO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_programacion);
 
+        transparencia = AnimationUtils.loadAnimation(this, R.anim.transparencia);
         fechaProg = findViewById(R.id.fechaProg);
         buscarProg = findViewById(R.id.buscarProg);
         listaProg = findViewById(R.id.listaProg);
         addProg = findViewById(R.id.addProg);
+        fondoPG = findViewById(R.id.fondoPG);
+        bebidacount = findViewById(R.id.bebidacount);
+        galletaconut = findViewById(R.id.galletacount);
+        refreshPRO = findViewById(R.id.refreshPRO);
 
+        fondoPG.setAnimation(transparencia);
 
         listaProg.setLayoutManager(new LinearLayoutManager(this));
         listaProg.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
@@ -58,6 +75,16 @@ public class Programacion extends AppCompatActivity implements ProgramacionAdapt
         fechaPG();
         buscarProg.setOnClickListener(view -> getProg());
         addProg.setOnClickListener(view -> ProgAdd());
+        getProg();
+        getBebida();
+        getGalleta();
+
+        refreshPRO.setOnRefreshListener(()->{
+            getProg();
+            getBebida();
+            getGalleta();
+            refreshPRO.setRefreshing(false);
+        });
 
     }
 
@@ -115,6 +142,72 @@ public class Programacion extends AppCompatActivity implements ProgramacionAdapt
                 }
             });
         }
+    }
+
+    public void getBebida(){
+        fech = fechaProg.getText().toString();
+        Call<List<ProgramacionResponse>> Gbeb = ApiClient.getUserService().getBebida(fech);
+        Gbeb.enqueue(new Callback<List<ProgramacionResponse>>() {
+            @Override
+            public void onResponse(@NonNull Call<List<ProgramacionResponse>> call, @NonNull Response<List<ProgramacionResponse>> response) {
+                if(response.isSuccessful()){
+                    String beb;
+                    String bebi = null;
+                    String text1 = "Bebidas: ";
+                    List<ProgramacionResponse> programacionResponses = response.body();
+                    assert programacionResponses != null;
+                    for(ProgramacionResponse programacionResponse: programacionResponses){
+                        beb = programacionResponse.getBebidas();
+                        bebi = beb;
+                    }
+                    if (bebi == null){
+                        bebidacount.setText("Vacío");
+                    }else {
+                        bebidacount.setText(text1+bebi);
+                    }
+                }else {
+                    Toast.makeText(Programacion.this, "Sin Programación", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<List<ProgramacionResponse>> call, @NonNull Throwable t) {
+                Toast.makeText(Programacion.this, "Error Code: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void getGalleta(){
+        fech = fechaProg.getText().toString();
+        Call<List<ProgramacionResponse>> Ggall = ApiClient.getUserService().getGalleta(fech);
+        Ggall.enqueue(new Callback<List<ProgramacionResponse>>() {
+            @Override
+            public void onResponse(@NonNull Call<List<ProgramacionResponse>> call, @NonNull Response<List<ProgramacionResponse>> response) {
+                if(response.isSuccessful()){
+                    String gal;
+                    String galle = null;
+                    String text2 = "Galletas: ";
+                    List<ProgramacionResponse> programacionResponses = response.body();
+                    assert programacionResponses != null;
+                    for(ProgramacionResponse programacionResponse: programacionResponses){
+                        gal = programacionResponse.getGalletas();
+                        galle = gal;
+                    }
+                    if (galle == null){
+                        galletaconut.setText("Vacío");
+                    }else {
+                        galletaconut.setText(text2+galle);
+                    }
+                }else {
+                    Toast.makeText(Programacion.this, "Sin Programación", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<List<ProgramacionResponse>> call, @NonNull Throwable t) {
+                Toast.makeText(Programacion.this, "Error Code: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

@@ -80,7 +80,6 @@ public class Breaks extends AppCompatActivity implements SearchView.OnQueryTextL
         Buser = getIntent().getStringExtra("EmailUser");
         buscarBK = findViewById(R.id.buscarBK);
 
-
         BreaksList.setLayoutManager(new LinearLayoutManager(this));
         BreaksList.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
         breaksAdapter = new BreaksAdapter();
@@ -184,8 +183,6 @@ public class Breaks extends AppCompatActivity implements SearchView.OnQueryTextL
             }
         });
 
-
-
     }
 
     public void Scan (){
@@ -221,7 +218,7 @@ public class Breaks extends AppCompatActivity implements SearchView.OnQueryTextL
     }
 
     public void hilo(){
-        new Handler(Looper.getMainLooper()).postDelayed(this::search,3000);
+        new Handler(Looper.getMainLooper()).postDelayed(this::search,2000);
     }
 
     public void search(){
@@ -302,7 +299,7 @@ public class Breaks extends AppCompatActivity implements SearchView.OnQueryTextL
     }
 
     public void raciones (){
-        Call<List<ProgramacionResponse>> ras = ApiClient.getUserService().getRacion(Bdate);
+        Call<List<ProgramacionResponse>> ras = ApiClient.getUserService().getBebida(Bdate);
         ras.enqueue(new Callback<List<ProgramacionResponse>>() {
             @Override
             public void onResponse(@NonNull Call<List<ProgramacionResponse>> call, @NonNull Response<List<ProgramacionResponse>> response) {
@@ -313,7 +310,7 @@ public class Breaks extends AppCompatActivity implements SearchView.OnQueryTextL
                     List<ProgramacionResponse> programacionResponses = response.body();
                     assert programacionResponses != null;
                     for(ProgramacionResponse programacionResponse: programacionResponses){
-                        rac = programacionResponse.getTotal();
+                        rac = programacionResponse.getBebidas();
                         raci = rac;
                     }
                     if (raci == null){
