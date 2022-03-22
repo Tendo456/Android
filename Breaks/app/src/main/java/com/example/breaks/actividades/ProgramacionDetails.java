@@ -86,13 +86,19 @@ public class ProgramacionDetails extends AppCompatActivity {
                     int O = Integer.parseInt(ope);
                     int cantO = Integer.parseInt(cant1);
                     int re;
-
+                    int res1;
                     if(cantO < O){
                         re =  O-cantO;
-                        res = String.valueOf(st-re);
+                        res1 = st-re;
+                        if(res1==0){
+                            res = "00";
+                        }else{
+                            res = String.valueOf(res1);
+                        }
                     }else if(cantO > O){
                         re = cantO-O;
-                        res = String.valueOf(re+st);
+                        res1 = re+st;
+                        res = String.valueOf(res1);
                     }else{
                         Toast.makeText(ProgramacionDetails.this, "Sin Cambios", Toast.LENGTH_SHORT).show();
                     }

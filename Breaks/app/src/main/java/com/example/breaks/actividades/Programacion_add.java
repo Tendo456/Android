@@ -91,8 +91,6 @@ public class Programacion_add extends AppCompatActivity {
                             result= String.valueOf(r);
                             Toast.makeText(Programacion_add.this, result, Toast.LENGTH_SHORT).show();
                         }
-
-
                     }
 
                 }
