@@ -56,7 +56,7 @@ public class InicioActivity extends AppCompatActivity {
     private void  sesion(){
 
         List<AuthUI.IdpConfig> provider = Arrays.asList(
-                //new AuthUI.IdpConfig.GoogleBuilder().build(),
+                new AuthUI.IdpConfig.GoogleBuilder().build(),
                 //new AuthUI.IdpConfig.EmailBuilder().build(),
                 new AuthUI.IdpConfig.MicrosoftBuilder().build());
 
