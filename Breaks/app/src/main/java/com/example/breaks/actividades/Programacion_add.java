@@ -86,10 +86,10 @@ public class Programacion_add extends AppCompatActivity {
                         result= String.valueOf(r);
                         if (result.equals("0")){
                             result="00";
-                            Toast.makeText(Programacion_add.this, result, Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(Programacion_add.this, result, Toast.LENGTH_SHORT).show();
                         }else {
                             result= String.valueOf(r);
-                            Toast.makeText(Programacion_add.this, result, Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(Programacion_add.this, result, Toast.LENGTH_SHORT).show();
                         }
                     }
 
