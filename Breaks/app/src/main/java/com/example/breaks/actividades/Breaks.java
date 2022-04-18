@@ -1,28 +1,6 @@
 package com.example.breaks.actividades;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
-import com.example.breaks.Adaptador.BreaksAdapter;
-import com.example.breaks.Modelos.BreaksResponse;
-import com.example.breaks.Modelos.PersonalResponse;
-import com.example.breaks.Modelos.ProgramacionResponse;
-import com.example.breaks.Modelos.StockResponse;
-import com.example.breaks.R;
-import com.example.breaks.RetrofitData.ApiClient;
-import com.google.android.gms.common.api.Api;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.zxing.integration.android.IntentIntegrator;
-import com.google.zxing.integration.android.IntentResult;
-
 import android.annotation.SuppressLint;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -43,6 +21,25 @@ import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import com.example.breaks.Adaptador.BreaksAdapter;
+import com.example.breaks.Modelos.BreaksResponse;
+import com.example.breaks.Modelos.PersonalResponse;
+import com.example.breaks.Modelos.ProgramacionResponse;
+import com.example.breaks.R;
+import com.example.breaks.RetrofitData.ApiClient;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 
 import java.text.Format;
 import java.text.SimpleDateFormat;

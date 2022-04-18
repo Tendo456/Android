@@ -41,6 +41,8 @@
     <string name="rol2">User</string>
     <string name="breaks">BREAKS</string>
     <string name="llaves">LLAVES</string>
+    <string name="llavesAsig">ASIGNACION</string>
+    <string name="addAsig">ASIGNAR LLAVE</string>
     <string name="scan">Scan</string>
     <string name="resto">RESTO</string>
     <string name="hora">HORA</string>

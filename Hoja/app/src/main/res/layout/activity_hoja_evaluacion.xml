@@ -96,7 +96,8 @@
                     android:id="@+id/spHoja"
                     android:layout_width="150dp"
                     android:layout_height="match_parent"
-                    android:layout_margin="10dp" />
+                    android:layout_margin="10dp"
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
 
                 <TextView
                     android:id="@+id/idRHoja"
@@ -257,7 +258,8 @@
                     android:gravity="start|top"
                     android:hint="Descripción (Opcional)"
                     android:inputType="textMultiLine"
-                    android:maxLength="200" />
+                    android:maxLength="200"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
