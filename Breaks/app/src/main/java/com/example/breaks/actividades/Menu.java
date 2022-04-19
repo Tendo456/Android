@@ -36,12 +36,14 @@ public class Menu extends AppCompatActivity {
         menu3 = findViewById(R.id.menu3);
         menu4= findViewById(R.id.menu4);
         menu5 = findViewById(R.id.menu5);
+        menu6 = findViewById(R.id.menu6);
 
         menu1.setOnClickListener(view -> menu1LL());
         menu2.setOnClickListener(view -> menu2LL());
         menu3.setOnClickListener(view -> menu3LL());
         menu4.setOnClickListener(view -> menu4LL());
         menu5.setOnClickListener(view -> menu5LL());
+        menu6.setOnClickListener(view -> menu6LL());
 
         usuario();
     }
@@ -126,6 +128,13 @@ public class Menu extends AppCompatActivity {
 
     public void menu5LL (){
         Intent intent = new Intent(Menu.this, Breaks.class);
+        //intent.putExtra("DisplayUser",nombre.getText().toString());
+        intent.putExtra("EmailUser",emailuserME);
+        startActivity(intent);
+    }
+
+    public void menu6LL (){
+        Intent intent = new Intent(Menu.this, llavesAsig.class);
         //intent.putExtra("DisplayUser",nombre.getText().toString());
         intent.putExtra("EmailUser",emailuserME);
         startActivity(intent);

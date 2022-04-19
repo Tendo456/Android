@@ -5,6 +5,7 @@ import com.example.breaks.Modelos.MarcasResponse;
 import com.example.breaks.Modelos.PersonalResponse;
 import com.example.breaks.Modelos.ProgramacionResponse;
 import com.example.breaks.Modelos.StockResponse;
+import com.example.breaks.Modelos.llaveResponse;
 
 import java.util.List;
 
@@ -129,5 +130,14 @@ public interface UserService {
 
     @GET("Programacion/Galletas.php")
     Call<List<ProgramacionResponse>> getGalleta(@Query("fecha_break") String fecha_break);
+
+    @FormUrlEncoded
+    @POST("Breaks/InsertarBreaks.php")
+    Call<llaveResponse> ADDAsig (
+            @Field("id_personal") String id_personal,
+            @Field("id_llave") String id_llave,
+            @Field("comentario") String comentario,
+            @Field("tipo") String tipo,
+    @Field("estado") String estado);
 
 }

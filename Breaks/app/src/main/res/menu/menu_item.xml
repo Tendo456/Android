@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/btnMore"
+        android:icon="@drawable/ic_more"
+        android:title="@string/llavesAsig"
+        app:showAsAction="always">
+
+        <menu >
+
+            <item android:id="@+id/title_llave"
+                android:icon="@drawable/ic_key2"
+                android:title="@string/llaves"
+                app:iconTint="@color/indigo_400"
+                />
+
+
+        </menu>
+
+
+    </item>
+
+
+
+</menu>

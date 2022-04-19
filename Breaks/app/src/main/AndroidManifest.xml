@@ -19,6 +19,8 @@
             android:exported="false" />
         <activity
             android:name=".actividades.llavesAsig"
+            android:theme="@style/Theme.Breaks2"
+            android:label="@string/llavesAsig"
             android:exported="false" />
         <activity
             android:name=".actividades.Breaks"

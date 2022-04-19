@@ -41,9 +41,14 @@
     <string name="rol2">User</string>
     <string name="breaks">BREAKS</string>
     <string name="llaves">LLAVES</string>
-    <string name="llavesAsig">ASIGNACION</string>
+    <string name="llave">N° Llave</string>
+    <string name="doc">N° Doc</string>
+    <string name="llavesAsig">ASIGNACIÓN</string>
     <string name="addAsig">ASIGNAR LLAVE</string>
+    <string name="addOBS">Descripción (Opcional)</string>
     <string name="scan">Scan</string>
     <string name="resto">RESTO</string>
     <string name="hora">HORA</string>
+    <string name="prestamo">Prest.</string>
+    <string name="asignacion">Asig.</string>
 </resources>

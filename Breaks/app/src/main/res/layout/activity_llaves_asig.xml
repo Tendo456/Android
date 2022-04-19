@@ -47,17 +47,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:background="@drawable/blue_white"
-                android:gravity="center"
-                android:text="@string/llavesAsig"
-                android:textColor="@color/white"
-                android:textSize="30sp" />
-
             <SearchView
                 android:id="@+id/buscarKey"
                 android:layout_width="match_parent"
