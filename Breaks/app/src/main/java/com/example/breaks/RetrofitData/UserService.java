@@ -1,11 +1,12 @@
 package com.example.breaks.RetrofitData;
 
+import com.example.breaks.Modelos.AsigResponse;
 import com.example.breaks.Modelos.BreaksResponse;
 import com.example.breaks.Modelos.MarcasResponse;
 import com.example.breaks.Modelos.PersonalResponse;
 import com.example.breaks.Modelos.ProgramacionResponse;
 import com.example.breaks.Modelos.StockResponse;
-import com.example.breaks.Modelos.llaveResponse;
+import com.example.breaks.Modelos.LlaveResponse;
 
 import java.util.List;
 
@@ -132,8 +133,13 @@ public interface UserService {
     Call<List<ProgramacionResponse>> getGalleta(@Query("fecha_break") String fecha_break);
 
     @FormUrlEncoded
-    @POST("Breaks/InsertarBreaks.php")
-    Call<llaveResponse> ADDAsig (
+    @POST("Llaves/InsertarLlaves.php")
+    Call<LlaveResponse> ADDllave (
+            @Field("numero") String numero);
+
+    @FormUrlEncoded
+    @POST("Llaves/InsertarBreaks.php")
+    Call<AsigResponse> ADDAsig (
             @Field("id_personal") String id_personal,
             @Field("id_llave") String id_llave,
             @Field("comentario") String comentario,

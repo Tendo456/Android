@@ -52,7 +52,7 @@ public class llavesAsig extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.title_llave) {
-            startActivity(new Intent(getApplicationContext(), com.example.breaks.actividades.Marcas.class));
+            startActivity(new Intent(getApplicationContext(), com.example.breaks.actividades.llaves.class));
             //Toast.makeText(MainActivity.this,"No Tiene Permisos de Administrador",Toast.LENGTH_SHORT).show();
             return true;
         }

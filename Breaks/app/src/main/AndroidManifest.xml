@@ -15,13 +15,16 @@
         android:theme="@style/Theme.Breaks"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".actividades.llaves"
+            android:exported="false" />
+        <activity
             android:name=".actividades.AddAsig"
             android:exported="false" />
         <activity
             android:name=".actividades.llavesAsig"
-            android:theme="@style/Theme.Breaks2"
+            android:exported="false"
             android:label="@string/llavesAsig"
-            android:exported="false" />
+            android:theme="@style/Theme.Breaks2" />
         <activity
             android:name=".actividades.Breaks"
             android:exported="false" />

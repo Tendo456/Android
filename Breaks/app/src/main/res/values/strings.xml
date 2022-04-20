@@ -51,4 +51,7 @@
     <string name="hora">HORA</string>
     <string name="prestamo">Prest.</string>
     <string name="asignacion">Asig.</string>
+    <string name="cantidad2">Cantidad.</string>
+    <string name="num">N°.</string>
+    <string name="numLlave">Llave N°:.</string>
 </resources>
