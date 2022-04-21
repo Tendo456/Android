@@ -44,8 +44,6 @@ public class PersonalAdapter extends RecyclerView.Adapter<PersonalAdapter.Person
 
     @Override
     public void onBindViewHolder(@NonNull PersonalAdapterVH holder, int position) {
-
-
         PersonalResponse personalResponse = personalResponseList.get(position);
 
         String paterno = personalResponse.getApelli_paterno();
@@ -56,7 +54,6 @@ public class PersonalAdapter extends RecyclerView.Adapter<PersonalAdapter.Person
         holder.prefix.setText(prefix);
         holder.dateAm.setText(date+" "+paterno+" "+materno);
         holder.imagemore.setOnClickListener(v -> clickedItemPE.ClickedPer(personalResponse));
-
     }
 
     public void filter(String BuscarPer){

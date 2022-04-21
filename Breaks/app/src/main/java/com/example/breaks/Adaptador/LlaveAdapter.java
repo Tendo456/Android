@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class LlaveAdapter extends RecyclerView.Adapter<LlaveAdapter.LlaveadpterVH> {
+public class LlaveAdapter extends RecyclerView.Adapter<LlaveAdapter.LlaveAdapterVH> {
 
     private List<LlaveResponse> llaveResponseList;
     private Context contextLl;
@@ -35,21 +35,28 @@ public class LlaveAdapter extends RecyclerView.Adapter<LlaveAdapter.LlaveadpterV
         notifyDataSetChanged();
     }
 
-
     @NonNull
     @Override
-    public LlaveadpterVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public LlaveAdapterVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         contextLl = parent.getContext();
-        return new LlaveAdapter.LlaveadpterVH(LayoutInflater.from(contextLl).inflate(R.layout.row_keys,parent,false));
+        return new LlaveAdapter.LlaveAdapterVH(LayoutInflater.from(contextLl).inflate(R.layout.row_keys,parent,false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull LlaveadpterVH holder, int position) {
+    public void onBindViewHolder(@NonNull LlaveAdapterVH holder, int position) {
+        LlaveResponse llaveResponse = llaveResponseList.get(position);
 
+        //String id_llave = personalResponse.getApelli_paterno();
+        String numero = llaveResponse.getNumero();
+        //String date = personalResponse.getNombres();
+        String prefix = llaveResponse.getId_llave();
+
+        holder.prefix.setText(prefix);
+        holder.N.setText(numero);
+        holder.imagemore.setOnClickListener(v -> clickedItemLl.ClickedLl(llaveResponse));
     }
 
     public void filterLl(String SearchLl){
-
         int longi = SearchLl.length();
         if(longi == 0){
             llaveResponseList.clear();
@@ -62,7 +69,6 @@ public class LlaveAdapter extends RecyclerView.Adapter<LlaveAdapter.LlaveadpterV
             llaveResponseList.addAll(collection);
         }
         notifyDataSetChanged();
-
     }
 
     public interface ClickedItemLl{
@@ -74,13 +80,13 @@ public class LlaveAdapter extends RecyclerView.Adapter<LlaveAdapter.LlaveadpterV
         return llaveResponseList.size();
     }
 
-    public class LlaveadpterVH extends RecyclerView.ViewHolder {
+    public class LlaveAdapterVH extends RecyclerView.ViewHolder {
 
         TextView N;
         TextView prefix;
         ImageView imagemore;
 
-        public LlaveadpterVH(@NonNull View itemView) {
+        public LlaveAdapterVH(@NonNull View itemView) {
             super(itemView);
 
             N = itemView.findViewById(R.id.N);

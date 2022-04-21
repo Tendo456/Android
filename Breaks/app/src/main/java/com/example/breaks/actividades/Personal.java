@@ -1,5 +1,6 @@
 package com.example.breaks.actividades;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -63,7 +64,7 @@ public class Personal extends AppCompatActivity implements PersonalAdapter.Click
         Call<List<PersonalResponse>> getPE = ApiClient.getUserService().getPersonal(est);
         getPE.enqueue(new Callback<List<PersonalResponse>>() {
             @Override
-            public void onResponse(Call<List<PersonalResponse>> call, Response<List<PersonalResponse>> response) {
+            public void onResponse(@NonNull Call<List<PersonalResponse>> call, @NonNull Response<List<PersonalResponse>> response) {
                 if (response.isSuccessful()) {
                         List<PersonalResponse> personalResponses = response.body();
                         personalAdapter.setData(personalResponses);
@@ -75,7 +76,7 @@ public class Personal extends AppCompatActivity implements PersonalAdapter.Click
             }
 
             @Override
-            public void onFailure(Call<List<PersonalResponse>> call, Throwable t) {
+            public void onFailure(@NonNull Call<List<PersonalResponse>> call, @NonNull Throwable t) {
                 Toast.makeText(Personal.this, "Error " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });

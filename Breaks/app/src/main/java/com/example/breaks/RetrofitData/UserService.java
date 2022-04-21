@@ -132,6 +132,9 @@ public interface UserService {
     @GET("Programacion/Galletas.php")
     Call<List<ProgramacionResponse>> getGalleta(@Query("fecha_break") String fecha_break);
 
+    @GET("Llaves/GetLlaves.php")
+    Call<List<LlaveResponse>> getLlaves(@Query("estado") String estado);
+
     @FormUrlEncoded
     @POST("Llaves/InsertarLlaves.php")
     Call<LlaveResponse> ADDllave (
