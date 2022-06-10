@@ -54,4 +54,7 @@
     <string name="cantidad2">Cantidad.</string>
     <string name="num">N°.</string>
     <string name="numLlave">Llave N°:.</string>
+    <string name="cerrar">Cerrar</string>
+    <string name="siguiente">Sguiente</string>
+    <string name="imagen">Imagen</string>
 </resources>

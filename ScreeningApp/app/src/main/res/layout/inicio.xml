@@ -24,7 +24,8 @@
         app:maxImageSize="30dp"
         app:srcCompat="@drawable/ic_navigate_next_black_24dp"
         app:tint="@color/white"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck"
+        android:contentDescription="@string/siguiente" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/cerrar"
@@ -42,9 +43,10 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.992"
         app:maxImageSize="25dp"
-        app:srcCompat="@drawable/log_out"
+        app:srcCompat="@drawable/cerrar"
         app:tint="@color/white"
-        tools:ignore="SpeakableTextPresentCheck" />
+        tools:ignore="SpeakableTextPresentCheck"
+        android:contentDescription="@string/cerrar" />
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -73,14 +75,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
                     android:layout_margin="10dp"
+                    android:layout_marginStart="1dp"
                     android:layout_marginTop="8dp"
+                    android:layout_marginEnd="1dp"
                     android:layout_marginBottom="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.494"
-                    app:srcCompat="@drawable/logopeque"/>
+                    app:srcCompat="@drawable/isos_peque"
+                    android:contentDescription="@string/imagen"/>
 
                 <ImageView
                     android:id="@+id/imgUser"
@@ -95,7 +100,8 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.816"
-                    app:srcCompat="@drawable/user" />
+                    app:srcCompat="@drawable/usuario"
+                    android:contentDescription="@string/imagen"/>
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -107,7 +113,7 @@
                 android:layout_margin="15dp"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="center"
-                android:text="Nombres"
+                android:text="@string/nombre"
                 android:textSize="24sp" />
 
             <TextView
@@ -116,7 +122,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 android:gravity="center"
-                android:text="Email"
+                android:text="@string/correo"
                 android:textSize="14sp" />
 
             <TextView
@@ -125,7 +131,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 android:gravity="center"
-                android:text="Servicio" />
+                android:text="@string/estado" />
 
         </LinearLayout>
     </ScrollView>

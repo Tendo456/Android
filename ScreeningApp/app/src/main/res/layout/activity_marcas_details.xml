@@ -18,7 +18,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo_transparente" />
+        app:srcCompat="@drawable/isos_transparente"
+        android:contentDescription="@string/imagen"/>
 
     <LinearLayout
         android:layout_width="0dp"
@@ -78,7 +79,8 @@
                     android:enabled="false"
                     android:gravity="center"
                     android:hint="@string/idmarcas"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:autofillHints="phone"/>
             </TableRow>
 
             <TableRow
@@ -108,7 +110,8 @@
                     android:enabled="false"
                     android:gravity="center"
                     android:hint="@string/marca"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:autofillHints="name"/>
             </TableRow>
 
             <TableRow
@@ -136,7 +139,7 @@
                     android:background="@drawable/drawable_blue"
                     android:ems="10"
                     android:gravity="center"
-                    android:text="2021-12-10" />
+                    android:text="@string/fecha" />
             </TableRow>
 
             <TableRow

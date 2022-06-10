@@ -13,7 +13,8 @@
         android:ems="10"
         android:gravity="center"
         android:hint="@string/dni"
-        android:inputType="number" />
+        android:inputType="number"
+        android:autofillHints="creditCardNumber"/>
 
     <EditText
         android:id="@+id/NombreBus"
@@ -25,7 +26,9 @@
         android:gravity="center"
         android:enabled="false"
         android:textColor="@color/black"
-        android:hint="@string/nombre" />
+        android:hint="@string/nombre"
+        android:inputType="textPersonName"
+        android:autofillHints="name"/>
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -18,7 +18,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo_transparente" />
+        app:srcCompat="@drawable/isos_transparente"
+        android:contentDescription="@string/imagen"/>
 
     <LinearLayout
         android:layout_width="0dp"
@@ -78,7 +79,8 @@
                     android:enabled="false"
                     android:gravity="center"
                     android:hint="@string/idmarcas"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:autofillHints="creditCardNumber"/>
             </TableRow>
 
             <TableRow
@@ -108,7 +110,8 @@
                     android:enabled="false"
                     android:gravity="center"
                     android:hint="@string/marca"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:autofillHints="name"/>
             </TableRow>
 
             <TableRow
@@ -138,7 +141,8 @@
                     android:enabled="false"
                     android:gravity="center"
                     android:hint="@string/cantidad"
-                    android:inputType="number" />
+                    android:inputType="number"
+                    android:autofillHints="creditCardNumber"/>
             </TableRow>
 
             <TableRow

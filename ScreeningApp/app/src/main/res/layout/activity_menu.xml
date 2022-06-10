@@ -18,7 +18,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo_transparente" />
+        app:srcCompat="@drawable/isos_transparente"
+        android:contentDescription="@string/imagen"/>
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/back"
@@ -75,8 +76,9 @@
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/azul"
-                        app:srcCompat="@drawable/soda"
-                        tools:ignore="SpeakableTextPresentCheck" />
+                        app:srcCompat="@drawable/refrigerio"
+                        tools:ignore="SpeakableTextPresentCheck"
+                        android:contentDescription="@string/imagen"/>
 
                     <TextView
                         android:id="@+id/textView8"
@@ -102,8 +104,9 @@
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/azul"
-                        app:srcCompat="@drawable/stock"
-                        tools:ignore="SpeakableTextPresentCheck" />
+                        app:srcCompat="@drawable/cantidad"
+                        tools:ignore="SpeakableTextPresentCheck"
+                        android:contentDescription="@string/imagen"/>
 
                     <TextView
                         android:id="@+id/textView8w"
@@ -137,8 +140,9 @@
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/azul"
-                        app:srcCompat="@drawable/calendar"
-                        tools:ignore="SpeakableTextPresentCheck" />
+                        app:srcCompat="@drawable/calendario"
+                        tools:ignore="SpeakableTextPresentCheck"
+                        android:contentDescription="@string/imagen"/>
 
                     <TextView
                         android:id="@+id/textVie"
@@ -164,8 +168,9 @@
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/azul"
-                        app:srcCompat="@drawable/medical"
-                        tools:ignore="SpeakableTextPresentCheck" />
+                        app:srcCompat="@drawable/personal"
+                        tools:ignore="SpeakableTextPresentCheck"
+                        android:contentDescription="@string/imagen"/>
 
                     <TextView
                         android:id="@+id/textViw8w"
@@ -198,8 +203,9 @@
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/azul"
-                        app:srcCompat="@drawable/eating"
-                        tools:ignore="SpeakableTextPresentCheck" />
+                        app:srcCompat="@drawable/comer"
+                        tools:ignore="SpeakableTextPresentCheck"
+                        android:contentDescription="@string/imagen"/>
 
                     <TextView
                         android:id="@+id/tex8"
@@ -225,7 +231,8 @@
                         android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:background="@drawable/azul"
-                        app:srcCompat="@drawable/deal" />
+                        app:srcCompat="@drawable/llave"
+                        android:contentDescription="@string/imagen"/>
 
                     <TextView
                         android:id="@+id/textVw"

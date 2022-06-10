@@ -5,7 +5,29 @@
       <map>
         <entry key="..\:/Users/Tendo/Documents/GitHub/Android/ScreeningApp/app/src/main/res/layout/activity_add_asig.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Tendo/Documents/GitHub/Android/ScreeningApp/app/src/main/res/layout/activity_breaks.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Tendo/Documents/GitHub/Android/ScreeningApp/app/src/main/res/layout/activity_llaves.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Tendo/Documents/GitHub/Android/ScreeningApp/app/src/main/res/layout/activity_llaves_asig.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Tendo/Documents/GitHub/Android/ScreeningApp/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Tendo/Documents/GitHub/Android/ScreeningApp/app/src/main/res/layout/activity_marcas.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Tendo/Documents/GitHub/Android/ScreeningApp/app/src/main/res/layout/activity_marcas_add.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Tendo/Documents/GitHub/Android/ScreeningApp/app/src/main/res/layout/activity_marcas_details.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Tendo/Documents/GitHub/Android/ScreeningApp/app/src/main/res/layout/activity_menu.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Tendo/Documents/GitHub/Android/ScreeningApp/app/src/main/res/layout/activity_personal.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Tendo/Documents/GitHub/Android/ScreeningApp/app/src/main/res/layout/activity_personal_add.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Tendo/Documents/GitHub/Android/ScreeningApp/app/src/main/res/layout/activity_personal_details.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Tendo/Documents/GitHub/Android/ScreeningApp/app/src/main/res/layout/activity_programacion.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Tendo/Documents/GitHub/Android/ScreeningApp/app/src/main/res/layout/activity_programacion_add.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Tendo/Documents/GitHub/Android/ScreeningApp/app/src/main/res/layout/activity_programacion_details.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Tendo/Documents/GitHub/Android/ScreeningApp/app/src/main/res/layout/activity_stock.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Tendo/Documents/GitHub/Android/ScreeningApp/app/src/main/res/layout/activity_stock_add.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Tendo/Documents/GitHub/Android/ScreeningApp/app/src/main/res/layout/activity_stock_details.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Tendo/Documents/GitHub/Android/ScreeningApp/app/src/main/res/layout/break_dialog.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Tendo/Documents/GitHub/Android/ScreeningApp/app/src/main/res/layout/inicio.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Tendo/Documents/GitHub/Android/ScreeningApp/app/src/main/res/layout/row_breaks.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Tendo/Documents/GitHub/Android/ScreeningApp/app/src/main/res/layout/row_keys.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Tendo/Documents/GitHub/Android/ScreeningApp/app/src/main/res/layout/row_users.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Tendo/Documents/GitHub/Android/ScreeningApp/app/src/main/res/layout/spinner_dropdown_text.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Tendo/Documents/GitHub/Android/ScreeningApp/app/src/main/res/layout/spinner_text.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Tendo/Documents/GitHub/Android/ScreeningApp2/app/src/main/res/drawable-anydpi/ic_key2.xml" value="0.2985" />
         <entry key="..\:/Users/Tendo/Documents/GitHub/Android/ScreeningApp2/app/src/main/res/drawable-anydpi/ic_more.xml" value="0.2985" />
         <entry key="..\:/Users/Tendo/Documents/GitHub/Android/ScreeningApp2/app/src/main/res/drawable-v24/azul.xml" value="0.2985" />

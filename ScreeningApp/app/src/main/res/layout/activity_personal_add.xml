@@ -18,7 +18,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo_transparente" />
+        app:srcCompat="@drawable/isos_transparente"
+        android:contentDescription="@string/imagen"/>
 
     <ScrollView
         android:layout_width="0dp"
@@ -79,7 +80,8 @@
                         android:ems="10"
                         android:gravity="center"
                         android:hint="@string/nombre"
-                        android:inputType="textCapCharacters" />
+                        android:inputType="textCapCharacters"
+                        android:autofillHints="name"/>
                 </TableRow>
 
                 <TableRow
@@ -108,7 +110,8 @@
                         android:ems="10"
                         android:gravity="center"
                         android:hint="@string/paterno"
-                        android:inputType="textCapCharacters" />
+                        android:inputType="textCapCharacters"
+                        android:autofillHints="name"/>
                 </TableRow>
 
                 <TableRow
@@ -137,7 +140,8 @@
                         android:ems="10"
                         android:gravity="center"
                         android:hint="@string/materno"
-                        android:inputType="textCapCharacters" />
+                        android:inputType="textCapCharacters"
+                        android:autofillHints="name"/>
 
 
                 </TableRow>
@@ -169,7 +173,8 @@
                         android:gravity="center"
                         android:hint="@string/dni"
                         android:inputType="number"
-                        android:maxLength="8" />
+                        android:maxLength="8"
+                        android:autofillHints="creditCardNumber"/>
                 </TableRow>
 
                 <TableRow
@@ -198,7 +203,8 @@
                         android:ems="10"
                         android:gravity="center"
                         android:hint="@string/correo"
-                        android:inputType="textEmailAddress" />
+                        android:inputType="textEmailAddress"
+                        android:autofillHints="emailAddress"/>
                 </TableRow>
 
                 <TableRow
