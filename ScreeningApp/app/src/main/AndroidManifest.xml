@@ -19,7 +19,8 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".actividades.llaves"
-            android:exported="false" />
+            android:exported="false"
+            />
         <activity
             android:name=".actividades.AddAsig"
             android:exported="false" />
