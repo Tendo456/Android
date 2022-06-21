@@ -16,8 +16,7 @@
     <string name="updatestock">ACTUALIZAR STOCK</string>
     <string name="tipo">TIPO</string>
     <string name="estado">ESTADO</string>
-    <string name="galleta">Galleta</string>
-    <string name="bebida">Bebida</string>
+    <string name="tiempos">TIEMPOS</string>
     <string name="activo">Activo</string>
     <string name="inactivo">Inactivo</string>
     <string name="guardar">Guardar</string>

@@ -3,6 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Tendo/Documents/GitHub/Android/Reportes/app/src/main/res/drawable/blue_white.xml" value="0.33" />
+        <entry key="..\:/Users/Tendo/Documents/GitHub/Android/Reportes/app/src/main/res/drawable/ic_add.xml" value="0.33" />
+        <entry key="..\:/Users/Tendo/Documents/GitHub/Android/Reportes/app/src/main/res/drawable/rectangulo_blue.xml" value="0.33" />
+        <entry key="..\:/Users/Tendo/Documents/GitHub/Android/Reportes/app/src/main/res/layout/activity_control_hora.xml" value="0.36666666666666664" />
         <entry key="app/src/main/res/drawable-v24/azul.xml" value="0.3215" />
         <entry key="app/src/main/res/drawable/circulo.xml" value="0.298" />
         <entry key="app/src/main/res/drawable/ic_navigate_next_black_24dp.xml" value="0.298" />
