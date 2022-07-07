@@ -7,7 +7,7 @@
     tools:context=".Actividades.ControlHora">
 
     <ImageView
-        android:id="@+id/fondoBK"
+        android:id="@+id/fondoCH"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="10dp"
@@ -22,7 +22,7 @@
         android:contentDescription="@string/imagen"/>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/refreshBK"
+        android:id="@+id/refreshCH"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="5dp"
@@ -60,7 +60,7 @@
                 android:textSize="30sp" />
 
             <TextView
-                android:id="@+id/BTiempo"
+                android:id="@+id/tiempoCH"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -70,7 +70,7 @@
                 android:textColor="@color/white" />
 
             <SearchView
-                android:id="@+id/buscarBK"
+                android:id="@+id/buscarCH"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp" />
