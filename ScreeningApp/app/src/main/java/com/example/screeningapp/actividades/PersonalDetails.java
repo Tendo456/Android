@@ -80,6 +80,8 @@ public class PersonalDetails extends AppCompatActivity {
                 Rol2.setChecked(true);
             }else{
                 Toast.makeText(PersonalDetails.this, "Valor 3" ,Toast.LENGTH_SHORT).show();
+                Rol1.setChecked(false);
+                Rol2.setChecked(false);
             }
 
             if(estadoPE.equals("1")){
