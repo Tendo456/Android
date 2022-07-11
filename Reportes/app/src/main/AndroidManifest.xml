@@ -21,6 +21,10 @@
             android:name=".Actividades.ControlHora"
             android:exported="false" />
         <activity
+            android:name=".Actividades.orientation"
+            android:screenOrientation="fullSensor"
+            tools:replace="screenOrientation" />
+        <activity
             android:name=".Actividades.Reportes"
             android:exported="false" />
         <activity

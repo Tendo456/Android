@@ -90,9 +90,10 @@ public class Menu extends AppCompatActivity {
     }
 
     public void menu2LL ( ){
-        Intent intent = new Intent(Menu.this, ControlHora.class);
+        Toast.makeText(Menu.this, "No Disponible", Toast.LENGTH_SHORT).show();
+        /*Intent intent = new Intent(Menu.this, ControlHora.class);
         //intent.putExtra("DisplayUser",nombre.getText().toString());
         intent.putExtra("EmailUser",emailuserME);
-        startActivity(intent);
+        startActivity(intent);*/
     }
 }
