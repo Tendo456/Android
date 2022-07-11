@@ -259,7 +259,7 @@ public class ControlHora extends AppCompatActivity implements SearchView.OnQuery
 
     public void ConfirmarCH(){
         AlertDialog.Builder opcion = new AlertDialog.Builder(this);
-        opcion.setMessage("Agregar Break?");
+        opcion.setMessage("Agregar Hora?");
         opcion.setPositiveButton("Agregar", (dialog, which) -> SaveCH());
         opcion.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
 
@@ -271,7 +271,7 @@ public class ControlHora extends AppCompatActivity implements SearchView.OnQuery
         Call<ControlHoraResponse> insertCH = ApiClient.getUserService().ADDControlH(idName,Bdate,Btime,Buser);
         insertCH.enqueue(new Callback<ControlHoraResponse>() {
             @Override
-            public void onResponse(Call<ControlHoraResponse> call, Response<ControlHoraResponse> response) {
+            public void onResponse(@NonNull Call<ControlHoraResponse> call, @NonNull Response<ControlHoraResponse> response) {
                 if (response.isSuccessful()) {
                     ControlHoraResponse mensaje = response.body();
                     assert mensaje != null;
@@ -285,7 +285,7 @@ public class ControlHora extends AppCompatActivity implements SearchView.OnQuery
             }
 
             @Override
-            public void onFailure(Call<ControlHoraResponse> call, Throwable t) {
+            public void onFailure(@NonNull Call<ControlHoraResponse> call, @NonNull Throwable t) {
                 Toast.makeText(ControlHora.this, "Error Code: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
