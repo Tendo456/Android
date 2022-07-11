@@ -258,6 +258,16 @@ public class ControlHora extends AppCompatActivity implements SearchView.OnQuery
     }
 
     public void ConfirmarCH(){
+        AlertDialog.Builder opcion = new AlertDialog.Builder(this);
+        opcion.setMessage("Agregar Break?");
+        opcion.setPositiveButton("Agregar", (dialog, which) -> SaveCH());
+        opcion.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
+
+        AlertDialog dialog = opcion.create();
+        dialog.show();
+    }
+
+    public void SaveCH(){
         Call<ControlHoraResponse> insertCH = ApiClient.getUserService().ADDControlH(idName,Bdate,Btime,Buser);
         insertCH.enqueue(new Callback<ControlHoraResponse>() {
             @Override
