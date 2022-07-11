@@ -78,6 +78,8 @@ public class PersonalDetails extends AppCompatActivity {
             }else if(rolPE.equals("2")){
                 //Toast.makeText(MarcasDetails.this, "valor"+Tipo ,Toast.LENGTH_SHORT).show();
                 Rol2.setChecked(true);
+            }else{
+                Toast.makeText(PersonalDetails.this, "Valor 3" ,Toast.LENGTH_SHORT).show();
             }
 
             if(estadoPE.equals("1")){
