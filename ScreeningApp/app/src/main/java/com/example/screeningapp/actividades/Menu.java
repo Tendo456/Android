@@ -76,7 +76,7 @@ public class Menu extends AppCompatActivity {
                         menu3.setEnabled(true);
                         menu4.setEnabled(true);
                         menu5.setEnabled(true);
-                    }else if(rol1.equals("2")){
+                    }else if(rol1.equals("2") || rol1.equals("3")){
                         menu1.setEnabled(false);
                         menu2.setEnabled(false);
                         menu3.setEnabled(true);
