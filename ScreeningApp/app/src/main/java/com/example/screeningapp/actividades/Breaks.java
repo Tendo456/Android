@@ -54,12 +54,11 @@ import retrofit2.Response;
 public class Breaks extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
     TextView BTiempo,BProg;
-    EditText NombreBus;
+    EditText NombreBus, DNIBus;
     String Bdate, Btime, Buser;
     RecyclerView BreaksList;
     BreaksAdapter breaksAdapter;
     FloatingActionButton addBreak;
-    EditText DNIBus;
     String contador;
     String idName = null;
     Button GuardarBus;

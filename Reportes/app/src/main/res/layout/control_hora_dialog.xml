@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/DNIBus"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:background="@drawable/azul"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/dni"
+        android:inputType="number"
+        android:autofillHints="creditCardNumber"/>
+
+    <TextView
+        android:id="@+id/NombreBus"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:background="@drawable/azul"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/nombre"
+        android:autofillHints="name"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/GuardarBus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+
+            android:enabled="false"
+            android:text="@string/guardar" />
+
+        <Button
+            android:id="@+id/ScanBus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:text="@string/scan" />
+
+    </LinearLayout>
+
+</LinearLayout>
