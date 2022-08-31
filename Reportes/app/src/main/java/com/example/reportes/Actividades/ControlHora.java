@@ -109,7 +109,7 @@ public class ControlHora extends AppCompatActivity implements SearchView.OnQuery
         Date date = new Date();
         @SuppressLint("SimpleDateFormat") Format h = new SimpleDateFormat("HH:mm:ss");
         Btime = h.format(date);
-        //time.setText(ho);
+        // time.setText(ho);
         segundos();
 
         tiempoCH.setText(Bdate+" "+Btime);
