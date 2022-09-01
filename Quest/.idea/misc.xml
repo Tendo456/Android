@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Tendo/Documents/GitHub/Android/Quest/app/src/main/res/drawable/drawable_cell_shape.xml" value="0.3395" />
+        <entry key="..\:/Users/Tendo/Documents/GitHub/Android/Quest/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/Tendo/Documents/GitHub/Android/Quest/app/src/main/res/layout/mensaje_toast.xml" value="0.358695652173913" />
         <entry key="..\:/Users/richard.gamero/AndroidStudioProjects/Android/Quest/app/src/main/res/drawable/drawable_cell_shape.xml" value="0.2203125" />
         <entry key="..\:/Users/richard.gamero/AndroidStudioProjects/Android/Quest/app/src/main/res/layout/activity_main.xml" value="0.3339973439575033" />
         <entry key="..\:/Users/richard.gamero/AndroidStudioProjects/Android/Quest/app/src/main/res/layout/activity_mensaje.xml" value="0.1802536231884058" />
@@ -11,7 +14,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

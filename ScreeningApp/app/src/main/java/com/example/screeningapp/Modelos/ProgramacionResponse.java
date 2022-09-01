@@ -18,9 +18,7 @@ public class ProgramacionResponse implements Serializable {
         return id_programacion;
     }
 
-    public void setId_programacion(String id_programacion) {
-        this.id_programacion = id_programacion;
-    }
+    public void setId_programacion(String id_programacion) {this.id_programacion = id_programacion;}
 
     public String getId_stock() {
         return id_stock;

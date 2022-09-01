@@ -2,8 +2,8 @@
     <string name="app_name">AppRiesgo</string>
 
     <string name="mensaje_ini">"WORLDWIDE REACH.\nHUMAN TOUCH."</string>
-    <string name="idmarcas">ID</string>
-    <string name="marcas">MARCAS</string>
+    <string name="consulta">Consulta Pacientes</string>
+    <string name="comorbilidad">Comorbilidades</string>
     <string name="addmarcas">AGREGAR MARCAS</string>
     <string name="updatemarcas">ACTUALIZAR MARCAS</string>
     <string name="fecha">FECHA</string>
