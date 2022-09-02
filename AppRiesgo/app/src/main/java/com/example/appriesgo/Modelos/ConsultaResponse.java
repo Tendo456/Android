@@ -7,8 +7,8 @@ public class ConsultaResponse {
     private String apellido_materno;
     private String numero_documento;
     private String condicion;
-    //private String id_comorbilidad;
-    //private String seguimiento;
+    private String cargo;
+    private String id;
     //private String retorna_trabajo;
 
 
@@ -52,14 +52,19 @@ public class ConsultaResponse {
         this.condicion = condicion;
     }
 
-    @Override
-    public String toString() {
-        return "ConsultaResponse{" +
-                "nombres='" + nombres + '\'' +
-                ", apellido_paterno='" + apellido_paterno + '\'' +
-                ", apellido_materno='" + apellido_materno + '\'' +
-                ", numero_documento='" + numero_documento + '\'' +
-                ", condicion='" + condicion + '\'' +
-                '}';
+    public String getCargo() {
+        return cargo;
+    }
+
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

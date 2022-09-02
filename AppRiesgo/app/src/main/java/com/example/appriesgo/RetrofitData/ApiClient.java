@@ -15,8 +15,8 @@ public class ApiClient {
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://190.119.144.250:83/prueba/")
-                //http://190.119.144.250:83/laboratorio/
-                //http://10.50.1.184/laboratorio/Operador/SpOperador.php
+                //https://covid19.internationalsos-peru.com/api/v1/comorbilidadesPorDni/72815630
+                //http://190.119.144.250:83/prueba/
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(okHttpClient)
                 .build();

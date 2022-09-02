@@ -57,18 +57,19 @@ public class Consulta extends AppCompatActivity {
                     num_doc = numero_doc.getText().toString();
                     Toast.makeText(Consulta.this, "Buscando: "+num_doc, Toast.LENGTH_SHORT).show();
                     hilo();
+                }else{
+                    comorbilidad.setText("");
                 }
             }
         });
 
     }
 
-    public void hilo(){
-        new Handler(Looper.getMainLooper()).postDelayed(this::buscar,2000);
+    public void hilo(){new Handler(Looper.getMainLooper()).postDelayed(this::casa,2000);
     }
 
-    public void buscar (){
-        Call<List<ConsultaResponse>> persona = ApiClient.getUserService().getPer(num_doc);
+    public void buscar (String num){
+        Call<List<ConsultaResponse>> persona = ApiClient.getUserService().getPer(num);
         persona.enqueue(new Callback<List<ConsultaResponse>>() {
             @Override
             public void onResponse(@NonNull Call<List<ConsultaResponse>> call, @NonNull Response<List<ConsultaResponse>> response) {
@@ -84,9 +85,13 @@ public class Consulta extends AppCompatActivity {
                     for (ConsultaResponse consultaResponse: consultaResponses){
                         name=consultaResponse.getNombres()+" "+consultaResponse.getApellido_paterno()+" "+consultaResponse.getApellido_materno();
                         nombre1 = name;
-                        condition = consultaResponse.getCondicion() + "\n";
+                        condition = consultaResponse.getCondicion();
                         condition1 = condition;
-                        comorbilidad.append(condition1);
+                        if(condition1 == null){
+                            comorbilidad.setText("Vacio");
+                        }else{
+                            comorbilidad.append(condition1+"\n");
+                        }
                     }
                     if(nombre1 == null){
                         Toast.makeText(Consulta.this, "No Encontrado", Toast.LENGTH_SHORT).show();
@@ -109,5 +114,9 @@ public class Consulta extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void casa(){
+        buscar(num_doc);
     }
 }
