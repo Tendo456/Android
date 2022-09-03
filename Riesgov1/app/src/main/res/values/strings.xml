@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Riesgo.v1</string>
+
+    <string name="mensaje_ini">"WORLDWIDE REACH.\nHUMAN TOUCH."</string>
+    <string name="consulta">Consulta Pacientes</string>
+    <string name="imagen">International SOS</string>
+    <string name="cerrar">Cerrar</string>
+    <string name="siguiente">Sguiente</string>
+    <string name="nombre">Nombre</string>
+    <string name="estado">Estado</string>
+    <string name="documento">Documento</string>
+    <string name="correo">CORREO</string>
+    <string name="retorna">Retorna</string>
+
+</resources>
