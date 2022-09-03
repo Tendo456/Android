@@ -124,6 +124,7 @@
                         android:background="@drawable/drawable_blue"
                         android:ems="10"
                         android:gravity="center"
+                        android:textColor="@color/black"
                         android:textSize="18sp"
                         android:text="@string/nombre" />
                 </TableRow>
@@ -152,8 +153,9 @@
                         android:layout_weight="1"
                         android:background="@drawable/drawable_blue"
                         android:ems="10"
-                        android:gravity="center"
+                        android:textColor="@color/black"
                         android:textSize="18sp"
+                        android:gravity="center"
                         android:text="@string/retorna" />
                 </TableRow>
 

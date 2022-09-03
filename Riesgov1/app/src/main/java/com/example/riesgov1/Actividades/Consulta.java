@@ -99,7 +99,7 @@ public class Consulta extends AppCompatActivity {
                         //GuardarBus.setEnabled(false);
                     }else{
                         nombre.append(nombre1);
-                        Toast.makeText(Consulta.this,idName , Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Consulta.this,""+nombre1 , Toast.LENGTH_SHORT).show();
 
                     }
 
