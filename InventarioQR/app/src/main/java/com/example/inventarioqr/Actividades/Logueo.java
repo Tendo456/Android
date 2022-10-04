@@ -30,7 +30,7 @@ public class Logueo extends AppCompatActivity {
     FloatingActionButton continuar,cerrar;
     String urlIMG = "http://190.119.144.250:83/hoja_evaluacion/img/user.png";
     private Window window;
-    public static final int REQUEST_CODE = 4567;
+    public static final int REQUEST_CODE = 5678;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

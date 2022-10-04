@@ -51,6 +51,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "413784191450-mgltrkrhc2nu38c71f113kqdaito4aof.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.inventarioqr",
+            "certificate_hash": "66fea2903cec0367db49803cb8a8094438feb4db"
+          }
+        },
+        {
           "client_id": "413784191450-rnfq6qqiva0k55qqpt42nfbt1k6nf2b3.apps.googleusercontent.com",
           "client_type": 3
         }
