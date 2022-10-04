@@ -8,4 +8,7 @@
     <string name="nombre">Nombre</string>
     <string name="estado">Estado</string>
     <string name="correo">CORREO</string>
+    <string name="scan">Scan QR</string>
+    <string name="registro">Registrar</string>
+    <string name="qr"><a href="https://www.flaticon.es/iconos-gratis/escanear" title="escanear iconos">Escanear iconos creados por Freepik - Flaticon</a></string>
 </resources>
