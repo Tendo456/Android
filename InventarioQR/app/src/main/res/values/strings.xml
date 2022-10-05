@@ -12,4 +12,8 @@
     <string name="registro">Registrar</string>
     <string name="qr"><a href="https://www.flaticon.es/iconos-gratis/escanear" title="escanear iconos">Escanear iconos creados por Freepik - Flaticon</a></string>
     <string name="registrar"><a href="https://www.flaticon.es/iconos-gratis/lista-de-verificacion" title="lista de verificación iconos">Lista de verificación iconos creados por Freepik - Flaticon</a></string>
+    <string name="id">ID</string>
+    <string name="equipo">Equipo / Tipo</string>
+    <string name="serie">Serie</string>
+    <string name="descricion">Descripción</string>
 </resources>
