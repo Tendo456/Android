@@ -4,6 +4,7 @@
     package="com.example.inventarioqr">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -16,6 +17,10 @@
         android:theme="@style/Theme.InventarioQR"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".Actividades.orientacion"
+            android:screenOrientation="fullSensor"
+            tools:replace="screenOrientation" />
         <activity
             android:name=".Actividades.Lector"
             android:exported="false">
