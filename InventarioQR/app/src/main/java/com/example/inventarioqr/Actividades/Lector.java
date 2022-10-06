@@ -3,6 +3,7 @@ package com.example.inventarioqr.Actividades;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 
 import android.content.Context;
 import android.content.Intent;
@@ -12,6 +13,7 @@ import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -38,6 +40,7 @@ public class Lector extends AppCompatActivity {
     String equipo = null;
     String serie = null;
     String descripcion = null;
+    SwitchCompat Activar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +53,7 @@ public class Lector extends AppCompatActivity {
         datoDescripcion = findViewById(R.id.datoDescripcion);
         btnScan = findViewById(R.id.btnScan);
         button3 = findViewById(R.id.button3);
+        Activar = findViewById(R.id.Activar);
 
         btnScan.setOnClickListener(v -> Scan());
 
@@ -144,5 +148,19 @@ public class Lector extends AppCompatActivity {
                 Toast.makeText(Lector.this, "Error Code: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void ActivarProg (View view){
+        if(Activar.isChecked()){
+            datoID.setEnabled(true);
+            datoEquipo.setEnabled(true);
+            datoSerie.setEnabled(true);
+            datoDescripcion.setEnabled(true);
+        }else {
+            datoID.setEnabled(false);
+            datoEquipo.setEnabled(false);
+            datoSerie.setEnabled(false);
+            datoDescripcion.setEnabled(false);
+        }
     }
 }

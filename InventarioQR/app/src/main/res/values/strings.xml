@@ -16,4 +16,6 @@
     <string name="equipo">Equipo / Tipo</string>
     <string name="serie">Serie</string>
     <string name="descricion">Descripción</string>
+    <string name="save">Guardar</string>
+    <string name="habilitar">Habilitar</string>
 </resources>

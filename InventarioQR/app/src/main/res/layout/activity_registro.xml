@@ -36,6 +36,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
+            android:gravity="center_horizontal"
             android:orientation="vertical">
 
             <ImageView
@@ -43,8 +44,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="300dp"
                 android:layout_margin="15dp"
-                app:srcCompat="@drawable/codigo_qr"
-                android:contentDescription="@string/qr" />
+                android:contentDescription="@string/qr"
+                app:srcCompat="@drawable/codigo_qr" />
+
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
@@ -58,6 +60,7 @@
                     android:id="@+id/sendID"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:enabled="false"
                     android:hint="@string/id"
                     android:maxLength="20" />
 
@@ -115,27 +118,13 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btnSave"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:text="@string/scan" />
-
-                <Button
-                    android:id="@+id/button3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:layout_weight="1"
-                    android:text="Button" />
-            </LinearLayout>
+            <Button
+                android:id="@+id/btnSave"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginBottom="30dp"
+                android:layout_weight="1"
+                android:text="@string/save" />
 
         </LinearLayout>
     </ScrollView>
