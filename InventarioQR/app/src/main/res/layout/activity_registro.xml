@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Actividades.Lector">
+    tools:context=".Actividades.Registro">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -39,7 +39,7 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/datoQR"
+                android:id="@+id/createQR"
                 android:layout_width="wrap_content"
                 android:layout_height="300dp"
                 android:layout_margin="15dp"
@@ -55,7 +55,7 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/datoID"
+                    android:id="@+id/sendID"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/id"
@@ -72,7 +72,7 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/datoEquipo"
+                    android:id="@+id/sendEquipo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/equipo"
@@ -89,7 +89,7 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/datoSerie"
+                    android:id="@+id/sendSerie"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/serie"
@@ -106,7 +106,7 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/datoDescripcion"
+                    android:id="@+id/sendDescripcion"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:gravity="start|top"
@@ -121,7 +121,7 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/btnScan"
+                    android:id="@+id/btnSave"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"

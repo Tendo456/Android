@@ -7,7 +7,7 @@ public class LectorResponse implements Serializable {
 
     private String id;
     private String equipo;
-    private String serial;
+    private String serie;
     private String descripcion;
     private String img_qr;
     private String mensage;
@@ -28,12 +28,12 @@ public class LectorResponse implements Serializable {
         this.equipo = equipo;
     }
 
-    public String getSerial() {
-        return serial;
+    public String getSerie() {
+        return serie;
     }
 
-    public void setSerial(String serial) {
-        this.serial = serial;
+    public void setSerie(String serie) {
+        this.serie = serie;
     }
 
     public String getDescripcion() {
@@ -61,7 +61,7 @@ public class LectorResponse implements Serializable {
         return "LectorResponse{" +
                 "id='" + id + '\'' +
                 ", equipo='" + equipo + '\'' +
-                ", serial='" + serial + '\'' +
+                ", serie='" + serie + '\'' +
                 ", descripcion='" + descripcion + '\'' +
                 ", img_qr='" + img_qr + '\'' +
                 '}';

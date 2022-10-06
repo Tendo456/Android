@@ -126,7 +126,7 @@ public class Lector extends AppCompatActivity {
                     assert lectorResponses !=null;
                     for (LectorResponse lectorResponse: lectorResponses){
                         equipo = lectorResponse.getEquipo();
-                        serie = lectorResponse.getSerial();
+                        serie = lectorResponse.getSerie();
                         descripcion = lectorResponse.getDescripcion();
                     }
                     if (equipo == null){
@@ -141,7 +141,7 @@ public class Lector extends AppCompatActivity {
 
             @Override
             public void onFailure(@NonNull Call<List<LectorResponse>> call, @NonNull Throwable t) {
-
+                Toast.makeText(Lector.this, "Error Code: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

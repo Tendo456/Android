@@ -32,7 +32,7 @@ public class Menu extends AppCompatActivity {
     }
 
     public void registro(){
-        Intent intent = new Intent(Menu.this, Lector.class);
+        Intent intent = new Intent(Menu.this, Registro.class);
         //intent.putExtra("DisplayUser",nombre.getText().toString());
         //intent.putExtra("EmailUser",emailuserME);
         startActivity(intent);
