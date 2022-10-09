@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         logo.setAnimation(animation1);
 
         new Handler().postDelayed(() -> {
-            Intent intent = new Intent(MainActivity.this, Logueo.class);
+            Intent intent = new Intent(MainActivity.this, Menu.class);
             startActivity(intent);
             finish();
         }, 4000);

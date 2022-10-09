@@ -4,7 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -13,6 +18,8 @@ import com.example.inventarioqr.Modelos.LectorResponse;
 import com.example.inventarioqr.R;
 import com.example.inventarioqr.RetrofitData.ApiClient;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.zxing.BarcodeFormat;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import java.util.Objects;
 
@@ -23,7 +30,7 @@ import retrofit2.Response;
 public class Registro extends AppCompatActivity {
 
     ImageView createQR;
-    TextInputEditText sendEquipo, sendSerie, sendDescripcion;
+    TextInputEditText sendID,sendEquipo, sendSerie, sendDescripcion;
     Button btnSave;
     String saveEquipo, saveSerie, saveDescripcion;
 
@@ -37,9 +44,39 @@ public class Registro extends AppCompatActivity {
         sendSerie = findViewById(R.id.sendSerie);
         sendDescripcion = findViewById(R.id.sendDescripcion);
         btnSave = findViewById(R.id.btnSave);
+        sendID =findViewById(R.id.sendID);
 
         btnSave.setOnClickListener(v -> comfirmPC());
 
+        sendID.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if(editable.toString().length()>=1){
+                    //Objects.requireNonNull(datoEquipo.getText()).clear();
+                    //Objects.requireNonNull(datoSerie.getText()).clear();
+                    //Objects.requireNonNull(datoDescripcion.getText()).clear();
+                    //contador = Objects.requireNonNull(datoID.getText()).toString();
+                    //Toast.makeText(Lector.this, "Buscando: "+contador, Toast.LENGTH_SHORT).show();
+                    segundos();
+                }else {
+                    createQR.setImageResource(R.drawable.codigo_qr);
+                }
+            }
+        });
+    }
+
+    public void segundos(){
+        new Handler(Looper.getMainLooper()).postDelayed(this::GenerarQR,3000);
     }
 
     public void comfirmPC (){
@@ -85,5 +122,15 @@ public class Registro extends AppCompatActivity {
             }
         });
     }
+    }
+
+    public void GenerarQR (){
+        try{
+            BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+            Bitmap bitmap = barcodeEncoder.encodeBitmap(sendID.getText().toString(), BarcodeFormat.QR_CODE, 600,600);
+            createQR.setImageBitmap(bitmap);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
