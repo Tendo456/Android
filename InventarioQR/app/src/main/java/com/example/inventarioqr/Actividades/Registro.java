@@ -4,10 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.Button;
@@ -21,6 +25,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.zxing.BarcodeFormat;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 import java.util.Objects;
 
@@ -32,7 +37,7 @@ public class Registro extends AppCompatActivity {
 
     ImageView createQR;
     TextInputEditText sendID,sendEquipo, sendSerie, sendDescripcion;
-    Button btnSave;
+    Button btnSave, btnShare;
     String saveEquipo, saveSerie, saveDescripcion;
     String idR = null;
     String equipoR = null;
@@ -49,6 +54,7 @@ public class Registro extends AppCompatActivity {
         sendSerie = findViewById(R.id.sendSerie);
         sendDescripcion = findViewById(R.id.sendDescripcion);
         btnSave = findViewById(R.id.btnSave);
+        btnShare = findViewById(R.id.btnShare);
         sendID =findViewById(R.id.sendID);
 
         btnSave.setOnClickListener(v -> comfirmPC());
@@ -149,7 +155,7 @@ public class Registro extends AppCompatActivity {
                         descripcionR = lectorResponse.getDescripcion();
                     }
                     if (idR == null){
-                        Toast.makeText(Registro.this, "No Encontrado", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Registro.this, "Error", Toast.LENGTH_SHORT).show();
                     }else{
                         sendID.setText(idR);
                         sendEquipo.setText(equipoR);
@@ -174,5 +180,17 @@ public class Registro extends AppCompatActivity {
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    public void shareQR (){
+        Bitmap bitmap = createQR.getDrawingCache();
+        Intent share = new Intent(Intent.ACTION_SEND);
+        share.setType("image/jpeg");
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100,bytes);
+        String path = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "title", null);
+        Uri imageUri = Uri.parse(path);
+        share.putExtra(Intent.EXTRA_STREAM, imageUri);
+        startActivity(Intent.createChooser(share, "select"));
     }
 }
