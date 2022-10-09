@@ -22,4 +22,7 @@ public interface UserService {
                                         @Field("serie") String serie,
                                         @Field("descripcion") String descripcion);
 
+    @GET("Equipos/lastEquipo.php")
+    Call<List<LectorResponse>> lastPC();
+
 }

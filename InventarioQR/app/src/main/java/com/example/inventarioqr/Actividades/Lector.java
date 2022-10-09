@@ -136,9 +136,9 @@ public class Lector extends AppCompatActivity {
                     if (equipo == null){
                         Toast.makeText(Lector.this, "No Encontrado", Toast.LENGTH_SHORT).show();
                     }else{
-                        datoEquipo.append(equipo);
-                        datoSerie.append(serie);
-                        datoDescripcion.append(descripcion);
+                        datoEquipo.setText(equipo);
+                        datoSerie.setText(serie);
+                        datoDescripcion.setText(descripcion);
                     }
                 }
             }

@@ -60,7 +60,7 @@
                     android:id="@+id/sendID"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:enabled="true"
+                    android:enabled="false"
                     android:hint="@string/id"
                     android:maxLength="20" />
 

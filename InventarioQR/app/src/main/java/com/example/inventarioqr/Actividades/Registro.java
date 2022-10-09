@@ -21,6 +21,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.zxing.BarcodeFormat;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
+import java.util.List;
 import java.util.Objects;
 
 import retrofit2.Call;
@@ -33,6 +34,10 @@ public class Registro extends AppCompatActivity {
     TextInputEditText sendID,sendEquipo, sendSerie, sendDescripcion;
     Button btnSave;
     String saveEquipo, saveSerie, saveDescripcion;
+    String idR = null;
+    String equipoR = null;
+    String serieR = null;
+    String descripcionR = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,9 +67,9 @@ public class Registro extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
                 if(editable.toString().length()>=1){
-                    //Objects.requireNonNull(datoEquipo.getText()).clear();
-                    //Objects.requireNonNull(datoSerie.getText()).clear();
-                    //Objects.requireNonNull(datoDescripcion.getText()).clear();
+                    Objects.requireNonNull(sendEquipo.getText()).clear();
+                    Objects.requireNonNull(sendSerie.getText()).clear();
+                    Objects.requireNonNull(sendDescripcion.getText()).clear();
                     //contador = Objects.requireNonNull(datoID.getText()).toString();
                     //Toast.makeText(Lector.this, "Buscando: "+contador, Toast.LENGTH_SHORT).show();
                     segundos();
@@ -76,7 +81,11 @@ public class Registro extends AppCompatActivity {
     }
 
     public void segundos(){
-        new Handler(Looper.getMainLooper()).postDelayed(this::GenerarQR,3000);
+        new Handler(Looper.getMainLooper()).postDelayed(this::GenerarQR,2000);
+    }
+
+    public void hilo(){
+        new Handler(Looper.getMainLooper()).postDelayed(this::LastReg,1000);
     }
 
     public void comfirmPC (){
@@ -109,6 +118,7 @@ public class Registro extends AppCompatActivity {
                     LectorResponse mensage = response.body();
                     assert mensage != null;
                     Toast.makeText(Registro.this, mensage.getMensage() + " " + response.code(), Toast.LENGTH_SHORT).show();
+                    hilo();
                 } else {
                     LectorResponse mensage = response.body();
                     assert mensage != null;
@@ -122,6 +132,38 @@ public class Registro extends AppCompatActivity {
             }
         });
     }
+    }
+
+    public void LastReg(){
+        Call<List<LectorResponse>> last = ApiClient.getUserService().lastPC();
+        last.enqueue(new Callback<List<LectorResponse>>() {
+            @Override
+            public void onResponse(@NonNull Call<List<LectorResponse>> call, @NonNull Response<List<LectorResponse>> response) {
+                if (response.isSuccessful()){
+                    List<LectorResponse> lectorResponses = response.body();
+                    assert lectorResponses !=null;
+                    for (LectorResponse lectorResponse: lectorResponses){
+                        idR = lectorResponse.getId();
+                        equipoR = lectorResponse.getEquipo();
+                        serieR = lectorResponse.getSerie();
+                        descripcionR = lectorResponse.getDescripcion();
+                    }
+                    if (idR == null){
+                        Toast.makeText(Registro.this, "No Encontrado", Toast.LENGTH_SHORT).show();
+                    }else{
+                        sendID.setText(idR);
+                        sendEquipo.setText(equipoR);
+                        sendSerie.setText(serieR);
+                        sendDescripcion.setText(descripcionR);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<List<LectorResponse>> call, @NonNull Throwable t) {
+                Toast.makeText(Registro.this, "Error Code: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     public void GenerarQR (){
