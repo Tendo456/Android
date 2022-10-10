@@ -4,9 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Build;
@@ -90,12 +94,22 @@ public class Lector extends AppCompatActivity {
                     Objects.requireNonNull(datoDescripcion.getText()).clear();
                     contador = Objects.requireNonNull(datoID.getText()).toString();
                     Toast.makeText(Lector.this, "Buscando: "+contador, Toast.LENGTH_SHORT).show();
+                    btnComparte.setEnabled(true);
                     getData();
                     timer();
                 }else {
                     btnComparte.setEnabled(false);
                     datoQR.setImageResource(R.drawable.codigo_qr);
                 }
+            }
+        });
+
+        btnComparte.setOnClickListener(v -> {
+            if(ContextCompat.checkSelfPermission(
+                    getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)== PackageManager.PERMISSION_DENIED){
+                ActivityCompat.requestPermissions(Lector.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},almacenamiento);
+            }else {
+                comparteQR();
             }
         });
     }
