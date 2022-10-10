@@ -7,23 +7,32 @@ import androidx.appcompat.widget.SwitchCompat;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.inventarioqr.Modelos.LectorResponse;
 import com.example.inventarioqr.R;
 import com.example.inventarioqr.RetrofitData.ApiClient;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.zxing.BarcodeFormat;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
 
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 import java.util.Objects;
 
@@ -34,13 +43,15 @@ import retrofit2.Response;
 public class Lector extends AppCompatActivity {
 
     TextInputEditText datoID, datoEquipo, datoSerie, datoDescripcion;
-    Button btnScan, button3;
+    Button btnScan, btnComparte;
     String contador;
     String id = null;
     String equipo = null;
     String serie = null;
     String descripcion = null;
     SwitchCompat Activar;
+    ImageView datoQR;
+    private int almacenamiento = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +63,11 @@ public class Lector extends AppCompatActivity {
         datoSerie = findViewById(R.id.datoSerie);
         datoDescripcion = findViewById(R.id.datoDescripcion);
         btnScan = findViewById(R.id.btnScan);
-        button3 = findViewById(R.id.button3);
+        btnComparte = findViewById(R.id.btnComparte);
         Activar = findViewById(R.id.Activar);
+        datoQR = findViewById(R.id.datoQR);
+
+        datoQR.setImageResource(R.drawable.codigo_qr);
 
         btnScan.setOnClickListener(v -> Scan());
 
@@ -77,11 +91,27 @@ public class Lector extends AppCompatActivity {
                     contador = Objects.requireNonNull(datoID.getText()).toString();
                     Toast.makeText(Lector.this, "Buscando: "+contador, Toast.LENGTH_SHORT).show();
                     getData();
+                    timer();
                 }else {
-                    button3.setEnabled(false);
+                    btnComparte.setEnabled(false);
+                    datoQR.setImageResource(R.drawable.codigo_qr);
                 }
             }
         });
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode == almacenamiento){
+            comparteQR();
+        }else {
+            Toast.makeText(Lector.this, "Conceder Permisos", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void timer (){
+        new Handler(Looper.getMainLooper()).postDelayed(this::crearQR,2000);
     }
 
 
@@ -162,5 +192,29 @@ public class Lector extends AppCompatActivity {
             datoSerie.setEnabled(false);
             datoDescripcion.setEnabled(false);
         }
+    }
+
+    public void crearQR (){
+        try{
+            BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+            Bitmap bitmap = barcodeEncoder.encodeBitmap(datoID.getText().toString(), BarcodeFormat.QR_CODE, 600,600);
+            datoQR.setImageBitmap(bitmap);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void comparteQR (){
+        datoQR.buildDrawingCache();
+        Bitmap bitmap = datoQR.getDrawingCache();
+        //Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.codigo_qr);
+        Intent share = new Intent(Intent.ACTION_SEND);
+        share.setType("image/jpeg");
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100,bytes);
+        String path = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "title", null);
+        Uri imageUri = Uri.parse(path);
+        share.putExtra(Intent.EXTRA_STREAM, imageUri);
+        startActivity(Intent.createChooser(share, "select"));
     }
 }

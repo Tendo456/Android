@@ -45,7 +45,7 @@
                 android:layout_height="300dp"
                 android:layout_margin="15dp"
                 android:contentDescription="@string/qr"
-                app:srcCompat="@drawable/codigo_qr" />
+                />
 
             <androidx.appcompat.widget.SwitchCompat
                 android:id="@+id/Activar"
@@ -130,6 +130,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginBottom="30dp"
                 android:orientation="horizontal">
 
                 <Button
@@ -141,12 +142,12 @@
                     android:text="@string/scan" />
 
                 <Button
-                    android:id="@+id/button3"
+                    android:id="@+id/btnComparte"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:layout_weight="1"
-                    android:text="Button" />
+                    android:text="@string/share" />
             </LinearLayout>
 
         </LinearLayout>
