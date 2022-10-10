@@ -3,8 +3,12 @@ package com.example.inventarioqr.Actividades;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -14,6 +18,7 @@ import android.os.Looper;
 import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -43,6 +48,7 @@ public class Registro extends AppCompatActivity {
     String equipoR = null;
     String serieR = null;
     String descripcionR = null;
+    private int storage = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +90,25 @@ public class Registro extends AppCompatActivity {
                 }
             }
         });
+
+        btnShare.setOnClickListener(view -> {
+            if(ContextCompat.checkSelfPermission(
+                    getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)== PackageManager.PERMISSION_DENIED){
+                ActivityCompat.requestPermissions(Registro.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},storage);
+            }else {
+                shareQR();
+            }
+        });
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode == storage){
+            shareQR();
+        }else {
+            Toast.makeText(Registro.this, "Conceder Permisos", Toast.LENGTH_SHORT).show();
+        }
     }
 
     public void segundos(){
@@ -183,7 +208,9 @@ public class Registro extends AppCompatActivity {
     }
 
     public void shareQR (){
+        createQR.buildDrawingCache();
         Bitmap bitmap = createQR.getDrawingCache();
+        //Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.codigo_qr);
         Intent share = new Intent(Intent.ACTION_SEND);
         share.setType("image/jpeg");
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
