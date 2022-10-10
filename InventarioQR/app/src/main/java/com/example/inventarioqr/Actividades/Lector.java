@@ -49,13 +49,12 @@ public class Lector extends AppCompatActivity {
     TextInputEditText datoID, datoEquipo, datoSerie, datoDescripcion;
     Button btnScan, btnComparte;
     String contador;
-    String id = null;
     String equipo = null;
     String serie = null;
     String descripcion = null;
     SwitchCompat Activar;
     ImageView datoQR;
-    private int almacenamiento = 100;
+    private final int almacenamiento = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -211,7 +210,7 @@ public class Lector extends AppCompatActivity {
     public void crearQR (){
         try{
             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
-            Bitmap bitmap = barcodeEncoder.encodeBitmap(datoID.getText().toString(), BarcodeFormat.QR_CODE, 600,600);
+            Bitmap bitmap = barcodeEncoder.encodeBitmap(Objects.requireNonNull(datoID.getText()).toString(), BarcodeFormat.QR_CODE, 600,600);
             datoQR.setImageBitmap(bitmap);
         }catch (Exception e){
             e.printStackTrace();
