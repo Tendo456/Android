@@ -1,5 +1,7 @@
 package com.example.inventarioqr.Modelos;
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 
 public class LectorResponse implements Serializable {
@@ -56,6 +58,7 @@ public class LectorResponse implements Serializable {
         return mensage;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "LectorResponse{" +
