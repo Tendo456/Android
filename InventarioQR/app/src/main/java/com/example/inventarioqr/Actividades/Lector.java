@@ -30,6 +30,7 @@ import android.widget.Toast;
 import com.example.inventarioqr.Modelos.LectorResponse;
 import com.example.inventarioqr.R;
 import com.example.inventarioqr.RetrofitData.ApiClient;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -47,7 +48,7 @@ import retrofit2.Response;
 public class Lector extends AppCompatActivity {
 
     TextInputEditText datoID, datoEquipo, datoSerie, datoDescripcion;
-    Button btnScan, btnComparte;
+    Button btnScan, btnUpdate;
     String contador;
     String equipo = null;
     String serie = null;
@@ -55,6 +56,8 @@ public class Lector extends AppCompatActivity {
     SwitchCompat Activar;
     ImageView datoQR;
     private final int almacenamiento = 100;
+    FloatingActionButton btnShare;
+    String upID, upEquipo, upSerie, upDesc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,9 +69,10 @@ public class Lector extends AppCompatActivity {
         datoSerie = findViewById(R.id.datoSerie);
         datoDescripcion = findViewById(R.id.datoDescripcion);
         btnScan = findViewById(R.id.btnScan);
-        btnComparte = findViewById(R.id.btnComparte);
+        btnUpdate = findViewById(R.id.btnUpdate);
         Activar = findViewById(R.id.Activar);
         datoQR = findViewById(R.id.datoQR);
+        btnShare = findViewById(R.id.btnShare);
 
         datoQR.setImageResource(R.drawable.codigo_qr);
 
@@ -93,17 +97,19 @@ public class Lector extends AppCompatActivity {
                     Objects.requireNonNull(datoDescripcion.getText()).clear();
                     contador = Objects.requireNonNull(datoID.getText()).toString();
                     Toast.makeText(Lector.this, "Buscando: "+contador, Toast.LENGTH_SHORT).show();
-                    btnComparte.setEnabled(true);
+                    btnUpdate.setEnabled(true);
+                    btnShare.setEnabled(true);
                     getData();
                     timer();
                 }else {
-                    btnComparte.setEnabled(false);
+                    btnUpdate.setEnabled(false);
                     datoQR.setImageResource(R.drawable.codigo_qr);
+                    btnShare.setEnabled(false);
                 }
             }
         });
 
-        btnComparte.setOnClickListener(v -> {
+        btnShare.setOnClickListener(v -> {
             if(ContextCompat.checkSelfPermission(
                     getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)== PackageManager.PERMISSION_DENIED){
                 ActivityCompat.requestPermissions(Lector.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},almacenamiento);
@@ -111,6 +117,8 @@ public class Lector extends AppCompatActivity {
                 comparteQR();
             }
         });
+
+        btnUpdate.setOnClickListener(v -> updateData());
     }
 
     @Override
@@ -191,6 +199,42 @@ public class Lector extends AppCompatActivity {
                 Toast.makeText(Lector.this, "Error Code: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void updateData(){
+        if(Objects.requireNonNull(datoID.getText()).toString().isEmpty()){
+            datoID.setError("Vacio");
+        }else if(Objects.requireNonNull(datoEquipo.getText()).toString().isEmpty()){
+            datoEquipo.setError("Vacio");
+        }else if(Objects.requireNonNull(datoSerie.getText()).toString().isEmpty()){
+            datoSerie.setError("Vacio");
+        }else {
+            upID = datoID.getText().toString();
+            upEquipo = datoEquipo.getText().toString();
+            upSerie = datoSerie.getText().toString();
+            upDesc = Objects.requireNonNull(datoDescripcion.getText()).toString();
+
+            Call<LectorResponse> updata = ApiClient.getUserService().updateEquipo(upID, upEquipo, upSerie, upDesc);
+            updata.enqueue(new Callback<LectorResponse>() {
+                @Override
+                public void onResponse(@NonNull Call<LectorResponse> call, @NonNull Response<LectorResponse> response) {
+                    if (response.isSuccessful()){
+                        LectorResponse mensage = response.body();
+                        assert mensage != null;
+                        Toast.makeText(Lector.this, mensage.getMensage() + " " + response.code(), Toast.LENGTH_SHORT).show();
+                    } else {
+                        LectorResponse mensage = response.body();
+                        assert mensage != null;
+                        Toast.makeText(Lector.this, mensage.getMensage() + " " + response.code(), Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(@NonNull Call<LectorResponse> call, @NonNull Throwable t) {
+                    Toast.makeText(Lector.this, "Error Code: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+        }
     }
 
     public void ActivarProg (View view){

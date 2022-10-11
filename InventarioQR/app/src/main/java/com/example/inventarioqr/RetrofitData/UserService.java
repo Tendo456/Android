@@ -25,4 +25,11 @@ public interface UserService {
     @GET("Equipos/lastEquipo.php")
     Call<List<LectorResponse>> lastPC();
 
+    @FormUrlEncoded
+    @POST("Equipos/updateEquipos.php")
+    Call<LectorResponse> updateEquipo (@Field("id") String id,
+                                       @Field("equipo") String equipo,
+                                       @Field("serie") String serie,
+                                       @Field("descripcion") String descripcion);
+
 }
