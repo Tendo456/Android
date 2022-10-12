@@ -50,14 +50,16 @@ public class Lector extends AppCompatActivity {
     TextInputEditText datoID, datoEquipo, datoSerie, datoDescripcion;
     Button btnScan, btnUpdate;
     String contador;
+    String id = null;
     String equipo = null;
     String serie = null;
     String descripcion = null;
-    SwitchCompat Activar;
+    SwitchCompat Activar, Busqueda;
     ImageView datoQR;
     private final int almacenamiento = 100;
     FloatingActionButton btnShare;
     String upID, upEquipo, upSerie, upDesc;
+    String SNTAG;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +73,7 @@ public class Lector extends AppCompatActivity {
         btnScan = findViewById(R.id.btnScan);
         btnUpdate = findViewById(R.id.btnUpdate);
         Activar = findViewById(R.id.Activar);
+        Busqueda = findViewById(R.id.Busqueda);
         datoQR = findViewById(R.id.datoQR);
         btnShare = findViewById(R.id.btnShare);
 
@@ -168,6 +171,14 @@ public class Lector extends AppCompatActivity {
         }
     }
 
+    public void buscar (View view) {
+        if (Busqueda.isChecked()) {
+            getTag();
+        } else {
+            getData();
+        }
+    }
+
     public void getData (){
 
         Call<List<LectorResponse>> pc = ApiClient.getUserService().getEquipo(contador);
@@ -197,6 +208,37 @@ public class Lector extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Call<List<LectorResponse>> call, @NonNull Throwable t) {
                 Toast.makeText(Lector.this, "Error Code: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void getTag (){
+        Call<List<LectorResponse>> tag = ApiClient.getUserService().lastReg(SNTAG);
+        tag.enqueue(new Callback<List<LectorResponse>>() {
+            @Override
+            public void onResponse(@NonNull Call<List<LectorResponse>> call, @NonNull Response<List<LectorResponse>> response) {
+                if (response.isSuccessful()) {
+
+                    List<LectorResponse> lectorResponses = response.body();
+                    assert lectorResponses != null;
+                    for (LectorResponse lectorResponse : lectorResponses) {
+                        id = lectorResponse.getId();
+                        serie = lectorResponse.getSerie();
+                        descripcion = lectorResponse.getDescripcion();
+                    }
+                    if (id == null) {
+                        Toast.makeText(Lector.this, "No Encontrado", Toast.LENGTH_SHORT).show();
+                    } else {
+                        datoID.setText(id);
+                        datoSerie.setText(serie);
+                        datoDescripcion.setText(descripcion);
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<List<LectorResponse>> call, @NonNull Throwable t) {
+
             }
         });
     }

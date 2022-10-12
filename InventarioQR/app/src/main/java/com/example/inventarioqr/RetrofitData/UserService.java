@@ -32,4 +32,7 @@ public interface UserService {
                                        @Field("serie") String serie,
                                        @Field("descripcion") String descripcion);
 
+    @GET("Equipos/lastReg.php")
+    Call<List<LectorResponse>> lastReg(@Query("serie") String serie);
+
 }
