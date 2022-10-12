@@ -24,6 +24,7 @@ import androidx.core.content.ContextCompat;
 import com.example.inventarioqr.Modelos.LectorResponse;
 import com.example.inventarioqr.R;
 import com.example.inventarioqr.RetrofitData.ApiClient;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.zxing.BarcodeFormat;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
@@ -40,13 +41,14 @@ public class Registro extends AppCompatActivity {
 
     ImageView createQR;
     TextInputEditText sendID,sendEquipo, sendSerie, sendDescripcion;
-    Button btnSave, btnShare;
+    Button btnSave;
     String saveEquipo, saveSerie, saveDescripcion;
     String idR = null;
     String equipoR = null;
     String serieR = null;
     String descripcionR = null;
     private final int storage = 100;
+    FloatingActionButton btnShareR;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +60,7 @@ public class Registro extends AppCompatActivity {
         sendSerie = findViewById(R.id.sendSerie);
         sendDescripcion = findViewById(R.id.sendDescripcion);
         btnSave = findViewById(R.id.btnSave);
-        btnShare = findViewById(R.id.btnShare);
+        btnShareR = findViewById(R.id.btnShareR);
         sendID =findViewById(R.id.sendID);
 
         btnSave.setOnClickListener(v -> comfirmPC());
@@ -85,13 +87,15 @@ public class Registro extends AppCompatActivity {
                     //contador = Objects.requireNonNull(datoID.getText()).toString();
                     //Toast.makeText(Lector.this, "Buscando: "+contador, Toast.LENGTH_SHORT).show();
                     segundos();
+                    btnShareR.setEnabled(true);
                 }else {
                     createQR.setImageResource(R.drawable.codigo_qr);
+                    btnShareR.setEnabled(false);
                 }
             }
         });
 
-        btnShare.setOnClickListener(view -> {
+        btnShareR.setOnClickListener(view -> {
             if(ContextCompat.checkSelfPermission(
                     getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)== PackageManager.PERMISSION_DENIED){
                 ActivityCompat.requestPermissions(Registro.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},storage);
