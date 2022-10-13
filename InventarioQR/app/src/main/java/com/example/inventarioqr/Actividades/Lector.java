@@ -102,7 +102,7 @@ public class Lector extends AppCompatActivity {
                     Toast.makeText(Lector.this, "Buscando: "+contador, Toast.LENGTH_SHORT).show();
                     btnUpdate.setEnabled(true);
                     btnShare.setEnabled(true);
-                    getData();
+                    timer2();
                     timer();
                 }else {
                     btnUpdate.setEnabled(false);
@@ -135,8 +135,9 @@ public class Lector extends AppCompatActivity {
     }
 
     public void timer (){
-        new Handler(Looper.getMainLooper()).postDelayed(this::crearQR,2000);
+        new Handler(Looper.getMainLooper()).postDelayed(this::crearQR,3000);
     }
+    public void timer2 () {new Handler(Looper.getMainLooper()).postDelayed(this::getData,2000);}
 
 
     public void Scan (){
