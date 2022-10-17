@@ -125,15 +125,6 @@ public class Lector extends AppCompatActivity {
         btnUpdate.setOnClickListener(v -> updateData());
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if(requestCode == almacenamiento){
-            comparteQR();
-        }else {
-            Toast.makeText(Lector.this, "Conceder Permisos", Toast.LENGTH_SHORT).show();
-        }
-    }
 
     public void timer (){
         new Handler(Looper.getMainLooper()).postDelayed(this::crearQR,3000);
@@ -302,20 +293,6 @@ public class Lector extends AppCompatActivity {
         }catch (Exception e){
             e.printStackTrace();
         }
-    }
-
-    public void comparteQR (){
-        datoQR.buildDrawingCache();
-        Bitmap bitmap = datoQR.getDrawingCache();
-        //Bitmap bitmap = BitmapFactory.decodeResource(getResources(),R.drawable.codigo_qr);
-        Intent share = new Intent(Intent.ACTION_SEND);
-        share.setType("image/jpeg");
-        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100,bytes);
-        String path = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "Imagen QR", "Codigo");
-        Uri imageUri = Uri.parse(path);
-        share.putExtra(Intent.EXTRA_STREAM, imageUri);
-        startActivity(Intent.createChooser(share, "QR"));
     }
 
     public void print() {
