@@ -54,7 +54,7 @@ public class Lector extends AppCompatActivity {
     String equipo = null;
     String serie = null;
     String descripcion = null;
-    SwitchCompat Activar, Busqueda;
+    SwitchCompat Activar;
     ImageView datoQR;
     private final int almacenamiento = 100;
     FloatingActionButton btnShare;
@@ -73,7 +73,6 @@ public class Lector extends AppCompatActivity {
         btnScan = findViewById(R.id.btnScan);
         btnUpdate = findViewById(R.id.btnUpdate);
         Activar = findViewById(R.id.Activar);
-        Busqueda = findViewById(R.id.Busqueda);
         datoQR = findViewById(R.id.datoQR);
         btnShare = findViewById(R.id.btnShare);
 
@@ -169,14 +168,6 @@ public class Lector extends AppCompatActivity {
             }
         }else{
             super.onActivityResult(requestCode, resultCode, data);
-        }
-    }
-
-    public void buscar (View view) {
-        if (Busqueda.isChecked()) {
-            getTag();
-        } else {
-            getData();
         }
     }
 
@@ -312,9 +303,9 @@ public class Lector extends AppCompatActivity {
         share.setType("image/jpeg");
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100,bytes);
-        String path = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "title", null);
+        String path = MediaStore.Images.Media.insertImage(getContentResolver(), bitmap, "Imagen QR", "Codigo");
         Uri imageUri = Uri.parse(path);
         share.putExtra(Intent.EXTRA_STREAM, imageUri);
-        startActivity(Intent.createChooser(share, "select"));
+        startActivity(Intent.createChooser(share, "QR"));
     }
 }

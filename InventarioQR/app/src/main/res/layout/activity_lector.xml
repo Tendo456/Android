@@ -50,19 +50,6 @@
                 android:layout_margin="15dp"
                 android:contentDescription="@string/qr" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <androidx.appcompat.widget.SwitchCompat
-                    android:id="@+id/Busqueda"
-                    android:layout_width="wrap_content"
-                    android:layout_height="48dp"
-                    android:layout_margin="5dp"
-                    android:onClick="buscar"
-                    android:text="@string/serie" />
-
                 <androidx.appcompat.widget.SwitchCompat
                     android:id="@+id/Activar"
                     android:layout_width="wrap_content"
@@ -70,7 +57,7 @@
                     android:layout_margin="5dp"
                     android:onClick="ActivarProg"
                     android:text="@string/habilitar" />
-            </LinearLayout>
+
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
