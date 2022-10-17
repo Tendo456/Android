@@ -6,12 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.print.PrintHelper;
 
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -116,7 +118,7 @@ public class Lector extends AppCompatActivity {
                     getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)== PackageManager.PERMISSION_DENIED){
                 ActivityCompat.requestPermissions(Lector.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},almacenamiento);
             }else {
-                comparteQR();
+                print();
             }
         });
 
@@ -243,6 +245,13 @@ public class Lector extends AppCompatActivity {
         }else if(Objects.requireNonNull(datoSerie.getText()).toString().isEmpty()){
             datoSerie.setError("Vacio");
         }else {
+
+            if (Objects.requireNonNull(datoDescripcion.getText()).toString().isEmpty()){
+                upDesc = "Vacio";
+            } else {
+                upDesc = Objects.requireNonNull(datoDescripcion.getText()).toString();
+            }
+
             upID = datoID.getText().toString();
             upEquipo = datoEquipo.getText().toString();
             upSerie = datoSerie.getText().toString();
@@ -308,4 +317,15 @@ public class Lector extends AppCompatActivity {
         share.putExtra(Intent.EXTRA_STREAM, imageUri);
         startActivity(Intent.createChooser(share, "QR"));
     }
+
+    public void print() {
+        PrintHelper photoPrinter = new PrintHelper(this);
+        photoPrinter.setScaleMode(PrintHelper.SCALE_MODE_FIT);
+        //Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.droids);
+        datoQR.buildDrawingCache();
+        Bitmap bitmap = datoQR.getDrawingCache();
+        photoPrinter.printBitmap("droids.jpg - test print", bitmap);
+    }
+
+
 }

@@ -20,6 +20,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.print.PrintHelper;
 
 import com.example.inventarioqr.Modelos.LectorResponse;
 import com.example.inventarioqr.R;
@@ -100,7 +101,7 @@ public class Registro extends AppCompatActivity {
                     getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)== PackageManager.PERMISSION_DENIED){
                 ActivityCompat.requestPermissions(Registro.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},storage);
             }else {
-                shareQR();
+                printQR();
             }
         });
     }
@@ -141,9 +142,15 @@ public class Registro extends AppCompatActivity {
             sendSerie.setError("Vacio");
         } else {
 
+            if (Objects.requireNonNull(sendDescripcion.getText()).toString().isEmpty()){
+                saveDescripcion = "Vacio";
+            } else {
+                saveDescripcion = Objects.requireNonNull(sendDescripcion.getText()).toString();
+            }
+
             saveEquipo = Objects.requireNonNull(sendEquipo.getText()).toString();
             saveSerie = Objects.requireNonNull(sendSerie.getText().toString());
-            saveDescripcion = Objects.requireNonNull(sendDescripcion.getText()).toString();
+
 
         Call<LectorResponse> inPC = ApiClient.getUserService().insertEquipo(saveEquipo, saveSerie, saveDescripcion);
         inPC.enqueue(new Callback<LectorResponse>() {
@@ -223,5 +230,14 @@ public class Registro extends AppCompatActivity {
         Uri imageUri = Uri.parse(path);
         share.putExtra(Intent.EXTRA_STREAM, imageUri);
         startActivity(Intent.createChooser(share, "select"));
+    }
+
+    public void printQR() {
+        PrintHelper photoPrinter = new PrintHelper(this);
+        photoPrinter.setScaleMode(PrintHelper.SCALE_MODE_FIT);
+        //Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.droids);
+        createQR.buildDrawingCache();
+        Bitmap bitmap = createQR.getDrawingCache();
+        photoPrinter.printBitmap("droids.jpg - test print", bitmap);
     }
 }
