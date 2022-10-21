@@ -297,13 +297,12 @@ public class Lector extends AppCompatActivity {
     }
 
     public void print() {
-        Bitmap bmap =null;
         PrintHelper photoPrinter = new PrintHelper(this);
         photoPrinter.setScaleMode(PrintHelper.SCALE_MODE_FIT);
         //Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.droids);
         datoQR.buildDrawingCache();
-        bmap = datoQR.getDrawingCache();
+        Bitmap bmap = datoQR.getDrawingCache();
         photoPrinter.printBitmap("droids.jpg - test print", bmap);
     }
-    
+
 }

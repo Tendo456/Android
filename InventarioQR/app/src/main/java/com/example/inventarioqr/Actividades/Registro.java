@@ -209,6 +209,7 @@ public class Registro extends AppCompatActivity {
     }
 
     public void GenerarQR (){
+        createQR.destroyDrawingCache();
         try{
             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
             Bitmap bitmap = barcodeEncoder.encodeBitmap(Objects.requireNonNull(sendID.getText()).toString(), BarcodeFormat.QR_CODE, 600,600);
