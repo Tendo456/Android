@@ -286,6 +286,7 @@ public class Lector extends AppCompatActivity {
     }
 
     public void crearQR (){
+        datoQR.destroyDrawingCache();
         try{
             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
             Bitmap bitmap = barcodeEncoder.encodeBitmap(Objects.requireNonNull(datoID.getText()).toString(), BarcodeFormat.QR_CODE, 600,600);
@@ -296,13 +297,13 @@ public class Lector extends AppCompatActivity {
     }
 
     public void print() {
+        Bitmap bmap =null;
         PrintHelper photoPrinter = new PrintHelper(this);
         photoPrinter.setScaleMode(PrintHelper.SCALE_MODE_FIT);
         //Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.droids);
         datoQR.buildDrawingCache();
-        Bitmap bitmap = datoQR.getDrawingCache();
-        photoPrinter.printBitmap("droids.jpg - test print", bitmap);
+        bmap = datoQR.getDrawingCache();
+        photoPrinter.printBitmap("droids.jpg - test print", bmap);
     }
-
-
+    
 }
