@@ -20,4 +20,6 @@
     <string name="habilitar">Habilitar</string>
     <string name="share">Compartir</string>
     <string name="update">Actualizar</string>
+    <string name="user">Usuario</string>
+    <string name="location">Sede</string>
 </resources>

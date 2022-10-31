@@ -1,7 +1,5 @@
 package com.example.inventarioqr.Modelos;
 
-import androidx.annotation.NonNull;
-
 import java.io.Serializable;
 
 public class LectorResponse implements Serializable {
@@ -11,7 +9,8 @@ public class LectorResponse implements Serializable {
     private String equipo;
     private String serie;
     private String descripcion;
-    private String img_qr;
+    private String usuario;
+    private String sede;
     private String mensage;
 
     public String getId() {
@@ -46,19 +45,30 @@ public class LectorResponse implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public String getImg_qr() {
-        return img_qr;
+    public String getUsuario() {
+        return usuario;
     }
 
-    public void setImg_qr(String img_qr) {
-        this.img_qr = img_qr;
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getSede() {
+        return sede;
+    }
+
+    public void setSede(String sede) {
+        this.sede = sede;
     }
 
     public String getMensage() {
         return mensage;
     }
 
-    @NonNull
+    public void setMensage(String mensage) {
+        this.mensage = mensage;
+    }
+
     @Override
     public String toString() {
         return "LectorResponse{" +
@@ -66,7 +76,9 @@ public class LectorResponse implements Serializable {
                 ", equipo='" + equipo + '\'' +
                 ", serie='" + serie + '\'' +
                 ", descripcion='" + descripcion + '\'' +
-                ", img_qr='" + img_qr + '\'' +
+                ", usuario='" + usuario + '\'' +
+                ", sede='" + sede + '\'' +
+                ", mensage='" + mensage + '\'' +
                 '}';
     }
 }

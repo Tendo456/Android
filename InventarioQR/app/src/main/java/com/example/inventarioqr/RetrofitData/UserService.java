@@ -20,6 +20,8 @@ public interface UserService {
     @POST("Equipos/insertEquipos.php")
     Call<LectorResponse> insertEquipo (@Field("equipo") String equipo,
                                         @Field("serie") String serie,
+                                       @Field("usuario") String usuario,
+                                       @Field("sede") String sede,
                                         @Field("descripcion") String descripcion);
 
     @GET("Equipos/lastEquipo.php")
@@ -30,6 +32,8 @@ public interface UserService {
     Call<LectorResponse> updateEquipo (@Field("id") String id,
                                        @Field("equipo") String equipo,
                                        @Field("serie") String serie,
+                                       @Field("usuario") String usuario,
+                                       @Field("sede") String sede,
                                        @Field("descripcion") String descripcion);
 
     @GET("Equipos/lastReg.php")
