@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">laravel</string>
+
+    <string name="title">LARAVEL</string>
+    <string name="id">ID</string>
+    <string name="nombre">Nombre</string>
+    <string name="edad">Edad</string>
+    <string name="dni">DNI</string>
+    <string name="buscar">Search</string>
+
+</resources>
