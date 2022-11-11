@@ -49,18 +49,20 @@ import retrofit2.Response;
 
 public class Lector extends AppCompatActivity {
 
-    TextInputEditText datoID, datoEquipo, datoSerie, datoDescripcion;
+    TextInputEditText datoID, datoEquipo, datoSerie, datoUser, datoSede, datoDescripcion;
     Button btnScan, btnUpdate;
     String contador;
     String id = null;
     String equipo = null;
     String serie = null;
+    String usuario = null;
+    String sede = null;
     String descripcion = null;
     SwitchCompat Activar;
     ImageView datoQR;
     private final int almacenamiento = 100;
     FloatingActionButton btnShare;
-    String upID, upEquipo, upSerie, upDesc;
+    String upID, upEquipo, upSerie, upUser, upSede, upDesc;
     String SNTAG;
 
     @Override
@@ -71,6 +73,8 @@ public class Lector extends AppCompatActivity {
         datoID = findViewById(R.id.datoID);
         datoEquipo = findViewById(R.id.datoEquipo);
         datoSerie = findViewById(R.id.datoSerie);
+        datoUser = findViewById(R.id.datoUser);
+        datoSede = findViewById(R.id.datoSede);
         datoDescripcion = findViewById(R.id.datoDescripcion);
         btnScan = findViewById(R.id.btnScan);
         btnUpdate = findViewById(R.id.btnUpdate);
@@ -178,6 +182,8 @@ public class Lector extends AppCompatActivity {
                     for (LectorResponse lectorResponse: lectorResponses){
                         equipo = lectorResponse.getEquipo();
                         serie = lectorResponse.getSerie();
+                        usuario = lectorResponse.getUsuario();
+                        sede = lectorResponse.getSede();
                         descripcion = lectorResponse.getDescripcion();
                     }
                     if (equipo == null){
@@ -185,6 +191,8 @@ public class Lector extends AppCompatActivity {
                     }else{
                         datoEquipo.setText(equipo);
                         datoSerie.setText(serie);
+                        datoUser.setText(usuario);
+                        datoSede.setText(sede);
                         datoDescripcion.setText(descripcion);
                     }
                 }
@@ -235,7 +243,11 @@ public class Lector extends AppCompatActivity {
             datoEquipo.setError("Vacio");
         }else if(Objects.requireNonNull(datoSerie.getText()).toString().isEmpty()){
             datoSerie.setError("Vacio");
-        }else {
+        }else if(Objects.requireNonNull(datoUser.getText()).toString().isEmpty()){
+            datoUser.setError("Vacio");
+        }else if(Objects.requireNonNull(datoSede.getText()).toString().isEmpty()){
+            datoSede.setError("Vacio");
+        } else {
 
             if (Objects.requireNonNull(datoDescripcion.getText()).toString().isEmpty()){
                 upDesc = "Vacio";
@@ -246,9 +258,11 @@ public class Lector extends AppCompatActivity {
             upID = datoID.getText().toString();
             upEquipo = datoEquipo.getText().toString();
             upSerie = datoSerie.getText().toString();
+            upUser = datoUser.getText().toString();
+            upSede = datoSede.getText().toString();
             upDesc = Objects.requireNonNull(datoDescripcion.getText()).toString();
 
-            Call<LectorResponse> updata = ApiClient.getUserService().updateEquipo(upID, upEquipo, upSerie, upDesc);
+            Call<LectorResponse> updata = ApiClient.getUserService().updateEquipo(upID, upEquipo, upSerie, upUser, upSede, upDesc);
             updata.enqueue(new Callback<LectorResponse>() {
                 @Override
                 public void onResponse(@NonNull Call<LectorResponse> call, @NonNull Response<LectorResponse> response) {
@@ -276,11 +290,15 @@ public class Lector extends AppCompatActivity {
             datoID.setEnabled(true);
             datoEquipo.setEnabled(true);
             datoSerie.setEnabled(true);
+            datoUser.setEnabled(true);
+            datoSede.setEnabled(true);
             datoDescripcion.setEnabled(true);
         }else {
             datoID.setEnabled(false);
             datoEquipo.setEnabled(false);
             datoSerie.setEnabled(false);
+            datoUser.setEnabled(false);
+            datoSede.setEnabled(false);
             datoDescripcion.setEnabled(false);
         }
     }

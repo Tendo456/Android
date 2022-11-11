@@ -41,12 +41,14 @@ import retrofit2.Response;
 public class Registro extends AppCompatActivity {
 
     ImageView createQR;
-    TextInputEditText sendID,sendEquipo, sendSerie, sendDescripcion;
+    TextInputEditText sendID,sendEquipo, sendSerie, sendDescripcion, sendUser, sendSede;
     Button btnSave;
-    String saveEquipo, saveSerie, saveDescripcion;
+    String saveEquipo, saveSerie, saveUsuario, saveSede, saveDescripcion;
     String idR = null;
     String equipoR = null;
     String serieR = null;
+    String usuarioR = null;
+    String sedeR = null;
     String descripcionR = null;
     private final int storage = 100;
     FloatingActionButton btnShareR;
@@ -63,6 +65,8 @@ public class Registro extends AppCompatActivity {
         btnSave = findViewById(R.id.btnSave);
         btnShareR = findViewById(R.id.btnShareR);
         sendID =findViewById(R.id.sendID);
+        sendUser = findViewById(R.id.sendUser);
+        sendSede = findViewById(R.id.sendSede);
 
         btnSave.setOnClickListener(v -> comfirmPC());
 
@@ -140,6 +144,10 @@ public class Registro extends AppCompatActivity {
             sendEquipo.setError("Vacío");
         } else if (Objects.requireNonNull(sendSerie.getText()).toString().isEmpty()) {
             sendSerie.setError("Vacio");
+        }else if (Objects.requireNonNull(sendUser.getText()).toString().isEmpty()){
+            sendUser.setError("Vacio");
+        }else if (Objects.requireNonNull(sendSede.getText()).toString().isEmpty()){
+            sendSede.setError("Vacio");
         } else {
 
             if (Objects.requireNonNull(sendDescripcion.getText()).toString().isEmpty()){
@@ -150,9 +158,11 @@ public class Registro extends AppCompatActivity {
 
             saveEquipo = Objects.requireNonNull(sendEquipo.getText()).toString();
             saveSerie = Objects.requireNonNull(sendSerie.getText().toString());
+            saveUsuario = sendUser.getText().toString();
+            saveSede = sendSede.getText().toString();
 
 
-        Call<LectorResponse> inPC = ApiClient.getUserService().insertEquipo(saveEquipo, saveSerie, saveDescripcion);
+        Call<LectorResponse> inPC = ApiClient.getUserService().insertEquipo(saveEquipo, saveSerie, saveUsuario, saveSede, saveDescripcion);
         inPC.enqueue(new Callback<LectorResponse>() {
             @Override
             public void onResponse(@NonNull Call<LectorResponse> call, @NonNull Response<LectorResponse> response) {
@@ -176,27 +186,37 @@ public class Registro extends AppCompatActivity {
     }
     }
 
-    public void LastReg(){
-        Call<List<LectorResponse>> last = ApiClient.getUserService().lastPC();
+    public void LastReg() {
+        if (Objects.requireNonNull(sendSerie.getText()).toString().isEmpty()) {
+            sendSerie.setError("Vacio");
+        } else {
+
+            saveSerie = Objects.requireNonNull(sendSerie.getText().toString());
+
+        Call<List<LectorResponse>> last = ApiClient.getUserService().lastReg(saveSerie);
         last.enqueue(new Callback<List<LectorResponse>>() {
             @Override
             public void onResponse(@NonNull Call<List<LectorResponse>> call, @NonNull Response<List<LectorResponse>> response) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
                     List<LectorResponse> lectorResponses = response.body();
-                    assert lectorResponses !=null;
-                    for (LectorResponse lectorResponse: lectorResponses){
+                    assert lectorResponses != null;
+                    for (LectorResponse lectorResponse : lectorResponses) {
                         idR = lectorResponse.getId();
                         equipoR = lectorResponse.getEquipo();
                         serieR = lectorResponse.getSerie();
+                        usuarioR = lectorResponse.getUsuario();
+                        sedeR = lectorResponse.getSede();
                         descripcionR = lectorResponse.getDescripcion();
                     }
-                    if (idR == null){
+                    if (idR == null) {
                         Toast.makeText(Registro.this, "Error", Toast.LENGTH_SHORT).show();
-                    }else{
-                        sendID.setText(idR);
-                        sendEquipo.setText(equipoR);
-                        sendSerie.setText(serieR);
-                        sendDescripcion.setText(descripcionR);
+                    } else {
+                        sendID.append(idR);
+                        sendEquipo.append(equipoR);
+                        sendSerie.append(serieR);
+                        sendUser.append(usuarioR);
+                        sendSede.append(sedeR);
+                        sendDescripcion.append(descripcionR);
                     }
                 }
             }
@@ -206,6 +226,7 @@ public class Registro extends AppCompatActivity {
                 Toast.makeText(Registro.this, "Error Code: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
     }
 
     public void GenerarQR (){
