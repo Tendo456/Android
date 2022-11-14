@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void conseguir() {
-        Call<List<MainResponse>> bus = ApiClient.getUserService().getDato(Sid);
+        Call<List<MainResponse>> bus = ApiClient.getUserService().getDato();
         bus.enqueue(new Callback<List<MainResponse>>() {
             @Override
             public void onResponse(@NonNull Call<List<MainResponse>> call, @NonNull Response<List<MainResponse>> response) {

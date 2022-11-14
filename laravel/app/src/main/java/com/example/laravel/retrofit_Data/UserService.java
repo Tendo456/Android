@@ -11,6 +11,6 @@ import retrofit2.http.Query;
 public interface UserService {
 
     @GET("android")
-    Call<List<MainResponse>> getDato(@Query("id") String id);
+    Call<List<MainResponse>> getDato();
 
 }
