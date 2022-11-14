@@ -10,7 +10,7 @@ import retrofit2.http.Query;
 
 public interface UserService {
 
-    @GET("Equipos/getEquipos.php")
+    @GET("android")
     Call<List<MainResponse>> getDato(@Query("id") String id);
 
 }
