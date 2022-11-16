@@ -2,7 +2,7 @@ package com.example.laravel.Modelos;
 
 import java.io.Serializable;
 
-public class MainResponse implements Serializable {
+public class MainResponse{
 
     private String id;
     private String nombre;
@@ -50,14 +50,5 @@ public class MainResponse implements Serializable {
         this.mensaje = mensaje;
     }
 
-    @Override
-    public String toString() {
-        return "MainResponse{" +
-                "id='" + id + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", edad='" + edad + '\'' +
-                ", dni='" + dni + '\'' +
-                ", mensaje='" + mensaje + '\'' +
-                '}';
-    }
+
 }
