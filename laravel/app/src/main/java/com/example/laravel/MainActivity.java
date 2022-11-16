@@ -86,9 +86,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(@NonNull Call<MainResponse> call, @NonNull Response<MainResponse> response) {
                 if (response.isSuccessful()){
-                    Toast.makeText(MainActivity.this, "Hecho" + response.code(), Toast.LENGTH_SHORT).show();
+                    MainResponse mensage = response.body();
+                    assert mensage != null;
+                    Toast.makeText(MainActivity.this, mensage.getMensaje() + " " + response.code(), Toast.LENGTH_SHORT).show();
                 }else {
-                    Toast.makeText(MainActivity.this, "No Hecho" + response.code(), Toast.LENGTH_SHORT).show();
+                    MainResponse mensage = response.body();
+                    assert mensage != null;
+                    Toast.makeText(MainActivity.this, mensage.getMensaje() + " " + response.code(), Toast.LENGTH_SHORT).show();
                 }
             }
 
