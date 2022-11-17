@@ -20,7 +20,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     EditText id, nombre, edad, dni;
-    Button buscar, save;
+    Button buscar, save, buscarID;
     String Sid;
     String id2;
     String nombre2;
@@ -38,9 +38,11 @@ public class MainActivity extends AppCompatActivity {
         dni = findViewById(R.id.dni);
         buscar = findViewById(R.id.buscar);
         save = findViewById(R.id.save);
+        buscarID = findViewById(R.id.buscarID);
 
         buscar.setOnClickListener(v -> conseguir());
         save.setOnClickListener(v -> salvar());
+        buscarID.setOnClickListener(v -> bring());
     }
 
     public void conseguir() {
@@ -72,6 +74,38 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Call<List<MainResponse>> call, @NonNull Throwable t) {
                 Toast.makeText(MainActivity.this, "Error Code: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void bring (){
+        id2 = id.getText().toString();
+        Call<List<MainResponse>> cid = ApiClient.getUserService().datoID(id2);
+        cid.enqueue(new Callback<List<MainResponse>>() {
+            @Override
+            public void onResponse(@NonNull Call<List<MainResponse>> call, @NonNull Response<List<MainResponse>> response) {
+                if (response.isSuccessful()) {
+                    List<MainResponse> mainResponses = response.body();
+                    assert mainResponses != null;
+                    for (MainResponse mainResponse : mainResponses){
+                        nombre2 = mainResponse.getNombre();
+                        edad2 = mainResponse.getEdad();
+                        dni2 = mainResponse.getDni();
+                    }
+                    if(nombre2 == null){
+                        Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                    }else {
+                        nombre.append(nombre2);
+                        edad.append(edad2);
+                        dni.setText(dni2);
+
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<List<MainResponse>> call, @NonNull Throwable t) {
+
             }
         });
     }
