@@ -124,9 +124,8 @@ public class MainActivity extends AppCompatActivity {
                     assert mensage != null;
                     Toast.makeText(MainActivity.this, mensage.getMensaje() + " " + response.code(), Toast.LENGTH_SHORT).show();
                 }else {
-                    MainResponse mensage = response.body();
-                    assert mensage != null;
-                    Toast.makeText(MainActivity.this, mensage.getMensaje() + " " + response.code(), Toast.LENGTH_SHORT).show();
+
+                    Toast.makeText(MainActivity.this, "Error: (" + response.code()+")", Toast.LENGTH_SHORT).show();
                 }
             }
 
