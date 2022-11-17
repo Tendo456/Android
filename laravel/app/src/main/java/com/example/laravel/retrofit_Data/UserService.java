@@ -9,6 +9,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface UserService {
@@ -25,5 +26,12 @@ public interface UserService {
     Call<MainResponse> insert (@Field("nombre") String nombre,
                                        @Field("edad") String edad,
                                        @Field("dni") String dni);
+
+    @PUT("up/android/{id}")
+    @FormUrlEncoded
+    Call<MainResponse> updatePost(@Path("id") String id,
+                          @Field("nombre") String nombre,
+                          @Field("edad") String edad,
+                          @Field("dni") String dni);
 
 }

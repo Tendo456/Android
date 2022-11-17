@@ -20,7 +20,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     EditText id, nombre, edad, dni;
-    Button buscar, save, buscarID;
+    Button buscar, save, buscarID, actualizar;
     String Sid;
     String id2;
     String nombre2;
@@ -39,10 +39,12 @@ public class MainActivity extends AppCompatActivity {
         buscar = findViewById(R.id.buscar);
         save = findViewById(R.id.save);
         buscarID = findViewById(R.id.buscarID);
+        actualizar = findViewById(R.id.actualizar);
 
         buscar.setOnClickListener(v -> conseguir());
         save.setOnClickListener(v -> salvar());
         buscarID.setOnClickListener(v -> bring());
+        actualizar.setOnClickListener(v -> actualiza());
     }
 
     public void conseguir() {
@@ -63,8 +65,8 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_SHORT).show();
                     }else {
                         id.setText(id2);
-                        nombre.append(nombre2);
-                        edad.append(edad2);
+                        nombre.setText(nombre2);
+                        edad.setText(edad2);
                         dni.setText(dni2);
 
                     }
@@ -95,8 +97,8 @@ public class MainActivity extends AppCompatActivity {
                     if(nombre2 == null){
                         Toast.makeText(MainActivity.this, "Error", Toast.LENGTH_SHORT).show();
                     }else {
-                        nombre.append(nombre2);
-                        edad.append(edad2);
+                        nombre.setText(nombre2);
+                        edad.setText(edad2);
                         dni.setText(dni2);
 
                     }
@@ -105,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(@NonNull Call<List<MainResponse>> call, @NonNull Throwable t) {
-
+                Toast.makeText(MainActivity.this, "Error Code: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -117,6 +119,33 @@ public class MainActivity extends AppCompatActivity {
 
         Call<MainResponse> gu = ApiClient.getUserService().insert(nombre2,edad2,dni2);
         gu.enqueue(new Callback<MainResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<MainResponse> call, @NonNull Response<MainResponse> response) {
+                if (response.isSuccessful()){
+                    MainResponse mensage = response.body();
+                    assert mensage != null;
+                    Toast.makeText(MainActivity.this, mensage.getMensaje() + " " + response.code(), Toast.LENGTH_SHORT).show();
+                }else {
+
+                    Toast.makeText(MainActivity.this, "Error: (" + response.code()+")", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<MainResponse> call, @NonNull Throwable t) {
+                Toast.makeText(MainActivity.this, "Error Code: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void actualiza (){
+        id2 = id.getText().toString();
+        nombre2 = nombre.getText().toString();
+        edad2 = edad.getText().toString();
+        dni2 = dni.getText().toString();
+
+        Call<MainResponse> updt = ApiClient.getUserService().updatePost(id2,nombre2,edad2,dni2);
+        updt.enqueue(new Callback<MainResponse>() {
             @Override
             public void onResponse(@NonNull Call<MainResponse> call, @NonNull Response<MainResponse> response) {
                 if (response.isSuccessful()){

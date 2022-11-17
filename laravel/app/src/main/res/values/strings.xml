@@ -9,5 +9,6 @@
     <string name="buscar">Search</string>
     <string name="buscarid">Search ID</string>
     <string name="save">Save</string>
+    <string name="up">Actualizar</string>
 
 </resources>
