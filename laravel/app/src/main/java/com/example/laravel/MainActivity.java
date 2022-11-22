@@ -20,7 +20,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     EditText id, nombre, edad, dni;
-    Button buscar, save, buscarID, actualizar;
+    Button buscar, save, buscarID, actualizar, borrar;
     String Sid;
     String id2;
     String nombre2;
@@ -40,11 +40,13 @@ public class MainActivity extends AppCompatActivity {
         save = findViewById(R.id.save);
         buscarID = findViewById(R.id.buscarID);
         actualizar = findViewById(R.id.actualizar);
+        borrar = findViewById(R.id.borrar);
 
         buscar.setOnClickListener(v -> conseguir());
         save.setOnClickListener(v -> salvar());
         buscarID.setOnClickListener(v -> bring());
         actualizar.setOnClickListener(v -> actualiza());
+        borrar.setOnClickListener(v -> delete());
     }
 
     public void conseguir() {
@@ -146,6 +148,29 @@ public class MainActivity extends AppCompatActivity {
 
         Call<MainResponse> updt = ApiClient.getUserService().updatePost(id2,nombre2,edad2,dni2);
         updt.enqueue(new Callback<MainResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<MainResponse> call, @NonNull Response<MainResponse> response) {
+                if (response.isSuccessful()){
+                    MainResponse mensage = response.body();
+                    assert mensage != null;
+                    Toast.makeText(MainActivity.this, mensage.getMensaje() + " " + response.code(), Toast.LENGTH_SHORT).show();
+                }else {
+
+                    Toast.makeText(MainActivity.this, "Error: (" + response.code()+")", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<MainResponse> call, @NonNull Throwable t) {
+                Toast.makeText(MainActivity.this, "Error Code: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void delete(){
+        id2 = id.getText().toString();
+        Call<MainResponse> kill = ApiClient.getUserService().dt(id2);
+        kill.enqueue(new Callback<MainResponse>() {
             @Override
             public void onResponse(@NonNull Call<MainResponse> call, @NonNull Response<MainResponse> response) {
                 if (response.isSuccessful()){
