@@ -172,9 +172,7 @@ public class Registro extends AppCompatActivity {
                     Toast.makeText(Registro.this, mensage.getMensage() + " " + response.code(), Toast.LENGTH_SHORT).show();
                     hilo();
                 } else {
-                    LectorResponse mensage = response.body();
-                    assert mensage != null;
-                    Toast.makeText(Registro.this, mensage.getMensage() + " " + response.code(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Registro.this, "Error: (" + response.code()+")", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -211,12 +209,12 @@ public class Registro extends AppCompatActivity {
                     if (idR == null) {
                         Toast.makeText(Registro.this, "Error", Toast.LENGTH_SHORT).show();
                     } else {
-                        sendID.append(idR);
-                        sendEquipo.append(equipoR);
-                        sendSerie.append(serieR);
-                        sendUser.append(usuarioR);
-                        sendSede.append(sedeR);
-                        sendDescripcion.append(descripcionR);
+                        sendID.setText(idR);
+                        sendEquipo.setText(equipoR);
+                        sendSerie.setText(serieR);
+                        sendUser.setText(usuarioR);
+                        sendSede.setText(sedeR);
+                        sendDescripcion.setText(descripcionR);
                     }
                 }
             }
