@@ -38,7 +38,7 @@ public interface UserService {
     @GET("inventarioQR/getSerie/{serie}")
     Call<List<LectorResponse>> lastReg(@Path("serie") String serie);
 
-    /*@GET("Equipos/getEquipos.php")
+    /* @GET("Equipos/getEquipos.php")
     Call<List<LectorResponse>> getEquipo(@Query("id") String id);
 
     @GET("Equipos/lastEquipo.php")
@@ -54,6 +54,6 @@ public interface UserService {
                                        @Field("descripcion") String descripcion);
 
     @GET("Equipos/lastReg.php")
-    Call<List<LectorResponse>> lastReg(@Query("serie") String serie);*/
+    Call<List<LectorResponse>> lastReg(@Query("serie") String serie); */
 
 }
