@@ -41,14 +41,6 @@ public interface UserService {
     /*@GET("Equipos/getEquipos.php")
     Call<List<LectorResponse>> getEquipo(@Query("id") String id);
 
-    @FormUrlEncoded
-    @POST("Equipos/insertEquipos.php")
-    Call<LectorResponse> insertEquipo (@Field("equipo") String equipo,
-                                        @Field("serie") String serie,
-                                       @Field("usuario") String usuario,
-                                       @Field("sede") String sede,
-                                        @Field("descripcion") String descripcion);
-
     @GET("Equipos/lastEquipo.php")
     Call<List<LectorResponse>> lastPC();
 
