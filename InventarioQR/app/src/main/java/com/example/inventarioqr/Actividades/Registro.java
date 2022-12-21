@@ -48,12 +48,13 @@ import retrofit2.Response;
 public class Registro extends AppCompatActivity {
 
     ImageView createQR;
-    TextInputEditText sendID,sendEquipo, sendSerie, sendModelo, sendDescripcion, sendUser, sendSede;
+    TextInputEditText sendID,sendEquipo, sendSerie, sendMarca, sendModelo, sendDescripcion, sendUser, sendSede;
     Button btnSave;
-    String saveEquipo, saveSerie, saveModelo, saveUsuario, saveSede, saveDescripcion;
+    String saveEquipo, saveSerie, saveMarca, saveModelo, saveUsuario, saveSede, saveDescripcion;
     String idR = null;
     String equipoR = null;
     String serieR = null;
+    String marcaR = null;
     String modeloR = null;
     String usuarioR = null;
     String sedeR = null;
@@ -70,6 +71,7 @@ public class Registro extends AppCompatActivity {
         sendEquipo = findViewById(R.id.sendEquipo);
         sendSerie = findViewById(R.id.sendSerie);
         sendModelo = findViewById(R.id.sendModelo);
+        sendMarca = findViewById(R.id.sendMarca);
         sendDescripcion = findViewById(R.id.sendDescripcion);
         btnSave = findViewById(R.id.btnSave);
         btnShareR = findViewById(R.id.btnShareR);
@@ -156,6 +158,8 @@ public class Registro extends AppCompatActivity {
             sendEquipo.setError("Vacío");
         } else if (Objects.requireNonNull(sendSerie.getText()).toString().isEmpty()) {
             sendSerie.setError("Vacio");
+        }else if (Objects.requireNonNull(sendMarca.getText()).toString().isEmpty()) {
+            sendMarca.setError("Vacio");
         }else if (Objects.requireNonNull(sendModelo.getText()).toString().isEmpty()) {
             sendModelo.setError("Vacio");
         } else if (Objects.requireNonNull(sendUser.getText()).toString().isEmpty()){
@@ -175,9 +179,10 @@ public class Registro extends AppCompatActivity {
             saveUsuario = sendUser.getText().toString();
             saveSede = sendSede.getText().toString();
             saveModelo = sendModelo.getText().toString();
+            saveMarca = sendMarca.getText().toString();
 
 
-        Call<LectorResponse> inPC = ApiClient.getUserService().insertEquipo(saveEquipo, saveSerie, saveModelo, saveUsuario, saveSede, saveDescripcion);
+        Call<LectorResponse> inPC = ApiClient.getUserService().insertEquipo(saveEquipo, saveSerie, saveMarca, saveModelo, saveUsuario, saveSede, saveDescripcion);
         inPC.enqueue(new Callback<LectorResponse>() {
             @Override
             public void onResponse(@NonNull Call<LectorResponse> call, @NonNull Response<LectorResponse> response) {
@@ -217,6 +222,7 @@ public class Registro extends AppCompatActivity {
                         idR = lectorResponse.getId();
                         equipoR = lectorResponse.getEquipo();
                         serieR = lectorResponse.getSerie();
+                        marcaR = lectorResponse.getMarca();
                         modeloR = lectorResponse.getModelo();
                         usuarioR = lectorResponse.getUsuario();
                         sedeR = lectorResponse.getSede();
@@ -228,6 +234,7 @@ public class Registro extends AppCompatActivity {
                         sendID.setText(idR);
                         sendEquipo.setText(equipoR);
                         sendSerie.setText(serieR);
+                        sendMarca.setText(marcaR);
                         sendModelo.setText(modeloR);
                         sendUser.setText(usuarioR);
                         sendSede.setText(sedeR);

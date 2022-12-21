@@ -106,7 +106,7 @@
                         android:layout_height="wrap_content"
                         android:hint="@string/serie"
                         android:inputType="textCapCharacters"
-                        android:maxLength="25" />
+                        android:maxLength="35" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -141,6 +141,24 @@
 
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/sendMarca"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/marca"
+                    android:inputType="textCapCharacters"
+                    android:maxLength="30" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                app:counterEnabled="true"
+                app:counterMaxLength="25">
+
+
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/sendModelo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -164,7 +182,7 @@
                     android:layout_height="wrap_content"
                     android:hint="@string/user"
                     android:inputType="textCapCharacters"
-                    android:maxLength="25" />
+                    android:maxLength="40" />
 
             </com.google.android.material.textfield.TextInputLayout>
 

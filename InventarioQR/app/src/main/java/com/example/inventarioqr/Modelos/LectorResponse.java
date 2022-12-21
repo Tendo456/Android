@@ -8,6 +8,7 @@ public class LectorResponse implements Serializable {
     private String id;
     private String equipo;
     private String serie;
+    private String marca;
     private String modelo;
     private String descripcion;
     private String usuario;
@@ -36,6 +37,14 @@ public class LectorResponse implements Serializable {
 
     public void setSerie(String serie) {
         this.serie = serie;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 
     public String getModelo() {
@@ -84,6 +93,7 @@ public class LectorResponse implements Serializable {
                 "id='" + id + '\'' +
                 ", equipo='" + equipo + '\'' +
                 ", serie='" + serie + '\'' +
+                ", marca='" + marca + '\'' +
                 ", modelo='" + modelo + '\'' +
                 ", descripcion='" + descripcion + '\'' +
                 ", usuario='" + usuario + '\'' +

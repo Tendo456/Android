@@ -49,7 +49,7 @@ import retrofit2.Response;
 
 public class Lector extends AppCompatActivity {
 
-    TextInputEditText datoID, datoEquipo, datoSerie, datoModelo, datoUser, datoSede, datoDescripcion;
+    TextInputEditText datoID, datoEquipo, datoSerie, datoMarca, datoModelo, datoUser, datoSede, datoDescripcion;
     Button btnScan, btnUpdate;
     String contador;
     String id = null;
@@ -57,13 +57,14 @@ public class Lector extends AppCompatActivity {
     String serie = null;
     String usuario = null;
     String sede = null;
+    String marca = null;
     String modelo = null;
     String descripcion = null;
     SwitchCompat Activar;
     ImageView datoQR;
     private final int almacenamiento = 100;
     FloatingActionButton btnShare;
-    String upID, upEquipo, upSerie, upModelo, upUser, upSede, upDesc;
+    String upID, upEquipo, upSerie, upMarca, upModelo, upUser, upSede, upDesc;
     String SNTAG;
 
     @Override
@@ -74,6 +75,7 @@ public class Lector extends AppCompatActivity {
         datoID = findViewById(R.id.datoID);
         datoEquipo = findViewById(R.id.datoEquipo);
         datoSerie = findViewById(R.id.datoSerie);
+        datoMarca = findViewById(R.id.datoMarca);
         datoModelo = findViewById(R.id.datoModelo);
         datoUser = findViewById(R.id.datoUser);
         datoSede = findViewById(R.id.datoSede);
@@ -105,6 +107,7 @@ public class Lector extends AppCompatActivity {
                     Objects.requireNonNull(datoEquipo.getText()).clear();
                     Objects.requireNonNull(datoSerie.getText()).clear();
                     Objects.requireNonNull(datoModelo.getText()).clear();
+                    Objects.requireNonNull(datoMarca.getText()).clear();
                     Objects.requireNonNull(datoDescripcion.getText()).clear();
                     contador = Objects.requireNonNull(datoID.getText()).toString();
                     Toast.makeText(Lector.this, "Buscando: "+contador, Toast.LENGTH_SHORT).show();
@@ -186,6 +189,7 @@ public class Lector extends AppCompatActivity {
                         equipo = lectorResponse.getEquipo();
                         serie = lectorResponse.getSerie();
                         modelo = lectorResponse.getModelo();
+                        marca = lectorResponse.getMarca();
                         usuario = lectorResponse.getUsuario();
                         sede = lectorResponse.getSede();
                         descripcion = lectorResponse.getDescripcion();
@@ -196,6 +200,7 @@ public class Lector extends AppCompatActivity {
                         datoEquipo.setText(equipo);
                         datoSerie.setText(serie);
                         datoModelo.setText(modelo);
+                        datoMarca.setText(marca);
                         datoUser.setText(usuario);
                         datoSede.setText(sede);
                         datoDescripcion.setText(descripcion);
@@ -248,6 +253,8 @@ public class Lector extends AppCompatActivity {
             datoEquipo.setError("Vacio");
         }else if(Objects.requireNonNull(datoSerie.getText()).toString().isEmpty()){
             datoSerie.setError("Vacio");
+        }else if(Objects.requireNonNull(datoMarca.getText()).toString().isEmpty()){
+            datoMarca.setError("Vacio");
         }else if(Objects.requireNonNull(datoModelo.getText()).toString().isEmpty()){
             datoModelo.setError("Vacio");
         }else if(Objects.requireNonNull(datoUser.getText()).toString().isEmpty()){
@@ -265,12 +272,13 @@ public class Lector extends AppCompatActivity {
             upID = datoID.getText().toString();
             upEquipo = datoEquipo.getText().toString();
             upSerie = datoSerie.getText().toString();
+            upMarca = datoMarca.getText().toString();
             upModelo = datoModelo.getText().toString();
             upUser = datoUser.getText().toString();
             upSede = datoSede.getText().toString();
             upDesc = Objects.requireNonNull(datoDescripcion.getText()).toString();
 
-            Call<LectorResponse> updata = ApiClient.getUserService().updateEquipo(upID, upEquipo, upModelo, upSerie, upUser, upSede, upDesc);
+            Call<LectorResponse> updata = ApiClient.getUserService().updateEquipo(upID, upEquipo, upMarca, upModelo, upSerie, upUser, upSede, upDesc);
             updata.enqueue(new Callback<LectorResponse>() {
                 @Override
                 public void onResponse(@NonNull Call<LectorResponse> call, @NonNull Response<LectorResponse> response) {
@@ -298,6 +306,7 @@ public class Lector extends AppCompatActivity {
             datoID.setEnabled(true);
             datoEquipo.setEnabled(true);
             datoSerie.setEnabled(true);
+            datoMarca.setEnabled(true);
             datoModelo.setEnabled(true);
             datoUser.setEnabled(true);
             datoSede.setEnabled(true);
@@ -306,6 +315,7 @@ public class Lector extends AppCompatActivity {
             datoID.setEnabled(false);
             datoEquipo.setEnabled(false);
             datoSerie.setEnabled(false);
+            datoMarca.setEnabled(false);
             datoModelo.setEnabled(false);
             datoUser.setEnabled(false);
             datoSede.setEnabled(false);
