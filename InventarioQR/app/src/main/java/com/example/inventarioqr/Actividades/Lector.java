@@ -109,6 +109,7 @@ public class Lector extends AppCompatActivity {
                     Objects.requireNonNull(datoModelo.getText()).clear();
                     Objects.requireNonNull(datoMarca.getText()).clear();
                     Objects.requireNonNull(datoDescripcion.getText()).clear();
+                    Objects.requireNonNull(datoSede.getText()).clear();
                     contador = Objects.requireNonNull(datoID.getText()).toString();
                     Toast.makeText(Lector.this, "Buscando: "+contador, Toast.LENGTH_SHORT).show();
                     btnUpdate.setEnabled(true);
