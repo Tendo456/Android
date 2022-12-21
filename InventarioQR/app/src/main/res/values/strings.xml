@@ -22,4 +22,5 @@
     <string name="update">Actualizar</string>
     <string name="user">Usuario</string>
     <string name="location">Sede</string>
+    <string name="model">Modelo</string>
 </resources>

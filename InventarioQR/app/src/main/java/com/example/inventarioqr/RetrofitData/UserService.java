@@ -22,6 +22,7 @@ public interface UserService {
     @POST("inventarioQR")
     Call<LectorResponse> insertEquipo (@Field("equipo") String equipo,
                                        @Field("serie") String serie,
+                                       @Field("modelo") String modelo,
                                        @Field("usuario") String usuario,
                                        @Field("sede") String sede,
                                        @Field("descripcion") String descripcion);
@@ -31,6 +32,7 @@ public interface UserService {
     Call<LectorResponse> updateEquipo (@Path("id") String id,
                                        @Field("equipo") String equipo,
                                        @Field("serie") String serie,
+                                       @Field("modelo") String modelo,
                                        @Field("usuario") String usuario,
                                        @Field("sede") String sede,
                                        @Field("descripcion") String descripcion);

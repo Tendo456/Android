@@ -41,12 +41,13 @@ import retrofit2.Response;
 public class Registro extends AppCompatActivity {
 
     ImageView createQR;
-    TextInputEditText sendID,sendEquipo, sendSerie, sendDescripcion, sendUser, sendSede;
+    TextInputEditText sendID,sendEquipo, sendSerie, sendModelo, sendDescripcion, sendUser, sendSede;
     Button btnSave;
-    String saveEquipo, saveSerie, saveUsuario, saveSede, saveDescripcion;
+    String saveEquipo, saveSerie, saveModelo, saveUsuario, saveSede, saveDescripcion;
     String idR = null;
     String equipoR = null;
     String serieR = null;
+    String modeloR = null;
     String usuarioR = null;
     String sedeR = null;
     String descripcionR = null;
@@ -61,6 +62,7 @@ public class Registro extends AppCompatActivity {
         createQR = findViewById(R.id.createQR);
         sendEquipo = findViewById(R.id.sendEquipo);
         sendSerie = findViewById(R.id.sendSerie);
+        sendModelo = findViewById(R.id.sendModelo);
         sendDescripcion = findViewById(R.id.sendDescripcion);
         btnSave = findViewById(R.id.btnSave);
         btnShareR = findViewById(R.id.btnShareR);
@@ -88,6 +90,7 @@ public class Registro extends AppCompatActivity {
                 if(editable.toString().length()>=1){
                     Objects.requireNonNull(sendEquipo.getText()).clear();
                     Objects.requireNonNull(sendSerie.getText()).clear();
+                    Objects.requireNonNull(sendModelo.getText()).clear();
                     Objects.requireNonNull(sendDescripcion.getText()).clear();
                     //contador = Objects.requireNonNull(datoID.getText()).toString();
                     //Toast.makeText(Lector.this, "Buscando: "+contador, Toast.LENGTH_SHORT).show();
@@ -144,9 +147,11 @@ public class Registro extends AppCompatActivity {
             sendEquipo.setError("Vacío");
         } else if (Objects.requireNonNull(sendSerie.getText()).toString().isEmpty()) {
             sendSerie.setError("Vacio");
-        }else if (Objects.requireNonNull(sendUser.getText()).toString().isEmpty()){
+        }else if (Objects.requireNonNull(sendModelo.getText()).toString().isEmpty()) {
+            sendModelo.setError("Vacio");
+        } else if (Objects.requireNonNull(sendUser.getText()).toString().isEmpty()){
             sendUser.setError("Vacio");
-        }else if (Objects.requireNonNull(sendSede.getText()).toString().isEmpty()){
+        } else if (Objects.requireNonNull(sendSede.getText()).toString().isEmpty()){
             sendSede.setError("Vacio");
         } else {
 
@@ -160,9 +165,10 @@ public class Registro extends AppCompatActivity {
             saveSerie = Objects.requireNonNull(sendSerie.getText().toString());
             saveUsuario = sendUser.getText().toString();
             saveSede = sendSede.getText().toString();
+            saveModelo = sendModelo.getText().toString();
 
 
-        Call<LectorResponse> inPC = ApiClient.getUserService().insertEquipo(saveEquipo, saveSerie, saveUsuario, saveSede, saveDescripcion);
+        Call<LectorResponse> inPC = ApiClient.getUserService().insertEquipo(saveEquipo, saveSerie, saveModelo, saveUsuario, saveSede, saveDescripcion);
         inPC.enqueue(new Callback<LectorResponse>() {
             @Override
             public void onResponse(@NonNull Call<LectorResponse> call, @NonNull Response<LectorResponse> response) {
@@ -202,6 +208,7 @@ public class Registro extends AppCompatActivity {
                         idR = lectorResponse.getId();
                         equipoR = lectorResponse.getEquipo();
                         serieR = lectorResponse.getSerie();
+                        modeloR = lectorResponse.getModelo();
                         usuarioR = lectorResponse.getUsuario();
                         sedeR = lectorResponse.getSede();
                         descripcionR = lectorResponse.getDescripcion();
@@ -212,6 +219,7 @@ public class Registro extends AppCompatActivity {
                         sendID.setText(idR);
                         sendEquipo.setText(equipoR);
                         sendSerie.setText(serieR);
+                        sendModelo.setText(modeloR);
                         sendUser.setText(usuarioR);
                         sendSede.setText(sedeR);
                         sendDescripcion.setText(descripcionR);
