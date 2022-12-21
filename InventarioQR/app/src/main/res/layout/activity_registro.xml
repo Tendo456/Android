@@ -62,7 +62,7 @@
                     android:layout_height="wrap_content"
                     android:enabled="false"
                     android:hint="@string/id"
-                    android:inputType="number"
+                    android:inputType="number|textCapCharacters"
                     android:maxLength="20" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -84,23 +84,52 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                app:counterEnabled="true"
-                app:counterMaxLength="25">
+                android:gravity="top"
+                android:orientation="horizontal">
 
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/sendSerie"
-                    android:layout_width="match_parent"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:hint="@string/serie"
-                    android:inputType="textCapCharacters"
-                    android:maxLength="25" />
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    app:counterEnabled="true"
+                    app:counterMaxLength="25">
 
-            </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/sendSerie"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/serie"
+                        android:inputType="textCapCharacters"
+                        android:maxLength="25" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/scanSerie"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:clickable="true"
+                    android:contentDescription="@string/siguiente"
+                    android:focusable="true"
+                    app:backgroundTint="@color/indigo_500"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.958"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.02"
+                    app:maxImageSize="30dp"
+                    app:srcCompat="@drawable/barras"
+                    app:tint="@color/white"
+                    tools:ignore="SpeakableTextPresentCheck" />
+
+            </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"

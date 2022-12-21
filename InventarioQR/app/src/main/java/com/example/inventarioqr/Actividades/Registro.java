@@ -1,13 +1,17 @@
 package com.example.inventarioqr.Actividades;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -16,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -28,6 +33,8 @@ import com.example.inventarioqr.RetrofitData.ApiClient;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.zxing.BarcodeFormat;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import java.io.ByteArrayOutputStream;
@@ -52,7 +59,7 @@ public class Registro extends AppCompatActivity {
     String sedeR = null;
     String descripcionR = null;
     private final int storage = 100;
-    FloatingActionButton btnShareR;
+    FloatingActionButton btnShareR, scanSerie;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +73,7 @@ public class Registro extends AppCompatActivity {
         sendDescripcion = findViewById(R.id.sendDescripcion);
         btnSave = findViewById(R.id.btnSave);
         btnShareR = findViewById(R.id.btnShareR);
+        scanSerie = findViewById(R.id.scanSerie);
         sendID =findViewById(R.id.sendID);
         sendUser = findViewById(R.id.sendUser);
         sendSede = findViewById(R.id.sendSede);
@@ -73,6 +81,7 @@ public class Registro extends AppCompatActivity {
         btnSave.setOnClickListener(v -> comfirmPC());
 
         createQR.setImageResource(R.drawable.codigo_qr);
+        scanSerie.setOnClickListener(v -> tag());
 
         sendID.addTextChangedListener(new TextWatcher() {
             @Override
@@ -267,5 +276,37 @@ public class Registro extends AppCompatActivity {
         createQR.buildDrawingCache();
         Bitmap bitmap = createQR.getDrawingCache();
         photoPrinter.printBitmap("droids.jpg - test print", bitmap);
+    }
+
+    public void tag (){
+        IntentIntegrator integrador = new IntentIntegrator(Registro.this);
+        integrador.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
+        integrador.setPrompt("Lector - QR");
+        integrador.setCameraId(0);
+        integrador.setOrientationLocked(false);
+        integrador.setCaptureActivity(com.example.inventarioqr.Actividades.orientacion.class);
+        integrador.setBeepEnabled(true);
+        integrador.setBarcodeImageEnabled(true);
+        integrador.initiateScan();
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode,resultCode,data);
+
+        if(result != null){
+            if(result.getContents() == null){
+                Toast.makeText(this,"Lectura Cancelada", Toast.LENGTH_SHORT).show();
+            }else {
+                Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){v.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));}
+                Toast.makeText(this,"Serie: "+result.getContents(), Toast.LENGTH_SHORT).show();
+                sendSerie.setText(result.getContents());
+            }
+        }else{
+            super.onActivityResult(requestCode, resultCode, data);
+        }
     }
 }
