@@ -49,7 +49,7 @@ public class Registro extends AppCompatActivity {
 
     ImageView createQR;
     TextInputEditText sendID,sendEquipo, sendSerie, sendMarca, sendModelo, sendDescripcion, sendUser, sendSede;
-    Button btnSave;
+    Button btnSave, btnNuevo;
     String saveEquipo, saveSerie, saveMarca, saveModelo, saveUsuario, saveSede, saveDescripcion;
     String idR = null;
     String equipoR = null;
@@ -79,8 +79,10 @@ public class Registro extends AppCompatActivity {
         sendID =findViewById(R.id.sendID);
         sendUser = findViewById(R.id.sendUser);
         sendSede = findViewById(R.id.sendSede);
+        btnNuevo = findViewById(R.id.btnNuevo);
 
         btnSave.setOnClickListener(v -> comfirmPC());
+        btnNuevo.setOnClickListener(v -> nuevo());
 
         createQR.setImageResource(R.drawable.codigo_qr);
         scanSerie.setOnClickListener(v -> tag());
@@ -191,6 +193,16 @@ public class Registro extends AppCompatActivity {
                     assert mensage != null;
                     Toast.makeText(Registro.this, mensage.getMensage() + " " + response.code(), Toast.LENGTH_SHORT).show();
                     hilo();
+                    btnNuevo.setEnabled(true);
+                    btnSave.setEnabled(false);
+                    sendEquipo.setEnabled(false);
+                    sendSerie.setEnabled(false);
+                    sendMarca.setEnabled(false);
+                    sendModelo.setEnabled(false);
+                    sendDescripcion.setEnabled(false);
+                    sendUser.setEnabled(false);
+                    sendSede.setEnabled(false);
+                    scanSerie.setEnabled(false);
                 } else {
                     Toast.makeText(Registro.this, "Error: (" + response.code()+")", Toast.LENGTH_SHORT).show();
                 }
@@ -315,5 +327,25 @@ public class Registro extends AppCompatActivity {
         }else{
             super.onActivityResult(requestCode, resultCode, data);
         }
+    }
+
+    public void nuevo (){
+        Objects.requireNonNull(sendEquipo.getText()).clear();
+        Objects.requireNonNull(sendSerie.getText()).clear();
+        Objects.requireNonNull(sendMarca.getText()).clear();
+        Objects.requireNonNull(sendModelo.getText()).clear();
+        Objects.requireNonNull(sendDescripcion.getText()).clear();
+        Objects.requireNonNull(sendUser.getText()).clear();
+        Objects.requireNonNull(sendSede.getText()).clear();
+        btnSave.setEnabled(true);
+        sendEquipo.setEnabled(true);
+        sendSerie.setEnabled(true);
+        sendMarca.setEnabled(true);
+        sendModelo.setEnabled(true);
+        sendDescripcion.setEnabled(true);
+        sendUser.setEnabled(true);
+        sendSede.setEnabled(true);
+        scanSerie.setEnabled(true);
+
     }
 }

@@ -102,7 +102,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 app:counterEnabled="true"
-                app:counterMaxLength="25">
+                app:counterMaxLength="35">
 
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -112,7 +112,7 @@
                     android:enabled="false"
                     android:hint="@string/serie"
                     android:inputType="textCapCharacters"
-                    android:maxLength="25" />
+                    android:maxLength="35" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -121,7 +121,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 app:counterEnabled="true"
-                app:counterMaxLength="25">
+                app:counterMaxLength="30">
 
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -131,7 +131,7 @@
                     android:enabled="false"
                     android:hint="@string/marca"
                     android:inputType="textCapCharacters"
-                    android:maxLength="25" />
+                    android:maxLength="30" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -159,7 +159,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 app:counterEnabled="true"
-                app:counterMaxLength="25">
+                app:counterMaxLength="40">
 
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -169,7 +169,7 @@
                     android:enabled="false"
                     android:hint="@string/user"
                     android:inputType="textCapCharacters"
-                    android:maxLength="25" />
+                    android:maxLength="40" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
