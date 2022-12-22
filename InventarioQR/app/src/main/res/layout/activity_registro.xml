@@ -44,8 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="300dp"
                 android:layout_margin="15dp"
-                android:contentDescription="@string/qr"
-                 />
+                android:contentDescription="@string/qr" />
 
 
             <com.google.android.material.textfield.TextInputLayout

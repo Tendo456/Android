@@ -49,6 +49,7 @@ import retrofit2.Response;
 
 public class Lector extends AppCompatActivity {
 
+    private final int almacenamiento = 100;
     TextInputEditText datoID, datoEquipo, datoSerie, datoMarca, datoModelo, datoUser, datoSede, datoDescripcion;
     Button btnScan, btnUpdate;
     String contador;
@@ -62,7 +63,6 @@ public class Lector extends AppCompatActivity {
     String descripcion = null;
     SwitchCompat Activar;
     ImageView datoQR;
-    private final int almacenamiento = 100;
     FloatingActionButton btnShare;
     String upID, upEquipo, upSerie, upMarca, upModelo, upUser, upSede, upDesc;
     String SNTAG;
@@ -103,7 +103,7 @@ public class Lector extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if(s.toString().length()>=1){
+                if (s.toString().length() >= 1) {
                     Objects.requireNonNull(datoEquipo.getText()).clear();
                     Objects.requireNonNull(datoSerie.getText()).clear();
                     Objects.requireNonNull(datoModelo.getText()).clear();
@@ -111,12 +111,12 @@ public class Lector extends AppCompatActivity {
                     Objects.requireNonNull(datoDescripcion.getText()).clear();
                     Objects.requireNonNull(datoSede.getText()).clear();
                     contador = Objects.requireNonNull(datoID.getText()).toString();
-                    Toast.makeText(Lector.this, "Buscando: "+contador, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Lector.this, "Buscando: " + contador, Toast.LENGTH_SHORT).show();
                     btnUpdate.setEnabled(true);
                     btnShare.setEnabled(true);
                     timer2();
                     timer();
-                }else {
+                } else {
                     btnUpdate.setEnabled(false);
                     datoQR.setImageResource(R.drawable.codigo_qr);
                     btnShare.setEnabled(false);
@@ -125,10 +125,10 @@ public class Lector extends AppCompatActivity {
         });
 
         btnShare.setOnClickListener(v -> {
-            if(ContextCompat.checkSelfPermission(
-                    getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)== PackageManager.PERMISSION_DENIED){
-                ActivityCompat.requestPermissions(Lector.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},almacenamiento);
-            }else {
+            if (ContextCompat.checkSelfPermission(
+                    getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                ActivityCompat.requestPermissions(Lector.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, almacenamiento);
+            } else {
                 print();
             }
         });
@@ -137,13 +137,16 @@ public class Lector extends AppCompatActivity {
     }
 
 
-    public void timer (){
-        new Handler(Looper.getMainLooper()).postDelayed(this::crearQR,3000);
+    public void timer() {
+        new Handler(Looper.getMainLooper()).postDelayed(this::crearQR, 3000);
     }
-    public void timer2 () {new Handler(Looper.getMainLooper()).postDelayed(this::getData,2000);}
+
+    public void timer2() {
+        new Handler(Looper.getMainLooper()).postDelayed(this::getData, 2000);
+    }
 
 
-    public void Scan (){
+    public void Scan() {
         IntentIntegrator integrador = new IntentIntegrator(Lector.this);
         integrador.setDesiredBarcodeFormats(IntentIntegrator.ALL_CODE_TYPES);
         integrador.setPrompt("Lector - QR");
@@ -159,34 +162,36 @@ public class Lector extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 
-        IntentResult result = IntentIntegrator.parseActivityResult(requestCode,resultCode,data);
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
 
-        if(result != null){
-            if(result.getContents() == null){
-                Toast.makeText(this,"Lectura Cancelada", Toast.LENGTH_SHORT).show();
-            }else {
+        if (result != null) {
+            if (result.getContents() == null) {
+                Toast.makeText(this, "Lectura Cancelada", Toast.LENGTH_SHORT).show();
+            } else {
                 Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){v.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));}
-                Toast.makeText(this,"Buscando: "+result.getContents(), Toast.LENGTH_SHORT).show();
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    v.vibrate(VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE));
+                }
+                Toast.makeText(this, "Buscando: " + result.getContents(), Toast.LENGTH_SHORT).show();
                 datoID.setText(result.getContents());
             }
-        }else{
+        } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
     }
 
-    public void getData (){
+    public void getData() {
 
         Call<List<LectorResponse>> pc = ApiClient.getUserService().getEquipo(contador);
         pc.enqueue(new Callback<List<LectorResponse>>() {
             @Override
             public void onResponse(@NonNull Call<List<LectorResponse>> call, @NonNull Response<List<LectorResponse>> response) {
-                if (response.isSuccessful()){
+                if (response.isSuccessful()) {
                     Objects.requireNonNull(datoEquipo.getText()).clear();
 
                     List<LectorResponse> lectorResponses = response.body();
-                    assert lectorResponses !=null;
-                    for (LectorResponse lectorResponse: lectorResponses){
+                    assert lectorResponses != null;
+                    for (LectorResponse lectorResponse : lectorResponses) {
                         equipo = lectorResponse.getEquipo();
                         serie = lectorResponse.getSerie();
                         modelo = lectorResponse.getModelo();
@@ -195,9 +200,9 @@ public class Lector extends AppCompatActivity {
                         sede = lectorResponse.getSede();
                         descripcion = lectorResponse.getDescripcion();
                     }
-                    if (equipo == null){
+                    if (equipo == null) {
                         Toast.makeText(Lector.this, "No Encontrado", Toast.LENGTH_SHORT).show();
-                    }else{
+                    } else {
                         datoEquipo.setText(equipo);
                         datoSerie.setText(serie);
                         datoModelo.setText(modelo);
@@ -216,7 +221,7 @@ public class Lector extends AppCompatActivity {
         });
     }
 
-    public void getTag (){
+    public void getTag() {
         Call<List<LectorResponse>> tag = ApiClient.getUserService().lastReg(SNTAG);
         tag.enqueue(new Callback<List<LectorResponse>>() {
             @Override
@@ -247,24 +252,24 @@ public class Lector extends AppCompatActivity {
         });
     }
 
-    public void updateData(){
-        if(Objects.requireNonNull(datoID.getText()).toString().isEmpty()){
+    public void updateData() {
+        if (Objects.requireNonNull(datoID.getText()).toString().isEmpty()) {
             datoID.setError("Vacio");
-        }else if(Objects.requireNonNull(datoEquipo.getText()).toString().isEmpty()){
+        } else if (Objects.requireNonNull(datoEquipo.getText()).toString().isEmpty()) {
             datoEquipo.setError("Vacio");
-        }else if(Objects.requireNonNull(datoSerie.getText()).toString().isEmpty()){
+        } else if (Objects.requireNonNull(datoSerie.getText()).toString().isEmpty()) {
             datoSerie.setError("Vacio");
-        }else if(Objects.requireNonNull(datoMarca.getText()).toString().isEmpty()){
+        } else if (Objects.requireNonNull(datoMarca.getText()).toString().isEmpty()) {
             datoMarca.setError("Vacio");
-        }else if(Objects.requireNonNull(datoModelo.getText()).toString().isEmpty()){
+        } else if (Objects.requireNonNull(datoModelo.getText()).toString().isEmpty()) {
             datoModelo.setError("Vacio");
-        }else if(Objects.requireNonNull(datoUser.getText()).toString().isEmpty()){
+        } else if (Objects.requireNonNull(datoUser.getText()).toString().isEmpty()) {
             datoUser.setError("Vacio");
-        }else if(Objects.requireNonNull(datoSede.getText()).toString().isEmpty()){
+        } else if (Objects.requireNonNull(datoSede.getText()).toString().isEmpty()) {
             datoSede.setError("Vacio");
         } else {
 
-            if (Objects.requireNonNull(datoDescripcion.getText()).toString().isEmpty()){
+            if (Objects.requireNonNull(datoDescripcion.getText()).toString().isEmpty()) {
                 upDesc = "Vacio";
             } else {
                 upDesc = Objects.requireNonNull(datoDescripcion.getText()).toString();
@@ -283,7 +288,7 @@ public class Lector extends AppCompatActivity {
             updata.enqueue(new Callback<LectorResponse>() {
                 @Override
                 public void onResponse(@NonNull Call<LectorResponse> call, @NonNull Response<LectorResponse> response) {
-                    if (response.isSuccessful()){
+                    if (response.isSuccessful()) {
                         LectorResponse mensage = response.body();
                         assert mensage != null;
                         Toast.makeText(Lector.this, mensage.getMensage() + " " + response.code(), Toast.LENGTH_SHORT).show();
@@ -302,8 +307,8 @@ public class Lector extends AppCompatActivity {
         }
     }
 
-    public void ActivarProg (View view){
-        if(Activar.isChecked()){
+    public void ActivarProg(View view) {
+        if (Activar.isChecked()) {
             datoID.setEnabled(true);
             datoEquipo.setEnabled(true);
             datoSerie.setEnabled(true);
@@ -312,7 +317,7 @@ public class Lector extends AppCompatActivity {
             datoUser.setEnabled(true);
             datoSede.setEnabled(true);
             datoDescripcion.setEnabled(true);
-        }else {
+        } else {
             datoID.setEnabled(false);
             datoEquipo.setEnabled(false);
             datoSerie.setEnabled(false);
@@ -324,13 +329,13 @@ public class Lector extends AppCompatActivity {
         }
     }
 
-    public void crearQR (){
+    public void crearQR() {
         datoQR.destroyDrawingCache();
-        try{
+        try {
             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
-            Bitmap bitmap = barcodeEncoder.encodeBitmap(Objects.requireNonNull(datoID.getText()).toString(), BarcodeFormat.QR_CODE, 600,600);
+            Bitmap bitmap = barcodeEncoder.encodeBitmap(Objects.requireNonNull(datoID.getText()).toString(), BarcodeFormat.QR_CODE, 600, 600);
             datoQR.setImageBitmap(bitmap);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
