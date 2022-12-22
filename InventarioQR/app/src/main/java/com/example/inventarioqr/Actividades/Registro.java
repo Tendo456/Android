@@ -336,6 +336,7 @@ public class Registro extends AppCompatActivity {
         Objects.requireNonNull(sendDescripcion.getText()).clear();
         Objects.requireNonNull(sendUser.getText()).clear();
         Objects.requireNonNull(sendSede.getText()).clear();
+        Objects.requireNonNull(sendID.getText()).clear();
         btnSave.setEnabled(true);
         sendEquipo.setEnabled(true);
         sendSerie.setEnabled(true);
