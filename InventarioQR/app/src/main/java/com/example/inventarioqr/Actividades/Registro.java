@@ -105,8 +105,6 @@ public class Registro extends AppCompatActivity {
                     Objects.requireNonNull(sendSerie.getText()).clear();
                     Objects.requireNonNull(sendModelo.getText()).clear();
                     Objects.requireNonNull(sendDescripcion.getText()).clear();
-                    //contador = Objects.requireNonNull(datoID.getText()).toString();
-                    //Toast.makeText(Lector.this, "Buscando: "+contador, Toast.LENGTH_SHORT).show();
                     segundos();
                     btnShareR.setEnabled(true);
                 }else {
