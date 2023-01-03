@@ -261,7 +261,7 @@ public class MainActivity extends AppCompatActivity implements Connectable, Disc
         AlertDialog.Builder opcion = new AlertDialog.Builder(this);
         opcion.setMessage("Enviar Respuestas?");
         opcion.setPositiveButton("Enviar", (dialog, which) ->
-                enviar("http://190.119.144.250:83/encuesta/asistencial/insertarAsistencial.php"));
+                enviar("http://179.43.85.99:80/encuesta/asistencial/insertarAsistencial.php"));
         opcion.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
 
         AlertDialog dialog = opcion.create();
@@ -272,7 +272,7 @@ public class MainActivity extends AppCompatActivity implements Connectable, Disc
         AlertDialog.Builder opcion = new AlertDialog.Builder(this);
         opcion.setMessage("Send Replay?");
         opcion.setPositiveButton("Send", (dialog, which) ->
-                enviar("http://190.119.144.250:83/encuesta/asistencial/insertarAsistencial.php"));
+                enviar("http://179.43.85.99:80/encuesta/asistencial/insertarAsistencial.php"));
         opcion.setNegativeButton("Cancel", (dialog, which) -> dialog.cancel());
 
         AlertDialog dialog = opcion.create();
@@ -287,7 +287,7 @@ public class MainActivity extends AppCompatActivity implements Connectable, Disc
         if (p1.equals("0")) {
             //Toast.makeText(this,obligatorio,Toast.LENGTH_SHORT).show();
             LayoutInflater inflater = getLayoutInflater();
-            View layout = inflater.inflate(R.layout.mensaje_toast2, (ViewGroup) findViewById(R.id.layoutToastEr));
+            View layout = inflater.inflate(R.layout.mensaje_toast2, findViewById(R.id.layoutToastEr));
 
             TextView textEr = (TextView) layout.findViewById(R.id.textEr);
             textEr.setText(obligatorio);
