@@ -15,7 +15,8 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="m">
         <activity android:name=".Mensaje" />
-        <activity android:name=".inicio">
+        <activity android:name=".inicio"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
