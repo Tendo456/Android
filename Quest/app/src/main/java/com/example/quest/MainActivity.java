@@ -175,7 +175,7 @@ public class MainActivity extends AppCompatActivity implements Connectable, Disc
         AlertDialog.Builder opcion = new AlertDialog.Builder(this);
         opcion.setMessage("Enviar las Respuestas?");
         opcion.setPositiveButton("Enviar", (dialog, which) ->
-                enviar("http://190.119.144.250:83/encuesta/ocupacional/insertarOcupacional.php"));
+                enviar("http://179.43.85.99:80/encuesta/ocupacional/insertarOcupacional.php"));
         opcion.setNegativeButton("Cancelar", (dialog, which) -> dialog.cancel());
 
         AlertDialog dialog = opcion.create();
