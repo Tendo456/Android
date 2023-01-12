@@ -13,19 +13,16 @@ public class ApiClient {
         httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient okHttpClient = new OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor).build();
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://http://179.43.85.99:80/")
+        return new Retrofit.Builder()
+                .baseUrl("http://190.119.144.252:9000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(okHttpClient)
                 .build();
-
-        return retrofit;
     }
 
     public static UserService getUserService(){
-        UserService userService = getRetrofit().create(UserService.class);
 
-        return userService;
+        return getRetrofit().create(UserService.class);
     }
 
 }
