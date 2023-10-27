@@ -14,7 +14,7 @@ public class ApiClient {
         OkHttpClient okHttpClient = new OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor).build();
 
         return new Retrofit.Builder()
-                .baseUrl("http://179.43.85.99:9000/")
+                .baseUrl("http://127.0.0.1:8000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(okHttpClient)
                 .build();
